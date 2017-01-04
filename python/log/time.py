@@ -27,14 +27,14 @@ if __name__ == "__main__":
     for i in range(big_num):
         r = 1
     t.stop()
-    print('Request took %.03f sec.\n' % t.interval)
+    print("Request took %.03f sec.\n" % t.interval)
 
     # Example in with statement
     print("Example: with statement")
     with Timer() as t:
         for i in range(big_num):
             r = 1
-    print('Request took %.03f sec.\n' % t.interval)
+    print("Request took %.03f sec.\n" % t.interval)
 
     # Example in try
     print("Example: try")
@@ -42,7 +42,7 @@ if __name__ == "__main__":
         with Timer() as t:
             for i in range(big_num):
                 r = 1
-            raise(Exception('Get out!'))
+            raise(Exception("Get out!"))
     finally:
-        print('Request took %.03f sec.\n' % t.interval)
+        print("Request took %.03f sec.\n" % t.interval)
 
