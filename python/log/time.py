@@ -1,7 +1,7 @@
 import time
 
 
-class Timer:
+class Timer(object):
     def __enter__(self):
         self.start()
         return self
