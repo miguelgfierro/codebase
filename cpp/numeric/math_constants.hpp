@@ -81,6 +81,7 @@ namespace math
     inline unsigned long max(unsigned long x, unsigned long y) { return (x > y) ? x : y;}
     inline float         max(float x, float y)                 { return (x < y) ? y : x; }
     inline double        max(double x, double y)               { return (x < y) ? y : x; }
+    template <class T> T max(const std::vector<T> &t)          { return *std::max_element(t.begin(), t.end()); }
 
     // min
     inline int           min(int x, int y)                     { return (x < y) ? x : y; }
@@ -89,6 +90,8 @@ namespace math
     inline unsigned long min(unsigned long x, unsigned long y) { return (x < y) ? x : y;}
     inline float         min(float x, float y)                 { return (x > y) ? y : x; }
     inline double        min(double x, double y)               { return (x > y) ? y : x; }
+    template <class T> T min(const std::vector<T> &t)          { return *std::min_element(t.begin(), t.end()); }
+
 
     // sqr (square)
     inline bool          sqr(bool x)          { return x; }
