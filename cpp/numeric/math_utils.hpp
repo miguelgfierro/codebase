@@ -5,8 +5,10 @@
 #ifndef MATH_UTILS_HPP
 #define MATH_UTILS_HPP
 
-inline double radToDeg(double rad_angle) { return (rad_angle*180.0)/M_PI; }
-inline double degToRad(double deg_angle) { return (deg_angle*M_PI)/180.0; }
+#include "math_constants.hpp"
+
+inline double radToDeg(double rad_angle) { return (rad_angle*180.0)/math::pi; }
+inline double degToRad(double deg_angle) { return (deg_angle*math::pi)/180.0; }
 
 template <class T, class U>
 inline bool inRange(T lower, U data, T upper){
