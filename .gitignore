@@ -6,6 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+# C++
+CMakeLists.txt.user
+*.exe
+*.ilk
+*.pdb
+
 # Distribution / packaging
 .Python
 env/
