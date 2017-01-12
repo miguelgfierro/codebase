@@ -15,7 +15,7 @@ def convert_to_integer(srs):
     return srs.map(lambda x: d[x])
 
 
-def categorical_to_numeric(df):
+def convert_cols_categorical_to_numeric(df):
     """
     Convert categorical columns to numeric and leave numeric columns
     as they are
@@ -32,12 +32,23 @@ def categorical_to_numeric(df):
     return ret
 
 
+def convert_cols_numeric_to_categorical(df):
+    """
+    Convert numerical columns to categorical and leave numeric columns
+    as they are
+    :param df: dataframe
+    :return: dataframe with only numerical values
+    """
+    #TODO
+    pass
+
+
 if __name__ == "__main__":
 
     df = pd.DataFrame({'letters':['a','b','c'],
                        'numbers':[1,2,3]})
     print("Example of conversion from categorical to numeric")
-    df_numeric = categorical_to_numeric(df)
+    df_numeric = convert_cols_categorical_to_numeric(df)
     print(df_numeric)
 
 
