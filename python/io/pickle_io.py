@@ -1,3 +1,4 @@
+# Benchmark on IO performance: http://stackoverflow.com/a/41425878/5620182
 
 try:
     import cPickle as pickle
