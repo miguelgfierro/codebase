@@ -2,7 +2,7 @@
 try:
     import cPickle as pickle
 except:
-    import pickle
+    import pickle_io
 
 
 def save_file(data, filename):

@@ -97,6 +97,7 @@ ENV/
 # Data files 
 *.h5
 file.pk
+file.npy
 
 ######
 *~
