@@ -98,6 +98,7 @@ ENV/
 *.h5
 file.pk
 file.npy
+file.csv
 
 ######
 *~
