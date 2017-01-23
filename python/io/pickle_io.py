@@ -16,11 +16,11 @@ def read_file(filename):
 
 
 if __name__ == "__main__":
-    filename = "file.pk"
+    filename = 'file.pk'
     data = dict({'a':1, 'b':2, 'c':3})
     print("Example of save file")
     save_file(data, filename)
 
     print("Example of read file")
-    data_readed = read_file(filename)
-    print(data_readed)
+    data_read = read_file(filename)
+    print(data_read)
