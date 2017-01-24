@@ -15,17 +15,19 @@ def convert_to_integer(srs):
     return srs.map(lambda x: d[x])
 
 
-def convert_cols_categorical_to_numeric(df):
+def convert_cols_categorical_to_numeric(df, col_list=None):
     """
     Convert categorical columns to numeric and leave numeric columns
-    as they are
+    as they are. You can force to convert a numerical column if it is
+    included in col_list
     :param df: dataframe
+    :param col_list: optional list of columns
     :return: dataframe with only numerical values
     """
     ret = pd.DataFrame()
     for column_name in df.columns:
         column = df[column_name]
-        if column.dtype == 'object':
+        if column.dtype == 'object' or column_name in col_list:
             ret[column_name] = convert_to_integer(column)
         else:
             ret[column_name] = column
