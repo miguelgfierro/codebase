@@ -69,17 +69,17 @@ if __name__ == "__main__":
         # Example no config file
         print("Example of logger")
         log = setup_logger(debug_level='DEBUG')
-        log.debug("Debug log")
+        log.debug("Debug log_base")
     elif execute_example == 2:
         # Example config file
         print("Example of logger configured via yaml file")
         log = setup_logger(debug_level='INFO', config_file='logging.yaml')
-        log.info("Info log")
-        log.error("Error log")
+        log.info("Info log_base")
+        log.error("Error log_base")
     elif execute_example == 3:
         print("Example of logger with environment variable")
         os.environ['DEBUG_LEVEL'] = "DEBUG"
         log = setup_logger(debug_level='INFO')
-        log.debug("Debug log")
-        log.error("Error log")
+        log.debug("Debug log_base")
+        log.error("Error log_base")
 

@@ -13,6 +13,8 @@ if __name__ == "__main__":
     print(df.shape, "\n")
     print(df['col2'].count(),"\n")
     print(df.sum(), "\n")
+    print(df.clip(lower=1, upper=10), "\n")
+    print(df.describe(), "\n")
 
 
 
