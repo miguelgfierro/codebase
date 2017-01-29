@@ -17,4 +17,14 @@ from pandas_base.value_selection import *
 if __name__ == "__main__"  and __package__ is None:
     log = setup_logger(debug_level='INFO')
     log.info("Python playground")
+    log.info("Python version: %s" % get_python_version())
 
+    with Timer() as t:
+        log.info("Starting process")
+        # Add here the code -----
+
+        for i in range(0, 20000000):
+            pass
+
+        # End of code -----
+    log.info("Process finished in %.5f seconds" % t.interval)
