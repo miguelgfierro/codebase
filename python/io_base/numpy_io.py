@@ -4,16 +4,29 @@ import numpy as np
 
 
 def save_file(data, filename):
-    np.save(filename, data) # save the file as "filename.npy"
+    """Save a numpy array. The file is saved as `filename.npy`.
+    Parameters:
+        data (numpy array): An array.
+        filename (str): Name of the file.
+    Examples:
+        >>> a = np.ones(1000)
+        >>> save_file(a, 'file')
+
+    """
+    np.save(filename, data)
 
 
 def read_file(filename):
+    """Read a numpy array.
+    Parameters:
+        filename (str): Name of the file.
+    Returns:
+        data (numpy array): An array.
+    Examples:
+        >>> b = read_file('file.npy')
+
+    """
     data = np.load(filename)
     return data
 
-if __name__ == "__main__":
-    a = np.ones(1000)
-    save_file(a, 'file')
-    b = read_file('file.npy')
-    print(a == b)
 

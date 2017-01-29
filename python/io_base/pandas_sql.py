@@ -5,14 +5,32 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 
-def save_file(data, connection_string):
+def save_to_database(data, connection_string):
+    """Save a dataframe to a SQL database.
+    Parameters:
+        data (pd.DataFrame): A dataframe
+        connection_string (str): Database connection string.
+    Examples:
+        >>> df = pd.DataFrame({'col1':[1,2,3], 'col2':[0.1,0.2,0.3]})
+        >>> save_to_database(df, 'sqlite:///:memory:')
+
+    """
     engine = create_engine(connection_string)
     pd.to_sql(data, engine)
 
 
-def read_file(connection_string='sqlite:///:memory:'):
+def read_from_database(connection_string, query):
+    """Make a query to a SQL database.
+    Parameters:
+        connection_string (str): Database connection string.
+        query (str): Query.
+    Returns:
+        data (pd.DataFrame): An dataframe.
+    Examples:
+        >>> df = read_from_database('sqlite:///:memory:', 'SELECT * FROM my_table;')
+
+    """
     engine = create_engine(connection_string)
-    pd.read_sql("SELECT * FROM my_table;", engine)
-    pd.read_sql_table('my_table', engine)
-    pd.read_sql_query("SELECT * FROM my_table;", engine)
+    return pd.read_sql(query, engine)
+
 

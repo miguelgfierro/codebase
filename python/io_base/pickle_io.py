@@ -2,25 +2,35 @@
 
 try:
     import cPickle as pickle
-except:
-    import pickle_io
+except ImportError:
+    import pickle
 
 
 def save_file(data, filename):
+    """Save data as pickle. The standard pickle file name is `*.pk`.
+    Parameters:
+        data (numpy array or dict): Data to save.
+        filename (str): Name of the file.
+    Examples:
+        >>> data = dict({'a':1, 'b':2, 'c':3})
+        >>> save_file(data, 'file.pk')
+
+    """
     pickle.dump(data, open(filename, "wb"))
 
 
 def read_file(filename):
+    """Read a pickle file.
+    Parameters:
+        filename (str): Name of the file.
+    Returns:
+        data (numpy array or dict): Data to read.
+    Examples:
+        >>> data_read = read_file('file.pk')
+        >>> print(data_read)
+        {'a': 1, 'c': 3, 'b': 2}
+
+    """
     data = pickle.load(open(filename, "rb"))
     return data
 
-
-if __name__ == "__main__":
-    filename = 'file.pk'
-    data = dict({'a':1, 'b':2, 'c':3})
-    print("Example of save file")
-    save_file(data, filename)
-
-    print("Example of read file")
-    data_read = read_file(filename)
-    print(data_read)

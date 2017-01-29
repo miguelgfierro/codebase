@@ -18,6 +18,8 @@ if __name__ == "__main__"  and __package__ is None:
     log = setup_logger(debug_level='INFO')
     log.info("Python playground")
     log.info("Python version: %s" % get_python_version())
+    log.info("Pandas version: %s" % get_library_version('pandas'))
+    log.info("Numpy version: %s" % get_library_version('numpy'))
 
     with Timer() as t:
         log.info("Starting process")
