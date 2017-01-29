@@ -2,6 +2,31 @@ import time
 
 
 class Timer(object):
+    """Timer class.
+    Examples:
+        >>> big_num = 100000
+        >>> t = Timer()
+        >>> t.start()
+        >>> for i in range(big_num):
+        >>>     r = 1
+        >>> t.stop()
+        >>> print(t.interval)
+        0.0946876304844
+        >>> with Timer() as t:
+        >>>     for i in range(big_num):
+        >>>         r = 1
+        >>> print(t.interval)
+        0.0766928562442
+        >>> try:
+        >>>     with Timer() as t:
+        >>>         for i in range(big_num):
+        >>>             r = 1
+        >>>             raise(Exception("Get out!"))
+        >>> finally:
+        >>>     print(t.interval)
+        0.0757778924471
+
+    """
     def __enter__(self):
         self.start()
         return self
@@ -10,39 +35,11 @@ class Timer(object):
         self.stop()
 
     def start(self):
+        """Start the timer."""
         self.start = time.clock()
 
     def stop(self):
+        """Stop the timer. Calculate the interval in seconds."""
         self.end = time.clock()
         self.interval = self.end - self.start
-
-if __name__ == "__main__":
-
-    big_num = 100000
-
-    # Example with start and stop
-    print("Example: start and stop")
-    t = Timer()
-    t.start()
-    for i in range(big_num):
-        r = 1
-    t.stop()
-    print("Request took %.03f sec.\n" % t.interval)
-
-    # Example in with statement
-    print("Example: with statement")
-    with Timer() as t:
-        for i in range(big_num):
-            r = 1
-    print("Request took %.03f sec.\n" % t.interval)
-
-    # Example in try
-    print("Example: try")
-    try:
-        with Timer() as t:
-            for i in range(big_num):
-                r = 1
-            raise(Exception("Get out!"))
-    finally:
-        print("Request took %.03f sec.\n" % t.interval)
 

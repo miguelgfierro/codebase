@@ -5,10 +5,12 @@ import yaml
 
 
 def get_debug_level(debug_level):
-    """
-    Transform debug level from string to logging flags
-    :param debug_level: debug level as string
-    :return: debug level as logging flag
+    """Transform debug level from string to logging flags.
+    Parameters:
+        debug_level (str): Debug level as string.
+    Returns:
+        debug (int): Debug level as logging flag.
+
     """
     if debug_level == 'INFO':
         return logging.INFO
@@ -25,17 +27,29 @@ def get_debug_level(debug_level):
 
 
 def setup_logger(debug_level='ERROR', config_file=''):
-    """
-    Setup logging configuration.
-    :param debug_level: debug level as string
-    :param config_file: yaml configuration file
-    :return logging object
-    """
+    """Setup logging configuration.
+    Parameters:
+        debug_level (str): Debug level as string.
+        config_file (str): Yaml configuration file.
+    Returns:
+        log (object): Logging object.
+    Examples:
+        >>> log = setup_logger(debug_level='DEBUG')
+        >>> log.debug("Debug log_base")
+        2017-01-29 23:15:45,551 -- logger.py:78 -- DEBUG: Debug log_base
+        >>> log = setup_logger(debug_level='INFO', config_file='logging.yaml')
+        >>> log.error("Error log_base")
+        2017-01-29 23:16:34,671 -- logger.py:88 -- ERROR: Error log_base
+        >>> os.environ['DEBUG_LEVEL'] = "DEBUG"
+        >>> log = setup_logger(debug_level='INFO')
+        >>> log.debug("Debug log_base")
+        2017-01-29 23:17:24,582 -- logger.py:94 -- DEBUG: Debug log_base
 
+    """
     level = get_debug_level(debug_level)
 
     # Get environment debug level if it is defined (overwrite level in code)
-    env_debug_level='DEBUG_LEVEL'
+    env_debug_level = 'DEBUG_LEVEL'
     env_level = os.getenv(env_debug_level, None)
     if env_level and get_debug_level(env_level) is not None:
         level = get_debug_level(env_level)
@@ -56,30 +70,4 @@ def setup_logger(debug_level='ERROR', config_file=''):
         log.addHandler(console)
 
     return log
-
-
-if __name__ == "__main__":
-    """
-    Showcase of 3 methods of setting up the logger: via console,
-    via yaml file and via environment variable
-    """
-    execute_example = 1
-
-    if execute_example == 1:
-        # Example no config file
-        print("Example of logger")
-        log = setup_logger(debug_level='DEBUG')
-        log.debug("Debug log_base")
-    elif execute_example == 2:
-        # Example config file
-        print("Example of logger configured via yaml file")
-        log = setup_logger(debug_level='INFO', config_file='logging.yaml')
-        log.info("Info log_base")
-        log.error("Error log_base")
-    elif execute_example == 3:
-        print("Example of logger with environment variable")
-        os.environ['DEBUG_LEVEL'] = "DEBUG"
-        log = setup_logger(debug_level='INFO')
-        log.debug("Debug log_base")
-        log.error("Error log_base")
 
