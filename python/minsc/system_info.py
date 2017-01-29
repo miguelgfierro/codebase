@@ -21,4 +21,4 @@ def get_library_version(library_name):
         >>> print(get_library_version("pandas")
        
     """
-    return pkg_resources.get_distribution(library_name)
+    return pkg_resources.get_distribution(library_name).version
