@@ -1,7 +1,7 @@
 import sys
 import pkg_resources
 
-No
+
 def get_python_version():
     """Get the system's python version.
     Returns:
@@ -18,7 +18,8 @@ def get_library_version(library_name):
     Returns:
         version (str): Version of the library.
     Examples:
-        >>> print(get_library_version("pandas")
+        >>> print(get_library_version("pandas"))
+        0.19.2
        
     """
     return pkg_resources.get_distribution(library_name).version
