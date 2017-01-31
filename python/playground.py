@@ -12,6 +12,7 @@ from minsc.system_info import *
 from pandas_base.conversion_categorical import *
 from pandas_base.stats import *
 from pandas_base.value_selection import *
+from plot_base.matplot_base import *
 
 
 if __name__ == "__main__"  and __package__ is None:
@@ -25,8 +26,6 @@ if __name__ == "__main__"  and __package__ is None:
         log.info("Starting process")
         # Add here the code -----
 
-        for i in range(0, 20000000):
-            pass
 
         # End of code -----
     log.info("Process finished in %.5f seconds" % t.interval)
