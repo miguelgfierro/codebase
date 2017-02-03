@@ -99,6 +99,7 @@ ENV/
 file.pk
 file.npy
 file.csv
+file.jpg
 
 ######
 *~
