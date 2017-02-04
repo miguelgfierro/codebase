@@ -1,7 +1,7 @@
 from __future__ import print_function
 import os, sys
 import cv2
-from data_structures.list import *
+from data_structures.list_manipulation import *
 from io_base.numpy_io import *
 from io_base.pandas_io import *
 from io_base.pandas_sql import *
