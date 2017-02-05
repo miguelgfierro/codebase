@@ -54,12 +54,13 @@ def hello_user(user_id):
     """
     if int(user_id) >= 10:
         abort(BAD_PARAM)
+        #user_not_found()
     else:
         return "Hello user " + user_id
 
 
 class CustomBadParam(ex.HTTPException):
-    """Support class for custom error function `user_not_found`."""
+    """Support class for being able to call `abort(BAD_PARAM)` instead of `user_not_found()`."""
     code = BAD_PARAM
     description = '<p>Bad parameter</p>'
 abort.mapping[BAD_PARAM] = CustomBadParam
@@ -67,11 +68,7 @@ abort.mapping[BAD_PARAM] = CustomBadParam
 
 @app.errorhandler(BAD_PARAM)
 def user_not_found(error=None):
-    """Custom error handler. This function goes together with the class `CustomBadParam`.
-    Examples:
-        abort(BAD_PARAM)
-
-    """
+    """Custom error handler."""
     return make_response(jsonify({'status': BAD_PARAM,
                                   'error': 'User not found'}), BAD_PARAM)
 
