@@ -21,4 +21,5 @@ def plot_image(img):
     cmap = None
     if img.ndim == 2: cmap='gray'
     plt.imshow(img, cmap=cmap)
+    plt.axis('off')
     plt.show()
