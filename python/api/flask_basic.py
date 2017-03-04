@@ -12,15 +12,15 @@ def hello_world():
         $ curl http://127.0.0.1:5000/hello?name=Miguel
         >>> import requests
         >>> res = requests.get('http://127.0.0.1:5000/hello')
-        >>> print(res.ok)
+        >>> res.ok
         True
-        >>> print(res.content)
-        Hello World!
+        >>> res.content
+        'Hello World!'
         >>> res = requests.get('http://127.0.0.1:5000/hello?name=Miguel')
-        >>> print(res.ok)
+        >>> res.ok
         True
-        >>> print(res.content)
-        Hello Miguel
+        >>> res.content
+        'Hello Miguel'
 
     """
     if 'name' in request.args:
@@ -38,12 +38,12 @@ def hello_user(user_id):
         $ curl http://127.0.0.1:5000/hello/5
         >>> import requests
         >>> res = requests.get('http://127.0.0.1:5000/hello/5')
-        >>> print(res.ok)
+        >>> res.ok
         True
-        >>> print(res.content)
-        Hello user 5
+        >>> res.content
+        'Hello user 5'
         >>> res = requests.get('http://127.0.0.1:5000/hello/10')
-        >>> print(res.ok)
+        >>> res.ok
         False
         >>> print(res.content)
         {

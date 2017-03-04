@@ -11,7 +11,7 @@ def get_n_first_elements(py_list, n_elements):
     Examples:
         >>> py_list = [1,2,3,4,5,6,7,8]
         >>> py_list_first = get_n_first_elements(py_list, 2)
-        >>> print(py_list_first)
+        >>> py_list_first
         [1, 2]
 
     """
@@ -28,7 +28,7 @@ def get_n_last_elements(py_list, n_elements):
     Examples:
         >>> py_list = [1,2,3,4,5,6,7,8]
         >>> py_list_first = get_n_last_elements(py_list, 2)
-        >>> print(py_list_first)
+        >>> py_list_first
         [7, 8]
 
     """
@@ -64,7 +64,7 @@ def generate_random_integers(number_values, min_val, max_val):
         result_list (list): A list with random values.
     Examples:
         >>> result_list = generate_random_integers(number_values=5, min_val=0, max_val=10)
-        >>> print(result_list)
+        >>> result_list
         [7, 9, 5, 1, 4]
 
     """

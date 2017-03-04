@@ -8,9 +8,9 @@ def bad_request(error):
     Examples:
         >>> import requests
         >>> res = requests.post('http://127.0.0.1:5000/api/v1/post_json', data={"param":"2"})
-        >>> print(res.ok)
+        >>> res.ok
         False
-        >>> print(res.json())
+        >>> res.json()
         {u'error': u'Bad request'}
 
     """
@@ -23,9 +23,9 @@ def not_found(error):
     Examples:
         >>> import requests
         >>> res = requests.post('http://127.0.0.1:5000/api/v1/other', data={"other_param":"2"})
-        >>> print(res.ok)
+        >>> res.ok
         False
-        >>> print(res.json())
+        >>> res.json()
         {u'error': u'Not found'}
 
     """
@@ -40,11 +40,12 @@ def post_status():
         In Windows:
         $ curl.exe -X POST -d "{\"param\":\"1\"}" -H "Content-type: application/json" http://127.0.0.1:5000/api/v1/post_json
         >>> import requests
-        >>> headers={'Content-type':'application/json'}
-        >>> res = requests.post('http://127.0.0.1:5000/api/v1/post_json', data={"param":"1"}, headers=headers)
+        >>> headers = {'Content-type':'application/json'}
+        >>> data = {"param":"1"}
+        >>> res = requests.post('http://127.0.0.1:5000/api/v1/post_json', data=json.dumps(data), headers=headers)
         >>> print(res.content)
         {
-            "message": "Param = 1"
+          "message": "Param = 1"
         }
 
     """
