@@ -23,6 +23,7 @@ if __name__ == "__main__"  and __package__ is None:
     log.info("Python version: %s" % get_python_version())
     log.info("Pandas version: %s" % get_library_version('pandas'))
     log.info("Numpy version: %s" % get_library_version('numpy'))
+    #log.info("OpenCV version: %s" % get_library_version('cv2'))
 
     with Timer() as t:
         log.info("Starting process")

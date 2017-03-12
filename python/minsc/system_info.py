@@ -25,4 +25,10 @@ def get_library_version(library_name):
         '0.19.2'
        
     """
+    #try:
+    #    version = pkg_resources.get_distribution(library_name).version
+    #except Exception:
+    #    version = library_name.__version__
+
     return pkg_resources.get_distribution(library_name).version
+
