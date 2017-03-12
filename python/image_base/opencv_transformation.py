@@ -8,7 +8,7 @@ def normalize_image(img, min_val=0, max_val=1):
         min_val (int or float): Minimum value.
         max_val (int or float): Maximum value.
     Returns:
-        img_norm (numpy array): A normalized image.
+        img_new (numpy array): A normalized image.
     Examples:
         >>> img = cv2.imread('../../share/Lenna.png')
         >>> max(img.flatten())
@@ -20,6 +20,26 @@ def normalize_image(img, min_val=0, max_val=1):
         0
 
     """
-    img_norm = cv2.normalize(img, None, alpha=min_val, beta=max_val, norm_type=cv2.NORM_MINMAX)
-    return img_norm
+    img_new = cv2.normalize(img, None, alpha=min_val, beta=max_val, norm_type=cv2.NORM_MINMAX)
+    return img_new
+
+
+def resize_image(img, new_width, new_height):
+    """Resize image to a `new_width` and `new_height`.
+    Parameters:
+        img (numpy array): An image.
+        new_width (int): New width.
+        new_height (int): New height.
+    Returns:
+        img_new (numpy array): A resized image.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> height, width, channels = img.shape
+        >>> img_resized = resize_image(img, width/2, height/2)
+        >>> img_resized.shape
+        (256L, 256L, 3L)
+
+    """
+    img_new = cv2.resize(img, (new_width, new_height))
+    return img_new
 
