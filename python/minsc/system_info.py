@@ -1,5 +1,6 @@
 import sys
 import pkg_resources
+import importlib
 
 
 def get_python_version():
@@ -25,10 +26,16 @@ def get_library_version(library_name):
         '0.19.2'
        
     """
-    #try:
-    #    version = pkg_resources.get_distribution(library_name).version
-    #except Exception:
-    #    version = library_name.__version__
+    try:
+        version = pkg_resources.get_distribution(library_name).version
+    except Exception:
+        pass
+    try:
+        lib = importlib.import_module(library_name)
+        version = lib.__version__
+    except Exception as e:
+        print(e)
 
-    return pkg_resources.get_distribution(library_name).version
+    return version
+
 
