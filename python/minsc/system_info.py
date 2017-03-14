@@ -1,7 +1,7 @@
 import sys
 import pkg_resources
 import importlib
-
+import os
 
 def get_python_version():
     """Get the system's python version.
@@ -39,3 +39,18 @@ def get_library_version(library_name):
     return version
 
 
+def get_number_processors():
+    """Get the number of processors in a CPU.
+    Returns:
+        num (int): Number of processors.
+    Examples:
+        >>> get_number_processors()
+        4
+
+    """
+    try:
+        num = os.cpu_count()
+    except:
+        import multiprocessing #force exception in case mutiprocessing is not installed
+        num = multiprocessing.cpu_count()
+    return num
