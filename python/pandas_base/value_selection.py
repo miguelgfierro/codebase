@@ -50,11 +50,12 @@ def get_unique_values_in_column(df, col_name):
     return df[col_name].unique()
 
 
-def get_random_fraction_of_rows(df, row_fraction=0.5):
+def get_random_fraction_of_rows(df, row_fraction=0.5, reindex=True):
     """Get a random fraction of the dataframe rows.
     Parameters:
         df (pd.DataFrame): Dataframe.
         row_fraction (float): Fraction (in percentage) of rows to retrieve.
+        reindex (bool): Flag to reset the dataframe index or not.
     Returns:
         df_return (pd.DataFrame): Dataframe with a fraction of the original rows.
     Examples:
@@ -62,18 +63,19 @@ def get_random_fraction_of_rows(df, row_fraction=0.5):
         >>> df_return = get_random_fraction_of_rows(df, 0.6)
         >>> print(df_return)
           letters  numbers
-        2       c        3
-        0       a        1
+        0       c        3
+        1       a        1
 
     """
-    return df.sample(frac=row_fraction)
+    return df.sample(frac=row_fraction).reset_index(drop=reindex)
 
 
-def get_random_number_of_rows(df, num_rows):
+def get_random_number_of_rows(df, num_rows, reindex=True):
     """Get a random number of the dataframe rows.
     Parameters:
         df (pd.DataFrame): Dataframe.
         num_rows (int): Number of rows to retrieve.
+        reindex (bool): Flag to reset the dataframe index or not.
     Returns:
         df_return (pd.DataFrame): Dataframe with a random number of the original rows.
     Examples:
@@ -81,10 +83,10 @@ def get_random_number_of_rows(df, num_rows):
         >>> df_return = get_random_number_of_rows(df, 1)
         >>> print(df_return)
           letters  numbers
-        2       c        3
+        0       c        3
 
     """
-    return df.sample(n=num_rows)
+    return df.sample(n=num_rows).reset_index(drop=reindex)
 
 
 def select_values_by_range(df, row_ini, row_end, col_ini, col_end):
