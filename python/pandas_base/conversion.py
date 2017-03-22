@@ -60,8 +60,7 @@ def convert_cols_categorical_to_numeric(df, col_list=None):
 
 
 def convert_cols_numeric_to_categorical(df):
-    """
-    Convert numerical columns to categorical and leave numeric columns
+    """Convert numerical columns to categorical and leave numeric columns
     as they are
     Parameters:
         df (pd.DataFrame): Dataframe.
@@ -73,4 +72,22 @@ def convert_cols_numeric_to_categorical(df):
     pass
 
 
+def convert_to_numpy_array(df, columns=None):
+    """Convert a dataframe to a numpy array. Every column of the dataframe is a column in the array.
+    Parameters:
+        df (pd.DataFrame): Dataframe.
+        columns [list of string]: If None, return all columns, otherwise, returns specified columns.
+    Returns:
+        result (numpy array): An array with the dataframe values.
+    Examples:
+        >>> df = pd.DataFrame({'numbers1':[1,2,3], 'numbers2':[10,20,30]})
+        >>> arr = convert_to_numpy_array(df)
+        >>> arr
+        array([[ 1, 10],
+               [ 2, 20],
+               [ 3, 30]], dtype=int64)
+        >>> arr.shape
+        (3L, 2L)
 
+    """
+    return df.as_matrix(columns)

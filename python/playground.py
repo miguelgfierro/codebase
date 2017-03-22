@@ -11,7 +11,7 @@ from log_base.memory_size import *
 from log_base.timer import *
 from minsc.system_info import *
 from numpy_base.array_manipulation import *
-from pandas_base.conversion_categorical import *
+from pandas_base.conversion import *
 from pandas_base.stats import *
 from pandas_base.value_selection import *
 from plot_base.matplot_base import *
