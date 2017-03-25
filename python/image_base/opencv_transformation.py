@@ -75,3 +75,21 @@ def crop_image(img, box):
 
     """
     return img[box[1]:box[3], box[0]:box[2]]
+
+
+def convert_to_grayscale(img):
+    """Convert a color image to grayscale.
+    Parameters:
+        img (numpy array): An image.
+    Returns:
+        img_new (numpy array): A grayscale image.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img.shape
+        (512L, 512L, 3L)
+        >>> img_gray = convert_to_grayscale(img)
+        >>> img_gray.shape
+        (512L, 512L)
+
+    """
+    return cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

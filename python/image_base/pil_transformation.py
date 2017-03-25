@@ -72,3 +72,17 @@ def crop_image(img, box):
 
     """
     return img.crop(box)
+
+
+def convert_to_grayscale(img):
+    """Convert a color image to grayscale.
+    Parameters:
+        img (PIL image): An image.
+    Returns:
+        img_new (PIL image): A grayscale image.
+    Examples:
+        >>> img = Image.open('../../share/Lenna.png')
+        >>> img_gray = convert_to_grayscale(img)
+
+    """
+    return img.convert('L')
