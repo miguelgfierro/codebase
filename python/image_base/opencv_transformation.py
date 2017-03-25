@@ -45,7 +45,7 @@ def resize_image(img, new_width, new_height):
 
 
 def equalize_image(img):
-    """Equlize the image histogram.
+    """Equalize the image histogram.
     Parameters:
         img (numpy array): An image.
     Returns:
