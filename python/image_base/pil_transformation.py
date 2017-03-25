@@ -53,3 +53,22 @@ def equalize_image(img):
 
     """
     return ImageOps.equalize(img)
+
+
+def crop_image(img, box):
+    """Crop a rectangular region from an image.
+    Parameters:
+        img (PIL image): An image.
+        box (tuple): Left, upper, right, and lower pixel coordinate. The origin of coordinates is
+                    the upper left square.
+    Returns:
+        img_new (PIL image): A cropped image.
+    Examples:
+        >>> img = Image.open('../../share/Lenna.png')
+        >>> box = (0, 100, 250, 400)
+        >>> img_crop = crop_image(img, box)
+        >>> img_crop.size
+        (250, 300)
+
+    """
+    return img.crop(box)

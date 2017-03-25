@@ -56,3 +56,22 @@ def equalize_image(img):
 
     """
     return cv2.equalizeHist(img)
+
+
+def crop_image(img, box):
+    """Crop a rectangular region from an image.
+    Parameters:
+        img (numpy array): An image.
+        box (tuple): Left, upper, right, and lower pixel coordinate. The origin of coordinates is
+                    the upper left square.
+    Returns:
+        img_new (numpy array): A cropped image.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> box = (0, 100, 250, 400)
+        >>> img_crop = crop_image(img, box)
+        >>> img_crop.shape
+        (300L, 250L, 3L)
+
+    """
+    return img[box[1]:box[3], box[0]:box[2]]
