@@ -43,3 +43,16 @@ def resize_image(img, new_width, new_height):
     img_new = cv2.resize(img, (new_width, new_height))
     return img_new
 
+
+def equalize_image(img):
+    """Equlize the image histogram.
+    Parameters:
+        img (numpy array): An image.
+    Returns:
+        img_new (numpy array): A equalized image.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img_eq = equalize_image(img)
+
+    """
+    return cv2.equalizeHist(img)
