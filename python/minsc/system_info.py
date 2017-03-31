@@ -54,3 +54,15 @@ def get_number_processors():
         import multiprocessing #force exception in case mutiprocessing is not installed
         num = multiprocessing.cpu_count()
     return num
+
+
+def get_java_version():
+    """Get java version, vendor, installation files and more information
+    Examples:
+        >>> get_java_version()
+
+    """
+    os.system('java -XshowSettings:properties -version')
+
+
+
