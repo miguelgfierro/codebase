@@ -37,3 +37,22 @@ def replace_nan(df, value):
 
     """
     return df.fillna(value)
+
+
+def drop_columns(df, cols):
+    """Drop columns.
+    Parameters:
+        df (pd.DataFrame): Dataframe.
+        value (int or str): Value
+    Returns:
+        df_return (pd.DataFrame): Dataframe with the replaced value.
+    Examples:
+        >>> df = pd.DataFrame({'letters':['a','b','c'], 'numbers':[1,2,3]})
+        >>> drop_columns(df, 'numbers')
+          letters
+        0       a
+        1       b
+        2       c
+
+    """
+    return df.drop(cols, axis=1)
