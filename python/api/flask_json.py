@@ -56,7 +56,6 @@ def post_status():
     return make_response(jsonify({'message': resp}), STATUS_OK)
 
 
-
 if __name__ == "__main__":
     app.run(debug=True)
 
