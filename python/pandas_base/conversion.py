@@ -17,15 +17,15 @@ def _get_nominal_integer_dict(nominal_vals):
     return d
 
 
-def _convert_to_integer(srs):
-    """Convert series to integer.
+def _convert_to_integer(srs, d):
+    """Convert series to integer, given a dictionary.
     Parameters:
         srs (pd.Series): A series.
+        d (dict): A dictionary mapping values to integers
     Returns:
         srs (pd.Series): An series with numeric values.
 
     """
-    d = _get_nominal_integer_dict(srs)
     return srs.map(lambda x: d[x])
 
 
@@ -53,11 +53,45 @@ def convert_cols_categorical_to_numeric(df, col_list=None):
     for column_name in df.columns:
         column = df[column_name]
         if column.dtype == 'object' or column_name in col_list:
-            ret[column_name] = _convert_to_integer(column)
+            col_dict = _get_nominal_integer_dict(column)
+            ret[column_name] = _convert_to_integer(column, col_dict)
         else:
             ret[column_name] = column
     return ret
 
+
+def convert_related_cols_categorical_to_numeric(df, col_list):
+    """Convert categorical columns, that are related between each other,
+    to numeric and leave numeric columns
+    as they are.
+    Parameters:
+        df (pd.DataFrame): Dataframe.
+        col_list (list): List of columns.
+    Returns:
+        ret (pd.DataFrame): An dataframe with numeric values.
+    Examples:
+        >>> df = pd.DataFrame({'letters':['a','b','c'],'letters2':['c','d','a'],'numbers':[1,2,3]})
+        >>> df_numeric = convert_related_cols_categorical_to_numeric(df, col_list=['letters','letters2'])
+        >>> print(df_numeric)
+           letters  letters2  numbers
+        0        0         2        1
+        1        1         3        2
+        2        2         0        3
+
+    """
+    ret = pd.DataFrame()
+    values=None
+    for c in col_list:
+        values = pd.concat([values,df[c]], axis=0)
+        values = pd.Series(values.unique())
+    col_dict = _get_nominal_integer_dict(values)
+    for column_name in df.columns:
+        column = df[column_name]
+        if column_name in col_list:
+            ret[column_name] = _convert_to_integer(column, col_dict)
+        else:
+            ret[column_name] = column
+    return ret
 
 def convert_cols_numeric_to_categorical(df):
     """Convert numerical columns to categorical and leave numeric columns
