@@ -1,5 +1,6 @@
 # Info: http://effbot.org/imagingbook/image.htm
 from PIL import Image
+import requests
 
 
 def save_image(img, filename):
@@ -35,3 +36,21 @@ def read_image(filename):
 
     """
     return Image.open(filename)
+
+
+def read_image_url(url):
+    """Read an image from a URL.
+    Parameters:
+        url (str): URL of the file.
+    Returns:
+        img (PIL image): An image in PIL format.
+    Examples:
+        >>> img = read_image_url('https://raw.githubusercontent.com/miguelgfierro/codebase/master/share/Lenna.png')
+        >>> print(img.size)
+        (512, 512)
+        >>> print(img.mode)
+        RGB
+
+
+    """
+    return Image.open(requests.get(url, stream=True).raw)
