@@ -130,3 +130,23 @@ def select_values_by_index(df, vector_row_pos, vector_col_pos):
     """
     return df.iloc[vector_row_pos, vector_col_pos]
 
+
+def select_all_columns_except_some(df, column_names):
+    """Select all columns in the dataframe except those especifies in `column_list`.
+    Parameters:
+        df (pd.DataFrame): Dataframe.
+        column_names (list): List of column names.
+    Returns:
+        df_return (pd.DataFrame): Dataframe with the columns removed.
+    Examples:
+        >>> df = pd.DataFrame({'letters':['a','b','c'], 'numbers':[1,2,3], 'numbers2':[4,5,6]})
+        >>> df_return = select_all_columns_except_some(df, ['numbers','numbers2'])
+        >>> print(df_return)
+          letters
+        0       a
+        1       b
+        2       c
+
+    """
+    return df[df.columns.difference(column_names)]
+
