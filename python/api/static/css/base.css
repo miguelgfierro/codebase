@@ -37,6 +37,14 @@ h1,h2,h3,h4,h5,h6{
   font-size: 100%;
   line-height: inherit;
 }
+h1{
+  text-transform: capitalize;
+  font-variant: small-caps;
+  font-size: 35px;
+  line-height: 40px;
+  text-align: center;
+  margin: 1rem 0 0.5rem 0.5rem;
+}
 body {
   color: #100;
   font-family: Latex, Georgia, serif;
@@ -55,15 +63,18 @@ p {
   font-size: 16px;
   padding: 0 1rem;
   margin: 10px 0;
+  text-align: center;
 }
 .main_title{
   margin-top:20px;
   margin-bottom: 10px;
 }
 .main_img{
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-left: 40px;
   float:left;
 }
 .description{
-	margin-top:10px;
+  margin-top:20px;
+  float:left;
 }
