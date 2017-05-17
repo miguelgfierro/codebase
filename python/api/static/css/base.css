@@ -56,7 +56,14 @@ p {
   padding: 0 1rem;
   margin: 10px 0;
 }
+.main_title{
+  margin-top:20px;
+  margin-bottom: 10px;
+}
 .main_img{
   margin-top: 30px;
   float:left;
+}
+.description{
+	margin-top:10px;
 }
