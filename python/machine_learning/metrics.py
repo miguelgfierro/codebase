@@ -41,8 +41,8 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
     Returns a report with different metrics for a multilabel classification problem.
     - Accuracy: Number of correct predictions made as a ratio of all predictions. Useful when there are equal number
     of observations in each class and all predictions and prediction errors are equally important.
-    - Confusion matrix: C_ij where observations are known to be in group i but predicted to be in group j. In binary
-    classification true negatives is C_00, false negatives is C_10, true positives is C_11 and false positives is C_01.
+    - Confusion matrix: C_ij where observations are known to be in group i but predicted to be in group j. In multilabel
+    classification true predictions are in the diagonal and false predictions outside the diagonal.
     - Precision: Number of true positives divided by the number of true and false positives. It is the ability of the
     classifier not to label as positive a sample that is negative.
     - Recall: Number of true positives divided by the number of true positives and false negatives. It is the ability
