@@ -24,6 +24,8 @@ def read_file(filename):
         data (numpy array): An array.
     Examples:
         >>> b = read_file('file.npy')
+        >>> b.shape
+        (1000,)
 
     """
     data = np.load(filename)

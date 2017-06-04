@@ -7,14 +7,14 @@ if __name__ == "__main__":
                        'col2':[0.1,np.nan,0.3],
                        'col3':[10,20,30]})
 
-    print (df.max(), "\n")
-    print(df['col1'].min(), "\n")
-    print(df.mean(), "\n")
-    print(df.shape, "\n")
-    print(df['col2'].count(),"\n")
-    print(df.sum(), "\n")
-    print(df.clip(lower=1, upper=10), "\n")
-    print(df.describe(), "\n")
+    print(df.max())
+    print(df['col1'].min())
+    print(df.mean())
+    print(df.shape)
+    print(df['col2'].count())
+    print(df.sum())
+    print(df.clip(lower=1, upper=10))
+    print(df.describe())
 
 
 

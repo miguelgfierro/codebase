@@ -1,24 +1,25 @@
-import time
+from timeit import default_timer
 
 
 class Timer(object):
     """Timer class.
     Examples:
-        >>> big_num = 100000
+        >>> import numpy as np
+        >>> big_num = 10000000
         >>> t = Timer()
         >>> t.start()
-        >>> for i in range(big_num):
-        >>>     r = 1
+        >>> r = 0
+        >>> a = [r+i for i in range(big_num)]
         >>> t.stop()
-        >>> print(t.interval)
-        0.0946876304844
+        >>> print(np.round(t.interval))
+        1.0
+        >>> r = 0
         >>> with Timer() as t:
-        >>>     for i in range(big_num):
-        >>>         r = 1
-        >>> print(t.interval)
-        0.0766928562442
+        >>>     a = [r+i for i in range(big_num)]
+        >>> print(np.round(t.interval))
+        1.0
         >>> try:
-        >>>     with Timer() as t:
+        >>>    with Timer() as t:
         >>>         for i in range(big_num):
         >>>             r = 1
         >>>             raise(Exception("Get out!"))
@@ -26,7 +27,11 @@ class Timer(object):
         >>>     print(t.interval)
         0.0757778924471
 
+
     """
+    def __init__(self):
+        self._timer = default_timer
+
     def __enter__(self):
         self.start()
         return self
@@ -36,10 +41,10 @@ class Timer(object):
 
     def start(self):
         """Start the timer."""
-        self.start = time.clock()
+        self.start = self._timer
 
     def stop(self):
         """Stop the timer. Calculate the interval in seconds."""
-        self.end = time.clock()
+        self.end = self._timer
         self.interval = self.end - self.start
 

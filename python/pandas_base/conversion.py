@@ -121,7 +121,7 @@ def convert_to_numpy_array(df, columns=None):
                [ 2, 20],
                [ 3, 30]], dtype=int64)
         >>> arr.shape
-        (3L, 2L)
+        (3, 2)
 
     """
     return df.as_matrix(columns)

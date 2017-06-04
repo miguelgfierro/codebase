@@ -86,10 +86,10 @@ def convert_to_grayscale(img):
     Examples:
         >>> img = cv2.imread('../../share/Lenna.png')
         >>> img.shape
-        (512L, 512L, 3L)
+        (512, 512, 3)
         >>> img_gray = convert_to_grayscale(img)
         >>> img_gray.shape
-        (512L, 512L)
+        (512, 512)
 
     """
     return cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
