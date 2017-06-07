@@ -29,6 +29,17 @@ def _convert_to_integer(srs, d):
     return srs.map(lambda x: d[x])
 
 
+def _convert_to_string(srs):
+    """Convert series to string.
+    Parameters:
+        srs (pd.Series): A series.
+    Returns:
+        srs (pd.Series): An series with string values.
+
+    """
+    return srs.map(lambda x: str(x))
+
+
 def convert_cols_categorical_to_numeric(df, col_list=None):
     """Convert categorical columns to numeric and leave numeric columns
     as they are. You can force to convert a numerical column if it is
@@ -93,17 +104,39 @@ def convert_related_cols_categorical_to_numeric(df, col_list):
             ret[column_name] = column
     return ret
 
-def convert_cols_numeric_to_categorical(df):
+
+def convert_cols_numeric_to_categorical(df, col_list=None):
     """Convert numerical columns to categorical and leave numeric columns
     as they are
     Parameters:
         df (pd.DataFrame): Dataframe.
+        col_list (list): List of columns.
     Returns:
-        ret (pd.DataFrame): An dataframe with numeric values.
+        ret (pd.DataFrame): An dataframe with categorical values.
+    Examples:
+        >>> import numpy as np
+        >>> df = pd.DataFrame({'letters':['a','b','c'],'numbers1':[-1,0.5,10],'numbers2':[1,2,3]})
+        >>> df_cat = convert_cols_numeric_to_categorical(df, col_list=['numbers1'])
+        >>> print(df_cat)
+          letters numbers1  numbers2
+        0       a     -1.0         1
+        1       b      0.5         2
+        2       c     10.0         3
+        >>> print(df_cat['numbers1'].dtype)
+        object
+        >>> print(df_cat['numbers2'].dtype)
+        int64
 
     """
-    #TODO
-    pass
+    if col_list is None: col_list = df.columns
+    ret = pd.DataFrame()
+    for column_name in df.columns:
+        column = df[column_name]
+        if column_name in col_list and column.dtype != 'object':
+            ret[column_name] = _convert_to_string(column)
+        else:
+            ret[column_name] = column
+    return ret
 
 
 def convert_to_numpy_array(df, columns=None):
