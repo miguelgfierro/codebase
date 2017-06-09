@@ -3,8 +3,7 @@ from sklearn.metrics import (confusion_matrix, accuracy_score, roc_auc_score, f1
 
 
 def classification_metrics_binary(y_true, y_pred):
-    """
-    Returns a report with different metrics for a binary classification problem.
+    """Returns a report with different metrics for a binary classification problem.
     - Accuracy: Number of correct predictions made as a ratio of all predictions. Useful when there are equal number
     of observations in each class and all predictions and prediction errors are equally important.
     - Confusion matrix: C_ij where observations are known to be in group i but predicted to be in group j. In binary
@@ -37,8 +36,7 @@ def classification_metrics_binary(y_true, y_pred):
 
 
 def classification_metrics_multilabel(y_true, y_pred, labels):
-    """
-    Returns a report with different metrics for a multilabel classification problem.
+    """Returns a report with different metrics for a multilabel classification problem.
     - Accuracy: Number of correct predictions made as a ratio of all predictions. Useful when there are equal number
     of observations in each class and all predictions and prediction errors are equally important.
     - Confusion matrix: C_ij where observations are known to be in group i but predicted to be in group j. In multilabel
@@ -73,8 +71,7 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
 
 
 def classification_metrics_binary_prob(y_true, y_prob):
-    """
-    Returns a report with different metrics for a binary classification problem.
+    """Returns a report with different metrics for a binary classification problem.
     - AUC: The Area Under the Curve represents the ability to discriminate between positive and negative classes. An
     area of 1 represent perfect scoring and an area of 0.5 means random guessing.
     - Log loss: Also called logistic regression loss or cross-entropy loss. It quantifies the performance by
@@ -102,8 +99,7 @@ def classification_metrics_binary_prob(y_true, y_prob):
 
 
 def regression_metrics(y_true, y_pred):
-    """
-    Returns a report with different metrics for a regression problem.
+    """Returns a report with different metrics for a regression problem.
     - Mean Squared Error: MSE is a risk metric corresponding to the expected value of the squared (quadratic) error.
     It has the disadvantage of heavily weighting outliers.
     - Mean Absolute Error: MAE is a risk metric corresponding to the expected value of the absolute error or L1 loss.
