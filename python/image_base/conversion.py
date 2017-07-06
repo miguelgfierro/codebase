@@ -1,6 +1,7 @@
 import numpy as np
 from PIL import Image
 import cv2
+import matplotlib.pylab as plt
 
 
 def image_pil2scipy_array(img):
@@ -86,11 +87,45 @@ def image_pil2cv(img):
 
 
 def image_cv2plt(img):
-    pass
+    """Convert a opencv image to a matplotlib image.
+    Parameters:
+        img (numpy array): A numpy image loaded with opencv of uint8 between 0 and 255 using BGR channels.
+    Returns:
+        img_new (numpy array): A matplotlib image of float32 between 0 and 1 using RGB channels.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img_conv = image_cv2plt(img)
+        >>> img_conv.shape
+        (512, 512, 3)
+        >>> img_base = plt.imread('../../share/Lenna.png')
+        >>> np.all(np.isclose(img_base, img_conv))
+        True
+
+    """
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img_new = img.astype(np.float32)/255.0
+    return img_new
 
 
 def image_plt2cv(img):
-    pass
+    """Convert a PIL image to an opencv image.
+    Parameters:
+        img (PIL image): A PIL image of uint8 between 0 and 255.
+    Returns:
+        img_new (numpy array): A numpy image of uint8 between 0 and 255.
+    Examples:
+        >>> img = plt.imread('../../share/Lenna.png')
+        >>> img_conv = image_plt2cv(img)
+        >>> img_conv.shape
+        (512, 512, 3)
+        >>> img_base = cv2.imread('../../share/Lenna.png')
+        >>> np.all(img_base==img_conv)
+        True
+
+    """
+    img = img*255
+    img_new = cv2.cvtColor(np.array(img, dtype=np.uint8), cv2.COLOR_RGB2BGR)
+    return img_new
 
 
 def image_pil2plt(img):
