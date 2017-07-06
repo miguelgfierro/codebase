@@ -19,16 +19,21 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
         >>> plot_confusion_matrix(a, classes, normalize=True)
 
     """
+    cm_max = cm.max()
+    cm_min = cm.min()
+    if cm_min > 0: cm_min = 0
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        cm_max = 1
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     plt.title(title)
     plt.colorbar()
     tick_marks = np.arange(len(classes))
     plt.xticks(tick_marks, classes, rotation=45)
     plt.yticks(tick_marks, classes)
+    thresh = cm_max / 2.
+    plt.clim(cm_min, cm_max)
 
-    if normalize:
-        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-    thresh = cm.max() / 2.
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
         plt.text(j, i,
                  round(cm[i, j], 3),  # round to 3 decimals if they are float
