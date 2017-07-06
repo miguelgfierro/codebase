@@ -108,11 +108,11 @@ def image_cv2plt(img):
 
 
 def image_plt2cv(img):
-    """Convert a PIL image to an opencv image.
+    """Convert a matplotlib image to an opencv image.
     Parameters:
-        img (PIL image): A PIL image of uint8 between 0 and 255.
+        img (numpy array): A matplotlib image of float32 between 0 and 1 using RGB channels.
     Returns:
-        img_new (numpy array): A numpy image of uint8 between 0 and 255.
+        img_new (numpy array): A numpy image of uint8 between 0 and 255 using BGR channels.
     Examples:
         >>> img = plt.imread('../../share/Lenna.png')
         >>> img_conv = image_plt2cv(img)
@@ -129,7 +129,23 @@ def image_plt2cv(img):
 
 
 def image_pil2plt(img):
-    pass
+    """Convert a PIL image to an matplotlib image.
+    Parameters:
+        img (PIL image): A PIL image of uint8 between 0 and 255.
+    Returns:
+        img_new (numpy array): A matplotlib image of float32 between 0 and 1 using RGB channels.
+    Examples:
+        >>> img = Image.open('../../share/Lenna.png')
+        >>> img_conv = image_pil2plt(img)
+        >>> img_conv.shape
+        (512, 512, 3)
+        >>> img_base = plt.imread('../../share/Lenna.png')
+        >>> np.all(img_base==img_conv)
+        True
+
+    """
+    img_new = np.array(img, dtype=np.float32)/255.0
+    return img_new
 
 
 def image_plt2pil(img):
