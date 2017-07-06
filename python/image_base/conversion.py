@@ -83,3 +83,19 @@ def image_pil2cv(img):
     """
     img_new = cv2.cvtColor(np.array(img), cv2.COLOR_RGB2BGR)
     return img_new
+
+
+def image_cv2plt(img):
+    pass
+
+
+def image_plt2cv(img):
+    pass
+
+
+def image_pil2plt(img):
+    pass
+
+
+def image_plt2pil(img):
+    pass
