@@ -1,0 +1,60 @@
+{
+    "added_words":
+    [
+        "blog",
+        "https",
+        "png",
+        "jpg",
+        "jpeg",
+        "txt",
+        "py",
+        "js",
+        "jquery",
+        "nodejs",
+        "exe",
+        "cmd",
+        "cpp",
+        "href",
+        "url",
+        "async",
+        "json",
+        "src",
+        "img",
+        "www",
+        "gpu",
+        "hoaphumanoid",
+        "miguelgfierro",
+        "gmail",
+        "conda",
+        "cd",
+        "ubuntu",
+        "git",
+        "github",
+        "repo",
+        "uninstall",
+        "lightgbm",
+        "cntk",
+        "tensorflow",
+        "tf",
+        "mxnet",
+        "casper",
+        "linkedin",
+        "google",
+        "microsoft",
+        "facebook"
+    ],
+    "color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+    "dictionary": "Packages/Language - English/en_US.dic",
+    "ensure_newline_at_eof_on_save": true,
+    "ignored_packages":
+    [
+        "Vintage"
+    ],
+    "rulers":
+    [
+        80
+    ],
+    "show_encoding": true,
+    "spell_check": true,
+    "translate_tabs_to_spaces": true
+}
