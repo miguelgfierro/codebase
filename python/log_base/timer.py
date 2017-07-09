@@ -11,21 +11,22 @@ class Timer(object):
         >>> r = 0
         >>> a = [r+i for i in range(big_num)]
         >>> t.stop()
-        >>> print(np.round(t.interval))
+        >>> np.round(t.interval)
         1.0
         >>> r = 0
         >>> with Timer() as t:
-        >>>     a = [r+i for i in range(big_num)]
-        >>> print(np.round(t.interval))
+        >>>   a = [r+i for i in range(big_num)]
+        >>> np.round(t.interval)
         1.0
         >>> try:
-        >>>    with Timer() as t:
+        >>>     with Timer() as t:
         >>>         for i in range(big_num):
-        >>>             r = 1
+        >>>         r = 1
         >>>             raise(Exception("Get out!"))
         >>> finally:
-        >>>     print(t.interval)
-        0.0757778924471
+        >>>     print(np.round(t.interval))
+        0.0
+
 
 
     """
@@ -41,10 +42,10 @@ class Timer(object):
 
     def start(self):
         """Start the timer."""
-        self.start = self._timer
+        self.init = self._timer()
 
     def stop(self):
         """Stop the timer. Calculate the interval in seconds."""
-        self.end = self._timer
-        self.interval = self.end - self.start
+        self.end = self._timer()
+        self.interval = self.end - self.init
 
