@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 import numpy as np
 
 
@@ -8,13 +7,14 @@ def plot_image(img):
     Parameters:
         img (numpy array): An image.
     Examples:
+        >>> import matplotlib.image as mpimg
         >>> img = mpimg.imread('../../share/Lenna.png')
-        >>> print(np.array(img.shape, dtype='int'))
-        [512 512   3]
+        >>> img.shape
+        (512, 512, 3)
         >>> plot_image(img)
         >>> img_gray = mpimg.imread('../../share/Lenna_gray.png')
-        >>> print(np.array(img_gray.shape, dtype='int'))
-        [512 512]
+        >>> img_gray.shape
+        (512, 512)
         >>> plot_image(img_gray)
 
     """

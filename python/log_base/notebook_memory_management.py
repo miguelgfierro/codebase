@@ -16,7 +16,6 @@ from __future__ import print_function  # force use of print("hello")
 from __future__ import unicode_literals  # force unadorned strings "" to be unicode without prepending u""
 import time
 import memory_profiler
-import threading
 from IPython import get_ipython
 import psutil
 

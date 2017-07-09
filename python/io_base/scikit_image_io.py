@@ -1,5 +1,4 @@
 from skimage import io
-import numpy as np
 
 
 def save_image(img, filename):
