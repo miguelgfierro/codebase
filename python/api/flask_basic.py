@@ -1,5 +1,5 @@
 from flask_app import app, BAD_PARAM
-from flask import request, json, jsonify, abort, make_response
+from flask import request, jsonify, abort, make_response
 import werkzeug.exceptions as ex
 
 
