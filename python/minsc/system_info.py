@@ -3,6 +3,7 @@ import pkg_resources
 import importlib
 import os
 
+
 def get_python_version():
     """Get the system's python version.
     Returns:
@@ -10,7 +11,7 @@ def get_python_version():
     Examples:
         >>> get_python_version()
         '2.7.12 |Anaconda 4.0.0 (64-bit)| (default, Jun 29 2016, 11:07:13) [MSC v.1500 64 bit (AMD64)]'
-        
+
     """
     return sys.version
 
@@ -24,12 +25,12 @@ def get_library_version(library_name):
     Examples:
         >>> get_library_version("pandas")
         '0.19.2'
-       
+
     """
     try:
         version = pkg_resources.get_distribution(library_name).version
     except Exception:
-        pass
+        pass  # FIXME: better way?
     try:
         lib = importlib.import_module(library_name)
         version = lib.__version__
@@ -50,7 +51,7 @@ def get_number_processors():
     """
     try:
         num = os.cpu_count()
-    except:
+    except Exception:
         import multiprocessing #force exception in case mutiprocessing is not installed
         num = multiprocessing.cpu_count()
     return num
@@ -63,6 +64,4 @@ def get_java_version():
 
     """
     os.system('java -XshowSettings:properties -version')
-
-
 
