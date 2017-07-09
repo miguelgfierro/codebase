@@ -6,7 +6,7 @@
  * @return {String} - The string cleaned
  */
 function cleanString(data, string_to_clean, string_to_replace){
-	var regex = new RegExp(string_to_clean, 'g');
+	var regex = new RegExp(string_to_clean, "g");
 	data = data.trim();
 	data = data.replace(regex, string_to_replace);
 	return data;
