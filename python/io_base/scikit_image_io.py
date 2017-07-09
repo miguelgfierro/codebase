@@ -24,13 +24,11 @@ def read_image(filename, is_color=True):
         img (numpy array): An image.
     Examples:
         >>> img = read_image('../../share/Lenna.png')
-        >>> shape = np.array(img.shape)
-        >>> print(shape)
-        [512 512   3]
+        >>> img.shape
+        (512, 512, 3)
         >>> img_gray = read_image('../../share/Lenna.png', False)
-        >>> shape_gray = np.array(img_gray.shape)
-        >>> print(shape_gray)
-        [512 512]
+        >>> img_gray.shape
+        (512, 512)
 
     """
     is_gray = not is_color
@@ -45,9 +43,8 @@ def read_image_url(url):
         img (numpy array): An image.
     Examples:
         >>> img = read_image_url('https://raw.githubusercontent.com/miguelgfierro/codebase/master/share/Lenna.png')
-        >>> shape = np.array(img.shape)
-        >>> print(shape)
-        [512 512   3]
+        >>> img.shape
+        (512, 512, 3)
 
     """
     return io.imread(url)
