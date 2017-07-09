@@ -1,5 +1,5 @@
 from flask_app import app, STATUS_OK, BAD_REQUEST, NOT_FOUND
-from flask import request, abort, jsonify, make_response, json
+from flask import request, abort, jsonify, make_response
 
 
 @app.errorhandler(BAD_REQUEST)
@@ -40,6 +40,7 @@ def post_status():
         In Windows:
         $ curl.exe -X POST -d "{\"param\":\"1\"}" -H "Content-type: application/json" http://127.0.0.1:5000/api/v1/post_json
         >>> import requests
+        >>> import json
         >>> headers = {'Content-type':'application/json'}
         >>> data = {"param":"1"}
         >>> res = requests.post('http://127.0.0.1:5000/api/v1/post_json', data=json.dumps(data), headers=headers)
