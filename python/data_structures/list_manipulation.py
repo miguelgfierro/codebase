@@ -72,3 +72,27 @@ def generate_random_integers(number_values, min_val, max_val):
     return r
 
 
+def reverse_list(py_list, inplace=True):
+    """Reverse a list.
+    If `inplace=True` the input list is modified (faster & less memory), if `inplace=False` a new list is
+    generated (slower & more memory).
+    Parameters:
+        py_list (list): A list of elements.
+        inplace (bool): If `True` the input list is modified, if `False` a new list is generated.
+    Returns:
+        result_list (list): A list with the values reversed.
+    Examples:
+        >>> py_list = [1,2,3,4,5]
+        >>> reverse_list(py_list, False)
+        [5, 4, 3, 2, 1]
+        >>> reverse_list(py_list, True)
+        [5, 4, 3, 2, 1]
+
+    """
+    if inplace:
+        py_list.reverse()
+        # py_list[::-1] #don't use, much slower than reverse()
+        return py_list
+    else:
+        result_list = list(reversed(py_list))
+        return result_list
