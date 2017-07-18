@@ -41,7 +41,10 @@
         "linkedin",
         "google",
         "microsoft",
-        "facebook"
+        "facebook",
+        "config",
+        "app",
+        "utils"
     ],
     "color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
     "dictionary": "Packages/Language - English/en_US.dic",
