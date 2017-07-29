@@ -26,15 +26,30 @@ def get_parent_folder_path():
     return os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 
 
-def get_file_count(folderpath):
+def count_files_in_folder(folderpath):
     """ Return the number of files in a folder.
     Parameters:
         folderpath (str): folder path
     Returns:
         number (int): number of files in a folder
     Examples:
-        >>> get_file_count('C:/run3x/codebase/python/minsc')
+        >>> count_files_in_folder('C:/run3x/codebase/python/minsc')
         3
 
     """
     return len(glob.glob(os.path.join(folderpath,'*')))
+
+
+def get_filenames_in_folder(folderpath):
+    """ Return the files names in a folder.
+    Parameters:
+        folderpath (str): folder path
+    Returns:
+        number (list): list of files
+    Examples:
+        >>> get_filenames_in_folder('C:/run3x/codebase/python/minsc')
+        ['paths.py', 'system_info.py', '__init__.py']
+
+    """
+    names = [os.path.basename(x) for x in glob.glob(os.path.join(folderpath, '*'))]
+    return names
