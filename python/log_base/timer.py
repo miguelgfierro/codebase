@@ -15,16 +15,16 @@ class Timer(object):
         1.0
         >>> r = 0
         >>> with Timer() as t:
-        >>>   a = [r+i for i in range(big_num)]
+        ...   a = [r+i for i in range(big_num)]
         >>> np.round(t.interval)
         1.0
         >>> try:
-        >>>     with Timer() as t:
-        >>>         for i in range(big_num):
-        >>>         r = 1
-        >>>             raise(Exception("Get out!"))
-        >>> finally:
-        >>>     print(np.round(t.interval))
+        ...     with Timer() as t:
+        ...         for i in range(big_num):
+        ...             r = 1
+        ...             raise Exception("Get out!")
+        ... finally:
+        ...     print(np.round(t.interval))
         0.0
 
 
