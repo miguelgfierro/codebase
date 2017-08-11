@@ -150,3 +150,27 @@ def select_all_columns_except_some(df, column_names):
     """
     return df[df.columns.difference(column_names)]
 
+
+def split_dataframe_by_condition(df, mask):
+    """Split dataframe based on logical indexes (that could come from a condition).
+    Parameters:
+        df (pd.DataFrame): Dataframe.
+        mask (pd.Series): Series with boolean indexes (could come from a condition).
+    Returns:
+        df_list (list): List of split dataframes.
+    Examples:
+        >>> df = pd.DataFrame({'letters':['a','b','c'], 'numbers':[1,2,3], 'numbers2':[4,5,6]})
+        >>> mask = df['numbers'] > 1
+        >>> df1, df2 = split_dataframe_by_condition(df, mask)
+        >>> df1
+          letters  numbers  numbers2
+        1       b        2         5
+        2       c        3         6
+        >>> df2
+          letters  numbers  numbers2
+        0       a        1         4
+
+    """
+    df1 = df[mask]
+    df2 = df[~mask]
+    return df1, df2
