@@ -13,13 +13,13 @@ def replace_column_values(df, val_dict, col_name, new_col_name=None):
     Examples:
         >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
         >>> df_return = replace_column_values(df, {'a':1}, 'letters')
-        >>> print(df_return)
+        >>> df_return
           letters  numbers
         0       1        1
         1       1        2
         2       c        3
         >>> df_return = replace_column_values(df, {'a':1}, 'letters', 'new_column')
-        >>> print(df_return)
+        >>> df_return
           letters  numbers new_column
         0       a        1          1
         1       a        2          1
@@ -61,7 +61,7 @@ def get_random_fraction_of_rows(df, row_fraction=0.5, reindex=True):
     Examples:
         >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
         >>> df_return = get_random_fraction_of_rows(df, 0.6)
-        >>> print(df_return)
+        >>> df_return
           letters  numbers
         0       c        3
         1       a        1
@@ -81,7 +81,7 @@ def get_random_number_of_rows(df, num_rows, reindex=True):
     Examples:
         >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
         >>> df_return = get_random_number_of_rows(df, 1)
-        >>> print(df_return)
+        >>> df_return
           letters  numbers
         0       c        3
 
@@ -102,7 +102,7 @@ def select_values_by_range(df, row_ini, row_end, col_ini, col_end):
     Examples:
         >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
         >>> df_return = select_values_by_range(df, 0, 1, 'letters', 'numbers')
-        >>> print(df_return)
+        >>> df_return
           letters  numbers
         0       a        1
         1       a        2
@@ -122,13 +122,33 @@ def select_values_by_index(df, vector_row_pos, vector_col_pos):
     Examples:
         >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
         >>> df_return = select_values_by_index(df, vector_row_pos=[0,2], vector_col_pos=[0,1])
-        >>> print(df_return)
+        >>> df_return
           letters  numbers
         0       a        1
         2       c        3
 
     """
     return df.iloc[vector_row_pos, vector_col_pos]
+
+
+def select_rows_where_value_equal(df, column, value):
+    """Select rows in the dataframe which column has a specific value.
+    Parameters:
+        df (pd.DataFrame): Dataframe.
+        column (str): Column name.
+        value (int, str, float): Value to compare with.
+    Returns:
+        df_return (pd.DataFrame): Dataframe selected rows.
+    Examples:
+        >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
+        >>> df_return = select_rows_where_value_equal(df, 'letters', 'a')
+        >>> df_return
+          letters  numbers
+        0       a        1
+        1       a        2
+
+    """
+    return df.loc[df[column] == value]
 
 
 def select_all_columns_except_some(df, column_names):
@@ -141,7 +161,7 @@ def select_all_columns_except_some(df, column_names):
     Examples:
         >>> df = pd.DataFrame({'letters':['a','b','c'], 'numbers':[1,2,3], 'numbers2':[4,5,6]})
         >>> df_return = select_all_columns_except_some(df, ['numbers','numbers2'])
-        >>> print(df_return)
+        >>> df_return
           letters
         0       a
         1       b
@@ -151,7 +171,7 @@ def select_all_columns_except_some(df, column_names):
     return df[df.columns.difference(column_names)]
 
 
-def split_dataframe_by_condition(df, mask):
+def split_rows_by_condition(df, mask):
     """Split dataframe based on logical indexes (that could come from a condition).
     Parameters:
         df (pd.DataFrame): Dataframe.
@@ -161,7 +181,7 @@ def split_dataframe_by_condition(df, mask):
     Examples:
         >>> df = pd.DataFrame({'letters':['a','b','c'], 'numbers':[1,2,3], 'numbers2':[4,5,6]})
         >>> mask = df['numbers'] > 1
-        >>> df1, df2 = split_dataframe_by_condition(df, mask)
+        >>> df1, df2 = split_rows_by_condition(df, mask)
         >>> df1
           letters  numbers  numbers2
         1       b        2         5
