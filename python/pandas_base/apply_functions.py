@@ -40,7 +40,7 @@ def apply_function_elementwise_dataframe(df, func):
         >>> import numpy as np
         >>> df = pd.DataFrame(np.array(range(12)).reshape(4, 3), columns=list('abc'))
         >>> f = lambda x: '%.1f' % x
-        >>> apply_function_elementwise_dataframe(df, f, 1)
+        >>> apply_function_elementwise_dataframe(df, f)
              a     b     c
         0  0.0   1.0   2.0
         1  3.0   4.0   5.0
