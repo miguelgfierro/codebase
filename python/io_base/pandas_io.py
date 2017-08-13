@@ -22,6 +22,7 @@ def read_file(filename):
         data (pd.DataFrame): An dataframe.
     Examples:
         >>> df = read_file('../../share/traj.csv')
+        >>> df
                time   q1   q2
         0  0.041667  443  205
         1  0.083333  444  206
