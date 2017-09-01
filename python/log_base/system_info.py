@@ -2,6 +2,7 @@ import sys
 import pkg_resources
 import importlib
 import os
+import subprocess
 
 
 def get_python_version():
@@ -65,3 +66,12 @@ def get_java_version():
     """
     os.system('java -XshowSettings:properties -version')
 
+
+def get_gpu_name():
+    try:
+        out_str = subprocess.run(["nvidia-smi", "--query-gpu=gpu_name", "--format=csv"], stdout=subprocess.PIPE).stdout
+        out_list = out_str.decode("utf-8").split('\n')
+        out_list = out_list[1:-1]
+        return out_list
+    except Exception as e:
+        print(e)

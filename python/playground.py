@@ -9,7 +9,7 @@ from io_base.pickle_io import *
 from log_base.logger import *
 from log_base.memory_size import *
 from log_base.timer import *
-from minsc.system_info import *
+from log_base.system_info import *
 from numpy_base.array_manipulation import *
 from pandas_base.conversion import *
 from pandas_base.stats import *
