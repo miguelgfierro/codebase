@@ -17,4 +17,4 @@ def format_dictionary(dct, indent=4):
         }
 
     """
-    return json.dumps(dct, indent=4, sort_keys=True)
+    return json.dumps(dct, indent=indent, sort_keys=True)
