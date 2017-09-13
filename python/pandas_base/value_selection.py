@@ -194,3 +194,36 @@ def split_rows_by_condition(df, mask):
     df1 = df[mask]
     df2 = df[~mask]
     return df1, df2
+
+
+def set_value_where_condition(df, value, col_val, value_cond1, col_cond1):
+    """Set a value in a column where multiple conditions are fit
+    Parameters:
+        df (pd.DataFrame): Dataframe.
+        value (int, float, str): Value to set.
+        col_val (str): Column name for the set value
+        value_cond1 (int, float, str): Value of the condition.
+        col_cond1 (str): Column name for the condition.
+    Returns:
+        df_return (pd.DataFrame): Dataframe with the value modified.
+    Examples:
+        >>> df = pd.DataFrame({'letters':['a','b','c'], 'numbers':[1,2,3], 'numbers2':[4,5,6]})
+        >>> df_return = set_value_where_condition(df, 10, 'numbers2', 'a', 'letters')
+        >>> df_return
+          letters  numbers  numbers2
+        0       a        1        10
+        1       b        2         5
+        2       c        3         6
+
+    """
+    df.loc[df[col_cond1] == value_cond1, col_val] = value
+    return df
+
+
+def set_value_where_multiple_condition(df, value, col_val, value_cond1, col_cond1, value_cond2, col_cond2):
+    """Set a value in a column where multiple conditions are fit
+
+    """
+    pass
+
+
