@@ -1,6 +1,7 @@
 from git import Repo
 import os
 import requests
+import datetime
 
 
 END_POINT = 'https://api.github.com/repos/'
@@ -91,4 +92,13 @@ def count_deleted_lines(repo_dir):
     os.chdir(repo_dir)
     resp = os.popen('git log  --pretty=tformat: --numstat | awk \'{ add += $1 ; subs += $2 } END { printf "%s",subs }\'').read()
     resp = int(resp)
+    return resp
+
+
+def monthly_commit_frequency(git_url):
+    url = END_POINT + git_url.split('https://github.com/')[1]
+    resp = requests.get(url + '/stats/commit_activity').json()
+    for id, item in enumerate(resp):
+        week_str = datetime.datetime.fromtimestamp(item['week']).strftime('%Y-%m-%d')
+        resp[id]['week'] = week_str
     return resp
