@@ -8,18 +8,42 @@ END_POINT = 'https://api.github.com/repos/'
 
 
 def get_current_forks(git_url, base_url='https://github.com/'):
+    """Get current number of forks
+    Parameters:
+        git_url (str): Github repo url.
+        base_url (str): Base url of git repo.
+    Returns:
+        resp (pint): Number of forks.
+
+    """
     url = END_POINT + git_url.split(base_url)[1]
     resp = requests.get(url).json()
     return resp['forks_count']
 
 
 def get_open_issues(git_url, base_url='https://github.com/'):
+    """Get current number of open issues
+    Parameters:
+        git_url (str): Github repo url.
+        base_url (str): Base url of git repo.
+    Returns:
+        resp (pint): Number of issues.
+
+    """
     url = END_POINT + git_url.split(base_url)[1]
     resp = requests.get(url).json()
     return resp['open_issues']
 
 
 def get_current_stars(git_url, base_url='https://github.com/'):
+    """Get current number of stars.
+    Parameters:
+        git_url (str): Github repo url.
+        base_url (str): Base url of git repo.
+    Returns:
+        resp (pint): Number of stars.
+
+    """
     url = END_POINT + git_url.split(base_url)[1]
     resp = requests.get(url).json()
     return resp['stargazers_count']
