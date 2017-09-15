@@ -60,9 +60,8 @@ def get_number_tags(repo_dir):
 
 
 def get_number_contributors(repo_dir):
-    #FIXME: Not working I don' know why
     os.chdir(repo_dir)
-    resp = os.popen('git shortlog -sne | wc -l').read()
+    resp = os.popen('git log --format="%aN" | sort -u | wc -l').read()
     resp = int(resp.split('\n')[0])
     return resp
 
