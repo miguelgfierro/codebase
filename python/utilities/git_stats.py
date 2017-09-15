@@ -3,22 +3,29 @@ import os
 import requests
 
 
-def get_current_forks(url):
+END_POINT = 'https://api.github.com/repos/'
+
+
+def get_current_forks(git_url, base_url='https://github.com/'):
+    url = END_POINT + git_url.split(base_url)[1]
     resp = requests.get(url).json()
     return resp['forks_count']
 
 
-def get_open_issues(url):
+def get_open_issues(git_url, base_url='https://github.com/'):
+    url = END_POINT + git_url.split(base_url)[1]
     resp = requests.get(url).json()
     return resp['open_issues']
 
 
-def get_current_stars(url):
+def get_current_stars(git_url, base_url='https://github.com/'):
+    url = END_POINT + git_url.split(base_url)[1]
     resp = requests.get(url).json()
     return resp['stargazers_count']
 
 
-def get_current_watchers(url):
+def get_current_watchers(git_url, base_url='https://github.com/'):
+    url = END_POINT + git_url.split(base_url)[1]
     resp = requests.get(url).json()
     return resp['subscribers_count']
 
