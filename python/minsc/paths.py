@@ -53,3 +53,15 @@ def get_filenames_in_folder(folderpath):
     """
     names = [os.path.basename(x) for x in glob.glob(os.path.join(folderpath, '*'))]
     return names
+
+
+def make_directory(folderpath):
+    """ Make a directory.
+    Parameters:
+        folderpath (str): folder path
+    Examples:
+        >>> make_directory('C:/run3x/codebase/python/minsc/dir1/dir2')
+
+    """
+    if not os.path.exists(folderpath):
+        os.makedirs(folderpath)
