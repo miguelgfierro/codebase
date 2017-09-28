@@ -20,11 +20,11 @@ def plot_image(img, title='image'):
     cv2.destroyAllWindows()
 
 
-def plot_image_matplotlib(img, figsize=(4,4)):
+def plot_image_matplotlib(img, figsize=None):
     """Plot an opencv image using matplotlib.
     Parameters:
         img (numpy array): An image.
-        title (str): Title of the image.
+        figsize (tuple): Size of the figure in inches (w,h).
     Examples:
         >>> img = cv2.imread('../../share/Lenna.png')
         >>> plot_image_matplotlib(img)
@@ -40,7 +40,7 @@ def plot_image_matplotlib(img, figsize=(4,4)):
         cmap = 'gray'
     else:
         raise Exception("Wrong image")
-    plt.figure(figsize = figsize)
+    plt.figure(figsize=figsize)
     plt.imshow(image, cmap=cmap)
     plt.axis('off')
     plt.show()
