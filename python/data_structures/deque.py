@@ -1,7 +1,8 @@
 
 class Deque(object):
-    """A deque is a linear structure of ordered items where the addition
-    and removal of items can take place on any end.
+    """A deque (double-ended queue) is a linear structure of
+    ordered items where the addition and removal of items can
+    take place on any end.
     Thus deques can work as FIFO (First In, First Out) or 
     LIFO (Last In, First Out)
     Examples:
