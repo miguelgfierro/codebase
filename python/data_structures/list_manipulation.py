@@ -68,8 +68,8 @@ def generate_random_integers(number_values, min_val, max_val):
         [7, 9, 5, 1, 4]
 
     """
-    r = random.sample(range(min_val, max_val), number_values)
-    return r
+    l = random.sample(range(min_val, max_val), number_values)
+    return l
 
 
 def reverse_list(py_list, inplace=True):
@@ -96,3 +96,31 @@ def reverse_list(py_list, inplace=True):
     else:
         result_list = list(reversed(py_list))
         return result_list
+
+
+def create_consecutive_numbers(final_num):
+    """Create a list of consecutive numbers from 0 to `final_num`.
+    source: http://interactivepython.org/runestone/static/pythonds/AlgorithmAnalysis/Lists.html
+    Parameters:
+        final_num (int): The last number of the series.
+    Returns:
+        result_list (list): A list with values from 0 to `final_num`.
+    Examples:
+        >>> create_consecutive_numbers(5)
+        [0, 1, 2, 3, 4]
+
+    """
+    #Method 1: append
+    #Do not use, slowest of all methods
+    #l = []
+    #for i in range(final_num):
+    #    l.append(i)
+
+    #Method 2: list comprehension
+    #Twice as fast as append
+    #l = [i for i in range(final_num)]
+
+    #Method 3: list constructor
+    #Twice as fast as list comprehension
+    l = list(range(final_num))
+    return l
