@@ -12,6 +12,8 @@ def classification_metrics_binary(y_true, y_pred):
     classifier not to label as positive a sample that is negative.
     - Recall: Number of true positives divided by the number of true positives and false negatives. It is the ability
     of the classifier to find all the positive samples.
+    High Precision and low Recall will return few positive results but most of them will be correct. 
+    High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
     Parameters:
         y_true (list or array): True labels.
@@ -45,6 +47,8 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
     classifier not to label as positive a sample that is negative.
     - Recall: Number of true positives divided by the number of true positives and false negatives. It is the ability
     of the classifier to find all the positive samples.
+    High Precision and low Recall will return few positive results but most of them will be correct. 
+    High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
     Parameters:
         y_true (list or array): True labels.
