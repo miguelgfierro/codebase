@@ -39,5 +39,17 @@ class GoogleTrend(object):
         df = self.pytrend.interest_by_region(resolution='COUNTRY')
         return df
 
-
+    def number_google_results(self):
+        """Return the approximate number of results in Google"""
+        results = {}
+        for key in self.keywords:
+            r = requests.get(GOOGLE_END_POINT,
+                             params={'q':'"' + key + '"',"tbs":"li:1"}
+                            )
+            soup = BeautifulSoup(r.text)
+            number_text = soup.find('div',{'id':'resultStats'}).text
+            number = re.sub("\D","",number_text)
+            results[key] = number
+        df = pd.DataFrame([results])
+        return df
 
