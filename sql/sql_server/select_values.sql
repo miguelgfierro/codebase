@@ -8,10 +8,38 @@ SELECT TOP (5) column_name1, column_name2 FROM table_name;
 -- Select all entries equal to a value in a column
 SELECT * FROM table_name WHERE column_name = ?
 
--- Select values from different tables. Example: There are 2 tables, one has ProductID, ProductNameEnglish
--- and Price. The other table has ProductID and ProductNameSpanish. To select the price and the spanish
--- name:
-SELECT t1.Price, t2.ProductNameSpanish FROM table_name1 AS t1
-INNER JOIN table_name2 AS t2 ON t1.ProductID = t2.ProductID
+
+-- INNER JOIN: Select values as the intersection of the two tables, i.e. rows they have common in table1 and table1
+SELECT table1.column1, table2.column2
+FROM table1 INNER JOIN table2
+ON table1.common_field = table2.common_field;
+-- Example:
+SELECT TableA.firstName,TableA.lastName,TableB.age,TableB.Place
+FROM TableA
+INNER JOIN TableB
+ON TableA.id = TableB.id2;
+-- Result:
+firstName       lastName       age  Place
+..............................................
+arun            prasanth        24  kerala
+ann             antony          24  usa
+sruthy          abc             25  ekm
 
 
+-- LEFT JOIN: will give all selected rows in TableA, plus any common selected rows in TableB.
+SELECT table1.column1, table2.column2...
+FROM table1
+LEFT JOIN table2
+ON table1.common_field = table2.common_field;
+--Example:
+SELECT TableA.firstName,TableA.lastName,TableB.age,TableB.Place
+FROM TableA
+LEFT JOIN TableB
+ON TableA.id = TableB.id2;
+-- Result:
+firstName                   lastName                    age   Place
+...............................................................................
+arun                        prasanth                    24    kerala
+ann                         antony                      24    usa
+sruthy                      abc                         25    ekm
+new                         abc                         NULL  NULL
