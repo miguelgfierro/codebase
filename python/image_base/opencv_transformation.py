@@ -44,6 +44,37 @@ def resize_image(img, new_width, new_height):
     return img_new
 
 
+def resize_image_aspect_ratio(img, new_width=None, new_height=None):
+    """Resize image, if only one of new_width or new_height is given, the resize is done maintaining the ratio.
+    If both parameters are given, the image may be deformed
+    Parameters:
+        img (numpy array): An image.
+        new_width (int): New width.
+        new_height (int): New height.
+    Returns:
+        img_new (numpy array): A resized image.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna_face.png')
+        >>> height, width, channels = img.shape
+        >>> img_resized = resize_image_aspect_ratio(img, new_width=300)
+        >>> img_resized.shape
+        (525, 300, 3)
+        >>> img_resized = resize_image_aspect_ratio(img, new_height=150)
+        >>> img_resized.shape
+        (150, 85, 3)
+
+    """
+    height, width = img.shape[:2]
+    if new_width is not None and new_height is None:
+        r = new_width/width
+        new_height = int(height*r)
+    elif new_width is None and new_height is not None:
+        r = new_height/height
+        new_width = int(width*r)
+    img_new = cv2.resize(img, (new_width, new_height))
+    return img_new
+
+
 def equalize_image(img):
     """Equalize the image histogram.
     Parameters:
