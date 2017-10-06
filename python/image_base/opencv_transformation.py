@@ -37,10 +37,10 @@ def resize_image(img, new_width, new_height):
         >>> height, width, channels = img.shape
         >>> img_resized = resize_image(img, width/2, height/2)
         >>> img_resized.shape
-        (256L, 256L, 3L)
+        (256, 256, 3)
 
     """
-    img_new = cv2.resize(img, (new_width, new_height))
+    img_new = cv2.resize(img, (int(new_width), int(new_height)))
     return img_new
 
 
@@ -102,7 +102,7 @@ def crop_image(img, box):
         >>> box = (0, 100, 250, 400)
         >>> img_crop = crop_image(img, box)
         >>> img_crop.shape
-        (300L, 250L, 3L)
+        (300, 250, 3)
 
     """
     return img[box[1]:box[3], box[0]:box[2]]
