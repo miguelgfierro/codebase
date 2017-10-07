@@ -1,3 +1,4 @@
+#source: http://interactivepython.org/runestone/static/pythonds/index.html
 
 
 def bubble_sort(alist, quick_impl=True):
@@ -59,3 +60,25 @@ def selection_sort(alist):
         temp = alist[fillslot]
         alist[fillslot] = alist[positionOfMax]
         alist[positionOfMax] = temp
+
+
+def insertion_sort(alist):
+    """Insertion sort. It always maintains a sorted sublist in the lower positions of the list. Each new item is
+    then “inserted” back into the previous sublist such that the sorted sublist is one item larger.
+    Time complexity: O(n^2), space complexity: O(1)
+    Parameters:
+        alist (list): A list.
+    Examples:
+        >>> alist = [54,26,93,17,77,31]
+        >>> insertion_sort(alist)
+        >>> alist
+        [17, 26, 31, 54, 77, 93]
+
+    """
+    for index in range(1,len(alist)):
+        currentvalue = alist[index]
+        position = index
+        while position > 0 and alist[position-1] > currentvalue:
+            alist[position] = alist[position-1]
+            position = position-1
+        alist[position] = currentvalue
