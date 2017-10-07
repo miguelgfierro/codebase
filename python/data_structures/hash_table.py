@@ -34,20 +34,20 @@ class HashTable(object):
         """Add a key and value."""
         hashvalue = self.hashfunction(key,len(self.slots))
         if self.slots[hashvalue] is None:
-          self.slots[hashvalue] = key
-          self.data[hashvalue] = data
+            self.slots[hashvalue] = key
+            self.data[hashvalue] = data
         else:
-          if self.slots[hashvalue] == key:
-            self.data[hashvalue] = data  #replace
-          else:
-            nextslot = self.rehash(hashvalue,len(self.slots))
-            while self.slots[nextslot] is not None and self.slots[nextslot] != key:
-              nextslot = self.rehash(nextslot,len(self.slots))
-            if self.slots[nextslot] is None:
-              self.slots[nextslot]=key
-              self.data[nextslot]=data
+            if self.slots[hashvalue] == key:
+                self.data[hashvalue] = data  #replace
             else:
-              self.data[nextslot] = data #replace
+                nextslot = self.rehash(hashvalue,len(self.slots))
+                while self.slots[nextslot] is not None and self.slots[nextslot] != key:
+                    nextslot = self.rehash(nextslot,len(self.slots))
+                if self.slots[nextslot] is None:
+                    self.slots[nextslot]=key
+                    self.data[nextslot]=data
+                else:
+                    self.data[nextslot] = data #replace
 
     def hashfunction(self,key,size):
         """The hash function is a simple remainder method."""
@@ -66,13 +66,13 @@ class HashTable(object):
         found = False
         position = startslot
         while self.slots[position] is not None and not found and not stop:
-           if self.slots[position] == key:
-             found = True
-             data = self.data[position]
-           else:
-             position = self.rehash(position,len(self.slots))
-             if position == startslot:
-                 stop = True
+            if self.slots[position] == key:
+                found = True
+                data = self.data[position]
+            else:
+                position = self.rehash(position,len(self.slots))
+                if position == startslot:
+                    stop = True
         return data
 
     def __getitem__(self,key):
