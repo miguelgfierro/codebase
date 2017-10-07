@@ -5,6 +5,7 @@ class Graph(object):
     """ Graphs are structures used to model pairwise relations between objects. A graph is made up of vertices, nodes,
     or points which are connected by edges, arcs, or lines. A graph may be undirected, when there is no distinction
     between the two vertices associated with each edge, or its edges may be directed from one vertex to another.
+    Edges may be weighted to show that there is a cost to go from one vertex to another
     Examples:
         >>> g = Graph()
         >>> for i in range(3):
