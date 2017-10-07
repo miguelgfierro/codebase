@@ -131,3 +131,53 @@ def merge_sort(alist):
             alist[k]=righthalf[j]
             j=j+1
             k=k+1
+
+
+def quick_sort(alist):
+    """Quick sort. Divide and conquer algo.
+    It finds a pivot and place is in its correct place making all the left elements smaller then the pivot and all
+    the right elements bigger than the pivot, then the function is called on the sublists. 
+    Time complexity: O(n*log(n)), space complexity: O(log(n))
+    Parameters:
+        alist (list): A list.
+    Examples:
+        >>> alist = [54,26,93,17,77,31]
+        >>> quick_sort(alist)
+        >>> alist
+        [17, 26, 31, 54, 77, 93]
+
+    """
+    def _quick_sort_helper(alist,first,last):
+        if first<last:
+            splitpoint = _partition(alist,first,last)
+            _quick_sort_helper(alist,first,splitpoint-1)
+            _quick_sort_helper(alist,splitpoint+1,last)
+
+    def _partition(alist,first,last):
+        pivotvalue = alist[first]
+
+        leftmark = first+1
+        rightmark = last
+
+        done = False
+        while not done:
+
+            while leftmark <= rightmark and alist[leftmark] <= pivotvalue:
+                leftmark = leftmark + 1
+
+            while alist[rightmark] >= pivotvalue and rightmark >= leftmark:
+                rightmark = rightmark -1
+
+            if rightmark < leftmark:
+                done = True
+            else:
+                temp = alist[leftmark]
+                alist[leftmark] = alist[rightmark]
+                alist[rightmark] = temp
+        temp = alist[first]
+        alist[first] = alist[rightmark]
+        alist[rightmark] = temp
+        return rightmark
+
+    _quick_sort_helper(alist,0,len(alist)-1)
+
