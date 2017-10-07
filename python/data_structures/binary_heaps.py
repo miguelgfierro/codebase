@@ -4,8 +4,8 @@ class BinaryHeap(object):
     shape property implies that it is a complete binary tree (all levels are complete except the last ones) and the
     heap property is that for every node x with parent p, the key in p is smaller than or equal to the key in x.
     A Binary Heap is a common method to implement priority queues.
-    Timpe complexity:
-    search: O(n); insert&delete: O(log(n)); pop: O(1)
+    Time complexity:
+    search: O(n); insert&delete: O(log n); pop: O(1)
     Examples:
         >>> bh = BinaryHeap()
         >>> bh.build([9,5,6,2,3])
