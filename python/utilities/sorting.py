@@ -36,3 +36,26 @@ def bubble_sort(alist, quick_impl=True):
                    alist[i] = alist[i+1]
                    alist[i+1] = temp
            passnum = passnum-1
+
+
+def selection_sort(alist):
+    """Selection sort. It looks for the largest value and, after completing the pass, places it in the proper location.
+    As with a bubble sort, after the first pass, the largest item is in the correct place.
+    Time complexity: O(n^2), space complexity: O(1)
+    Parameters:
+        alist (list): A list.
+    Examples:
+        >>> alist = [54,26,93,17,77,31]
+        >>> selection_sort(alist)
+        >>> alist
+        [17, 26, 31, 54, 77, 93]
+
+    """
+    for fillslot in range(len(alist)-1,0,-1):
+        positionOfMax=0
+        for location in range(1,fillslot+1):
+            if alist[location]>alist[positionOfMax]:
+                positionOfMax = location
+        temp = alist[fillslot]
+        alist[fillslot] = alist[positionOfMax]
+        alist[positionOfMax] = temp
