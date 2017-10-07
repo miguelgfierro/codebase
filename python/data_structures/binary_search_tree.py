@@ -5,7 +5,8 @@ class BinarySearchTree(object):
     """Binary search trees keep their keys in sorted order, following the BST property: keys that are less than the
     parent are found in the left subtree, and keys greater are found in the right subtree. Therefore, lookup and other
     operations can use the principle of binary search.
-    Time complexity: search, insert, delete: O(log n)
+    Time complexity: search, insert, delete: O(log n) on average, O(n) if it is not balanced (the height of one side
+    is much higher than the other). To solve this issue there are the Balanced Binary Search Trees or AVL trees.
     Space complexity: O(n)
     Examples:
         >>> mytree = BinarySearchTree()
