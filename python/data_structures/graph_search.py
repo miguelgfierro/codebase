@@ -48,7 +48,7 @@ def breadth_first_search_paths(graph, start, goal):
             queue.enqueue(new_path)
 
 
-def breadth_first_search_paths(graph, start, goal):
+def depth_first_search_paths(graph, start, goal):
     """Depth First Search is an algorithm for for searching a path from start to goal in graphs data structures.
     It starts at the root and explores as far as possible along each branch before backtracking.
     Parameters:
@@ -69,10 +69,10 @@ def breadth_first_search_paths(graph, start, goal):
         >>> g.add_edge('7','11')
         >>> g.add_edge('7','12')
         >>> g.add_edge('3','11')
-        >>> path = breadth_first_search_paths(g, '1', '11')
+        >>> path = depth_first_search_paths(g, '1', '11')
         >>> [node.get_id() for node in path]
         ['1', '4', '7', '11']
-        >>> path = breadth_first_search_paths(g, '1', '12')
+        >>> path = depth_first_search_paths(g, '1', '12')
         >>> [node.get_id() for node in path]
         ['1', '4', '7', '12']
     """
