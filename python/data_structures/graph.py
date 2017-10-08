@@ -16,7 +16,7 @@ class Graph(object):
         >>> g.add_edge(2,3,9)
         >>> for v in g:
         ...    for w in v.get_connections():
-        ...        print("( %s , %s )" % (v.getId(), w.getId()))
+        ...        print("( %s , %s )" % (v.get_id(), w.get_id()))
         ( 0 , 1 )
         ( 0 , 5 )
         ( 1 , 2 )
