@@ -3,8 +3,8 @@ from queue import Queue
 from stack import Stack
 
 
-def breadth_first_search(graph, start, goal):
-    """Breadth-first search (BFS) is an algorithm for traversing or searching tree or graph data structures.
+def breadth_first_search_paths(graph, start, goal):
+    """Breadth-first search (BFS) is an algorithm for searching a path from start to goal in graph data structures.
     It starts at the tree root and explores the neighbor nodes first, before moving to the next level neighbours.
     Parameters:
         graph (Graph): A graph.
@@ -24,10 +24,10 @@ def breadth_first_search(graph, start, goal):
         >>> g.add_edge('7','11')
         >>> g.add_edge('7','12')
         >>> g.add_edge('3','11')
-        >>> path = breadth_first_search(g, '1', '11')
+        >>> path = breadth_first_search_paths(g, '1', '11')
         >>> [node.get_id() for node in path]
         ['1', '3', '11']
-        >>> path = breadth_first_search(g, '1', '12')
+        >>> path = breadth_first_search_paths(g, '1', '12')
         >>> [node.get_id() for node in path]
         ['1', '4', '7', '12']
 
@@ -48,9 +48,9 @@ def breadth_first_search(graph, start, goal):
             queue.enqueue(new_path)
 
 
-def depth_first_search(graph, start, goal):
-    """Depth First Search is an algorithm for traversing or searching a graph. It starts at the root and explores
-     as far as possible along each branch before backtracking.
+def breadth_first_search_paths(graph, start, goal):
+    """Depth First Search is an algorithm for for searching a path from start to goal in graphs data structures.
+    It starts at the root and explores as far as possible along each branch before backtracking.
     Parameters:
         graph (Graph): A graph.
         start (Vertex): The start vertex
@@ -69,10 +69,10 @@ def depth_first_search(graph, start, goal):
         >>> g.add_edge('7','11')
         >>> g.add_edge('7','12')
         >>> g.add_edge('3','11')
-        >>> path = breadth_first_search(g, '1', '11')
+        >>> path = breadth_first_search_paths(g, '1', '11')
         >>> [node.get_id() for node in path]
-        ['1', '3', '11']
-        >>> path = breadth_first_search(g, '1', '12')
+        ['1', '4', '7', '11']
+        >>> path = breadth_first_search_paths(g, '1', '12')
         >>> [node.get_id() for node in path]
         ['1', '4', '7', '12']
     """
