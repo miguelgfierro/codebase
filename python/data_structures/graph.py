@@ -9,13 +9,13 @@ class Graph(object):
     Examples:
         >>> g = Graph()
         >>> for i in range(3):
-        ...     v = g.addVertex(i)
-        >>> g.addEdge(0,1,5)
-        >>> g.addEdge(0,5,2)
-        >>> g.addEdge(1,2,4)
-        >>> g.addEdge(2,3,9)
+        ...     v = g.add_vertex(i)
+        >>> g.add_edge(0,1,5)
+        >>> g.add_edge(0,5,2)
+        >>> g.add_edge(1,2,4)
+        >>> g.add_edge(2,3,9)
         >>> for v in g:
-        ...    for w in v.getConnections():
+        ...    for w in v.get_connections():
         ...        print("( %s , %s )" % (v.getId(), w.getId()))
         ( 0 , 1 )
         ( 0 , 5 )
@@ -24,56 +24,56 @@ class Graph(object):
 
     """
     def __init__(self):
-        self.vertList = {}
-        self.numVertices = 0
+        self.vert_list = {}
+        self.num_vertices = 0
 
-    def addVertex(self,key):
-        self.numVertices = self.numVertices + 1
-        newVertex = Vertex(key)
-        self.vertList[key] = newVertex
-        return newVertex
+    def add_vertex(self,key):
+        self.num_vertices = self.num_vertices + 1
+        new_vertex = Vertex(key)
+        self.vert_list[key] = new_vertex
+        return new_vertex
 
-    def getVertex(self,n):
-        if n in self.vertList:
-            return self.vertList[n]
+    def get_vertex(self,n):
+        if n in self.vert_list:
+            return self.vert_list[n]
         else:
             return None
-
+        
+    def get_vertices(self):
+        return self.vert_list.keys()
+    
     def __contains__(self,n):
-        return n in self.vertList
+        return n in self.vert_list
 
-    def addEdge(self,f,t,cost=0):
-        if f not in self.vertList:
-            nv = self.addVertex(f)
-        if t not in self.vertList:
-            nv = self.addVertex(t)
-        self.vertList[f].addNeighbor(self.vertList[t], cost)
-
-    def getVertices(self):
-        return self.vertList.keys()
+    def add_edge(self,f,t,cost=0):
+        if f not in self.vert_list:
+            nv = self.add_vertex(f)
+        if t not in self.vert_list:
+            nv = self.add_vertex(t)
+        self.vert_list[f].add_neighbor(self.vert_list[t], cost)
 
     def __iter__(self):
-        return iter(self.vertList.values())
+        return iter(self.vert_list.values())
 
 
 class Vertex(object):
     """The vertex of a graph."""
     def __init__(self,key):
         self.id = key
-        self.connectedTo = {}
+        self.connected_to = {}
 
-    def addNeighbor(self,nbr,weight=0):
-        self.connectedTo[nbr] = weight
+    def add_neighbor(self,nbr,weight=0):
+        self.connected_to[nbr] = weight
 
     def __str__(self):
-        return str(self.id) + ' connectedTo: ' + str([x.id for x in self.connectedTo])
+        return str(self.id) + ' connected_to: ' + str([x.id for x in self.connected_to])
 
-    def getConnections(self):
-        return self.connectedTo.keys()
+    def get_connections(self):
+        return self.connected_to.keys()
 
-    def getId(self):
+    def get_id(self):
         return self.id
 
-    def getWeight(self,nbr):
-        return self.connectedTo[nbr]
+    def get_weight(self,nbr):
+        return self.connected_to[nbr]
 
