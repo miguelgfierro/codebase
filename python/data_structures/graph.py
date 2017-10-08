@@ -12,15 +12,15 @@ class Graph(object):
         ...     v = g.add_vertex(i)
         >>> g.add_edge(0,1,5)
         >>> g.add_edge(0,5,2)
-        >>> g.add_edge(1,2,4)
+        >>> g.add_edge(1,2)
         >>> g.add_edge(2,3,9)
         >>> for v in g:
         ...    for w in v.get_connections():
-        ...        print("( %s , %s )" % (v.get_id(), w.get_id()))
-        ( 0 , 1 )
-        ( 0 , 5 )
-        ( 1 , 2 )
-        ( 2 , 3 )
+        ...        print("({} , {}, weight={})".format(v.get_id(), w.get_id(), v.get_weight(w)))
+        (0 , 1, weight=5)
+        (0 , 5, weight=2)
+        (1 , 2, weight=0)
+        (2 , 3, weight=9)
 
     """
     def __init__(self):
@@ -45,12 +45,12 @@ class Graph(object):
     def __contains__(self,n):
         return n in self.vert_list
 
-    def add_edge(self,f,t,cost=0):
-        if f not in self.vert_list:
-            nv = self.add_vertex(f)
-        if t not in self.vert_list:
-            nv = self.add_vertex(t)
-        self.vert_list[f].add_neighbor(self.vert_list[t], cost)
+    def add_edge(self, from_vertex, to_vertex, weight=0):
+        if from_vertex not in self.vert_list:
+            nv = self.add_vertex(from_vertex)
+        if to_vertex not in self.vert_list:
+            nv = self.add_vertex(to_vertex)
+        self.vert_list[from_vertex].add_neighbor(self.vert_list[to_vertex], weight)
 
     def __iter__(self):
         return iter(self.vert_list.values())
@@ -58,11 +58,11 @@ class Graph(object):
 
 class Vertex(object):
     """The vertex of a graph."""
-    def __init__(self,key):
+    def __init__(self, key):
         self.id = key
         self.connected_to = {}
 
-    def add_neighbor(self,nbr,weight=0):
+    def add_neighbor(self, nbr, weight=0):
         self.connected_to[nbr] = weight
 
     def __str__(self):
@@ -74,6 +74,6 @@ class Vertex(object):
     def get_id(self):
         return self.id
 
-    def get_weight(self,nbr):
+    def get_weight(self, nbr):
         return self.connected_to[nbr]
 
