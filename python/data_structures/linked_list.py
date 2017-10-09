@@ -54,6 +54,9 @@ class LinkedList(object):
         >>> ll.remove_duplicates()
         >>> ll.to_list()
         ['A', 'B', 'C', 'D']
+        >>> reversed(ll)
+        >>> print(ll)
+        D -> C -> B -> A
 
     """
     def __init__(self, head=None):
@@ -78,6 +81,17 @@ class LinkedList(object):
         string += curr.val
         return string
 
+    def __reversed__(self):
+        current = self.head
+        prev = None
+        post = None
+        while current:
+            post = current.next
+            current.next = prev
+            prev = current
+            current = post
+        self.head = prev
+        
     def to_list(self):
         lst = []
         curr = self.head
@@ -100,6 +114,5 @@ class LinkedList(object):
             else:
                 prev.next = node.next
                 node = node.next
-
 
 
