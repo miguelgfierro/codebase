@@ -63,13 +63,12 @@ class LinkedList(object):
         self.head = head
 
     def __len__(self):
-        count = 0
+        count = 1
         curr = self.head
         if curr is None: return count
         while curr.next:
             count += 1
             curr = curr.next
-        count += 1
         return count
 
     def __str__(self):
@@ -91,7 +90,7 @@ class LinkedList(object):
             prev = current
             current = post
         self.head = prev
-        
+
     def to_list(self):
         lst = []
         curr = self.head
