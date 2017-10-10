@@ -15,21 +15,21 @@
 
 class DoublyLinkedListNode(object):
     def __init__(self, value=None):
-        self.val = value
+        self.value = value
         self.next = None
         self.prev = None
 
     def __str__(self):
-        return str(self.val)
+        return str(self.value)
 
 
 class SinglyLinkedListNode(object):
     def __init__(self, value=None):
-        self.val = value
+        self.value = value
         self.next = None
 
     def __str__(self):
-        return str(self.val)
+        return str(self.value)
 
 
 class LinkedList(object):
@@ -57,6 +57,9 @@ class LinkedList(object):
         >>> reversed(ll)
         >>> print(ll)
         D -> C -> B -> A
+        >>> ll.delete_value('B')
+        >>> print(ll)
+        D -> C -> A
 
     """
     def __init__(self, head=None):
@@ -75,9 +78,9 @@ class LinkedList(object):
         string = ""
         curr = self.head
         while curr.next:
-            string += curr.val + " -> "
+            string += curr.value + " -> "
             curr = curr.next
-        string += curr.val
+        string += curr.value
         return string
 
     def __reversed__(self):
@@ -95,9 +98,9 @@ class LinkedList(object):
         lst = []
         curr = self.head
         while curr.next:
-            lst.append(curr.val)
+            lst.append(curr.value)
             curr = curr.next
-        lst.append(curr.val)
+        lst.append(curr.value)
         return lst
 
     def remove_duplicates(self):
@@ -106,12 +109,23 @@ class LinkedList(object):
         node = self.head
         seen_data = set()
         while node:
-            if node.val not in seen_data:
-                seen_data.add(node.val)
+            if node.value not in seen_data:
+                seen_data.add(node.value)
                 prev = node
                 node = node.next
             else:
                 prev.next = node.next
                 node = node.next
 
+    def delete_value(self, value):
+        if self.head.value == value:
+            self.head = self.head.next
+        curr = self.head.next
+        prev = self.head
+        while curr:
+            if curr.value == value:
+                prev.next = curr.next
+                break
+            prev = curr
+            curr = curr.next
 
