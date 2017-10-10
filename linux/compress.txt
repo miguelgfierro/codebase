@@ -1,0 +1,6 @@
+#7z create an archive
+7z a folder.7z folder
+
+#7z extract an archive
+7z e folder.7z
+
