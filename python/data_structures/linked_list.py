@@ -35,12 +35,12 @@ class SinglyLinkedListNode(object):
 class LinkedList(object):
     """Linked list
     Examples:
-        >>> a1 = SinglyLinkedListNode("A")
-        >>> a2 = SinglyLinkedListNode("A")
-        >>> b = SinglyLinkedListNode("B")
-        >>> c1 = SinglyLinkedListNode("C")
-        >>> d = SinglyLinkedListNode("D")
-        >>> c2 = SinglyLinkedListNode("C")
+        >>> a1 = SinglyLinkedListNode("1")
+        >>> a2 = SinglyLinkedListNode("1")
+        >>> b = SinglyLinkedListNode("2")
+        >>> c1 = SinglyLinkedListNode("3")
+        >>> d = SinglyLinkedListNode("4")
+        >>> c2 = SinglyLinkedListNode("3")
         >>> a1.next = a2
         >>> a2.next = b
         >>> b.next = c1
@@ -48,18 +48,18 @@ class LinkedList(object):
         >>> d.next = c2
         >>> ll = LinkedList(a1)
         >>> print(ll)
-        A -> A -> B -> C -> D -> C
+        1 -> 1 -> 2 -> 3 -> 4 -> 3
         >>> len(ll)
         6
         >>> ll.remove_duplicates()
         >>> ll.to_list()
-        ['A', 'B', 'C', 'D']
+        ['1', '2', '3', '4']
         >>> reversed(ll)
         >>> print(ll)
-        D -> C -> B -> A
-        >>> ll.delete_value('B')
+        4 -> 3 -> 2 -> 1
+        >>> ll.delete_value('2')
         >>> print(ll)
-        D -> C -> A
+        4 -> 3 -> 1
 
     """
     def __init__(self, head=None):
