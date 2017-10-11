@@ -4,3 +4,9 @@
 #7z extract an archive
 7z e folder.7z
 
+#tar create an archive
+tar -czvf folder.tar.gz folder
+
+#Tar extract
+tar -xzf folder.tar.gz
+
