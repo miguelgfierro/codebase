@@ -7,6 +7,11 @@
 #tar create an archive
 tar -czvf folder.tar.gz folder
 
-#Tar extract
+#tar extract an archive
 tar -xzf folder.tar.gz
 
+#zip create an archive
+zip -r folder.zip folder
+
+#zip extract an archive
+unzip folder.zip
