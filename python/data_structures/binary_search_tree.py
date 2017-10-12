@@ -17,6 +17,8 @@ class BinarySearchTree(object):
         'yellow'
         >>> mytree[1]
 
+        >>> mytree.length()
+        3
 
     """
     def __init__(self):
@@ -29,58 +31,58 @@ class BinarySearchTree(object):
     def __len__(self):
         return self.size
 
-    def put(self,key,val):
+    def put(self, key, val):
         if self.root:
-            self._put(key,val,self.root)
+            self._put(key, val, self.root)
         else:
-            self.root = TreeNode(key,val)
+            self.root = TreeNode(key, val)
         self.size = self.size + 1
 
-    def _put(self,key,val,current_node):
+    def _put(self, key, val, current_node):
         if key < current_node.key:
             if current_node.has_left_child():
-                   self._put(key,val,current_node.left_child)
+                self._put(key, val, current_node.left_child)
             else:
-                   current_node.left_child = TreeNode(key,val,parent=current_node)
+                current_node.left_child = TreeNode(key, val, parent=current_node)
         else:
             if current_node.has_right_child():
-                   self._put(key,val,current_node.right_child)
+                self._put(key, val, current_node.right_child)
             else:
-                   current_node.right_child = TreeNode(key,val,parent=current_node)
+                current_node.right_child = TreeNode(key,val,parent=current_node)
 
-    def __setitem__(self,k,v):
-       self.put(k,v)
+    def __setitem__(self, k, v):
+        self.put(k, v)
 
-    def get(self,key):
-       if self.root:
-           res = self._get(key,self.root)
-           if res:
-                  return res.payload
-           else:
-                  return None
-       else:
-           return None
+    def get(self, key):
+        if self.root:
+            res = self._get(key,self.root)
+            if res:
+                return res.payload
+            else:
+                return None
+        else:
+            return None
 
-    def _get(self,key,current_node):
-       if not current_node:
-           return None
-       elif current_node.key == key:
-           return current_node
-       elif key < current_node.key:
-           return self._get(key,current_node.left_child)
-       else:
-           return self._get(key,current_node.right_child)
+    def _get(self, key, current_node):
+        if not current_node:
+            return None
+        elif current_node.key == key:
+            return current_node
+        elif key < current_node.key:
+            return self._get(key,current_node.left_child)
+        else:
+            return self._get(key,current_node.right_child)
 
     def __getitem__(self,key):
-       return self.get(key)
+        return self.get(key)
 
     def __contains__(self,key):
-       if self._get(key,self.root):
-           return True
-       else:
-           return False
+        if self._get(key,self.root):
+            return True
+        else:
+            return False
 
-    def delete(self,key):
+    def delete(self, key):
       if self.size > 1:
          node_to_remove = self._get(key,self.root)
          if node_to_remove:
@@ -178,7 +180,7 @@ class BinarySearchTree(object):
 
 class TreeNode(object):
     """Helper function for the Binary Search Tree"""
-    def __init__(self,key,val,left=None,right=None,parent=None):
+    def __init__(self, key, val, left=None, right=None, parent=None):
         self.key = key
         self.payload = val
         self.left_child = left
@@ -209,7 +211,7 @@ class TreeNode(object):
     def has_both_children(self):
         return self.right_child and self.left_child
 
-    def replace_node_data(self,key,value,lc,rc):
+    def replace_node_data(self, key, value, lc, rc):
         self.key = key
         self.payload = value
         self.left_child = lc
