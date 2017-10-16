@@ -1,0 +1,13 @@
+#list processes
+C:\> tasklist
+ Image Name                     PID Session Name        Mem Usage
+ ========================= ======== ================ ============
+ firefox.exe                  26356 Console             139,352 K
+ regedit.exe                  24244 Console               9,768 K
+ cmd.exe                      18664 Console               2,380 K
+
+#Kill a process
+C:\>Taskkill /IM firefox.exe /F
+#or
+C:\>Taskkill /PID 26356 /F
+

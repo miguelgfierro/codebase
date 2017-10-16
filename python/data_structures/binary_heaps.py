@@ -9,6 +9,8 @@ class BinaryHeap(object):
     Examples:
         >>> bh = BinaryHeap()
         >>> bh.build([9,5,6,2,3])
+        >>> bh.heap_list
+        [0, 2, 3, 6, 5, 9]
         >>> bh.pop()
         2
         >>> bh.pop()
