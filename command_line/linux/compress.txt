@@ -8,7 +8,7 @@
 tar -czvf folder.tar.gz folder
 
 #tar extract an archive
-tar -zxvf folder.tar.gz 
+tar -zxvf folder.tar.gz
 
 #tar extract an archive to a folder
 mkdir folder

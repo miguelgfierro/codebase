@@ -124,3 +124,20 @@ def create_consecutive_numbers(final_num):
     #Twice as fast as list comprehension
     l = list(range(final_num))
     return l
+
+
+def from_list_of_lists_to_list(list_of_lists):
+    """Convert a list os lists to a single list
+    Parameters:
+         list_of_lists (list of lists): A list of lists.
+    Returns:
+        result_list (list): A list
+    Examples:
+        >>> list_of_lists = [[1,2,3],[0,3,9]]
+        >>> from_list_of_lists_to_list(list_of_lists)
+        [1, 2, 3, 0, 3, 9]
+
+    """
+    result_list = [item for sublist in list_of_lists for item in sublist]
+    return result_list
+
