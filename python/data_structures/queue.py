@@ -13,6 +13,8 @@ class Queue(object):
         ['dog', 4]
         >>> q.size()
         2
+        >>> q.peek()
+        4
         >>> q.dequeue()
         4
         >>> q.size()
@@ -37,6 +39,10 @@ class Queue(object):
     def dequeue(self):
         """Remove the first item in the queue"""
         return self.items.pop()
+
+    def peek(self):
+        """Show the first item in the queue"""
+        return self.items[-1]
 
     def size(self):
         """Return the number of items on the queue"""
