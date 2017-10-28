@@ -49,6 +49,8 @@ class LinkedList(object):
         >>> ll = LinkedList(a1)
         >>> print(ll)
         1 -> 1 -> 2 -> 3 -> 4 -> 3
+        >>> ll.has_cycle()
+        False
         >>> len(ll)
         6
         >>> ll.remove_duplicates()
@@ -60,6 +62,13 @@ class LinkedList(object):
         >>> ll.delete_value('2')
         >>> print(ll)
         4 -> 3 -> 1
+        >>> cyc1 = SinglyLinkedListNode("cyc1")
+        >>> cyc2 = SinglyLinkedListNode("cyc2")
+        >>> cyc1.next = cyc2
+        >>> cyc2.next = cyc1
+        >>> ll2 = LinkedList(cyc1)
+        >>> ll2.has_cycle()
+        True
 
     """
     def __init__(self, head=None):
@@ -129,3 +138,15 @@ class LinkedList(object):
             prev = curr
             curr = curr.next
 
+    def has_cycle(self):
+        slow = self.head
+        fast = self.head
+        while fast is not None:
+            slow = slow.next
+            if fast.next is not None:
+                fast = fast.next.next
+            else:
+                return False
+            if slow is fast:
+                return True
+        return False
