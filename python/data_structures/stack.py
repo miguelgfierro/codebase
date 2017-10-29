@@ -46,7 +46,7 @@ class Stack(object):
 
     def peek(self):
         """Return the top item from the stack but does not remove it"""
-        return self.items[len(self.items)-1]
+        return self.items[-1]
 
     def size(self):
         """Return the number of items on the stack"""
