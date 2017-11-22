@@ -68,6 +68,12 @@ def get_java_version():
 
 
 def get_gpu_name():
+    """Get the GPUs in the system
+    Examples:
+        >>> get_gpu_name()
+        ['Tesla M60', 'Tesla M60', 'Tesla M60', 'Tesla M60']
+        
+    """
     try:
         out_str = subprocess.run(["nvidia-smi", "--query-gpu=gpu_name", "--format=csv"], stdout=subprocess.PIPE).stdout
         out_list = out_str.decode("utf-8").split('\n')
