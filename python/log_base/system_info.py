@@ -3,6 +3,7 @@ import pkg_resources
 import importlib
 import os
 import subprocess
+import socket
 
 
 def get_python_version():
@@ -37,7 +38,6 @@ def get_library_version(library_name):
         version = lib.__version__
     except Exception as e:
         print(e)
-
     return version
 
 
@@ -81,3 +81,13 @@ def get_gpu_name():
         return out_list
     except Exception as e:
         print(e)
+
+
+def get_machine_name():
+    """Get the machine's name
+    Examples:
+        >>> get_machine_name()
+        'LoxLPT6423227'
+
+    """
+    return socket.gethostname()
