@@ -40,3 +40,26 @@ def plot_histogram(hist, bins):
     center = (bins[:-1] + bins[1:]) / 2
     plt.bar(center, hist, align='center', width=width)
     plt.show()
+
+
+def plot_traj(y, x=None, title=None, xlabel=None, ylabel=None, color='b'):
+    """Plot a trajectory of points (x,y). If x is None it just take range(len(y)).
+    Parameters:
+        y (list or numpy array): Y axis values.
+        x (list or numpy array): X axis values.
+        title (str): Plot title.
+        xlabel (str): X axis label.
+        ylabel (str): Y axis label.
+        color (str): Color
+    Examples:
+        plot_traj([0.5, 0.7, 1.3, 1.7])
+        plot_traj([0.5, 0.7, 1.3, 1.7], np.array([1,2,3,4]), title='a', xlabel='asd', ylabel='k',color='r')
+
+    """
+    plt.figure()
+    if x is None: x = range(len(y))
+    plt.plot(x, y, color=color)
+    if title is not None: plt.title(title)
+    if xlabel is not None: plt.xlabel(xlabel)
+    if ylabel is not None: plt.ylabel(ylabel)
+    plt.show()
