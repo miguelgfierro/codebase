@@ -50,10 +50,10 @@ def plot_traj(y, x=None, title=None, xlabel=None, ylabel=None, color='b'):
         title (str): Plot title.
         xlabel (str): X axis label.
         ylabel (str): Y axis label.
-        color (str): Color
+        color (str): Matplotlib color https://matplotlib.org/api/colors_api.html?highlight=color#module-matplotlib.colors.
     Examples:
-        plot_traj([0.5, 0.7, 1.3, 1.7])
-        plot_traj([0.5, 0.7, 1.3, 1.7], np.array([1,2,3,4]), title='a', xlabel='asd', ylabel='k',color='r')
+        >>> plot_traj([0.5, 0.7, 1.3, 1.7])
+        >>> plot_traj([0.5, 0.7, 1.3, 1.7], np.array([1,2,3,4]), title='Traj', xlabel='x', ylabel='y',color='r')
 
     """
     plt.figure()
