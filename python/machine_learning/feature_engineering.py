@@ -18,6 +18,7 @@ def draw_feature_importance(importances, features, output_file='output.png'):
     """
     importance_frame = _importance_dataframe(importances, features)
     importance_frame.plot(kind='barh', x='Feature', figsize=(8,8), color='green')
+    plt.tight_layout()
     plt.savefig(output_file)
 
 
