@@ -72,6 +72,32 @@ def generate_random_integers(number_values, min_val, max_val):
     return l
 
 
+def shuffle_list(py_list, inplace=False):
+    """Shuffle a list
+    If `inplace=True` the input list is modified (faster & less memory), if `inplace=False` a new list is
+    generated (slower & more memory).
+    Parameters:
+        py_list (list): A list of elements.
+        inplace (bool): If `True` the input list is modified, if `False` a new list is generated.
+    Returns:
+        result_list (list): A list with the values shuffled.
+    Examples:
+        >>> py_list = [1,2,3,4,5]
+        >>> shuffle_list(py_list, True)
+        >>> py_list
+        [5, 1, 4, 2, 3]
+        >>> shuffle_list(py_list, False)
+        [5, 3, 2, 1, 4]
+
+    """
+    if inplace:
+        random.shuffle(py_list)
+    else:
+        l = py_list[:] # fastest way to shallow copy a list https://stackoverflow.com/a/2612990
+        random.shuffle(l)
+        return l
+
+
 def reverse_list(py_list, inplace=True):
     """Reverse a list.
     If `inplace=True` the input list is modified (faster & less memory), if `inplace=False` a new list is
