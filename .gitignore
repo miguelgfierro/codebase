@@ -99,6 +99,7 @@ ENV/
 
 
 ######
+.DS_Store
 *~
 file.pk
 file.npy
