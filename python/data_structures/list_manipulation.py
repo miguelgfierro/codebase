@@ -1,4 +1,5 @@
 import random
+import numpy as np
 
 
 def get_n_first_elements(py_list, n_elements):
@@ -167,4 +168,40 @@ def flatten_list_of_lists(list_of_lists):
     """
     result_list = [item for sublist in list_of_lists for item in sublist]
     return result_list
+
+
+def split_list(py_list, perc_size=[0.8, 0.2], shuffle=False):
+    """Split a list in weighted chunks
+    Parameters:
+        py_list (list): A list of elements.
+        perc_size (list): The percentual size of each chunk size.
+        shuffle (bool): Shuffle the list or not
+    Returns:
+        result_list (list of list): A list of lists with the chunks.
+    Examples:
+        >>> split_list(list(range(7)),[0.47,0.33,0.2])
+        [[0, 1, 2], [3, 4, 5], [6]]
+        >>> split_list(list(range(10)),[0.6,0.4], True)
+        [[1, 2, 3, 6, 9, 5], [4, 8, 0, 7]]
+
+    """
+    assert sum(perc_size) == 1, "Percentage sizes do not sum to 1"
+    l = py_list[:]
+    if shuffle:
+        random.shuffle(l)
+    # Turn percentages into values between 0 and 1
+    splits = np.cumsum(perc_size)
+
+    # Split doesn't need last percent, it will just take what is left
+    splits = splits[:-1]
+
+    # Turn values into indices
+    splits *= len(l)
+
+    # Turn double indices into integers.
+    splits = splits.round().astype(np.int)
+
+    return [list(chunks) for chunks in np.split(l, splits)]
+
+
 
