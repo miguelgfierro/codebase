@@ -52,7 +52,7 @@ def get_filenames_in_folder(folderpath):
 
     """
     names = [os.path.basename(x) for x in glob.glob(os.path.join(folderpath, '*'))]
-    return names
+    return sorted(names)
 
 
 def make_directory(folderpath):
