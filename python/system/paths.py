@@ -41,7 +41,7 @@ def count_files_in_folder(folderpath):
 
 
 def get_filenames_in_folder(folderpath):
-    """ Return the files names in a folder.
+    """ Return the files or folder names inside a folder.
     Parameters:
         folderpath (str): folder path
     Returns:
