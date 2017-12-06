@@ -40,6 +40,22 @@ def count_files_in_folder(folderpath):
     return len(glob.glob(os.path.join(folderpath,'*')))
 
 
+def count_files_in_folder_recursively(folderpath):
+    """ Return the number of files in a folder recursively.
+    Parameters:
+        folderpath (str): folder path
+    Returns:
+        number (int): number of files in a folder
+    Examples:
+        >>> count_files_in_folder_recursively(r'C:\\run3x\\codebase\\command_line')
+        3
+
+    """
+    if folderpath[-1] != os.path.sep: #Add final '/' if it doesn't exist
+        folderpath += os.path.sep
+    return len([x for x in glob.iglob(folderpath+'/**', recursive=True) if os.path.isfile(x)])
+
+
 def get_filenames_in_folder(folderpath):
     """ Return the files or folder names inside a folder.
     Parameters:
