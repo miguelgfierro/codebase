@@ -1,0 +1,28 @@
+# To update the conda environment:
+# conda env update -n py35 -f conda_py35.yaml
+
+name: py35
+channels:
+- conda-forge
+- defaults
+dependencies:
+- numpy>=1.13.3
+- opencv>=3.3.0
+- pyodbc>=4.0.21
+- requests>=2.18.4
+- beautifulsoup4>=4.6.0
+- flask>=0.12.2
+- cherrypy>=12.0.1
+- paste>=2.0.3
+- pip:
+  - memory_profiler>=0.47
+  - pandas>=0.21.0
+  - scikit-image==0.13.1
+  - scikit-learn==0.19.1
+  - scipy>=0.19.0
+  - matplotlib>=1.5.3
+  - bokeh>=0.12.6
+  - selenium>=3.4.3
+  - pillow>=4.3.0
+
+
