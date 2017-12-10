@@ -82,7 +82,11 @@ def convert_to_grayscale(img):
         img_new (PIL image): A grayscale image.
     Examples:
         >>> img = Image.open('../../share/Lenna.png')
+        >>> img.mode
+        'RGB'
         >>> img_gray = convert_to_grayscale(img)
+        >>> img_gray.mode
+        'L'
 
     """
     return img.convert('L')
