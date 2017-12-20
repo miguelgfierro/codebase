@@ -31,7 +31,7 @@ Download [CUDA9](https://developer.nvidia.com/cuda-downloads?target_os=Linux&tar
 
     git clone https://github.com/pytorch/pytorch
 
-# Replace the new Dockerfile in this repo with the one available in PyTorch root folder
+## Replace the new Dockerfile in this repo with the one available in PyTorch root folder
 
     cp Dockerfile /path/to/pytorch
 
@@ -71,6 +71,7 @@ Once inside the docker image:
     >>> print(torch.cuda.device_count())
     4
 
+Enjoy!
 
 
 
