@@ -19,3 +19,8 @@ zip -r folder.zip folder
 
 #zip extract an archive
 unzip folder.zip
+
+#zip extract many zip files
+unzip '*.zip'
+
+
