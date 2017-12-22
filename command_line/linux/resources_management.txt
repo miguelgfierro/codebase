@@ -1,0 +1,17 @@
+#list processes
+$ ps -ef | grep 'python myscript.py'
+hoaphum+  62074  1  0 11:37 pts/0    00:00:00 grep python myscript.py
+hoaphum+  62075  1  0 11:38 pts/0    00:00:00 grep python myscript.py
+
+#list processes IDs
+$ ps -ef | grep 'python myscript.py' | awk '{print $2}'
+62074
+62075
+
+#kill a process
+$ kill -9 62074
+
+#kill all processes containing a specific name
+kill -9 `ps -ef | grep 'python myscript.py' | awk '{print $2}'`
+
+
