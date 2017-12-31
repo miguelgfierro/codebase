@@ -12,5 +12,3 @@ Y = randn(2,512);
 tic
 [IDX,D] = knnsearch(X,Y,'K',5,'Distance','euclidean')
 toc
-
-
