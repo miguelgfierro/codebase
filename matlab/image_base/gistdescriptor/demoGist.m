@@ -1,4 +1,7 @@
-% EXAMPLE 1
+% Demo GIST descriptors based on original scripts from Oliva and Torralba
+% source: http://people.csail.mit.edu/torralba/code/spatialenvelope/
+
+% EXAMPLE 
 % Load image
 img1 = imread('../../../share/Lenna.png');
 
@@ -15,7 +18,9 @@ param.fc_prefilt = 4;
 
 % Computing gist requires 1) prefilter image, 2) filter image and collect
 % output energies
+tic
 [gist1, param] = LMgist(img1, '', param);
+toc
 
 % Visualization
 figure
