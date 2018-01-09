@@ -5,6 +5,7 @@
 #ifndef MATH_UTILS_HPP
 #define MATH_UTILS_HPP
 
+#include <algorithm>
 #include "math_constants.hpp"
 
 inline double radToDeg(double rad_angle) { return (rad_angle*180.0)/math::pi; }
