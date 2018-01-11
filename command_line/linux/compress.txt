@@ -4,16 +4,6 @@
 #7z extract an archive
 7z x folder.7z
 
-#tar create an archive
-tar -czvf folder.tar.gz folder
-
-#tar extract an archive
-tar -zxvf folder.tar.gz
-
-#tar extract an archive to a folder
-mkdir folder
-tar -zxvf folder.tar.gz -C folder
-
 #zip create an archive
 zip -r folder.zip folder
 
@@ -23,4 +13,11 @@ unzip folder.zip
 #zip extract many zip files
 unzip '*.zip'
 
+#tar create an archive
+tar -czvf folder.tar.gz folder
 
+#tar extract an archive
+tar -zxvf folder.tar.gz
+
+#tar extract an archive to a folder
+mkdir folder && tar -zxvf folder.tar.gz -C folder
