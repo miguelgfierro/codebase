@@ -34,3 +34,7 @@ mkdir folder && tar -xvf folder.tar -C folder --strip-components=1
 #NOTE: if you don't add --strip-components=1, then the structure will be folder/folder/file1.txt
 #instead of folder/file1.txt
 mkdir folder && tar -zxvf folder.tar.gz -C folder --strip-components=1
+
+#Extract multiple tar files into folder with the tar name and remove the tar file
+find . -name "*.tar" | while read NAME ; do mkdir -p "${NAME%.tar}"; tar -xvf "${NAME}" -C "${NAME%.tar}"; rm -f "${NAME}"; done
+
