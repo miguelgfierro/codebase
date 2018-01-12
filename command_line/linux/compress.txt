@@ -13,10 +13,10 @@ unzip folder.zip
 #zip extract many zip files
 unzip '*.zip'
 
-#tar create an archive
+#tar.gz create an archive
 tar -czvf folder.tar.gz folder
 
-#tar extract an archive
+#tar.gz extract an archive
 tar -zxvf folder.tar.gz
 
 #tar extract an archive created from a folder to a folder 
