@@ -20,7 +20,8 @@ def softmax(x):
 
 
 def RELU(x, inplace=False):
-    """
+    """Rectified Linear Unit, removing the negative parts of the input: max(x,0)
+    Benchmark: https://stackoverflow.com/a/40013151/5620182
     Parameters:
         x (list or numpy array): Input list or array.
         inplace (bool): Inplace flag.
