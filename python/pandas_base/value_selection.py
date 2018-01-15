@@ -151,6 +151,25 @@ def select_rows_where_value_equal(df, column, value):
     return df.loc[df[column] == value]
 
 
+def select_rows_where_list_equal(df, column, items):
+    """Select rows in the dataframe which column has a specific value.
+    Parameters:
+        df (pd.DataFrame): Dataframe.
+        column (str): Column name.
+        items (list): List of items.
+    Returns:
+        df_return (pd.DataFrame): Dataframe selected rows.
+    Examples:
+        >>> df = pd.DataFrame({'letters':['a','b','c'], 'numbers':[1,2,3]})
+        >>> df_return = select_rows_where_list_equal(df, 'letters', ['a','b'])
+        >>> df_return
+          letters  numbers
+        0       a        1
+        1       b        2
+
+    """
+    return df.loc[df[column].isin(items)]
+
 def select_all_columns_except_some(df, column_names):
     """Select all columns in the dataframe except those especifies in `column_list`.
     Parameters:
