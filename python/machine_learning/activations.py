@@ -82,6 +82,24 @@ def RELU(x, inplace=False):
         return x * (x > 0)
 
 
+def LeakyRELU(x, alpha=0.3):
+    """Leaky Rectified Linear Unit. It allows a small gradient when the unit is not active.
+    `f(x) = alpha * x for x < 0, f(x) = x for x >= 0`
+    Parameters:
+        x (list or numpy array): Input list or array.
+        alpha (float): Scale factor.
+    Returns:
+        result (numpy array): The LeakyRELU of the array .
+    Examples:
+        >>> x = np.array([[1,1,-3],[0.5,-1,1]])
+        >>> LeakyRELU(x)
+        array([[ 1. ,  1. , -0.9],
+               [ 0.5, -0.3,  1. ]])
+
+    """
+    return (x >= 0)*x + (x < 0)*alpha*x
+
+
 def ELU(x, alpha=1.0):
     """Exponential Linear Unit
     `f(x) =  alpha * (exp(x) - 1.) for x < 0`,
@@ -99,7 +117,24 @@ def ELU(x, alpha=1.0):
                [ 0.5       , -0.63212056,  1.        ]])
 
     """
-    out = x.copy()
-    m = x < 0
-    out[m] = alpha*(np.exp(x[m]) - 1)
-    return out
+    return (x >= 0)*x + (x < 0)*(alpha * np.exp(x) - alpha)
+
+
+def SELU(x):
+    """Scaled Exponential Linear Unit
+    paper: https://arxiv.org/abs/1706.02515
+    Parameters:
+        x (list or numpy array): Input list or array.
+        alpha (float): Scale factor.
+    Returns:
+        result (numpy array): The SELU of the array .
+    Examples:
+        >>> x = np.array([[1,1,-3],[0.5,-1,1]])
+        >>> SELU(x)
+        array([[ 1.05070099,  1.05070099, -1.67056873],
+               [ 0.52535049, -1.11133074,  1.05070099]])
+
+    """
+    alpha = 1.6732632423543772848170429916717
+    scale = 1.0507009873554804934193349852946
+    return scale * ((x >= 0)*x + (x < 0) * (alpha * np.exp(x) - alpha))
