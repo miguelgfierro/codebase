@@ -1,9 +1,15 @@
 import numpy as np
 
 
+# Two classes of activation functions: Saturated(tanh, sigmoid, softmax) and not saturated (RELU, ELU, Leaky-RELU, PRELU)
+# saturated: solve the so called “exploding/vanishing gradient”
+# not saturated: accelerate the convergence speed
+
+
 def softmax(x):
     """Softmax of a vector. It is the normalized exponential function. Softmax is a generalization of the logistic
-    function that squashes a vector z into another vector  of real values in the range (0, 1) that add up to 1.
+    function that squashes a vector z into another vector of real values in the range (0, 1) that add up to 1.
+    Used for multiclass classification.
     Parameters:
         x (list or numpy array): Input list or array.
     Returns:
@@ -17,6 +23,38 @@ def softmax(x):
 
     """
     return np.exp(x) / np.sum(np.exp(x), axis=0)
+
+
+def tanh(x):
+    """Hyperbolic tangent. Output between -1,1
+    Parameters:
+        x (list or numpy array): Input list or array.
+    Returns:
+        result (numpy array): The tanh of the array.
+    Examples:
+        >>> x = np.array([[1,1,-3],[0.5,-1,1]])
+        >>> tanh(x)
+        array([[ 0.76159416,  0.76159416, -0.99505475],
+               [ 0.46211716, -0.76159416,  0.76159416]])
+
+    """
+    return np.tanh(x)
+
+
+def sigmoid(x):
+    """Sigmoid function. Output between 0,1
+    Parameters:
+        x (list or numpy array): Input list or array.
+    Returns:
+        result (numpy array): The sigmoid of the array.
+    Examples:
+        >>> x = np.array([[1,1,-3],[0.5,-1,1]])
+        >>> sigmoid(x)
+        array([[ 0.73105858,  0.73105858,  0.04742587],
+               [ 0.62245933,  0.26894142,  0.73105858]])
+
+    """
+    return 1. / (1 + np.exp(-x))
 
 
 def RELU(x, inplace=False):
@@ -44,3 +82,24 @@ def RELU(x, inplace=False):
         return x * (x > 0)
 
 
+def ELU(x, alpha=1.0):
+    """Exponential Linear Unit
+    `f(x) =  alpha * (exp(x) - 1.) for x < 0`,
+    `f(x) = x for x >= 0`.
+    paper: http://arxiv.org/abs/1511.07289
+    Parameters:
+        x (list or numpy array): Input list or array.
+        alpha (float): Scale factor.
+    Returns:
+        result (numpy array): The ELU of the array .
+    Examples:
+        >>> x = np.array([[1,1,-3],[0.5,-1,1]])
+        >>> ELU(x)
+        array([[ 1.        ,  1.        , -0.95021293],
+               [ 0.5       , -0.63212056,  1.        ]])
+
+    """
+    out = x.copy()
+    m = x < 0
+    out[m] = alpha*(np.exp(x[m]) - 1)
+    return out
