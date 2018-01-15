@@ -1,9 +1,10 @@
 import numpy as np
 
 
-# Two classes of activation functions: Saturated(tanh, sigmoid, softmax) and not saturated (RELU, ELU, Leaky-RELU, PRELU)
+# Two classes of activation functions: Saturated(tanh, sigmoid, softmax) and not saturated (RELU, ELU, Leaky-RELU)
 # saturated: solve the so called “exploding/vanishing gradient”
 # not saturated: accelerate the convergence speed
+# More info on activation functions: http://cs231n.github.io/neural-networks-1/
 
 
 def softmax(x):
