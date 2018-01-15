@@ -132,13 +132,13 @@ def select_values_by_index(df, vector_row_pos, vector_col_pos):
 
 
 def select_rows_where_value_equal(df, column, value):
-    """Select rows in the dataframe which column has a specific value.
+    """Select rows in the dataframe whose column has a specific value.
     Parameters:
         df (pd.DataFrame): Dataframe.
         column (str): Column name.
         value (int, str, float): Value to compare with.
     Returns:
-        df_return (pd.DataFrame): Dataframe selected rows.
+        df_return (pd.DataFrame): Dataframe with selected rows.
     Examples:
         >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
         >>> df_return = select_rows_where_value_equal(df, 'letters', 'a')
@@ -152,13 +152,13 @@ def select_rows_where_value_equal(df, column, value):
 
 
 def select_rows_where_list_equal(df, column, items):
-    """Select rows in the dataframe which column has a specific value.
+    """Select rows in the dataframe whose column has a list of values.
     Parameters:
         df (pd.DataFrame): Dataframe.
         column (str): Column name.
         items (list): List of items.
     Returns:
-        df_return (pd.DataFrame): Dataframe selected rows.
+        df_return (pd.DataFrame): Dataframe with selected rows.
     Examples:
         >>> df = pd.DataFrame({'letters':['a','b','c'], 'numbers':[1,2,3]})
         >>> df_return = select_rows_where_list_equal(df, 'letters', ['a','b'])
