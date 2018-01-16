@@ -204,4 +204,16 @@ def split_list(py_list, perc_size=[0.8, 0.2], shuffle=False):
     return [list(chunks) for chunks in np.split(l, splits)]
 
 
+def intersection(list1, list2):
+    """Intersection of two lists, returns the common elements in both lists.
+    Parameters:
+        list1 (list): A list of elements.
+        list2 (list): A list of elements.
+    Returns:
+        result_list (list): A list with the common elements.
+    Examples:
+        >>> intersection([1,2,3], [2,3,4])
+        [2, 3]
 
+    """
+    return list(set(list1) & set(list2))
