@@ -217,3 +217,18 @@ def intersection(list1, list2):
 
     """
     return list(set(list1) & set(list2))
+
+
+def union(list1, list2):
+    """Union of two lists, returns the elements that appear in one list OR the other.
+    Parameters:
+        list1 (list): A list of elements.
+        list2 (list): A list of elements.
+    Returns:
+        result_list (list): A list with the union elements.
+    Examples:
+        >>> union([1,2,3], [2,3,4])
+        [1, 2, 3, 4]
+
+    """
+    return list(set(list1) | set(list2))
