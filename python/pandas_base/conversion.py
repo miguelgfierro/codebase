@@ -158,3 +158,36 @@ def convert_to_numpy_array(df, columns=None):
 
     """
     return df.as_matrix(columns)
+
+
+def replace_column_values(df, val_dict, col_name, new_col_name=None):
+    """Replace all appearances of a value to another in a dictionary.
+    Parameters:
+        df (pd.DataFrame): Dataframe.
+        val_dict (dict): Dictionary with the values to replace.
+        col_name (str): Column name.
+        new_col_name (str): New column name.
+    Returns:
+        df_return (pd.DataFrame): A dataframe with the values replaced.
+    Examples:
+        >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
+        >>> df_return = replace_column_values(df, {'a':1}, 'letters')
+        >>> df_return
+          letters  numbers
+        0       1        1
+        1       1        2
+        2       c        3
+        >>> df_return = replace_column_values(df, {'a':1}, 'letters', 'new_column')
+        >>> df_return
+          letters  numbers new_column
+        0       a        1          1
+        1       a        2          1
+        2       c        3          c
+
+    """
+    df_return = df.copy()
+    if new_col_name is None:
+        df_return[col_name].replace(val_dict, inplace=True)
+    else:
+        df_return[new_col_name] = df_return[col_name].replace(val_dict, inplace=False)
+    return df_return
