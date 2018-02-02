@@ -191,3 +191,30 @@ def replace_column_values(df, val_dict, col_name, new_col_name=None):
     else:
         df_return[new_col_name] = df_return[col_name].replace(val_dict, inplace=False)
     return df_return
+
+
+def split_text_in_column(df, component, col_name, new_col_list):
+    """Split a text in a dataframe column by a component.
+    Parameters:
+        df (pd.DataFrame): Dataframe.
+        component (str): Component for splitting the text.
+        col_name (str): Column name.
+        new_col_list (list): List of new column names.
+    Returns:
+        df_return (pd.DataFrame): A dataframe with the values replaced.
+    Examples:
+        >>> df = pd.DataFrame({'paths':['/user/local/bin/','/user/local/share/','/user/local/doc/'], 'numbers':[1,2,3]})
+        >>> df_return = split_text_in_column(df, '/', 'paths', ['a','b','c'])
+        >>> df_return
+           numbers     a      b      c
+        0        1  user  local    bin
+        1        2  user  local  share
+        2        3  user  local    doc
+
+    """
+    df_exp = df[col_name].str.split(component, expand=True)
+    df_exp = df_exp.loc[:, (df_exp != '').any(axis=0)]#remove columns with no text
+    df_exp.columns = new_col_list
+    df = pd.concat([df, df_exp], axis=1)
+    df.drop(columns=col_name, inplace=True)
+    return df
