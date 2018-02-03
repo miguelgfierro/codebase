@@ -9,6 +9,10 @@ grep -rnw '/path/to/somewhere/' -e 'text'
 find . -newermt 'Oct 3 00:00' ! -newermt 'Oct 4 00:00' -ls
 
 
+#Count files in a folder recursively
+find DIR_NAME -type f | wc -l
+
+
 #Remove files from a directory leaving a certain number, ex:100
 ls -1tr | head -n -100 | xargs -d '\n' rm -f --
 
