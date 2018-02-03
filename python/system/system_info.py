@@ -4,6 +4,7 @@ import importlib
 import os
 import subprocess
 import socket
+import glob
 
 
 def get_os():
@@ -160,4 +161,38 @@ def get_cuda_version():
 
 
 def get_cudnn_version():
-    pass
+    """Get the CUDNN version
+    Examples:
+        >>> get_cudnn_version()
+        '6.0.21'
+
+    """
+    if sys.platform == 'win32':
+        raise NotImplementedError("Implement this!")
+    elif sys.platform == 'linux':
+        candidates = ['/usr/include/x86_64-linux-gnu/cudnn_v[0-99].h',
+                      '/usr/local/cuda/include/cudnn.h',
+                      '/usr/include/cudnn.h']
+        for c in candidates:
+            file = glob.glob(c)
+            if file: break
+        if file:
+            with open(file[0], 'r') as f:
+                version = ''
+                for line in f:
+                    if "#define CUDNN_MAJOR" in line:
+                        version = line.split()[-1]
+                    if "#define CUDNN_MINOR" in line:
+                        version += '.' + line.split()[-1]
+                    if "#define CUDNN_PATCHLEVEL" in line:
+                        version += '.' + line.split()[-1]
+            if version:
+                return version
+            else:
+                return "Cannot find CUDNN version"
+        else:
+            return "No CUDNN in this machine"
+    elif sys.platform == 'darwin':
+        raise NotImplementedError("Find a Mac with GPU and implement this!")
+    else:
+        raise ValueError("Not in Windows, Linux or Mac")
