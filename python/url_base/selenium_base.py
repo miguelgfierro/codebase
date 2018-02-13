@@ -1,5 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 def create_page_driver(url):
@@ -39,4 +42,7 @@ def search_form(driver, html_class_form, search_term):
     element = driver.find_element_by_class_name(html_class_form)
     element.clear()
     element.send_keys(search_term + Keys.RETURN)
-    driver.implicitly_wait(10)
+    driver.get(driver.current_url) #put driver in current page
+
+
+
