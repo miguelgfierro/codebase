@@ -62,7 +62,8 @@ def screenshot(driver, path='', filename='page.png'):
 
 
 def find_element(driver, value, selector_type='class'):
-    """Find an element using a selector
+    """Find an element using a selector.
+    More info: https://gist.github.com/casschin/1990245
     Parameters:
         driver (obj): Driver of the web.
         value (str): Value to find.
@@ -73,6 +74,15 @@ def find_element(driver, value, selector_type='class'):
     Example:
         >>> driver = create_page_driver('https://miguelgfierro.com/blog/2017/a-gentle-introduction-to-transfer-learning-for-image-classification/')
         >>> element = find_element(driver, 'title', 'class')
+        >>> element.text
+        ' A Gentle Introduction to Transfer Learning for Image Classification'
+        >>> element = find_element(driver, 'h1', 'tag')
+        >>> element.text
+        ' A Gentle Introduction to Transfer Learning for Image Classification'
+        >>> element = find_element(driver, 'h1.title', 'css')
+        >>> element.text
+        ' A Gentle Introduction to Transfer Learning for Image Classification'
+        >>> element = find_element(driver, '/html/body/div[5]/div/div[2]/div[2]/h1', 'xpath')
         >>> element.text
         ' A Gentle Introduction to Transfer Learning for Image Classification'
 
