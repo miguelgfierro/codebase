@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import os
 
 
 def create_page_driver(url):
@@ -45,4 +46,16 @@ def search_form(driver, html_class_form, search_term):
     driver.get(driver.current_url) #put driver in current page
 
 
+def screenshot(driver, path='', filename='page.png'):
+    """Save a screenshot of the current page.
+    Parameters:
+        driver (obj): Driver of the web
+        path (str): Path to file
+        filename (str): Filename
+    Example:
+        >>> driver = create_page_driver('http://miguelgfierro.com/')
+        >>> screenshot(driver, filename='mig.png')
+
+    """
+    driver.get_screenshot_as_file(os.path.join(path, filename))
 
