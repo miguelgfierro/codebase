@@ -26,5 +26,6 @@ dependencies:
   - bokeh>=0.12.6
   - selenium>=3.4.3
   - pillow>=4.3.0
+  - sqlalchemy>=1.2.4
 
 

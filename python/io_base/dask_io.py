@@ -2,7 +2,7 @@ import dask.dataframe as dd
 import pandas as pd
 
 
-def save_file(data, filename='file.*.csv', npartitions=1, **kwargs):
+def save_csv(data, filename='file.*.csv', npartitions=1, **kwargs):
     """Save a dataframe into one of multiple `csv` files.
     Dask is designed to be used for big datasets.
     Parameters:
@@ -14,7 +14,7 @@ def save_file(data, filename='file.*.csv', npartitions=1, **kwargs):
     Examples:
         >>> import glob
         >>> df = pd.DataFrame({'col1':[1]*100, 'col2':[0.1]*100})
-        >>> save_file(df, filename='file.*.csv', npartitions=2, index=False, header=False)
+        >>> save_csv(df, filename='file.*.csv', npartitions=2, index=False, header=False)
         >>> len(glob.glob('file.*.csv'))
         2
 
@@ -23,7 +23,7 @@ def save_file(data, filename='file.*.csv', npartitions=1, **kwargs):
     d.to_csv(filename, **kwargs)
 
 
-def read_file(filename, **kwargs):
+def read_csv(filename, **kwargs):
     """Read a `csv` file.
     Parameters:
         filename (str): Name of the file. Optionally the filename can have a globstring '*',
@@ -32,14 +32,14 @@ def read_file(filename, **kwargs):
     Returns:
         data (pd.DataFrame): An dataframe.
     Examples:
-        >>> df = read_file('../../share/traj-*.csv', header=None, names=['time','q1','q2'])
+        >>> df = read_csv('../../share/traj-*.csv', header=None, names=['time','q1','q2'])
         >>> df
                time   q1   q2
         0  0.041667  443  205
         1  0.083333  444  206
         2  0.125000  445  205
         3  0.166667  444  204
-        >>> df = read_file('../../share/traj.csv', header=None)
+        >>> df = read_csv('../../share/traj.csv', header=None)
         >>> df
                   0    1    2
         0  0.041667  443  205
