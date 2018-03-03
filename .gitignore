@@ -101,11 +101,7 @@ ENV/
 ######
 .DS_Store
 *~
-file.pk
-file.npy
-file.csv
-file.jpg
-file.parq
+python/io_base/file.*
 */url_base/license.txt
 Untitled.ipynb
 
