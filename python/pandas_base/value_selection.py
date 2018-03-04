@@ -3,7 +3,7 @@ import pandas as pd
 
 def get_unique_values_in_column(df, col_name):
     """Get unique values in a column.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         col_name (str): Column name.
     Returns:
@@ -19,7 +19,8 @@ def get_unique_values_in_column(df, col_name):
 
 def get_random_fraction_of_rows(df, row_fraction=0.5, reindex=True):
     """Get a random fraction of the dataframe rows.
-    Parameters:
+    Note: #doctest: +ELLIPSIS together with ... handles unpredictable test outputs
+    Args:
         df (pd.DataFrame): Dataframe.
         row_fraction (float): Fraction (in percentage) of rows to retrieve.
         reindex (bool): Flag to reset the dataframe index or not.
@@ -27,19 +28,22 @@ def get_random_fraction_of_rows(df, row_fraction=0.5, reindex=True):
         df_return (pd.DataFrame): Dataframe with a fraction of the original rows.
     Examples:
         >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
-        >>> df_return = get_random_fraction_of_rows(df, 0.6)
-        >>> df_return
-          letters  numbers
-        0       c        3
-        1       a        1
+        >>> df_return = get_random_fraction_of_rows(df, 0.3, False)
+        >>> df_return.isin(df) #doctest: +ELLIPSIS
+           letters  numbers
+        ...   True     True
 
     """
-    return df.sample(frac=row_fraction).reset_index(drop=reindex)
+    df_return = df.sample(frac=row_fraction)
+    if reindex:
+        df_return = df_return.reset_index(drop=True)
+    return df_return
 
 
 def get_random_number_of_rows(df, num_rows, reindex=True):
     """Get a random number of the dataframe rows.
-    Parameters:
+    Note: #doctest: +ELLIPSIS together with ... handles unpredictable test outputs
+    Args:
         df (pd.DataFrame): Dataframe.
         num_rows (int): Number of rows to retrieve.
         reindex (bool): Flag to reset the dataframe index or not.
@@ -48,17 +52,20 @@ def get_random_number_of_rows(df, num_rows, reindex=True):
     Examples:
         >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
         >>> df_return = get_random_number_of_rows(df, 1)
-        >>> df_return
-          letters  numbers
-        0       c        3
+        >>> df_return.isin(df) #doctest: +ELLIPSIS
+           letters  numbers
+        ...   True     True
 
     """
-    return df.sample(n=num_rows).reset_index(drop=reindex)
+    df_return = df.sample(n=num_rows)
+    if reindex:
+        df_return = df_return.reset_index(drop=True)
+    return df_return
 
 
 def select_values_by_range(df, row_ini, row_end, col_ini, col_end):
     """Select a range of values in the dataframe.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         row_ini (int): Initial row.
         row_end (int): Final row.
@@ -80,7 +87,7 @@ def select_values_by_range(df, row_ini, row_end, col_ini, col_end):
 
 def select_values_by_index(df, vector_row_pos, vector_col_pos):
     """Select values in the dataframe given specific indexes of rows and columns.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         vector_row_pos (array): Array of row positions.
         vector_col_pos (array): Array of column positions.
@@ -100,7 +107,7 @@ def select_values_by_index(df, vector_row_pos, vector_col_pos):
 
 def select_rows_where_value_equal(df, column, value):
     """Select rows in the dataframe whose column has a specific value.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         column (str): Column name.
         value (int, str, float): Value to compare with.
@@ -120,7 +127,7 @@ def select_rows_where_value_equal(df, column, value):
 
 def select_rows_where_list_equal(df, column, items):
     """Select rows in the dataframe whose column has a list of values.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         column (str): Column name.
         items (list): List of items.
@@ -139,7 +146,7 @@ def select_rows_where_list_equal(df, column, items):
 
 def select_all_columns_except_some(df, column_names):
     """Select all columns in the dataframe except those especifies in `column_list`.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         column_names (list): List of column names.
     Returns:
@@ -159,7 +166,7 @@ def select_all_columns_except_some(df, column_names):
 
 def split_rows_by_condition(df, mask):
     """Split dataframe based on logical indexes (that could come from a condition).
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         mask (pd.Series): Series with boolean indexes (could come from a condition).
     Returns:
@@ -184,7 +191,7 @@ def split_rows_by_condition(df, mask):
 
 def set_value_where_condition(df, value, col_val, value_cond1, col_cond1):
     """Set a value in a column where multiple conditions are fit
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         value (int, float, str): Value to set.
         col_val (str): Column name for the set value
@@ -208,7 +215,7 @@ def set_value_where_condition(df, value, col_val, value_cond1, col_cond1):
 
 def set_value_where_multiple_condition(df, value, col_val, value_cond1, col_cond1, value_cond2, col_cond2):
     """Set a value in a column where multiple conditions are fit
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         value (int, float, str): Value to set.
         col_val (str): Column name for the set value

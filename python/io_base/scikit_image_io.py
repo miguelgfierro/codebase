@@ -3,7 +3,7 @@ from skimage import io
 
 def save_image(img, filename):
     """Save an image.
-    Parameters:
+    Args:
         img (numpy array): An image.
         filename (str): Name of the file.
     Examples:
@@ -16,7 +16,7 @@ def save_image(img, filename):
 
 def read_image(filename, is_color=True):
     """Read an image.
-    Parameters:
+    Args:
         filename (str): Name of the file.
         is_color (bool): Read the image in color.
     Returns:
@@ -36,7 +36,7 @@ def read_image(filename, is_color=True):
 
 def read_image_url(url):
     """Read an image from a URL.
-    Parameters:
+    Args:
         url (str): URL of the file.
     Returns:
         img (numpy array): An image.

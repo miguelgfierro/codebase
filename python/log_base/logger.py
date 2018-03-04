@@ -6,7 +6,7 @@ import yaml
 
 def get_debug_level(debug_level):
     """Transform debug level from string to logging flags.
-    Parameters:
+    Args:
         debug_level (str): Debug level as string.
     Returns:
         debug (int): Debug level as logging flag.
@@ -28,7 +28,7 @@ def get_debug_level(debug_level):
 
 def setup_logger(debug_level='ERROR', config_file=''):
     """Setup logging configuration.
-    Parameters:
+    Args:
         debug_level (str): Debug level as string.
         config_file (str): Yaml configuration file.
     Returns:

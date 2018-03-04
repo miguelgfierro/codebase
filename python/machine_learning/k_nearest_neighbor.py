@@ -4,7 +4,7 @@ import numpy as np
 
 def knn(X, Y, K):
     """Find the K nearest neighbor in X for each point in Y.
-    Parameters:
+    Args:
         X (numpy array): A matrix, where the columns are the features and the rows are the examples.
         Y (numpy array): A matrix to query, where the columns are the features and the rows are the examples.
     Returns:

@@ -3,7 +3,7 @@ import pyodbc
 
 def select_all_entries_from_column(table_name, cursor, column_name):
     """Select all entries from a column.
-    Parameters:
+    Args:
         table_name (str): Table name.
         cursor (object): pyobdc cursor.
         column_name (str): Column name.
@@ -24,7 +24,7 @@ def select_all_entries_from_column(table_name, cursor, column_name):
 
 def select_entry_where_column_equals_value(table_name, cursor, column_name, value):
     """Select one entry where the a column has a specific value.
-    Parameters:
+    Args:
         table_name (str): Table name.
         cursor (object): pyobdc cursor.
         column_name (str): Column name.

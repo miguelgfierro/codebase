@@ -3,7 +3,7 @@ import pandas as pd
 
 def remove_nan(df):
     """Remove NaN and reindex.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
     Returns:
         df_return (pd.DataFrame): Dataframe without NaN.
@@ -21,7 +21,7 @@ def remove_nan(df):
 
 def replace_nan(df, value):
     """Replace NaN for a value.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         value (int or str): Value
     Returns:
@@ -41,7 +41,7 @@ def replace_nan(df, value):
 
 def drop_columns(df, cols):
     """Drop columns.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         cols (int, str or list): Column name, column index or list of column names.
     Returns:
@@ -60,7 +60,7 @@ def drop_columns(df, cols):
 
 def drop_rows(df, rows):
     """Drop rows.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         rows (int, str or list): Row name, row index or list of row names.
     Returns:
@@ -78,7 +78,7 @@ def drop_rows(df, rows):
 
 def drop_duplicates(df):
     """Drop duplicate rows and reindex.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
     Returns:
         df_return (pd.DataFrame): Dataframe with the replaced value.

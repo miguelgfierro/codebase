@@ -9,7 +9,7 @@ import os
 
 def create_page_driver(url):
     """Generates the selenium driver to parse a web
-    Parameters:
+    Args:
         url (str): URL to parse
     Returns:
         driver (obj): Driver of the web
@@ -28,7 +28,7 @@ def create_page_driver(url):
 
 def search_form(driver, html_class_form, search_term):
     """Generates the selenium broswer to parse a web
-    Parameters:
+    Args:
         driver (obj): Driver of the web
         html_class_form (str): HTML class in form
         search_term (str): Term to search
@@ -49,7 +49,7 @@ def search_form(driver, html_class_form, search_term):
 
 def screenshot(driver, path='', filename='page.png'):
     """Save a screenshot of the current page.
-    Parameters:
+    Args:
         driver (obj): Driver of the web
         path (str): Path to file
         filename (str): Filename
@@ -64,7 +64,7 @@ def screenshot(driver, path='', filename='page.png'):
 def find_element(driver, value, selector_type='class'):
     """Find an element using a selector.
     More info: https://gist.github.com/casschin/1990245
-    Parameters:
+    Args:
         driver (obj): Driver of the web.
         value (str): Value to find.
         selector_type (str): Selector type. Valid arguments are 'class', 'id', 'tag',

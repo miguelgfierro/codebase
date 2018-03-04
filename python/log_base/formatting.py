@@ -3,7 +3,7 @@ import json
 
 def format_dictionary(dct, indent=4):
     """Formats a dictionary to be printed
-    Parameters:
+    Args:
         dct (dict): Dictionary.
         indent (int): Indentation value.
     Returns:

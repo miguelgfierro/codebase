@@ -8,7 +8,7 @@ except ImportError:
 
 def save_file(data, filename):
     """Save data as pickle. The standard pickle file name is `*.pk`.
-    Parameters:
+    Args:
         data (numpy array or dict): Data to save.
         filename (str): Name of the file.
     Examples:
@@ -21,7 +21,7 @@ def save_file(data, filename):
 
 def read_file(filename):
     """Read a pickle file.
-    Parameters:
+    Args:
         filename (str): Name of the file.
     Returns:
         data (numpy array or dict): Data to read.

@@ -4,7 +4,7 @@ import datetime
 
 def insert_row(table_name, cursor, connector, value1, value2):
     """Insert a row of items in a table.
-    Parameters:
+    Args:
         table_name (str): Table name.
         cursor (object): pyobdc cursor.
         connector (object): pyodbc connector.

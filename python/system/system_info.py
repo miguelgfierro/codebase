@@ -43,13 +43,13 @@ def get_python_version():
 
 def get_library_version(library_name):
     """Get the version of a library.
-    Parameters:
+    Args:
         library_name (str): Name of the library.
     Returns:
         version (str): Version of the library.
     Examples:
         >>> get_library_version("pandas")
-        '0.19.2'
+        '0.22.0'
 
     """
     try:

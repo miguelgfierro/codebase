@@ -3,7 +3,7 @@ from ast import literal_eval
 
 def decode_string(s):
     """Convert a string literal to a number or a bool.
-    Parameters:
+    Args:
         s (str): String
     Returns:
         val (str,float,int or bool): Value decoded

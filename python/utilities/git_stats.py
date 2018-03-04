@@ -9,7 +9,7 @@ END_POINT = 'https://api.github.com/repos/'
 
 def get_current_forks(git_url, base_url='https://github.com/'):
     """Get current number of forks
-    Parameters:
+    Args:
         git_url (str): Github repo url.
         base_url (str): Base url of git repo.
     Returns:
@@ -23,7 +23,7 @@ def get_current_forks(git_url, base_url='https://github.com/'):
 
 def get_open_issues(git_url, base_url='https://github.com/'):
     """Get current number of open issues
-    Parameters:
+    Args:
         git_url (str): Github repo url.
         base_url (str): Base url of git repo.
     Returns:
@@ -37,7 +37,7 @@ def get_open_issues(git_url, base_url='https://github.com/'):
 
 def get_current_stars(git_url, base_url='https://github.com/'):
     """Get current number of stars.
-    Parameters:
+    Args:
         git_url (str): Github repo url.
         base_url (str): Base url of git repo.
     Returns:
@@ -51,7 +51,7 @@ def get_current_stars(git_url, base_url='https://github.com/'):
 
 def get_current_watchers(git_url, base_url='https://github.com/'):
     """Get current number of watchers.
-    Parameters:
+    Args:
         git_url (str): Github repo url.
         base_url (str): Base url of git repo.
     Returns:
@@ -65,7 +65,7 @@ def get_current_watchers(git_url, base_url='https://github.com/'):
 
 def last_year_commit_frequency(git_url, base_url='https://github.com/'):
     """Get the commit frequency in every week of the last year.
-    Parameters:
+    Args:
         git_url (str): Git repo url.
         base_url (str): Base url of git repo.
     Returns:
@@ -84,7 +84,7 @@ def last_year_commit_frequency(git_url, base_url='https://github.com/'):
 
 def clone_repo(url):
     """Clone a git repo.
-    Parameters:
+    Args:
         url (str): Git repo url.
     Returns:
         repo_dir (str): Name of the folder name of the repo.
@@ -103,7 +103,7 @@ def clone_repo(url):
 
 def get_number_commits(repo_dir):
     """Get total number of commits.
-    Parameters:
+    Args:
         repo_dir (str): Repo directory.
     Returns:
         resp (int): Number of commits.
@@ -118,7 +118,7 @@ def get_number_commits(repo_dir):
 
 def get_number_branches(repo_dir):
     """Get total number of branches.
-    Parameters:
+    Args:
         repo_dir (str): Repo directory.
     Returns:
         resp (int): Number of branches.
@@ -134,7 +134,7 @@ def get_number_branches(repo_dir):
 
 def get_number_tags(repo_dir):
     """Get total number of tags.
-    Parameters:
+    Args:
         repo_dir (str): Repo directory.
     Returns:
         resp (int): Number of tags.
@@ -148,7 +148,7 @@ def get_number_tags(repo_dir):
 
 def get_number_contributors(repo_dir):
     """Get total number of contributors.
-    Parameters:
+    Args:
         repo_dir (str): Repo directory.
     Returns:
         resp (int): Number of contributors.
@@ -162,7 +162,7 @@ def get_number_contributors(repo_dir):
 
 def count_total_lines(repo_dir):
     """Get total number of lines.
-    Parameters:
+    Args:
         repo_dir (str): Repo directory.
     Returns:
         resp (int): Number of lines.
@@ -176,7 +176,7 @@ def count_total_lines(repo_dir):
 
 def count_added_lines(repo_dir):
     """Get the number of added lines.
-    Parameters:
+    Args:
         repo_dir (str): Repo directory.
     Returns:
         resp (int): Number of added lines.
@@ -190,7 +190,7 @@ def count_added_lines(repo_dir):
 
 def count_deleted_lines(repo_dir):
     """Get the number of deleted lines.
-    Parameters:
+    Args:
         repo_dir (str): Repo directory.
     Returns:
         resp (int): Number of deleted lines.

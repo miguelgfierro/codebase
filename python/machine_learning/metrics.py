@@ -15,17 +15,19 @@ def classification_metrics_binary(y_true, y_pred):
     High Precision and low Recall will return few positive results but most of them will be correct. 
     High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
-    Parameters:
+    Args:
         y_true (list or array): True labels.
         y_pred (list or array): Predicted labels (binary).
     Returns:
         report (dict): Dictionary with metrics.
     Examples:
+        >>> from collections import OrderedDict
         >>> y_true = [0,1,0,0,1]
         >>> y_pred = [0,1,0,1,1]
-        >>> classification_metrics_binary(y_true, y_pred)
-        {'Recall': 1.0, 'F1': 0.80000000000000004, 'Confusion Matrix': array([[2, 1],
-               [0, 2]]), 'Precision': 0.66666666666666663, 'Accuracy': 0.80000000000000004}
+        >>> result = classification_metrics_binary(y_true, y_pred)
+        >>> OrderedDict(sorted(result.items()))
+        OrderedDict([('Accuracy', 0.8), ('Confusion Matrix', array([[2, 1],
+               [0, 2]])), ('F1', 0.8), ('Precision', 0.6666666666666666), ('Recall', 1.0)])
 
     """
     m_acc = accuracy_score(y_true, y_pred)
@@ -33,7 +35,7 @@ def classification_metrics_binary(y_true, y_pred):
     m_precision = precision_score(y_true, y_pred)
     m_recall = recall_score(y_true, y_pred)
     m_conf = confusion_matrix(y_true, y_pred)
-    report = {'Accuracy':m_acc, 'Precision':m_precision, 'Recall':m_recall, 'F1':m_f1, 'Confusion Matrix':m_conf}
+    report = {'Accuracy': m_acc, 'Precision': m_precision, 'Recall': m_recall, 'F1': m_f1, 'Confusion Matrix': m_conf}
     return report
 
 
@@ -50,19 +52,21 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
     High Precision and low Recall will return few positive results but most of them will be correct. 
     High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
-    Parameters:
+    Args:
         y_true (list or array): True labels.
         y_pred (list or array): Predicted labels.
         labels (list): Label index or name.
     Returns:
         report (dict): Dictionary with metrics.
     Examples:
+        >>> from collections import OrderedDict
         >>> y_true = [0,1,2,0,1]
         >>> y_pred = [0,1,0,1,1]
-        >>> classification_metrics_multilabel(y_true, y_pred, [0,1,2])
-        {'F1': 0.52000000000000002, 'Confusion Matrix': array([[1, 1, 0],
-           [0, 2, 0],
-           [1, 0, 0]]), 'Recall': 0.59999999999999998, 'Precision': 0.46666666666666662, 'Accuracy': 0.59999999999999998}
+        >>> result = classification_metrics_multilabel(y_true, y_pred, [0,1,2])
+        >>> OrderedDict(sorted(result.items()))
+        OrderedDict([('Accuracy', 0.6), ('Confusion Matrix', array([[1, 1, 0],
+               [0, 2, 0],
+               [1, 0, 0]])), ('F1', 0.52), ('Precision', 0.4666666666666666), ('Recall', 0.6)])
 
     """
     m_acc = accuracy_score(y_true, y_pred)
@@ -70,7 +74,7 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
     m_precision = precision_score(y_true, y_pred, labels, average='weighted')
     m_recall = recall_score(y_true, y_pred, labels, average='weighted')
     m_conf = confusion_matrix(y_true, y_pred, labels)
-    report = {'Accuracy':m_acc, 'Precision':m_precision, 'Recall':m_recall, 'F1':m_f1, 'Confusion Matrix':m_conf}
+    report = {'Accuracy': m_acc, 'Precision': m_precision, 'Recall': m_recall, 'F1': m_f1, 'Confusion Matrix': m_conf}
     return report
 
 
@@ -81,24 +85,27 @@ def classification_metrics_binary_prob(y_true, y_prob):
     - Log loss: Also called logistic regression loss or cross-entropy loss. It quantifies the performance by
     penalizing false classifications. Minimizing the Log Loss is equivalent to minimizing the squared error but using
     probabilistic predictions. Log loss penalize heavily classifiers that are confident about incorrect classifications.
-    Parameters:
+    Args:
         y_true (list or array): True labels.
         y_prob (list or array): Predicted labels (probability).
     Returns:
         report (dict): Dictionary with metrics.
     Examples:
+        >>> from collections import OrderedDict
         >>> y_true = [0,1,0,0,1]
         >>> y_prob = [0.2,0.7,0.4,0.3,0.2]
-        >>> classification_metrics_binary_prob(y_true, y_prob)
-        {'AUC': 0.58333333333333326, 'Log loss': 0.61135139507835312}
+        >>> result = classification_metrics_binary_prob(y_true, y_prob)
+        >>> OrderedDict(sorted(result.items()))
+        OrderedDict([('AUC', 0.5833333333333333), ('Log loss', 0.6113513950783531)])
         >>> y_prob = [0.2,0.7,0.4,0.3,0.3]
-        >>> classification_metrics_binary_prob(y_true, y_prob)
-        {'AUC': 0.75, 'Log loss': 0.53025837345672033}
+        >>> result = classification_metrics_binary_prob(y_true, y_prob)
+        >>> OrderedDict(sorted(result.items()))
+        OrderedDict([('AUC', 0.75), ('Log loss', 0.5302583734567203)])
 
     """
     m_auc = roc_auc_score(y_true, y_prob)
     m_logloss = log_loss(y_true, y_prob)
-    report = {'AUC':m_auc, 'Log loss':m_logloss}
+    report = {'AUC': m_auc, 'Log loss': m_logloss}
     return report
 
 
@@ -111,24 +118,27 @@ def regression_metrics(y_true, y_pred):
     - R Square: R2 is statistical measure of how close the data are to the fitted regression line. It's best possible
     score is 1.0 and it can be negative (because the model can be arbitrarily worse). A score of 0 means that the
     variables are not linearly correlated.
-    Parameters:
+    Args:
         y_true (list or array): True values.
         y_pred (list or array): Predicted values.
     Returns:
         report (dict): Dictionary with metrics.
     Examples:
+        >>> from collections import OrderedDict
         >>> y_true = [5,1,0,7,1]
         >>> y_pred = [6,0.7,0.4,10,20]
-        >>> regression_metrics(y_true, y_pred)
-        {'MSE': 74.25, 'MAE': 4.7400000000000002, 'R2': -9.0883152173913029}
+        >>> result = regression_metrics(y_true, y_pred)
+        >>> OrderedDict(sorted(result.items()))
+        OrderedDict([('MAE', 4.74), ('MSE', 74.25), ('R2', -9.088315217391303)])
         >>> y_true = [5,1,0,7,1]
         >>> y_pred = [6,0.7,0.4,10,2]
-        >>> regression_metrics(y_true, y_pred)
-        {'MSE': 2.25, 'MAE': 1.1400000000000001, 'R2': 0.69429347826086962}
+        >>> result = regression_metrics(y_true, y_pred)
+        >>> OrderedDict(sorted(result.items()))
+        OrderedDict([('MAE', 1.1400000000000001), ('MSE', 2.25), ('R2', 0.6942934782608696)])
 
     """
     mse = mean_squared_error(y_true, y_pred)
     mae = mean_absolute_error(y_true, y_pred)
     r2 = r2_score(y_true, y_pred)
-    report = {'MSE':mse, 'MAE':mae, 'R2': r2}
+    report = {'MSE': mse, 'MAE': mae, 'R2': r2}
     return report

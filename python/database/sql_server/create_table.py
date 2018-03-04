@@ -3,7 +3,7 @@ import pyodbc
 
 def create_table(table_name, cursor):
     """Create a table and drop it if it exists.
-    Parameters:
+    Args:
         table_name (str): Table name.
         cursor (object): pyobdc cursor.
     Example:

@@ -3,7 +3,7 @@ import numpy as np
 
 def has_same_sign(data):
     """ Evaluate if the array has all elements with the same sign.
-    Parameters:
+    Args:
         data (numpy array): An array.
     Returns:
         flag (bool): Boolean with the evaluation.
@@ -30,7 +30,7 @@ def has_same_sign(data):
 
 def has_same_sign_or_zero(data):
     """ Evaluate if the array has all elements with the same sign or zero.
-    Parameters:
+    Args:
         data (numpy array): An array.
     Returns:
         flag (bool): Boolean with the evaluation.

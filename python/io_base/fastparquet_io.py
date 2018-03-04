@@ -4,7 +4,7 @@ from fastparquet import write
 
 def save_file(data, filename):
     """Save a dataframe in parquet format.
-    Parameters:
+    Args:
         data (pd.DataFrame): A dataframe
         filename (str): Name of the file.
     Examples:
@@ -18,7 +18,7 @@ def save_file(data, filename):
 
 def read_file(filename):
     """Read a parquet file.
-    Parameters:
+    Args:
         filename (str): Name of the file.
     Returns:
         data (pd.DataFrame): An dataframe.

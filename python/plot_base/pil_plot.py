@@ -4,7 +4,7 @@ from PIL import Image
 
 def plot_image_matplot(img):
     """Plot an image.
-    Parameters:
+    Args:
         img (PIL image): A PIL image.
     Examples:
         >>> img = Image.open('../../share/Lenna.png')
@@ -22,7 +22,7 @@ def plot_image_matplot(img):
 
 def plot_image(img):
     """Plot an image.
-    Parameters:
+    Args:
         img (PIL image): A PIL image.
     Examples:
         >>> img = Image.open('../../share/Lenna.png')

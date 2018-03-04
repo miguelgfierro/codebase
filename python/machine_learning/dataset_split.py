@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 
 def split_train_test(X, y, test_size=0.2):
     """Split a dataset into train and test sets.
-    Parameters:
+    Args:
         X (np.array or pd.DataFrame): Features.
         y (np.array or pd.DataFrame): Labels.
         test_size (float): Percentage in the test set.
@@ -24,7 +24,7 @@ def split_train_test(X, y, test_size=0.2):
 
 def split_train_val_test(X, y, val_size=0.2, test_size=0.2):
     """Split a dataset into train, validation and test sets.
-    Parameters:
+    Args:
         X (np.array or pd.DataFrame): Features.
         y (np.array or pd.DataFrame): Labels.
         val_size (float): Percentage in the validation set.

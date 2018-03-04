@@ -32,7 +32,7 @@ def hello_world():
 @app.route('/hello/<user_id>')
 def hello_user(user_id):
     """Basic endpoint with url parameters.
-    Parameters:
+    Args:
         user_id (str): String parameter.
     Examples:
         $ curl http://127.0.0.1:5000/hello/5

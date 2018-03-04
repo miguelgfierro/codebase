@@ -18,7 +18,7 @@ def rosenbrock(x):
         >>> bounds = [(0,2), (0, 2), (0, 2), (0, 2), (0, 2)]
         >>> result = optimize_function(rosenbrock, bounds)
         >>> result.x # Solution
-        array([ 1.,  1.,  1.,  1.,  1.])
+        array([1., 1., 1., 1., 1.])
         >>> result.fun # Final value of the objective function
         0.0
         >>> result.success
@@ -34,9 +34,9 @@ def ackley(x):
         >>> bounds = [(-5, 5), (-5, 5)]
         >>> result = optimize_function(ackley, bounds)
         >>> result.x # Solution
-        array([ 0.,  0.])
-        >>> result.fun # Final value of the objective function
-        4.4408920985006262e-16
+        array([0., 0.])
+        >>> round(result.fun) # Final value of the objective function (around 4e-16)
+        0.0
         >>> result.success
         True
 
@@ -49,7 +49,7 @@ def ackley(x):
 def optimize_function(func, bounds):
     """Function optimization using Differential Evolution algorithm.
     Info: https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.optimize.differential_evolution.html
-    Parameters:
+    Args:
         func (callable): The objective function to be minimized. In the form f(x, *args), where x is the argument in
                          the form of a 1-D array and args is a tuple of any additional parameters.
         bounds (array): Constraints (min, max) pairs for each element in x.

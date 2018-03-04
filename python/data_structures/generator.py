@@ -3,7 +3,7 @@ import numpy as np
 
 def yield_data(data, batch_size, complete_batches=False):
     """Yield an array in batches.
-    Parameters:
+    Args:
         data (numpy array or list): An array or list.
         batch_size (int): The size of the data batch yielded.
         complete_batches (bool): If `True` it will return complete batches, if `False` it will return the complete

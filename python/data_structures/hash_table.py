@@ -9,7 +9,7 @@ class HashTable(object):
     In python hash tables are implemented as `dict`, to solve collisions they use __eq__
     Time complexity: search, insert, delete: O(1)
     Space complexity: O(n)
-    Parameters:
+    Args:
         size (int): Size of the hash table.
     Examples:
         >>> H=HashTable(5)

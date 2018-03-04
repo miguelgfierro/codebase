@@ -10,7 +10,7 @@ GOOGLE_END_POINT = 'http://www.google.com/search'
 
 class GoogleTrend(object):
     """Gets the Google trends of a set of terms
-    Parameters:
+    Args:
         keywords (list): List of terms to search.
     """
     def __init__(self, keywords):

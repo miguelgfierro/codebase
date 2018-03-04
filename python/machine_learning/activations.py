@@ -11,14 +11,14 @@ def softmax(x):
     """Softmax of a vector. It is the normalized exponential function. Softmax is a generalization of the logistic
     function that squashes a vector z into another vector of real values in the range (0, 1) that add up to 1.
     Used for multiclass classification.
-    Parameters:
+    Args:
         x (list or numpy array): Input list or array.
     Returns:
         result (numpy array): The softmax of the array.
     Examples:
         >>> scores = [12, 5, 1]
         >>> softmax(scores)
-        array([  9.99072278e-01,   9.11035992e-04,   1.66862063e-05])
+        array([9.99072278e-01, 9.11035992e-04, 1.66862063e-05])
         >>> sum(softmax(scores))
         1.0
 
@@ -28,7 +28,7 @@ def softmax(x):
 
 def tanh(x):
     """Hyperbolic tangent. Output between -1,1
-    Parameters:
+    Args:
         x (list or numpy array): Input list or array.
     Returns:
         result (numpy array): The tanh of the array.
@@ -44,15 +44,15 @@ def tanh(x):
 
 def sigmoid(x):
     """Sigmoid function. Output between 0,1
-    Parameters:
+    Args:
         x (list or numpy array): Input list or array.
     Returns:
         result (numpy array): The sigmoid of the array.
     Examples:
         >>> x = np.array([[1,1,-3],[0.5,-1,1]])
         >>> sigmoid(x)
-        array([[ 0.73105858,  0.73105858,  0.04742587],
-               [ 0.62245933,  0.26894142,  0.73105858]])
+        array([[0.73105858, 0.73105858, 0.04742587],
+               [0.62245933, 0.26894142, 0.73105858]])
 
     """
     return 1. / (1 + np.exp(-x))
@@ -61,7 +61,7 @@ def sigmoid(x):
 def RELU(x, inplace=False):
     """Rectified Linear Unit, removing the negative parts of the input: max(x,0)
     Benchmark: https://stackoverflow.com/a/40013151/5620182
-    Parameters:
+    Args:
         x (list or numpy array): Input list or array.
         inplace (bool): Inplace flag.
     Returns:
@@ -73,8 +73,8 @@ def RELU(x, inplace=False):
                [ 0.5, -0. ,  1. ]])
         >>> RELU(x, inplace=True)
         >>> x
-        array([[ 1. ,  1. ,  0. ],
-               [ 0.5,  0. ,  1. ]])
+        array([[1. , 1. , 0. ],
+               [0.5, 0. , 1. ]])
 
     """
     if inplace:
@@ -86,7 +86,7 @@ def RELU(x, inplace=False):
 def LeakyRELU(x, alpha=0.3):
     """Leaky Rectified Linear Unit. It allows a small gradient when the unit is not active.
     `f(x) = alpha * x for x < 0, f(x) = x for x >= 0`
-    Parameters:
+    Args:
         x (list or numpy array): Input list or array.
         alpha (float): Scale factor.
     Returns:
@@ -106,7 +106,7 @@ def ELU(x, alpha=1.0):
     `f(x) =  alpha * (exp(x) - 1.) for x < 0`,
     `f(x) = x for x >= 0`.
     paper: http://arxiv.org/abs/1511.07289
-    Parameters:
+    Args:
         x (list or numpy array): Input list or array.
         alpha (float): Scale factor.
     Returns:
@@ -124,7 +124,7 @@ def ELU(x, alpha=1.0):
 def SELU(x):
     """Scaled Exponential Linear Unit
     paper: https://arxiv.org/abs/1706.02515
-    Parameters:
+    Args:
         x (list or numpy array): Input list or array.
         alpha (float): Scale factor.
     Returns:

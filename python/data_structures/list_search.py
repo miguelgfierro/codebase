@@ -5,7 +5,7 @@ def sequential_search(alist, item):
     Complexity:
     item is present: best case=1, worst case=n, avg=n/2
     item not present: best case=n, worst case=n, avg=n
-    Parameters:
+    Args:
         alist (list): A list.
         item (int): The item to search.
     Returns:
@@ -33,7 +33,7 @@ def ordered_sequential_search(ordered_list, item):
     Complexity:
     item is present: best case=1, worst case=n, avg=n/2
     item not present: best case=1, worst case=n, avg=n/2
-    Parameters:
+    Args:
         ordered_list (list): An ordered list.
         item (int): The item to search.
     Returns:
@@ -63,7 +63,7 @@ def ordered_sequential_search(ordered_list, item):
 def ordered_binary_search(ordered_list, item):
     """Binary search in an ordered list
     Complexity: O(log n)
-    Parameters:
+    Args:
         ordered_list (list): An ordered list.
         item (int): The item to search.
     Returns:

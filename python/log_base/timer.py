@@ -12,12 +12,12 @@ class Timer(object):
         >>> a = [r+i for i in range(big_num)]
         >>> t.stop()
         >>> np.round(t.interval)
-        1.0
+        2.0
         >>> r = 0
         >>> with Timer() as t:
         ...   a = [r+i for i in range(big_num)]
         >>> np.round(t.interval)
-        1.0
+        2.0
 
     """
     def __init__(self):

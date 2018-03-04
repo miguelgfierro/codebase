@@ -5,7 +5,7 @@ def bubble_sort(alist, quick_impl=True):
     """Bubble sort. It compares adjacent items and exchanges them if they are out of order. Each pass through
     the list places the largest value in its proper place. In essence, each item “bubbles” up to the location where it belongs.
     Time complexity: O(n^2), space complexity: O(1)
-    Parameters:
+    Args:
         alist (list): A list.
         quick_impl (bool): Since bubble sort iterates through the entire list, sort can be modified to stop early
                            if it finds that the list is sorted
@@ -43,7 +43,7 @@ def selection_sort(alist):
     """Selection sort. It looks for the largest value and, after completing the pass, places it in the proper location.
     As with a bubble sort, after the first pass, the largest item is in the correct place.
     Time complexity: O(n^2), space complexity: O(1)
-    Parameters:
+    Args:
         alist (list): A list.
     Examples:
         >>> alist = [54,26,93,17,77,31]
@@ -66,7 +66,7 @@ def insertion_sort(alist):
     """Insertion sort. It always maintains a sorted sublist in the lower positions of the list. Each new item is
     then “inserted” back into the previous sublist such that the sorted sublist is one item larger.
     Time complexity: O(n^2), space complexity: O(1)
-    Parameters:
+    Args:
         alist (list): A list.
     Examples:
         >>> alist = [54,26,93,17,77,31]
@@ -94,7 +94,7 @@ def merge_sort(alist):
     Python sort algorithm is a modified version of merge sort: http://python-textbok.readthedocs.io/en/1.0/Sorting_and_Searching_Algorithms.html#python-s-sorting-algorithm
     Explanation on video: https://www.youtube.com/watch?v=TzeBrDU-JaY
     Time complexity: O(n*log(n)), space complexity: O(n)
-    Parameters:
+    Args:
         alist (list): A list.
     Examples:
         >>> alist = [54,26,93,17,77,31]
@@ -138,7 +138,7 @@ def quick_sort(alist):
     It finds a pivot and place is in its correct place making all the left elements smaller then the pivot and all
     the right elements bigger than the pivot, then the function is called on the sublists. 
     Time complexity: O(n*log(n)), space complexity: O(log(n))
-    Parameters:
+    Args:
         alist (list): A list.
     Examples:
         >>> alist = [54,26,93,17,77,31]

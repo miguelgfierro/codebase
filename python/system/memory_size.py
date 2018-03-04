@@ -5,7 +5,7 @@ import psutil
 
 def get_object_size(obj, units='Mb'):
     """Calculate the size of an object.
-    Parameters:
+    Args:
         obj (obj or str or array): Object.
         units (str): Units [bytes, Kb, Mb, Gb]
     Returns:
@@ -32,7 +32,7 @@ def get_object_size(obj, units='Mb'):
 
 def get_ram_memory(units='Mb'):
     """Get the RAM memory of the current machine.
-    Parameters:
+    Args:
         units (str): Units [bytes, Kb, Mb, Gb]
     Returns:
         size (float): Memory size.

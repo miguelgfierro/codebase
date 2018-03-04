@@ -27,5 +27,7 @@ dependencies:
   - selenium>=3.4.3
   - pillow>=4.3.0
   - sqlalchemy>=1.2.4
+  - gitpython>=2.1.8
+  - pytrends>=4.3.0
 
 
