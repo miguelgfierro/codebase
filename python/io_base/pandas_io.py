@@ -45,7 +45,7 @@ def save_to_sqlite(data, connection_string):
 
     """
     engine = create_engine(connection_string)
-    pd.to_sql(data, engine)
+    data.to_sql(engine)
 
 
 def read_from_sqlite(connection_string, query):
