@@ -3,7 +3,7 @@ from PIL import Image, ImageOps
 
 def normalize_image(img):
     """Normalize image between 0 and 255.
-    Parameters:
+    Args:
         img (PIL image): An image.
     Returns:
         img_new (PIL image): A normalized image.
@@ -23,7 +23,7 @@ def normalize_image(img):
 
 def resize_image(img, new_width, new_height):
     """Resize image to a `new_width` and `new_height`.
-    Parameters:
+    Args:
         img (PIL image): An image.
         new_width (int): New width.
         new_height (int): New height.
@@ -43,7 +43,7 @@ def resize_image(img, new_width, new_height):
 
 def equalize_image(img):
     """Equalize the image histogram.
-    Parameters:
+    Args:
         img (PIL image): An image.
     Returns:
         img_new (PIL image): A equalized image.
@@ -57,7 +57,7 @@ def equalize_image(img):
 
 def crop_image(img, box):
     """Crop a rectangular region from an image.
-    Parameters:
+    Args:
         img (PIL image): An image.
         box (tuple): Left, upper, right, and lower pixel coordinate. The origin of coordinates is
                     the upper left square.
@@ -76,7 +76,7 @@ def crop_image(img, box):
 
 def convert_to_grayscale(img):
     """Convert a color image to grayscale.
-    Parameters:
+    Args:
         img (PIL image): An image.
     Returns:
         img_new (PIL image): A grayscale image.

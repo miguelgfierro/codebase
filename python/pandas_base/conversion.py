@@ -3,7 +3,7 @@ import pandas as pd
 
 def _get_nominal_integer_dict(nominal_vals):
     """Convert nominal values in integers, starting at 0.
-    Parameters:
+    Args:
         nominal_vals (pd.Series): A series.
     Returns:
         d (dict): An dictionary with numeric values.
@@ -19,7 +19,7 @@ def _get_nominal_integer_dict(nominal_vals):
 
 def _convert_to_integer(srs, d):
     """Convert series to integer, given a dictionary.
-    Parameters:
+    Args:
         srs (pd.Series): A series.
         d (dict): A dictionary mapping values to integers
     Returns:
@@ -31,7 +31,7 @@ def _convert_to_integer(srs, d):
 
 def _convert_to_string(srs):
     """Convert series to string.
-    Parameters:
+    Args:
         srs (pd.Series): A series.
     Returns:
         srs (pd.Series): An series with string values.
@@ -44,7 +44,7 @@ def convert_cols_categorical_to_numeric(df, col_list=None):
     """Convert categorical columns to numeric and leave numeric columns
     as they are. You can force to convert a numerical column if it is
     included in col_list
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         col_list (list): List of columns.
     Returns:
@@ -75,7 +75,7 @@ def convert_related_cols_categorical_to_numeric(df, col_list):
     """Convert categorical columns, that are related between each other,
     to numeric and leave numeric columns
     as they are.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         col_list (list): List of columns.
     Returns:
@@ -108,7 +108,7 @@ def convert_related_cols_categorical_to_numeric(df, col_list):
 def convert_cols_numeric_to_categorical(df, col_list=None):
     """Convert numerical columns to categorical and leave numeric columns
     as they are
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         col_list (list): List of columns.
     Returns:
@@ -141,7 +141,7 @@ def convert_cols_numeric_to_categorical(df, col_list=None):
 
 def convert_to_numpy_array(df, columns=None):
     """Convert a dataframe to a numpy array. Every column of the dataframe is a column in the array.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         columns [list of string]: If None, return all columns, otherwise, returns specified columns.
     Returns:
@@ -162,7 +162,7 @@ def convert_to_numpy_array(df, columns=None):
 
 def replace_column_values(df, val_dict, col_name, new_col_name=None):
     """Replace all appearances of a value to another in a dictionary.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         val_dict (dict): Dictionary with the values to replace.
         col_name (str): Column name.
@@ -195,7 +195,7 @@ def replace_column_values(df, val_dict, col_name, new_col_name=None):
 
 def split_text_in_column(df, component, col_name, new_col_list):
     """Split a text in a dataframe column by a component.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         component (str): Component for splitting the text.
         col_name (str): Column name.

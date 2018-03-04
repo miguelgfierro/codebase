@@ -5,7 +5,7 @@ import requests
 
 def save_image(img, filename):
     """Save an image.
-    Parameters:
+    Args:
         img (numpy array): An image.
         filename (str): Name of the file.
     Examples:
@@ -18,7 +18,7 @@ def save_image(img, filename):
 
 def read_image(filename):
     """Read an image.
-    Parameters:
+    Args:
         filename (str): Name of the file.
     Returns:
         img (PIL image): An image in PIL format.
@@ -40,7 +40,7 @@ def read_image(filename):
 
 def read_image_url(url):
     """Read an image from a URL.
-    Parameters:
+    Args:
         url (str): URL of the file.
     Returns:
         img (PIL image): An image in PIL format.

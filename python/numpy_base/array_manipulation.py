@@ -3,7 +3,7 @@ import numpy as np
 
 def split_array_in_subarrays(data, n_subarrays, axis=0):
     """Split an array in subarrays. Don't need to have the same size.
-    Parameters:
+    Args:
         data (numpy array): An array.
         n_subarrays (int): The number of subarrays.
         axis (int): Axis of the operation.
@@ -25,7 +25,7 @@ def split_array_in_subarrays(data, n_subarrays, axis=0):
 
 def concatenate_arrays(array_list, axis=0):
     """Concatenate a list of arrays.
-    Parameters:
+    Args:
         array_list (list): A list of arrays.
         axis (int): Axis of the operation.
     Returns:
@@ -45,7 +45,7 @@ def concatenate_arrays(array_list, axis=0):
 def one_hot_encoding_integer(y, num_classes=None):
     """Converts a class vector (integers) to binary class matrix.
     source: https://github.com/fchollet/keras/blob/d956d19fccf6de6344c282218f1b027453785fa9/keras/utils/np_utils.py
-    Parameters:
+    Args:
         y (int): An integer class from 0 to num_classes.
         num_classes (int): Total number of classes.
     Returns:

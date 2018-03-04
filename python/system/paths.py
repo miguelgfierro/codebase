@@ -28,7 +28,7 @@ def get_parent_folder_path():
 
 def count_files_in_folder(folderpath):
     """ Return the number of files in a folder.
-    Parameters:
+    Args:
         folderpath (str): folder path
     Returns:
         number (int): number of files in a folder
@@ -42,7 +42,7 @@ def count_files_in_folder(folderpath):
 
 def count_files_in_folder_recursively(folderpath):
     """ Return the number of files in a folder recursively.
-    Parameters:
+    Args:
         folderpath (str): folder path
     Returns:
         number (int): number of files in a folder
@@ -58,7 +58,7 @@ def count_files_in_folder_recursively(folderpath):
 
 def get_filenames_in_folder(folderpath):
     """ Return the files or folder names inside a folder.
-    Parameters:
+    Args:
         folderpath (str): folder path
     Returns:
         filelist (list): list of files
@@ -73,7 +73,7 @@ def get_filenames_in_folder(folderpath):
 
 def get_files_in_folder_recursively(folderpath):
     """ Return the files inside a folder recursivaly.
-    Parameters:
+    Args:
         folderpath (str): folder path
     Returns:
         filelist (list): list of files
@@ -90,7 +90,7 @@ def get_files_in_folder_recursively(folderpath):
 
 def make_directory(folderpath):
     """ Make a directory.
-    Parameters:
+    Args:
         folderpath (str): folder path
     Examples:
         >>> make_directory('C:/run3x/codebase/python/minsc/dir1/dir2')

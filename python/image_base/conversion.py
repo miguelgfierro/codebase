@@ -6,7 +6,7 @@ import matplotlib.pylab as plt
 
 def image_pil2scipy_array(img):
     """Convert a PIL image to a numpy image.
-    Parameters:
+    Args:
         img (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
     Returns:
         img_new (numpy array): A numpy image of uint8 between 0 and 255.
@@ -26,7 +26,7 @@ def image_pil2scipy_array(img):
 
 def image_scipy_numpy2pil(img):
     """Convert a numpy image to a PIL image.
-    Parameters:
+    Args:
         img (numpy array): A numpy image of uint8 between 0 and 255.
     Returns:
         img_new (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
@@ -47,7 +47,7 @@ def image_scipy_numpy2pil(img):
 
 def image_cv2pil(img):
     """Convert a opencv image to a PIL image.
-    Parameters:
+    Args:
         img (numpy array): A numpy image loaded with opencv of uint8 between 0 and 255 using BGR channels.
     Returns:
         img_new (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
@@ -68,7 +68,7 @@ def image_cv2pil(img):
 
 def image_pil2cv(img):
     """Convert a PIL image to an opencv image.
-    Parameters:
+    Args:
         img (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
     Returns:
         img_new (numpy array): A numpy image loaded with opencv of uint8 between 0 and 255 using BGR channels.
@@ -88,7 +88,7 @@ def image_pil2cv(img):
 
 def image_cv2plt(img):
     """Convert a opencv image to a matplotlib image.
-    Parameters:
+    Args:
         img (numpy array): A numpy image loaded with opencv of uint8 between 0 and 255 using BGR channels.
     Returns:
         img_new (numpy array): A matplotlib image of float32 between 0 and 1 using RGB channels.
@@ -109,7 +109,7 @@ def image_cv2plt(img):
 
 def image_plt2cv(img):
     """Convert a matplotlib image to an opencv image.
-    Parameters:
+    Args:
         img (numpy array): A matplotlib image of float32 between 0 and 1 using RGB channels.
     Returns:
         img_new (numpy array): A numpy image of uint8 between 0 and 255 using BGR channels.
@@ -130,7 +130,7 @@ def image_plt2cv(img):
 
 def image_pil2plt(img):
     """Convert a PIL image to an matplotlib image.
-    Parameters:
+    Args:
         img (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
     Returns:
         img_new (numpy array): A matplotlib image of float32 between 0 and 1 using RGB channels.
@@ -150,7 +150,7 @@ def image_pil2plt(img):
 
 def image_plt2pil(img):
     """Convert a matplotlib image to a PIL image.
-    Parameters:
+    Args:
         img (numpy array): A matplotlib image of float32 between 0 and 1 using RGB channels.
     Returns:
         img_new (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.

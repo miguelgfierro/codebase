@@ -49,7 +49,7 @@ def ackley(x):
 def optimize_function(func, bounds):
     """Function optimization using Differential Evolution algorithm.
     Info: https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.optimize.differential_evolution.html
-    Parameters:
+    Args:
         func (callable): The objective function to be minimized. In the form f(x, *args), where x is the argument in
                          the form of a 1-D array and args is a tuple of any additional parameters.
         bounds (array): Constraints (min, max) pairs for each element in x.

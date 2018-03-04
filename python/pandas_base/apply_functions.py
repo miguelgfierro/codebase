@@ -3,7 +3,7 @@ import pandas as pd
 
 def apply_function_on_axis_dataframe(df, func, axis=0):
     """Apply a function on a row/column basis of a DataFrame.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         func (function): The function to apply.
         axis (int): The axis of application (0=columns, 1=rows).
@@ -31,7 +31,7 @@ def apply_function_on_axis_dataframe(df, func, axis=0):
 
 def apply_function_elementwise_dataframe(df, func):
     """Apply a function on a row/column basis of a DataFrame.
-    Parameters:
+    Args:
         df (pd.DataFrame): Dataframe.
         func (function): The function to apply.
     Returns:
@@ -53,7 +53,7 @@ def apply_function_elementwise_dataframe(df, func):
 
 def apply_function_elementwise_series(ser, func):
     """Apply a function on a row/column basis of a DataFrame.
-    Parameters:
+    Args:
         ser (pd.Series): Series.
         func (function): The function to apply.
     Returns:

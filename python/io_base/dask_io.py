@@ -5,7 +5,7 @@ import pandas as pd
 def save_csv(data, filename='file.*.csv', npartitions=1, **kwargs):
     """Save a dataframe into one of multiple `csv` files.
     Dask is designed to be used for big datasets.
-    Parameters:
+    Args:
         data (pd.DataFrame): A dataframe
         filename (str): Name of the file with a globstring '*'. Dask will substitude
                         '*' with the number of partitions
@@ -25,7 +25,7 @@ def save_csv(data, filename='file.*.csv', npartitions=1, **kwargs):
 
 def read_csv(filename, **kwargs):
     """Read a `csv` file.
-    Parameters:
+    Args:
         filename (str): Name of the file. Optionally the filename can have a globstring '*',
                         then it will parse all files matching a pattern.
         **kwargs (object): Same arguments as in pd.DataFrame.read_csv

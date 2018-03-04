@@ -43,7 +43,7 @@ def get_python_version():
 
 def get_library_version(library_name):
     """Get the version of a library.
-    Parameters:
+    Args:
         library_name (str): Name of the library.
     Returns:
         version (str): Version of the library.

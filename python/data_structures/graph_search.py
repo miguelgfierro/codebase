@@ -6,7 +6,7 @@ from stack import Stack
 def breadth_first_search_paths(graph, start, goal):
     """Breadth-first search (BFS) is an algorithm for searching a path from start to goal in graph data structures.
     It starts at the tree root and explores the neighbor nodes first, before moving to the next level neighbours.
-    Parameters:
+    Args:
         graph (Graph): A graph.
         start (key): The key of the initial vertex
         goal (key): The key of the goal vertex
@@ -51,7 +51,7 @@ def breadth_first_search_paths(graph, start, goal):
 def depth_first_search_paths(graph, start, goal):
     """Depth First Search is an algorithm for for searching a path from start to goal in graphs data structures.
     It starts at the root and explores as far as possible along each branch before backtracking.
-    Parameters:
+    Args:
         graph (Graph): A graph.
         start (Vertex): The start vertex
         goal (Vertex): The goal vertex

@@ -15,7 +15,7 @@ def classification_metrics_binary(y_true, y_pred):
     High Precision and low Recall will return few positive results but most of them will be correct. 
     High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
-    Parameters:
+    Args:
         y_true (list or array): True labels.
         y_pred (list or array): Predicted labels (binary).
     Returns:
@@ -50,7 +50,7 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
     High Precision and low Recall will return few positive results but most of them will be correct. 
     High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
-    Parameters:
+    Args:
         y_true (list or array): True labels.
         y_pred (list or array): Predicted labels.
         labels (list): Label index or name.
@@ -81,7 +81,7 @@ def classification_metrics_binary_prob(y_true, y_prob):
     - Log loss: Also called logistic regression loss or cross-entropy loss. It quantifies the performance by
     penalizing false classifications. Minimizing the Log Loss is equivalent to minimizing the squared error but using
     probabilistic predictions. Log loss penalize heavily classifiers that are confident about incorrect classifications.
-    Parameters:
+    Args:
         y_true (list or array): True labels.
         y_prob (list or array): Predicted labels (probability).
     Returns:
@@ -111,7 +111,7 @@ def regression_metrics(y_true, y_pred):
     - R Square: R2 is statistical measure of how close the data are to the fitted regression line. It's best possible
     score is 1.0 and it can be negative (because the model can be arbitrarily worse). A score of 0 means that the
     variables are not linearly correlated.
-    Parameters:
+    Args:
         y_true (list or array): True values.
         y_pred (list or array): Predicted values.
     Returns:

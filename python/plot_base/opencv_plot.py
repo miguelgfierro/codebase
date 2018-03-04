@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def plot_image(img, title='image'):
     """Plot an image.
-    Parameters:
+    Args:
         img (numpy array): An image.
         title (str): Title of the image.
     Examples:
@@ -22,7 +22,7 @@ def plot_image(img, title='image'):
 
 def plot_image_matplotlib(img, figsize=None):
     """Plot an opencv image using matplotlib.
-    Parameters:
+    Args:
         img (numpy array): An image.
         figsize (tuple): Size of the figure in inches (w,h).
     Examples:

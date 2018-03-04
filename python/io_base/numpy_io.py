@@ -5,7 +5,7 @@ import numpy as np
 
 def save_file(data, filename):
     """Save a numpy array. The file is saved as `filename.npy`.
-    Parameters:
+    Args:
         data (numpy array): An array.
         filename (str): Name of the file.
     Examples:
@@ -18,7 +18,7 @@ def save_file(data, filename):
 
 def read_file(filename):
     """Read a numpy array.
-    Parameters:
+    Args:
         filename (str): Name of the file.
     Returns:
         data (numpy array): An array.

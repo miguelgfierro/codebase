@@ -11,7 +11,7 @@ else:
 
 def maybe_download(filename, url, expected_bytes=None, verbose=False):
     """Download a file if it is not already downloaded.
-    Parameters:
+    Args:
         filename (str): File name.
         url (str): URL of the file to download.
         expected_bytes (int): Expected file size in bytes.

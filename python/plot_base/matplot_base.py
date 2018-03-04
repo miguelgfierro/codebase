@@ -5,7 +5,7 @@ from scipy.interpolate import interp1d
 
 def plot_image(img):
     """Plot an image.
-    Parameters:
+    Args:
         img (numpy array): An image.
     Examples:
         >>> import matplotlib.image as mpimg
@@ -28,7 +28,7 @@ def plot_image(img):
 
 def plot_histogram(hist, bins):
     """Plot an histogram.
-    Parameters:
+    Args:
         hist (numpy array): Array with the histogram values.
         bins (numpy array): Array of the histogram bins.
     Examples:
@@ -45,7 +45,7 @@ def plot_histogram(hist, bins):
 
 def plot_traj(y, x=None, title=None, xlabel=None, ylabel=None, color='b'):
     """Plot a trajectory of points (x,y). If x is None it just take range(len(y)).
-    Parameters:
+    Args:
         y (list or numpy array): Y axis values.
         x (list or numpy array): X axis values.
         title (str): Plot title.
@@ -68,7 +68,7 @@ def plot_traj(y, x=None, title=None, xlabel=None, ylabel=None, color='b'):
 
 def plot_traj_interpolate(y, x=None, title=None, xlabel=None, ylabel=None, color='b'):
     """Plot a trajectory of points (x,y). If x is None it just take range(len(y)).
-    Parameters:
+    Args:
         y (list or numpy array): Y axis values.
         x (list or numpy array): X axis values.
         title (str): Plot title.

@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 
 def save_csv(data, filename, **kwargs):
     """Save a dataframe as `csv`.
-    Parameters:
+    Args:
         data (pd.DataFrame): A dataframe
         filename (str): Name of the file.
     Examples:
@@ -17,7 +17,7 @@ def save_csv(data, filename, **kwargs):
 
 def read_csv(filename, **kwargs):
     """Read a `csv` file.
-    Parameters:
+    Args:
         filename (str): Name of the file.
     Returns:
         data (pd.DataFrame): An dataframe.
@@ -36,7 +36,7 @@ def read_csv(filename, **kwargs):
 
 def save_to_sqlite(data, connection_string):
     """Save a dataframe to a SQL database.
-    Parameters:
+    Args:
         data (pd.DataFrame): A dataframe
         connection_string (str): Database connection string.
     Examples:
@@ -50,7 +50,7 @@ def save_to_sqlite(data, connection_string):
 
 def read_from_sqlite(connection_string, query):
     """Make a query to a SQL database.
-    Parameters:
+    Args:
         connection_string (str): Database connection string.
         query (str): Query.
     Returns:

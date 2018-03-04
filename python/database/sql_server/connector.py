@@ -9,7 +9,7 @@ def connect_to_database(database,
                         port=1433):
     """
     Connect to a SQL server database.
-    Parameters:
+    Args:
         database (str): Database name.
         user (str): User name.
         password (str): Password.
