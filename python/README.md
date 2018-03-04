@@ -1,1 +1,7 @@
+# Python Codebase
+
 For Python Docstring, I'm using the [Google Style](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
+
+To execute the tests:
+
+    pytest --doctest-modules
