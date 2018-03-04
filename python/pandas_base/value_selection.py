@@ -19,6 +19,7 @@ def get_unique_values_in_column(df, col_name):
 
 def get_random_fraction_of_rows(df, row_fraction=0.5, reindex=True):
     """Get a random fraction of the dataframe rows.
+    Note: #doctest: +ELLIPSIS together with ... handles unpredictable test outputs
     Args:
         df (pd.DataFrame): Dataframe.
         row_fraction (float): Fraction (in percentage) of rows to retrieve.
@@ -27,18 +28,21 @@ def get_random_fraction_of_rows(df, row_fraction=0.5, reindex=True):
         df_return (pd.DataFrame): Dataframe with a fraction of the original rows.
     Examples:
         >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
-        >>> df_return = get_random_fraction_of_rows(df, 0.6)
-        >>> df_return
-          letters  numbers
-        0       c        3
-        1       a        1
+        >>> df_return = get_random_fraction_of_rows(df, 0.3, False)
+        >>> df_return.isin(df) #doctest: +ELLIPSIS
+           letters  numbers
+        ...   True     True
 
     """
-    return df.sample(frac=row_fraction).reset_index(drop=reindex)
+    df_return = df.sample(frac=row_fraction)
+    if reindex:
+        df_return = df_return.reset_index(drop=True)
+    return df_return
 
 
 def get_random_number_of_rows(df, num_rows, reindex=True):
     """Get a random number of the dataframe rows.
+    Note: #doctest: +ELLIPSIS together with ... handles unpredictable test outputs
     Args:
         df (pd.DataFrame): Dataframe.
         num_rows (int): Number of rows to retrieve.
@@ -48,12 +52,15 @@ def get_random_number_of_rows(df, num_rows, reindex=True):
     Examples:
         >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
         >>> df_return = get_random_number_of_rows(df, 1)
-        >>> df_return
-          letters  numbers
-        0       c        3
+        >>> df_return.isin(df) #doctest: +ELLIPSIS
+           letters  numbers
+        ...   True     True
 
     """
-    return df.sample(n=num_rows).reset_index(drop=reindex)
+    df_return = df.sample(n=num_rows)
+    if reindex:
+        df_return = df_return.reset_index(drop=True)
+    return df_return
 
 
 def select_values_by_range(df, row_ini, row_end, col_ini, col_end):

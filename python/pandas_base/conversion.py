@@ -152,7 +152,7 @@ def convert_to_numpy_array(df, columns=None):
         >>> arr
         array([[ 1, 10],
                [ 2, 20],
-               [ 3, 30]], dtype=int64)
+               [ 3, 30]])
         >>> arr.shape
         (3, 2)
 
