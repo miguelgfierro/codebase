@@ -18,7 +18,7 @@ def rosenbrock(x):
         >>> bounds = [(0,2), (0, 2), (0, 2), (0, 2), (0, 2)]
         >>> result = optimize_function(rosenbrock, bounds)
         >>> result.x # Solution
-        array([ 1.,  1.,  1.,  1.,  1.])
+        array([1., 1., 1., 1., 1.])
         >>> result.fun # Final value of the objective function
         0.0
         >>> result.success
@@ -34,9 +34,9 @@ def ackley(x):
         >>> bounds = [(-5, 5), (-5, 5)]
         >>> result = optimize_function(ackley, bounds)
         >>> result.x # Solution
-        array([ 0.,  0.])
-        >>> result.fun # Final value of the objective function
-        4.4408920985006262e-16
+        array([0., 0.])
+        >>> round(result.fun) # Final value of the objective function (around 4e-16)
+        0.0
         >>> result.success
         True
 
