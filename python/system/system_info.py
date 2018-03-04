@@ -49,7 +49,7 @@ def get_library_version(library_name):
         version (str): Version of the library.
     Examples:
         >>> get_library_version("pandas")
-        '0.19.2'
+        '0.22.0'
 
     """
     try:

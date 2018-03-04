@@ -8,4 +8,4 @@ To install the libraries:
 
 To execute the tests:
 
-    pytest --doctest-modules
+    pytest --doctest-modules --continue-on-collection-errors
