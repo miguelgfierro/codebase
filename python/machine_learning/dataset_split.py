@@ -36,10 +36,12 @@ def split_train_val_test(X, y, val_size=0.2, test_size=0.2):
         >>> X = np.random.randint(0,10, (100,5))
         >>> y = np.random.randint(0,1, 100)
         >>> X_train, X_val, X_test, y_train, y_val, y_test = split_train_val_test(X, y, val_size=0.2, test_size=0.2)
-        >>> print(X_train.shape, X_val.shape, X_test.shape, y_train.shape, y_val.shape, y_test.shape)
-        (64, 5) (16, 5) (20, 5) (64,) (16,) (20,)
+        >>> print(X_train.shape, X_val.shape, X_test.shape)
+        (60, 5) (20, 5) (20, 5)
+        >>> print(y_train.shape, y_val.shape, y_test.shape)
+        (60,) (20,) (20,)
 
     """
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=42, stratify=y)
-    X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=val_size, random_state=42, stratify=y_train)
+    X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=val_size/(1-test_size), random_state=42, stratify=y_train)
     return X_train, X_val, X_test, y_train, y_val, y_test
