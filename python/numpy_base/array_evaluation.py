@@ -54,3 +54,18 @@ def has_same_sign_or_zero(data):
         return True
     return np.all(data >= 0) if data[idx] >= 0 else np.all(data <= 0)
 
+
+def count_items(data, item):
+    """Count the appearances of items in data
+    Args:
+        data (numpy array): An array.
+        item (int, float or str): The item to count.
+    Returns:
+        result (int): Count of appearances of item in data.
+    Examples:
+        >>> data = np.array([(1,0,0,0,1,1,0)])
+        >>> count_items(data, 1)
+        3
+
+    """
+    return np.count_nonzero(data == item)
