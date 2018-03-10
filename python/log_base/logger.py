@@ -2,6 +2,7 @@ import os
 import logging
 import logging.config
 import yaml
+import sys
 
 
 def get_debug_level(debug_level):
@@ -64,7 +65,7 @@ def setup_logger(debug_level='ERROR', config_file=''):
             config = yaml.safe_load(f.read())
         logging.config.dictConfig(config)
     else:
-        console = logging.StreamHandler()
+        console = logging.StreamHandler(stream=sys.stdout)
         format_str = '%(asctime)s -- %(filename)s:%(lineno)s -- %(levelname)s: %(message)s'
         console.setFormatter(logging.Formatter(format_str))
         log.addHandler(console)
