@@ -35,12 +35,12 @@ def setup_logger(debug_level='ERROR', config_file=''):
     Returns:
         log (object): Logging object.
     Examples:
-        >>> log = setup_logger(debug_level='DEBUG')
-        >>> log.debug("Debug log_base")
-        2017-01-29 23:15:45,551 -- logger.py:78 -- DEBUG: Debug log_base
+        >>> log = setup_logger(debug_level='DEBUG')#It will show: 2018-03-10 09:05:14 DEBUG [test.py:6]: Debug log_base
+        >>> log.debug("Debug log_base") #doctest: +ELLIPSIS
+        20... DEBUG [<doctest setup_logger[1]>:1]: Debug log_base
         >>> log = setup_logger(debug_level='INFO', config_file='logging.yaml')
-        >>> log.error("Error log_base")
-        2017-01-29 23:16:34,671 -- logger.py:88 -- ERROR: Error log_base
+        >>> log.error("Error log_base") #doctest: +ELLIPSIS
+        20... ERROR [<doctest setup_logger[3]>:1]: Error log_base
         >>> os.environ['DEBUG_LEVEL'] = "DEBUG"
         >>> log = setup_logger(debug_level='INFO')
         >>> log.debug("Debug log_base")
@@ -66,7 +66,7 @@ def setup_logger(debug_level='ERROR', config_file=''):
         logging.config.dictConfig(config)
     else:
         console = logging.StreamHandler(stream=sys.stdout)
-        format_str = '%(asctime)s -- %(filename)s:%(lineno)s -- %(levelname)s: %(message)s'
+        format_str = '%(asctime)s %(levelname)s [%(filename)s:%(lineno)s]: %(message)s'
         format_time = '%Y-%m-%d %H:%M:%S'
         console.setFormatter(logging.Formatter(format_str, format_time))
         log.addHandler(console)

@@ -9,3 +9,8 @@ To install the libraries:
 To execute the tests:
 
     pytest --doctest-modules --continue-on-collection-errors
+
+
+_Note:_
+
+To handle variable outputs in doctest you need to add at the end of the line `#doctest: +ELLIPSIS`.
