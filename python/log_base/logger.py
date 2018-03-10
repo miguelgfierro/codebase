@@ -67,7 +67,8 @@ def setup_logger(debug_level='ERROR', config_file=''):
     else:
         console = logging.StreamHandler(stream=sys.stdout)
         format_str = '%(asctime)s -- %(filename)s:%(lineno)s -- %(levelname)s: %(message)s'
-        console.setFormatter(logging.Formatter(format_str))
+        format_time = '%Y-%m-%d %H:%M:%S'
+        console.setFormatter(logging.Formatter(format_str, format_time))
         log.addHandler(console)
 
     return log
