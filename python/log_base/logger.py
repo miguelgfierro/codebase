@@ -43,13 +43,13 @@ def setup_logger(debug_level='ERROR', config_file=''):
         20... ERROR [<doctest setup_logger[3]>:1]: Error log_base
         >>> os.environ['DEBUG_LEVEL'] = "DEBUG"
         >>> log = setup_logger(debug_level='INFO')
-        >>> log.debug("Debug log_base")
-        2017-01-29 23:17:24,582 -- logger.py:94 -- DEBUG: Debug log_base
+        >>> log.debug("Debug log_base") #doctest: +ELLIPSIS
+        20... DEBUG [<doctest setup_logger[6]>:1]: Debug log_base
 
     """
     level = get_debug_level(debug_level)
 
-    # Get environment debug level if it is defined (overwrite level in code)
+    # Get environment debug level if it is defined (then overwrite level in code)
     env_debug_level = 'DEBUG_LEVEL'
     env_level = os.getenv(env_debug_level, None)
     if env_level and get_debug_level(env_level) is not None:
