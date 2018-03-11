@@ -77,10 +77,14 @@ def setup_logger(debug_level='ERROR', config_file=''):
     log.setLevel(level)
 
     # Format logger
-    if os.path.exists(config_file):
-        with open(config_file, 'rt') as f:
-            config = yaml.safe_load(f.read())
-        logging.config.dictConfig(config)
+    if config_file:
+        try:
+            with open(config_file, 'rt') as f:
+                config = yaml.safe_load(f.read())
+                print(config)
+            logging.config.dictConfig(config)
+        except:
+            raise
     else:
         console = logging.StreamHandler(stream=sys.stdout)
         format_str = '%(asctime)s %(levelname)s [%(filename)s:%(lineno)s]: %(message)s'
