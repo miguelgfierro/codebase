@@ -51,13 +51,17 @@ def setup_logger(debug_level='ERROR', config_file=''):
         >>> log = setup_logger(debug_level='DEBUG')#It will show: 2018-03-10 09:05:14 DEBUG [test.py:6]: Debug log_base
         >>> log.debug("Debug log_base") #doctest: +ELLIPSIS
         20... DEBUG [<doctest setup_logger[1]>:1]: Debug log_base
+        >>> log.info("Debug log_base") #doctest: +ELLIPSIS
+        20... INFO [<doctest setup_logger[2]>:1]: Debug log_base
         >>> log = setup_logger(debug_level='INFO', config_file='logging.yaml')
         >>> log.error("Error log_base") #doctest: +ELLIPSIS
-        20... ERROR [<doctest setup_logger[3]>:1]: Error log_base
+        20... ERROR [<doctest setup_logger[4]>:1]: Error log_base
+        >>> log.debug("Debug log_base") #should return nothing because log level is set to info
+
         >>> os.environ['DEBUG_LEVEL'] = "DEBUG"
         >>> log = setup_logger(debug_level='INFO')
         >>> log.debug("Debug log_base") #doctest: +ELLIPSIS
-        20... DEBUG [<doctest setup_logger[6]>:1]: Debug log_base
+        20... DEBUG [<doctest setup_logger[8]>:1]: Debug log_base
 
     """
     level = get_debug_level(debug_level)
