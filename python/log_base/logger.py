@@ -27,6 +27,17 @@ def get_debug_level(debug_level):
         return None
 
 
+def disable_existing_loggers(logger_name):
+    """Disable existing loggers given a name
+    Args:
+        logger_name (str): Logger name
+    """
+    log_dict = logging.root.manager.loggerDict
+    for logger in log_dict:
+        if logger_name in logger:
+            log_dict[logger].disabled = True
+
+
 def setup_logger(debug_level='ERROR', config_file=''):
     """Setup logging configuration. To set up the logger, call this function in your main script.
     To get the logger in other modules, call `log = logging.getLogger(__name__)` in each module,
