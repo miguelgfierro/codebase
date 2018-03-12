@@ -31,13 +31,19 @@ handlers:
         encoding: utf8
 
 loggers:
-    my_module:
+    error_logger:
         level: ERROR
         handlers: [console]
         propagate: no
+    mixed_debug_logger: #to call this logger: `log = logging.getLogger('mixed_debug_logger')`
+        level: DEBUG
+        handlers: [console, info_file_handler, error_file_handler]
+    mixed_info_logger:
+        level: INFO
+        handlers: [console, info_file_handler, error_file_handler]
 
-root:
-    level: INFO #Change this to set the general log level 
-    handlers: [console, info_file_handler, error_file_handler]
-...
+#root:
+#    level: INFO #Change this to set the general log level
+#    handlers: [console, info_file_handler, error_file_handler]
+
 
