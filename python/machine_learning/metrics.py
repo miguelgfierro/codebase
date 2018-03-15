@@ -142,3 +142,52 @@ def regression_metrics(y_true, y_pred):
     r2 = r2_score(y_true, y_pred)
     report = {'MSE': mse, 'MAE': mae, 'R2': r2}
     return report
+
+
+def precision_at_k(y_true, y_pred, k):
+    """Precision at K.
+    Args:
+        y_true (list): True values.
+        y_pred (list): Predicted values.
+        k (int): Limit of predicted values.
+    Returns:
+        result (float): precision at k (max=1, min=0)
+    Examples:
+        >>> y_true = [5,1,0,7,2]
+        >>> y_pred = [2,5,0,1,7]
+        >>> precision_at_k(y_true, y_pred, k=3)
+        1.0
+        >>> y_true = [5,1,0,7,2]
+        >>> y_pred = [9,0,8,1,7]
+        >>> precision_at_k(y_true, y_pred, k=3)
+        0.3333333333333333
+
+    """
+    predictions = y_pred[:k]
+    num_hit = len(set(predictions).intersection(set(y_true)))
+    return float(num_hit) / len(predictions)
+
+
+def recall_at_k(y_true, y_pred, k):
+    """Recall at K.
+    Args:
+        y_true (list): True values.
+        y_pred (list): Predicted values.
+        k (int): Limit of predicted values.
+    Returns:
+        result (float): recall at k (max=1, min=0)
+    Examples:
+        >>> y_true = [5,1,0,7,2]
+        >>> y_pred = [2,5,0,1,7]
+        >>> recall_at_k(y_true, y_pred, k=3)
+        0.6
+        >>> y_true = [5,1,0,7,2]
+        >>> y_pred = [9,0,8,1,7]
+        >>> recall_at_k(y_true, y_pred, k=3)
+        0.2
+
+    """
+    predictions = y_pred[:k]
+    num_hit = len(set(predictions).intersection(set(y_true)))
+    return float(num_hit) / len(y_true)
+
