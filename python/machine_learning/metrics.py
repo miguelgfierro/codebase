@@ -145,10 +145,7 @@ def regression_metrics(y_true, y_pred):
     return report
 
 
-
-
-
-def precision_at_k(y_true, y_pred, k):
+def precision_at_k(y_true, y_pred, k=None):
     """Precision at K.
     Args:
         y_true (list or array): True values.
@@ -172,7 +169,7 @@ def precision_at_k(y_true, y_pred, k):
     return float(num_hit) / len(predictions)
 
 
-def recall_at_k(y_true, y_pred, k):
+def recall_at_k(y_true, y_pred, k=None):
     """Recall at K.
     Args:
         y_true (list or array): True values.
@@ -194,5 +191,102 @@ def recall_at_k(y_true, y_pred, k):
     predictions = y_pred[:k]
     num_hit = len(set(predictions).intersection(set(y_true)))
     return float(num_hit) / len(y_true)
+
+
+def discounted_cumulative_gain(y_true, y_pred, k=None):
+    """Discounted Cumulative Gain (DCG).
+    Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
+    Args:
+        y_true (list or array): True values.
+        y_pred (list or array): Predicted values.
+        k (int): Limit of predicted values.
+    Returns:
+        result (float): DCG
+    Examples:
+        >>> y_true = [5,1,0,7,2]
+        >>> y_pred = [2,5,0,1,7]
+        >>> discounted_cumulative_gain(y_true, y_pred, k=3)
+        5.130929753571458
+        >>> y_true = np.array([5,1,0,7,2])
+        >>> y_pred = np.array([9,0,8,1,7])
+        >>> discounted_cumulative_gain(y_true, y_pred, k=3)
+        6.0
+
+    """
+    order = np.argsort(y_pred)[::-1]
+    y_true = np.take(y_true, order[:k])
+    return (y_true / np.log2(np.arange(y_true.shape[0]) + 2)).sum()
+
+
+def exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
+    """Exponential Discounted Cumulative Gain (eDCG).
+    Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
+    Args:
+        y_true (list or array): True values.
+        y_pred (list or array): Predicted values.
+        k (int): Limit of predicted values.
+    Returns:
+        result (float): eDCG
+    Examples:
+        >>> y_true = [5,1,0,7,2]
+        >>> y_pred = [2,5,0,1,7]
+        >>> exponential_discounted_cumulative_gain(y_true, y_pred, k=3)
+        19.130929753571458
+        >>> y_true = np.array([5,1,0,7,2])
+        >>> y_pred = np.array([9,0,8,1,7])
+        >>> exponential_discounted_cumulative_gain(y_true, y_pred, k=3)
+        32.0
+
+    """
+    order = np.argsort(y_pred)[::-1]
+    y_true = np.take(y_true, order[:k])
+    return ((2 ** y_true - 1) / np.log2(np.arange(y_true.shape[0]) + 2)).sum()
+
+
+def normalized_discounted_cumulative_gain(y_true, y_pred, k=None):
+    """Normalized Discounted Cumulative Gain (nDCG).
+    Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
+    Args:
+        y_true (list or array): True values.
+        y_pred (list or array): Predicted values.
+        k (int): Limit of predicted values.
+    Returns:
+        result (float): nDCG (max=1, min=0)
+    Examples:
+        >>> y_true = [5,1,0,7,2]
+        >>> y_pred = [2,5,0,1,7]
+        >>> normalized_discounted_cumulative_gain(y_true, y_pred, k=3)
+        0.4599812921368268
+        >>> y_true = np.array([5,1,0,7,2])
+        >>> y_pred = np.array([9,0,8,1,7])
+        >>> normalized_discounted_cumulative_gain(y_true, y_pred, k=3)
+        0.537892328558952
+
+    """
+    return discounted_cumulative_gain(y_true, y_pred, k) / discounted_cumulative_gain(y_true, y_true, k)
+
+
+def normalized_exponential_discounted_cumulative_gain(y, y_pred, k=None):
+    """Normalized Exponential Discounted Cumulative Gain (neDCG).
+    Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
+    Args:
+        y_true (list or array): True values.
+        y_pred (list or array): Predicted values.
+        k (int): Limit of predicted values.
+    Returns:
+        result (float): neDCG (max=1, min=0)
+    Examples:
+        >>> y_true = [5,1,0,7,2]
+        >>> y_pred = [2,5,0,1,7]
+        >>> normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=3)
+        0.1292116839006246
+        >>> y_true = np.array([5,1,0,7,2])
+        >>> y_pred = np.array([9,0,8,1,7])
+        >>> normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=3)
+        0.21950735175253772
+
+    """
+    return exponential_discounted_cumulative_gain(y, y_pred, k)/exponential_discounted_cumulative_gain(y, y, k)
+
 
 
