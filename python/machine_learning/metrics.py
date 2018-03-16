@@ -1,5 +1,6 @@
 from sklearn.metrics import (confusion_matrix, accuracy_score, roc_auc_score, f1_score, log_loss, precision_score,
                              recall_score, mean_squared_error, mean_absolute_error, r2_score)
+import numpy as np
 
 
 def classification_metrics_binary(y_true, y_pred):
@@ -144,11 +145,14 @@ def regression_metrics(y_true, y_pred):
     return report
 
 
+
+
+
 def precision_at_k(y_true, y_pred, k):
     """Precision at K.
     Args:
-        y_true (list): True values.
-        y_pred (list): Predicted values.
+        y_true (list or array): True values.
+        y_pred (list or array): Predicted values.
         k (int): Limit of predicted values.
     Returns:
         result (float): precision at k (max=1, min=0)
@@ -157,8 +161,8 @@ def precision_at_k(y_true, y_pred, k):
         >>> y_pred = [2,5,0,1,7]
         >>> precision_at_k(y_true, y_pred, k=3)
         1.0
-        >>> y_true = [5,1,0,7,2]
-        >>> y_pred = [9,0,8,1,7]
+        >>> y_true = np.array([5,1,0,7,2])
+        >>> y_pred = np.array([9,0,8,1,7])
         >>> precision_at_k(y_true, y_pred, k=3)
         0.3333333333333333
 
@@ -171,8 +175,8 @@ def precision_at_k(y_true, y_pred, k):
 def recall_at_k(y_true, y_pred, k):
     """Recall at K.
     Args:
-        y_true (list): True values.
-        y_pred (list): Predicted values.
+        y_true (list or array): True values.
+        y_pred (list or array): Predicted values.
         k (int): Limit of predicted values.
     Returns:
         result (float): recall at k (max=1, min=0)
@@ -181,8 +185,8 @@ def recall_at_k(y_true, y_pred, k):
         >>> y_pred = [2,5,0,1,7]
         >>> recall_at_k(y_true, y_pred, k=3)
         0.6
-        >>> y_true = [5,1,0,7,2]
-        >>> y_pred = [9,0,8,1,7]
+        >>> y_true = np.array([5,1,0,7,2])
+        >>> y_pred = np.array([9,0,8,1,7])
         >>> recall_at_k(y_true, y_pred, k=3)
         0.2
 
@@ -190,4 +194,5 @@ def recall_at_k(y_true, y_pred, k):
     predictions = y_pred[:k]
     num_hit = len(set(predictions).intersection(set(y_true)))
     return float(num_hit) / len(y_true)
+
 
