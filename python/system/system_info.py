@@ -144,9 +144,11 @@ def get_cuda_version():
         'CUDA Version 8.0.61'
 
     """
+def get_cuda_version():
+    """Get CUDA version"""
     if sys.platform == 'win32':
         raise NotImplementedError("Implement this!")
-    elif sys.platform == 'linux':
+    elif sys.platform == 'linux' or sys.platform == 'darwin':
         path = '/usr/local/cuda/version.txt'
         if os.path.isfile(path):
             with open(path, 'r') as f:
@@ -154,8 +156,6 @@ def get_cuda_version():
             return data
         else:
             return "No CUDA in this machine"
-    elif sys.platform == 'darwin':
-        raise NotImplementedError("Find a Mac with GPU and implement this!")
     else:
         raise ValueError("Not in Windows, Linux or Mac")
 
@@ -167,12 +167,7 @@ def get_cudnn_version():
         '6.0.21'
 
     """
-    if sys.platform == 'win32':
-        raise NotImplementedError("Implement this!")
-    elif sys.platform == 'linux':
-        candidates = ['/usr/include/x86_64-linux-gnu/cudnn_v[0-99].h',
-                      '/usr/local/cuda/include/cudnn.h',
-                      '/usr/include/cudnn.h']
+    def find_cudnn_in_headers(candiates):
         for c in candidates:
             file = glob.glob(c)
             if file: break
@@ -192,7 +187,17 @@ def get_cudnn_version():
                 return "Cannot find CUDNN version"
         else:
             return "No CUDNN in this machine"
+
+    if sys.platform == 'win32':
+        raise NotImplementedError("Implement this!")
+    elif sys.platform == 'linux':
+        candidates = ['/usr/include/x86_64-linux-gnu/cudnn_v[0-99].h',
+                      '/usr/local/cuda/include/cudnn.h',
+                      '/usr/include/cudnn.h']
+        return find_cudnn_in_headers(candidates)
     elif sys.platform == 'darwin':
-        raise NotImplementedError("Find a Mac with GPU and implement this!")
+        candidates = ['/usr/local/cuda/include/cudnn.h',
+                      '/usr/include/cudnn.h']
+        return find_cudnn_in_headers(candidates)
     else:
         raise ValueError("Not in Windows, Linux or Mac")
