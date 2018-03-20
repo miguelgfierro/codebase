@@ -189,15 +189,15 @@ def get_cudnn_version():
             return "No CUDNN in this machine"
 
     if sys.platform == 'win32':
-        raise NotImplementedError("Implement this!")
+        candidates = [r'C:\NVIDIA\cuda\include\cudnn.h']
     elif sys.platform == 'linux':
         candidates = ['/usr/include/x86_64-linux-gnu/cudnn_v[0-99].h',
                       '/usr/local/cuda/include/cudnn.h',
                       '/usr/include/cudnn.h']
-        return find_cudnn_in_headers(candidates)
     elif sys.platform == 'darwin':
         candidates = ['/usr/local/cuda/include/cudnn.h',
                       '/usr/include/cudnn.h']
-        return find_cudnn_in_headers(candidates)
     else:
         raise ValueError("Not in Windows, Linux or Mac")
+    return find_cudnn_in_headers(candidates)
+
