@@ -138,13 +138,6 @@ def get_gpu_memory():
 
 
 def get_cuda_version():
-    """Get the CUDA version
-    Examples:
-        >>> get_cuda_version()
-        'CUDA Version 8.0.61'
-
-    """
-def get_cuda_version():
     """Get CUDA version"""
     if sys.platform == 'win32':
         raise NotImplementedError("Implement this!")
