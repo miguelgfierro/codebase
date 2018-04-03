@@ -1,7 +1,6 @@
 import argparse
 
 
-# FIXME: refactor with tests
 def parse_args(arguments):
     """
     Examples:
