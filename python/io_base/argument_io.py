@@ -1,7 +1,7 @@
 import argparse
 
 
-def parse_args(arguments):
+def parse_args(arguments=[]):
     """
     Examples:
         >>> import subprocess
