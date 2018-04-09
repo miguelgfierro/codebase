@@ -119,6 +119,7 @@ def regression_metrics(y_true, y_pred):
     - R Square: R2 is statistical measure of how close the data are to the fitted regression line. It's best possible
     score is 1.0 and it can be negative (because the model can be arbitrarily worse). A score of 0 means that the
     variables are not linearly correlated.
+    - Root Mean Squared Error: RMSE is the square root of MSE. It also gives a relatively high weight to large errors.
     Args:
         y_true (list or array): True values.
         y_pred (list or array): Predicted values.
@@ -130,18 +131,18 @@ def regression_metrics(y_true, y_pred):
         >>> y_pred = [6,0.7,0.4,10,20]
         >>> result = regression_metrics(y_true, y_pred)
         >>> OrderedDict(sorted(result.items()))
-        OrderedDict([('MAE', 4.74), ('MSE', 74.25), ('R2', -9.088315217391303)])
+        OrderedDict([('MAE', 4.74), ('MSE', 74.25), ('R2', -9.088315217391303), ('RMSE', 8.616843969807043)])
         >>> y_true = [5,1,0,7,1]
         >>> y_pred = [6,0.7,0.4,10,2]
         >>> result = regression_metrics(y_true, y_pred)
         >>> OrderedDict(sorted(result.items()))
-        OrderedDict([('MAE', 1.1400000000000001), ('MSE', 2.25), ('R2', 0.6942934782608696)])
+        OrderedDict([('MAE', 1.1400000000000001), ('MSE', 2.25), ('R2', 0.6942934782608696), ('RMSE', 1.5)])
 
     """
     mse = mean_squared_error(y_true, y_pred)
     mae = mean_absolute_error(y_true, y_pred)
     r2 = r2_score(y_true, y_pred)
-    report = {'MSE': mse, 'MAE': mae, 'R2': r2}
+    report = {'MSE': mse, 'MAE': mae, 'R2': r2, 'RMSE': np.sqrt(mse)}
     return report
 
 
