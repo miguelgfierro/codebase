@@ -20,7 +20,7 @@ def create_page_driver(url):
         'Sciblog - A blog designed like a scientific paper'
 
     """
-    #TODO: check other drivers
+    # TODO: check other drivers
     driver = webdriver.Safari()
     driver.get(url)
     return driver
@@ -44,7 +44,7 @@ def search_form(driver, html_class_form, search_term):
     element = driver.find_element_by_class_name(html_class_form)
     element.clear()
     element.send_keys(search_term + Keys.RETURN)
-    driver.get(driver.current_url) #put driver in current page
+    driver.get(driver.current_url)  # put driver in current page
 
 
 def screenshot(driver, path='', filename='page.png'):
@@ -61,7 +61,7 @@ def screenshot(driver, path='', filename='page.png'):
     driver.get_screenshot_as_file(os.path.join(path, filename))
 
 
-def find_element(driver, value, selector_type='class'):
+def find_element(driver, value, selector_type='class', multiple=False):
     """Find an element using a selector.
     More info: https://gist.github.com/casschin/1990245
     Args:
@@ -69,6 +69,7 @@ def find_element(driver, value, selector_type='class'):
         value (str): Value to find.
         selector_type (str): Selector type. Valid arguments are 'class', 'id', 'tag',
                             'name', 'link_text', 'partial_link_text', 'css' or 'xpath'.
+        multiple (bool): Whether find one element or multiple ones.
     Returns:
         driver (obj): driver of the web
     Example:
@@ -96,10 +97,14 @@ def find_element(driver, value, selector_type='class'):
                      'css': By.CSS_SELECTOR,
                      'xpath': By.XPATH}
     if selector_type not in selector_dict:
-        raise ValueError("Selector type '{}' not in {}".format(selector_type, list(selector_dict.keys())))
+        raise ValueError("Selector type '{}' not in {}".format(
+            selector_type, list(selector_dict.keys())))
     try:
         by_func = selector_dict[selector_type]
-        element = driver.find_element(by=by_func, value=value)
+        if multiple:
+            element = driver.find_elements(by=by_func, value=value)
+        else:
+            element = driver.find_element(by=by_func, value=value)
     except NoSuchElementException as e:
         print("Element {} not found".format(value))
         raise e
