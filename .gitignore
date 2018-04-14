@@ -106,3 +106,4 @@ python/io_base/file.*
 Untitled.ipynb
 .pytest_cache/
 mig.png
+.vscode/
