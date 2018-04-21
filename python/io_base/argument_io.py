@@ -2,7 +2,12 @@ import argparse
 
 
 def parse_args(arguments=[]):
-    """
+    """Example of argparse with different inputs.
+    Args:
+        arguments (list): Arguments passed as a list of strings. This argument
+                          can be used when calling the function from a
+                          notebook. Alternatively when using the command line,
+                          we don't need this variable.
     Examples:
         >>> import subprocess
         >>> import sys
@@ -15,19 +20,30 @@ def parse_args(arguments=[]):
         Default list [7, 77, 777], type: <class 'list'>
 
     """
-
     parser = argparse.ArgumentParser(description="Parser",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('mandatory_string', type=str, help='Help mandatory string param') #here we can't put 'mandatory-string'
-    parser.add_argument('-os', '--opt-str', type=str, default='Optional string', help='Help optional string')
-    parser.add_argument('-ms', '--mand-str', type=str, help='Help mandatory string', required=True)
-    parser.add_argument('-i', '--int-param', type=int, default=7, help='Help int param')
-    parser.add_argument('-f', '--float-param', type=float, default=7.7, help='Help float param')
-    parser.add_argument('-si', '--me-gusta', action='store_true', help='Help for true parameter')
-    parser.add_argument('-no', '--no-me-gusta', action='store_false', help='Help false parameter')
-    parser.add_argument('-l','--list', nargs='+', help='List of arguments, ex: python argument_io.py -l 1 2 3')
+    # here we can't put 'mandatory-string'
+    parser.add_argument('mandatory_string', type=str,
+                        help='Help mandatory string param')
+    parser.add_argument('-os', '--opt-str', type=str,
+                        default='Optional string', help='Help optional string')
+    parser.add_argument('-ms', '--mand-str', type=str,
+                        help='Help mandatory string', required=True)
+    parser.add_argument('-i', '--int-param', type=int,
+                        default=7, help='Help int param')
+    parser.add_argument('-f', '--float-param', type=float,
+                        default=7.7, help='Help float param')
+    parser.add_argument('-si', '--me-gusta',
+                        action='store_true', help='Help for true parameter')
+    parser.add_argument('-no', '--no-me-gusta',
+                        action='store_false', help='Help false parameter')
+    parser.add_argument('-l', '--list', nargs='+',
+                        help='List of arguments, ex: python argument_io.py -l 1 2 3')
     parser.set_defaults(my_list=[7, 77, 777], my_string='bazinga')
-    args = parser.parse_args(arguments)
+    if arguments:  # when calling from notebook
+        args = parser.parse_args(arguments)
+    else:  # when calling from command line
+        args = parser.parse_args()
     print("Mandatory string:", args.mandatory_string)
     print("Mandatory string -ms:", args.mand_str)
     print("Store true -si:", args.me_gusta)
@@ -36,4 +52,5 @@ def parse_args(arguments=[]):
     return args
 
 
-
+if __name__ == "__main__":
+    parse_args()
