@@ -1,5 +1,12 @@
+# To create the conda environment:
+# $ conda env create -n py35 -f conda_py35.yml
+#
 # To update the conda environment:
-# conda env update -n py35 -f conda_py35.yaml
+# $ conda env update -n py35 -f conda_py35.yaml
+#
+# To register the conda environment in Jupyter:
+# $ python -m ipykernel install --user --name py35 --display-name "Python (py35)"
+#
 
 name: py35
 channels:
@@ -16,6 +23,7 @@ dependencies:
 - paste>=2.0.3
 - fastparquet>=0.1.4
 - dask>=0.17.1
+- ipykernel>=4.6.1
 - pip:
   - memory_profiler>=0.47
   - pandas>=0.22.0
