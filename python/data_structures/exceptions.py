@@ -20,8 +20,8 @@ def divide(x, y):
         division by zero!
         executing finally clause
         >>> divide("1","2")
-        executing finally clause
         Traceback (most recent call last):
+            ...
         TypeError: unsupported operand type(s) for /: 'str' and 'str'
     """
     try:
@@ -32,3 +32,4 @@ def divide(x, y):
         print("result is", result)
     finally:
         print("executing finally clause")
+
