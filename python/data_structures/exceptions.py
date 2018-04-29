@@ -1,3 +1,5 @@
+import traceback
+import sys
 
 
 def divide(x, y):
@@ -33,3 +35,26 @@ def divide(x, y):
     finally:
         print("executing finally clause")
 
+
+def catch_exception_message_and_trace():
+    """Example on how to catch the message and trace of an exception
+    Returns:
+        trace (str): The traceback.
+        error_msg (str): The error message
+    Examples:
+        >>> tr, e = catch_exception_message_and_trace()
+        >>> print(tr) #doctest: +ELLIPSIS
+        Traceback (most recent call last):
+          ...
+            raise ValueError("Addams Family 3, that was an error!")
+        ValueError: Addams Family 3, that was an error!
+        <BLANKLINE>
+        >>> e
+        'Addams Family 3, that was an error!'
+    """
+    try:
+        raise ValueError("Addams Family 3, that was an error!")
+    except ValueError as e:
+        trace = traceback.format_exc()
+        error_msg = str(e)
+    return trace, error_msg
