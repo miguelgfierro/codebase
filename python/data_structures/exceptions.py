@@ -1,5 +1,4 @@
 import traceback
-import sys
 
 
 def divide(x, y):
