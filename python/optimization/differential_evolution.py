@@ -1,53 +1,9 @@
-# Differential evolution optimizer
-# https://en.wikipedia.org/wiki/Differential_evolution
-# Working version of scipy 0.19
-# Function definition:
-# https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.optimize.differential_evolution.html
+from scipy.optimize import differential_evolution
 
 
-from scipy.optimize import rosen, differential_evolution
-import numpy as np
-
-
-def rosenbrock(x):
-    """The Rosenbrock funtion is  is a non-convex function used as a performance test problem for optimization
-    algorithms. The function is defined by: f(x,y) = (a-x)^2 + b(y-x^2)^2. The global minimum is inside a long, narrow,
-    parabolic shaped flat valley. To find the valley is trivial. To converge to the global minimum, is difficult.
-    More info: https://en.wikipedia.org/wiki/Rosenbrock_function
-    Examples:
-        >>> bounds = [(0,2), (0, 2), (0, 2), (0, 2), (0, 2)]
-        >>> result = optimize_function(rosenbrock, bounds)
-        >>> result.x # Solution
-        array([1., 1., 1., 1., 1.])
-        >>> result.fun # Final value of the objective function
-        0.0
-        >>> result.success
-        True
-
-    """
-    return rosen(x)
-
-
-def ackley(x):
-    """Custom function.
-    Examples:
-        >>> bounds = [(-5, 5), (-5, 5)]
-        >>> result = optimize_function(ackley, bounds)
-        >>> result.x # Solution
-        array([0., 0.])
-        >>> round(result.fun) # Final value of the objective function (around 4e-16)
-        0.0
-        >>> result.success
-        True
-
-    """
-    arg1 = -0.2 * np.sqrt(0.5 * (x[0] ** 2 + x[1] ** 2))
-    arg2 = 0.5 * (np.cos(2. * np.pi * x[0]) + np.cos(2. * np.pi * x[1]))
-    return -20. * np.exp(arg1) - np.exp(arg2) + 20. + np.e
-
-
-def optimize_function(func, bounds):
+def optimize_function(func, bounds, **kargs):
     """Function optimization using Differential Evolution algorithm.
+    https://en.wikipedia.org/wiki/Differential_evolution
     Info: https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.optimize.differential_evolution.html
     Args:
         func (callable): The objective function to be minimized. In the form f(x, *args), where x is the argument in
@@ -56,7 +12,27 @@ def optimize_function(func, bounds):
     Returns:
         result (object): Result of the optimization. For parameters see:
         https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.optimize.OptimizeResult.html#scipy.optimize.OptimizeResult
+    Examples:
+        >>> from functions import rosenbrock
+        >>> bounds = [(0,2), (0, 2), (0, 2), (0, 2), (0, 2)]
+        >>> result = optimize_function(rosenbrock, bounds)
+        >>> result.x # Solution
+        array([1., 1., 1., 1., 1.])
+        >>> result.fun # Final value of the objective function
+        0.0
+        >>> result.success
+        True
+        >>> from functions import ackley
+        >>> bounds = [(-5, 5), (-5, 5)]
+        >>> result = optimize_function(ackley, bounds, strategy='best2exp')
+        >>> result.x # Solution
+        array([0., 0.])
+        >>> round(result.fun) # Final value of the objective function (around 4e-16)
+        0.0
+        >>> result.success
+        True
+
     """
-    result = differential_evolution(func, bounds)
+    result = differential_evolution(func, bounds, **kargs)
     return result
 
