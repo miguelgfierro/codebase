@@ -14,6 +14,7 @@ class BlobIO(object):
         account_name (str): Account name
         account_key (str): Account key
     """
+
     def __init__(self, account_name, account_key):
         """Initializer
         Args:
@@ -157,7 +158,7 @@ class BlobIO(object):
             >>> from json_io import read_file
             >>> cred = read_file('../../share/blob_config.json')
             >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> df = blob.read_spark_dataframe('codebase', 'upload/traj_header.csv', 
+            >>> df = blob.read_spark_dataframe('codebase', 'upload/traj_header.csv',
             ...                                header=True, inferSchema=True)
             >>> df.head(2)
             [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
@@ -173,11 +174,14 @@ class BlobIO(object):
 
     def _manage_spark_blob_config(self, spark):
         if spark is None:
-            spark = pyspark.sql.SparkSession.builder.config(conf=SparkConf()).getOrCreate()
+            spark = pyspark.sql.SparkSession.builder.config(
+                conf=SparkConf()).getOrCreate()
         sc = spark.sparkContext
         spark_config_template = "fs.azure.account.key.{store_name}.blob.core.windows.net"
-        spark_config = spark_config_template.format(store_name=self.account_name)
+        spark_config = spark_config_template.format(
+            store_name=self.account_name)
         sc._jsc.hadoopConfiguration().set(spark_config, self.account_key)
-        sc._jsc.hadoopConfiguration().set("fs.wasb.impl", "org.apache.hadoop.fs.azure.NativeAzureFileSystem")
+        sc._jsc.hadoopConfiguration().set(
+            "fs.wasb.impl", "org.apache.hadoop.fs.azure.NativeAzureFileSystem")
         spark.conf.set(spark_config, self.account_key)
         return spark
