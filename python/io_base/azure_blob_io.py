@@ -157,15 +157,13 @@ class BlobIO(object):
             >>> from json_io import read_file
             >>> cred = read_file('../../share/blob_config.json')
             >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> df = blob.read_spark_dataframe('codebase', 'upload/traj.csv',
-            ...                                 header=None)
-            >>> df
-                      0    1    2
-            0  0.041667  443  205
-            1  0.083333  444  206
+            >>> df = blob.read_spark_dataframe('codebase', 'upload/traj_header.csv', 
+                                               header=True, inferSchema=True)
+            >>> df.head(2)
+            [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
 
         """
-        spark = self._manage_spark_config(self, spark)
+        spark = self._manage_spark_config(spark)
         wasb_template = "wasb://{container}@{store_name}.blob.core.windows.net/{blob_name}"
         wasb = wasb_template.format(container=container,
                                     store_name=self.account_name,
