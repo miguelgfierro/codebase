@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from io import StringIO
+from pyspark import SparkContext
 from azure.storage.blob import BlockBlobService
 
 
@@ -9,8 +10,9 @@ class BlobIO(object):
     More info: http://azure-storage.readthedocs.io/ref/azure.storage.blob.blockblobservice.html
     Attributes:
         service (object): Blob service object
+        account_name (str): Account name
+        account_key (str): Account key
     """
-
     def __init__(self, account_name, account_key):
         """Initializer
         Args:
@@ -19,6 +21,8 @@ class BlobIO(object):
         """
         self.service = BlockBlobService(account_name=account_name,
                                         account_key=account_key)
+        self.account_name = account_name
+        self.account_key = account_key
 
     def upload_file(self, container, blob_path, local_path):
         """Uploads a file to a blob inside a container
@@ -126,7 +130,14 @@ class BlobIO(object):
                    time   q1   q2
             0  0.041667  443  205
             1  0.083333  444  206
-
+            >>> df = blob.read_pandas_dataframe('codebase', 'upload/traj.txt',
+            ...                                 sep=' ', header=None)
+            >>> df
+                      0   1   2
+            0  0.041667 443 205
+            1  0.083333 444 206
+            2  0.125000 445 205
+            3  0.166667 444 204
 
         """
         blob = self.service.get_blob_to_text(container, blob_path)
@@ -134,4 +145,33 @@ class BlobIO(object):
         return df
 
     def read_spark_dataframe(self, container, blob_path, spark=None, **kargs):
-        pass
+        """Read a spark dataframe from blob
+        Args:
+            container (str): Container name
+            blob_path (str): Blob path
+            spark (object): Spark context
+        Returns:
+            df (): Dataframe
+        Examples:
+            >>> from json_io import read_file
+            >>> cred = read_file('../../share/blob_config.json')
+            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
+            >>> df = blob.read_pandas_dataframe('codebase', 'upload/traj.csv',
+            ...                                 header=None)
+            >>> df
+                      0    1    2
+            0  0.041667  443  205
+            1  0.083333  444  206
+
+        """
+        if spark is None:
+            spark = SparkContext.getOrCreate()
+        spark_config_template = "fs.azure.account.key.{store_name}.blob.core.windows.net"
+        spark_config = spark_config_template.format(store_name=self.account_name)
+        spark.conf.set(spark_config, self.account_key)
+        wasb_template = "wasb://{container}@{store_name}.blob.core.windows.net/{blob_name}"
+        wasb = wasb_template.format(container=container,
+                                    store_name=self.account_name,
+                                    blob_name=blob_path)
+        df = spark.read.csv(wasb, **kargs)
+        return df
