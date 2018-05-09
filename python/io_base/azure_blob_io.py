@@ -1,6 +1,6 @@
 import os
-import tempfile
-
+import pandas as pd
+from io import StringIO
 from azure.storage.blob import BlockBlobService
 
 
@@ -108,8 +108,30 @@ class BlobIO(object):
         containers = [c.name for c in self.service.list_containers()]
         return containers
 
-    def read_pandas_dataframe(self, container, blob_path):
-        pass
+    def read_pandas_dataframe(self, container, blob_path, **kargs):
+        """Read a pandas dataframe from blob
+        Args:
+            container (str): Container name
+            blob_path (str): Blob path
+            sep (str): Separator
+        Returns:
+            df (pd.DataFrame): Dataframe
+        Examples:
+            >>> from json_io import read_file
+            >>> cred = read_file('../../share/blob_config.json')
+            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
+            >>> df = blob.read_pandas_dataframe('codebase', 'upload/traj.csv',
+            ...                                 sep=',', header=None, names=['time','q1','q2'])
+            >>> df
+                   time   q1   q2
+            0  0.041667  443  205
+            1  0.083333  444  206
 
-    def read_spark_dataframe(self, container, blob_path, spark=None):
+
+        """
+        blob = self.service.get_blob_to_text(container, blob_path)
+        df = pd.read_csv(StringIO(blob.content), **kargs)
+        return df
+
+    def read_spark_dataframe(self, container, blob_path, spark=None, **kargs):
         pass
