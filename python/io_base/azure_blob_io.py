@@ -179,6 +179,5 @@ class BlobIO(object):
         spark_config = spark_config_template.format(store_name=self.account_name)
         sc._jsc.hadoopConfiguration().set(spark_config, self.account_key)
         sc._jsc.hadoopConfiguration().set("fs.wasb.impl", "org.apache.hadoop.fs.azure.NativeAzureFileSystem")
-        #sc._jsc.hadoopConfiguration().set("fs.AbstractFileSystem.wasb.impl", "org.apache.hadoop.fs.azure.Wasb")
         spark.conf.set(spark_config, self.account_key)
         return spark
