@@ -1,7 +1,8 @@
 import os
 import pandas as pd
 from io import StringIO
-from pyspark import SparkContext
+import pyspark
+from pyspark import SparkConf
 from azure.storage.blob import BlockBlobService
 
 
@@ -156,7 +157,7 @@ class BlobIO(object):
             >>> from json_io import read_file
             >>> cred = read_file('../../share/blob_config.json')
             >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> df = blob.read_pandas_dataframe('codebase', 'upload/traj.csv',
+            >>> df = blob.read_spark_dataframe('codebase', 'upload/traj.csv',
             ...                                 header=None)
             >>> df
                       0    1    2
@@ -164,14 +165,22 @@ class BlobIO(object):
             1  0.083333  444  206
 
         """
-        if spark is None:
-            spark = SparkContext.getOrCreate()
-        spark_config_template = "fs.azure.account.key.{store_name}.blob.core.windows.net"
-        spark_config = spark_config_template.format(store_name=self.account_name)
-        spark.conf.set(spark_config, self.account_key)
+        spark = self._manage_spark_config(self, spark)
         wasb_template = "wasb://{container}@{store_name}.blob.core.windows.net/{blob_name}"
         wasb = wasb_template.format(container=container,
                                     store_name=self.account_name,
                                     blob_name=blob_path)
         df = spark.read.csv(wasb, **kargs)
         return df
+
+    def _manage_spark_config(self, spark):
+        if spark is None:
+            spark = pyspark.sql.SparkSession.builder.config(conf=SparkConf()).getOrCreate()
+        sc = spark.sparkContext
+        spark_config_template = "fs.azure.account.key.{store_name}.blob.core.windows.net"
+        spark_config = spark_config_template.format(store_name=self.account_name)
+        sc._jsc.hadoopConfiguration().set(spark_config, self.account_key)
+        sc._jsc.hadoopConfiguration().set("fs.wasb.impl", "org.apache.hadoop.fs.azure.NativeAzureFileSystem")
+        #sc._jsc.hadoopConfiguration().set("fs.AbstractFileSystem.wasb.impl", "org.apache.hadoop.fs.azure.Wasb")
+        spark.conf.set(spark_config, self.account_key)
+        return spark
