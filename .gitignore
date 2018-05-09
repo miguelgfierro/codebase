@@ -107,3 +107,4 @@ Untitled.ipynb
 .pytest_cache/
 mig.png
 .vscode/
+share/blob_config.json
