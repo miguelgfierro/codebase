@@ -12,5 +12,25 @@
         79,
         120
     ],
-    "python.pythonPath": "/Users/miguel/anaconda3/envs/py35/bin/python"
+    "python.pythonPath": "/Users/miguel/anaconda3/envs/py35/bin/python",
+    "editor.renderWhitespace": "none",
+    "editor.renderControlCharacters": true,
+    "editor.links": true,
+    "cSpell.languageSettings": [
+        {
+            "languageId": "*",
+            "local": "en-US",
+            "allowCompoundWords": true,
+            "dictionaries": [
+                "wordsEn",
+                "softwareTerms",
+                "misc",
+                "python",
+                "html",
+                "css",
+                "typescript",
+                "node"
+            ],
+        },
+    ]
 }
