@@ -57,6 +57,14 @@ class DummyUnitTest(unittest.TestCase):
         self.assertTrue((self.df.equals(df_target)))
         pd.testing.assert_frame_equal(self.df, df_target)  # same as before
 
+    def test_numpy(self):
+        np_target = np.array([1, 2, 3], dtype=np.float32)
+        np_target2 = np.array([0.9999, 2, 3])
+        self.assertTrue((self.np_array == np_target).all())
+        np.testing.assert_array_equal(self.np_array, np_target)
+        np.testing.assert_array_almost_equal(
+            self.np_array, np_target2, decimal=4)
+
 
 if __name__ == '__main__':
     unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports'))
