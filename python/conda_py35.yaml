@@ -39,5 +39,6 @@ dependencies:
   - pytrends>=4.3.0
   - azure-storage>=0.36.0
   - pyspark>=2.3.0
+  - xmlrunner>=1.7.7
 
 
