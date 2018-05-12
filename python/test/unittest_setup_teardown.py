@@ -16,7 +16,7 @@ class DummyUnitTest(unittest.TestCase):
         self.list = [1, 2, 3]
         self.dict = {'a': 1, 'b': 2}
         self.np_array = np.array(self.list)
-        self.df = pd.DataFrame(self.list)
+        self.df = pd.DataFrame(self.dict, index=[0])
 
     def tearDown(self):
         pass
@@ -51,6 +51,11 @@ class DummyUnitTest(unittest.TestCase):
         self.assertDictContainsSubset(self.dict, {'a': 1, 'b': 2, 'c': 3})
         self.assertRaises(KeyError, lambda: self.dict['c'])
         self.assertIn('a', self.dict)
+
+    def test_pandas(self):
+        df_target = pd.DataFrame({'a': 1, 'b': 2}, index=[0])
+        self.assertTrue((self.df.equals(df_target)))
+        pd.testing.assert_frame_equal(self.df, df_target)  # same as before
 
 
 if __name__ == '__main__':
