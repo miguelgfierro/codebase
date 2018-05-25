@@ -45,7 +45,7 @@ sudo docker push hoaphumanoid/cuda_ubuntu_base
 You can also pull an image from DockerHub, using name and tag:
 
 ```bash
-sudo docker pull hoaphumanoid/mxnet_dist:1.2rc3
+sudo docker pull hoaphumanoid/cuda_ubuntu_base:cuda8-cudnn7-ubuntu16.04
 ```
 
 
