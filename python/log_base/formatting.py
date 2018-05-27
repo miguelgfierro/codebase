@@ -18,3 +18,12 @@ def format_dictionary(dct, indent=4):
 
     """
     return json.dumps(dct, indent=indent, sort_keys=True)
+
+
+def format_float_as_string():
+    """Example of formatting a float as a string
+    Examples:
+        >>> format_float_as_string()
+        'num=0.12'
+    """
+    return "num={:0.2f}".format(0.123456)
