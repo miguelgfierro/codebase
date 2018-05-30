@@ -1,5 +1,15 @@
-from flask_app import app, STATUS_OK, BAD_REQUEST, NOT_FOUND
-from flask import request, abort, jsonify, make_response
+from flask import Flask, request, abort, jsonify, make_response
+
+
+# HTML code
+STATUS_OK = 200
+NOT_FOUND = 404
+BAD_REQUEST = 400
+BAD_PARAM = 450
+
+
+# app
+app = Flask(__name__)
 
 
 @app.errorhandler(BAD_REQUEST)
@@ -59,4 +69,3 @@ def post_status():
 
 if __name__ == "__main__":
     app.run(debug=True)
-

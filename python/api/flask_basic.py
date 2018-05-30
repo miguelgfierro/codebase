@@ -1,6 +1,16 @@
-from flask_app import app, BAD_PARAM
-from flask import request, jsonify, abort, make_response
+from flask import request, jsonify, abort, make_response, Flask
 import werkzeug.exceptions as ex
+
+
+# HTML code
+STATUS_OK = 200
+NOT_FOUND = 404
+BAD_REQUEST = 400
+BAD_PARAM = 450
+
+
+# app
+app = Flask(__name__)
 
 
 @app.route('/hello')
@@ -53,21 +63,13 @@ def hello_user(user_id):
 
     """
     if int(user_id) >= 10:
-        abort(BAD_PARAM)
-        #user_not_found()
+        user_not_found()
     else:
         return "Hello user " + user_id
 
 
-class CustomBadParam(ex.HTTPException):
-    """Support class for being able to call `abort(BAD_PARAM)` instead of `user_not_found()`."""
-    code = BAD_PARAM
-    description = '<p>Bad parameter</p>'
-abort.mapping[BAD_PARAM] = CustomBadParam
-
-
-@app.errorhandler(BAD_PARAM)
-def user_not_found(error=None):
+@app.errorhandler(ex.BadRequest)
+def user_not_found(e):
     """Custom error handler."""
     return make_response(jsonify({'status': BAD_PARAM,
                                   'error': 'User not found'}), BAD_PARAM)

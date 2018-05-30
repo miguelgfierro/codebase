@@ -18,7 +18,7 @@ dependencies:
 - pyodbc>=4.0.21
 - requests>=2.18.4
 - beautifulsoup4>=4.6.0
-- flask>=0.12.2
+- flask>=1.0.2
 - cherrypy>=12.0.1
 - paste>=2.0.3
 - fastparquet>=0.1.4
@@ -40,5 +40,7 @@ dependencies:
   - azure-storage>=0.36.0
   - pyspark>=2.3.0
   - xmlrunner>=1.7.7
+  - coverage>=4.5.1
+  
 
 

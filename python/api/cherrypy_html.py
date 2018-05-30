@@ -1,7 +1,12 @@
-from flask_app import app
-from flask import render_template
+from flask import Flask, render_template
 import cherrypy
 from paste.translogger import TransLogger
+
+
+# app
+app = Flask(__name__)
+# define static folder for css, img, js
+app.static_folder = 'static'
 
 
 def run_server():
@@ -18,7 +23,7 @@ def run_server():
         'log.error_file': "cherrypy.log",
         'server.socket_port': 5000,
         'server.socket_host': '0.0.0.0',
-        'server.thread_pool': 50, # 10 is default
+        'server.thread_pool': 50,  # 10 is default
     })
 
     # Start the CherryPy WSGI web server
