@@ -40,7 +40,7 @@ from image_base.pil_transformation import *
 
 # io_base
 from io_base.argument_io import *
-from io_base.azure_blob_io import *
+# from io_base.azure_blob_io import *
 from io_base.dask_io import *
 from io_base.fastparquet_io import *
 from io_base.json_io import *
@@ -89,7 +89,7 @@ from plot_base.scikit_image_plot import *
 
 # system
 from system.memory_size import *
-from system.notebook_memory_management import *
+# from system.notebook_memory_management import *
 from system.paths import *
 from system.system_info import *
 

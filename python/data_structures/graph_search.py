@@ -1,6 +1,6 @@
-from graph import Graph, Vertex
-from queue import Queue
-from stack import Stack
+from .graph import Graph, Vertex
+from .queue import Queue
+from .stack import Stack
 
 
 def breadth_first_search_paths(graph, start, goal):
