@@ -91,5 +91,3 @@ def ordered_binary_search(ordered_list, item):
                 first = midpoint + 1
 
         return found
-
-

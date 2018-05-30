@@ -1,8 +1,8 @@
 
 class Stack(object):
     """A Stack is a linear structure of ordered items where  the addition
-    of new items and the removal of existing items always takes place at the same end.
-    This principle is called LIFO (Last In, First Out)
+    of new items and the removal of existing items always takes place at the
+    same end. This principle is called LIFO (Last In, First Out)
     Examples:
         >>> s = Stack()
         >>> s.is_empty()
@@ -21,6 +21,7 @@ class Stack(object):
         1
 
     """
+
     def __init__(self):
         self.items = []
 

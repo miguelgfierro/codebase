@@ -1,4 +1,4 @@
-# source: https://github.com/keon/algorithms/blob/master/linkedlist/linkedlist.py
+# from https://github.com/keon/algorithms/blob/master/linkedlist/linkedlist.py
 # Pros
 # Linked Lists have constant-time insertions and deletions in any position,
 # in comparison, arrays require O(n) time to do the same thing.
@@ -71,13 +71,15 @@ class LinkedList(object):
         True
 
     """
+
     def __init__(self, head=None):
         self.head = head
 
     def __len__(self):
         count = 1
         curr = self.head
-        if curr is None: return count
+        if curr is None:
+            return count
         while curr.next:
             count += 1
             curr = curr.next

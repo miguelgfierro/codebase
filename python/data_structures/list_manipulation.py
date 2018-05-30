@@ -94,18 +94,20 @@ def shuffle_list(py_list, inplace=False):
     if inplace:
         random.shuffle(py_list)
     else:
-        l = py_list[:] # fastest way to shallow copy a list https://stackoverflow.com/a/2612990
+        # fastest way to shallow copy a list https://stackoverflow.com/a/2612990
+        l = py_list[:]
         random.shuffle(l)
         return l
 
 
 def reverse_list(py_list, inplace=True):
     """Reverse a list.
-    If `inplace=True` the input list is modified (faster & less memory), if `inplace=False` a new list is
-    generated (slower & more memory).
+    If `inplace=True` the input list is modified (faster & less memory), if
+    `inplace=False` a new list is generated (slower & more memory).
     Args:
         py_list (list): A list of elements.
-        inplace (bool): If `True` the input list is modified, if `False` a new list is generated.
+        inplace (bool): If `True` the input list is modified, if `False` a new
+        list is generated.
     Returns:
         result_list (list): A list with the values reversed.
     Examples:
@@ -132,24 +134,25 @@ def create_consecutive_numbers(initial_num, final_num):
         initial_num (int): The first number of the series.
         final_num (int): The last number of the series.
     Returns:
-        result_list (list): A list with values from `initial_num` to `final_num`.
+        result_list (list): A list with values from `initial_num` to
+                            `final_num`.
     Examples:
         >>> create_consecutive_numbers(1,5)
         [1, 2, 3, 4, 5]
 
     """
-    #Method 1: append
-    #Do not use, slowest of all methods
+    # Method 1: append
+    # Do not use, slowest of all methods
     #l = []
-    #for i in range(initial_num, final_num+1):
+    # for i in range(initial_num, final_num+1):
     #    l.append(i)
 
-    #Method 2: list comprehension
-    #Twice as fast as append
+    # Method 2: list comprehension
+    # Twice as fast as append
     #l = [i for i in range(initial_num, final_num+1)]
 
-    #Method 3: list constructor
-    #Twice as fast as list comprehension
+    # Method 3: list constructor
+    # Twice as fast as list comprehension
     l = list(range(initial_num, final_num+1))
     return l
 
@@ -220,7 +223,8 @@ def intersection(list1, list2):
 
 
 def union(list1, list2):
-    """Union of two lists, returns the elements that appear in one list OR the other.
+    """Union of two lists, returns the elements that appear in one list OR the
+    other.
     Args:
         list1 (list): A list of elements.
         list2 (list): A list of elements.
@@ -235,7 +239,8 @@ def union(list1, list2):
 
 
 def unique(list1, list2):
-    """Get the unique items that are in the first list but not in the second list.
+    """Get the unique items that are in the first list but not in the second 
+    list.
     NOTE: unique(l1,l2) is not always equal to unique(l2,l1)
     Args:
         list1 (list): A list of elements.

@@ -6,8 +6,9 @@ def yield_data(data, batch_size, complete_batches=False):
     Args:
         data (numpy array or list): An array or list.
         batch_size (int): The size of the data batch yielded.
-        complete_batches (bool): If `True` it will return complete batches, if `False` it will return the complete
-                                 list so the last batch may have a different size.
+        complete_batches (bool): If `True` it will return complete batches,
+                                 if `False` it will return the complete list
+                                 so the last batch may have a different size.
     Returns:
         generator (iterable): An iterator that yield the data.
     Examples:

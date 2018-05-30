@@ -1,13 +1,16 @@
-#from http://stackoverflow.com/a/3076636/5620182
+# from http://stackoverflow.com/a/3076636/5620182
+
 
 class Shape(object):
     def __new__(cls, *args, **kwargs):
-        if cls is Shape:                            # <-- required because Line's
-            description, args = args[0], args[1:]   #  __new__ method is the
-            if description == "It's flat":          #     same as Shape's
+        # required because Line's __new__ method is the same as Shape's
+        if cls is Shape:
+            description, args = args[0], args[1:]
+            if description == "It's flat":
                 new_cls = Line
             else:
-                raise ValueError("Invalid description: {}.".format(description))
+                raise ValueError(
+                    "Invalid description: {}.".format(description))
         else:
             new_cls = cls
         return super(Shape, cls).__new__(new_cls, *args, **kwargs)
