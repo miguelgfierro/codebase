@@ -9,9 +9,13 @@ sudo nvidia-docker run -it my_image_name bash -> Run the docker image and enter 
 sudo docker run -p 8888:8888 -it my_image_name bash -> Run the image redirecting a port (useful for jupyter support)
 sudo docker run -p 8888:8888 -v $HOME:/mnt/home -it my_image_name bash -> Run the image redirecting a port and making your local home accessible
 sudo docker images -> list the images available
+docker images -f dangling=true -> list dangling images (those with no relationship to any tagged images)
 sudo docker ps -> list the images currently running
 sudo docker stop my_image_id -> Stop the image using its ID (the ID can be found with docker ps)
-sudo docker stop $(docker ps -q --filter ancestor=<image-name> ) -> Stop the image by its name
+sudo docker stop $(docker ps -q --filter ancestor=my_image_name ) -> Stop the image by its name
+sudo docker rmi my_image_name -> remove an image
+sudo docker images purge -> remove all dangling images
+sudo docker system prune -a -> remove all stopped containers and unused images
 ```
 ## Upload image to DockerHub
 
