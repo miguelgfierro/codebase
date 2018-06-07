@@ -19,10 +19,6 @@ To execute the tests:
 
     pytest --doctest-modules --continue-on-collection-errors
 
-_Note:_
-
-To handle variable outputs in doctest you need to add at the end of the line `#doctest: +ELLIPSIS`.
-
 To execute coverage and see the report:
 
     coverage run playground.py
@@ -32,4 +28,17 @@ To see more details on the result, the following command will generate a web whe
 
     coverage html
     
+
+To handle variable outputs in doctest you need to add at the end of the execution line `#doctest: +ELLIPSIS` and substitude the variable output with `...`
+An example can be found in the file [timer.py](python/log_base/timer.py).
+
+Original:
+
+    >>> "Time elapsed {}".format(t)
+    'Time elapsed 0:00:1.9875734'
+
+With ellipsis:
+
+    >>> "Time elapsed {}".format(t) #doctest: +ELLIPSIS
+    'Time elapsed 0:00:...'
 

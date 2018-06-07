@@ -1,4 +1,5 @@
 from timeit import default_timer
+from datetime import timedelta
 
 
 class Timer(object):
@@ -18,6 +19,8 @@ class Timer(object):
         ...   a = [r+i for i in range(big_num)]
         >>> np.round(t.interval)
         2.0
+        >>> "Time elapsed {}".format(t) #doctest: +ELLIPSIS
+        'Time elapsed 0:00:...'
 
     """
     def __init__(self):
@@ -29,6 +32,9 @@ class Timer(object):
 
     def __exit__(self, *args):
         self.stop()
+
+    def __str__(self):
+        return str(timedelta(seconds=self.interval))
 
     def start(self):
         """Start the timer."""
