@@ -25,6 +25,7 @@ class Timer(object):
     """
     def __init__(self):
         self._timer = default_timer
+        self.interval = 0
 
     def __enter__(self):
         self.start()
