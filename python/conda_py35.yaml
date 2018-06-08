@@ -1,5 +1,5 @@
 # To create the conda environment:
-# $ conda env create -n py35 -f conda_py35.yml
+# $ conda env create -n py35 -f conda_py35.yaml
 #
 # To update the conda environment:
 # $ conda env update -n py35 -f conda_py35.yaml
