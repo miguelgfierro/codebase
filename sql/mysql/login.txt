@@ -1,0 +1,6 @@
+# To log in in MYSQL:
+$ mysql -u root -p
+Enter password:*******
+
+
+
