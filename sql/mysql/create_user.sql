@@ -8,4 +8,6 @@ CREATE USER IF NOT EXISTS 'miguel'@'localhost' IDENTIFIED BY 'miguel1234';
 CREATE USER 'nativeuser'@'localhost'
 IDENTIFIED WITH mysql_native_password BY 'password';
 
+-- To grant root priviledges
+GRANT ALL PRIVILEGES ON *.* TO 'nativeuser'@'localhost'
 
