@@ -25,5 +25,11 @@ SELECT * FROM table_name;
 .import '/Users/miguel/run3x/codebase/share/traj.csv' table_csv
 SELECT * FROM table_csv;
 
+-- Load csv into table_csv ignoring the header
+--DROP TABLE IF EXISTS table_csv;
+.mode csv
+.import '|tail -n +2 /Users/miguel/run3x/codebase/share/traj_header.csv' table_csv
+SELECT * FROM table_csv;
+
 
 
