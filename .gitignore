@@ -109,3 +109,4 @@ mig.png
 .vscode/
 share/blob_config.json
 test-reports/
+*.sqlite3
