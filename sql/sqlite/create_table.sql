@@ -19,3 +19,11 @@ PRAGMA table_info([table_name]);
 -- Select all table
 SELECT * FROM table_name;
 
+
+-- Create a table to upload a csv
+CREATE TABLE table_csv 
+(
+  t FLOAT(8,6) NOT NULL DEFAULT '0', 
+  q0 INT(5) NOT NULL DEFAULT '0',
+  q1 INT(5) NOT NULL DEFAULT '0'
+);

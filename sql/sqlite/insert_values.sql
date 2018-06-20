@@ -19,3 +19,11 @@ VALUES
 );
 
 SELECT * FROM table_name;
+
+-- Load csv into table_csv
+.mode csv
+.import '/Users/miguel/run3x/codebase/share/traj.csv' table_csv
+SELECT * FROM table_csv;
+
+
+
