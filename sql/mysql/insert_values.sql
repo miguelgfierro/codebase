@@ -27,11 +27,8 @@ SELECT * FROM table_name;
 LOAD DATA LOCAL INFILE '/Users/miguel/run3x/codebase/share/traj.csv'
 INTO TABLE table_csv  
 FIELDS TERMINATED BY ',' 
-ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 (t, q0 , q1);
 
-LOAD DATA INFILE '/Users/miguel/run3x/codebase/share/traj.csv' 
-INTO TABLE table_csv;
 
 SELECT * FROM table_csv;
