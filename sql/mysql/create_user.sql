@@ -9,5 +9,5 @@ CREATE USER 'nativeuser'@'localhost'
 IDENTIFIED WITH mysql_native_password BY 'password';
 
 -- To grant root priviledges
-GRANT ALL PRIVILEGES ON *.* TO 'nativeuser'@'localhost'
+GRANT ALL PRIVILEGES ON *.* TO 'nativeuser'@'localhost';
 
