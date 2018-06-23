@@ -39,7 +39,6 @@ def save_to_sqlite(dataframe, database, table_name, **kargs):
     Args:
         dataframe (pd.DataFrame): A dataframe
         database (str): Database filename.
-        connection_string (str): Database connection string.
         table_name (str): Table name
     Examples:
         >>> df = pd.DataFrame({'col1':[1,2,3], 'col2':[0.1,0.2,0.3]})
@@ -61,17 +60,26 @@ def save_to_sqlite(dataframe, database, table_name, **kargs):
     dataframe.to_sql(table_name, engine, **kargs)
 
 
-def read_from_sqlite(connection_string, query):
+def read_from_sqlite(database, query, **kargs):
     """Make a query to a SQL database.
     Args:
-        connection_string (str): Database connection string.
+        database (str): Database filename.
         query (str): Query.
     Returns:
         dataframe (pd.DataFrame): An dataframe.
     Examples:
-        >>> df = read_from_sqlite('sqlite:///:memory:', 'SELECT * FROM my_table;')
+        >>> df = read_from_sqlite('test.db', 'SELECT col1,col2 FROM table1;')
+        >>> df
+           col1  col2
+        0     1   0.1
+        1     2   0.2
+        2     3   0.3
+        3     1   0.1
+        4     2   0.2
+        5     3   0.3
 
     """
+    connection_string = 'sqlite:///' + database
     engine = create_engine(connection_string)
-    return pd.read_sql(query, engine)
+    return pd.read_sql(query, engine, **kargs)
 
