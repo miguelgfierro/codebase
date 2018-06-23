@@ -34,18 +34,31 @@ def read_csv(filename, **kwargs):
     return data
 
 
-def save_to_sqlite(data, connection_string):
+def save_to_sqlite(data, database, table_name, **kargs):
     """Save a dataframe to a SQL database.
     Args:
         data (pd.DataFrame): A dataframe
+        database (str): Database filename.
         connection_string (str): Database connection string.
+        table_name (str): Table name
     Examples:
         >>> df = pd.DataFrame({'col1':[1,2,3], 'col2':[0.1,0.2,0.3]})
-        >>> save_to_sqlite(df, 'sqlite:///:memory:')
+        >>> save_to_sqlite(df, 'test.db', 'table1', if_exists='replace')
+        >>> import sqlite3
+        >>> conn = sqlite3.connect('test.db')
+        >>> cur = conn.cursor()
+        >>> result = cur.execute("SELECT * FROM table1")
+        >>> cur.fetchall()
+        [(0, 1, 0.1), (1, 2, 0.2), (2, 3, 0.3)]
+        >>> save_to_sqlite(df, 'test.db', 'table1', if_exists='append', index=False)
+        >>> result = cur.execute("SELECT * FROM table1")
+        >>> cur.fetchall()
+        [(0, 1, 0.1), (1, 2, 0.2), (2, 3, 0.3), (None, 1, 0.1), (None, 2, 0.2), (None, 3, 0.3)]
 
     """
+    connection_string = 'sqlite:///' + database
     engine = create_engine(connection_string)
-    data.to_sql(engine)
+    data.to_sql(table_name, engine, **kargs)
 
 
 def read_from_sqlite(connection_string, query):
