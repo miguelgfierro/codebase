@@ -15,6 +15,11 @@ def create_table(cursor, table_name, table_instruction):
         >>> c = cur.execute('PRAGMA table_info([table_name]);')
         >>> cur.fetchall()
         [(0, 'num', 'INT(11)', 0, None, 0), (1, 'float_num', 'FLOAT(8,6)', 1, '"0"', 0), (2, 'letter', 'CHAR(1)', 0, None, 0), (3, 'input_date', 'DATE', 0, None, 0)]
+        >>> instruction = '''t FLOAT(8, 6), q0 INT(5), q1 INT(5)'''
+        >>> create_table(cur, "table_csv", instruction)
+        >>> c = cur.execute('PRAGMA table_info([table_csv]);')
+        >>> cur.fetchall()
+        [(0, 't', 'FLOAT(8, 6)', 0, None, 0), (1, 'q0', 'INT(5)', 0, None, 0), (2, 'q1', 'INT(5)', 0, None, 0)]
 
 
     """
