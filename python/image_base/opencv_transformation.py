@@ -4,11 +4,11 @@ import cv2
 def normalize_image(img, min_val=0, max_val=1):
     """Normalize image between `min_val` and `max_val`.
     Args:
-        img (numpy array): An image.
+        img (np.array): An image.
         min_val (int or float): Minimum value.
         max_val (int or float): Maximum value.
     Returns:
-        img_new (numpy array): A normalized image.
+        img_new (np.array): A normalized image.
     Examples:
         >>> img = cv2.imread('../../share/Lenna.png')
         >>> max(img.flatten())
@@ -27,11 +27,11 @@ def normalize_image(img, min_val=0, max_val=1):
 def resize_image(img, new_width, new_height):
     """Resize image to a `new_width` and `new_height`.
     Args:
-        img (numpy array): An image.
+        img (np.array): An image.
         new_width (int): New width.
         new_height (int): New height.
     Returns:
-        img_new (numpy array): A resized image.
+        img_new (np.array): A resized image.
     Examples:
         >>> img = cv2.imread('../../share/Lenna.png')
         >>> height, width, channels = img.shape
@@ -48,11 +48,11 @@ def resize_image_aspect_ratio(img, new_width=None, new_height=None):
     """Resize image, if only one of new_width or new_height is given, the resize is done maintaining the ratio.
     If both parameters are given, the image may be deformed
     Args:
-        img (numpy array): An image.
+        img (np.array): An image.
         new_width (int): New width.
         new_height (int): New height.
     Returns:
-        img_new (numpy array): A resized image.
+        img_new (np.array): A resized image.
     Examples:
         >>> img = cv2.imread('../../share/Lenna_face.png')
         >>> height, width, channels = img.shape
@@ -78,9 +78,9 @@ def resize_image_aspect_ratio(img, new_width=None, new_height=None):
 def equalize_image(img):
     """Equalize the image histogram.
     Args:
-        img (numpy array): An image.
+        img (np.array): An image.
     Returns:
-        img_new (numpy array): A equalized image.
+        img_new (np.array): A equalized image.
     Examples:
         >>> img = cv2.imread('../../share/Lenna.png')
         >>> img_eq = equalize_image(img)
@@ -92,11 +92,11 @@ def equalize_image(img):
 def crop_image(img, box):
     """Crop a rectangular region from an image.
     Args:
-        img (numpy array): An image.
+        img (np.array): An image.
         box (tuple): Left, upper, right, and lower pixel coordinate. The origin of coordinates is
                     the upper left square.
     Returns:
-        img_new (numpy array): A cropped image.
+        img_new (np.array): A cropped image.
     Examples:
         >>> img = cv2.imread('../../share/Lenna.png')
         >>> box = (0, 100, 250, 400)
@@ -111,9 +111,9 @@ def crop_image(img, box):
 def convert_to_grayscale(img):
     """Convert a color image to grayscale.
     Args:
-        img (numpy array): An image.
+        img (np.array): An image.
     Returns:
-        img_new (numpy array): A grayscale image.
+        img_new (np.array): A grayscale image.
     Examples:
         >>> img = cv2.imread('../../share/Lenna.png')
         >>> img.shape

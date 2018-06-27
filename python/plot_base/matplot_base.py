@@ -6,7 +6,7 @@ from scipy.interpolate import interp1d
 def plot_image(img):
     """Plot an image.
     Args:
-        img (numpy array): An image.
+        img (np.array): An image.
     Examples:
         >>> import matplotlib.image as mpimg
         >>> img = mpimg.imread('../../share/Lenna.png')
@@ -29,8 +29,8 @@ def plot_image(img):
 def plot_histogram(hist, bins):
     """Plot an histogram.
     Args:
-        hist (numpy array): Array with the histogram values.
-        bins (numpy array): Array of the histogram bins.
+        hist (np.array): Array with the histogram values.
+        bins (np.array): Array of the histogram bins.
     Examples:
         >>> x = 10 + 5*np.random.randn(1000)
         >>> hist, bins = np.histogram(x, bins=50)
@@ -46,8 +46,8 @@ def plot_histogram(hist, bins):
 def plot_traj(y, x=None, title=None, xlabel=None, ylabel=None, color='b'):
     """Plot a trajectory of points (x,y). If x is None it just take range(len(y)).
     Args:
-        y (list or numpy array): Y axis values.
-        x (list or numpy array): X axis values.
+        y (list or np.array): Y axis values.
+        x (list or np.array): X axis values.
         title (str): Plot title.
         xlabel (str): X axis label.
         ylabel (str): Y axis label.
@@ -69,8 +69,8 @@ def plot_traj(y, x=None, title=None, xlabel=None, ylabel=None, color='b'):
 def plot_traj_interpolate(y, x=None, title=None, xlabel=None, ylabel=None, color='b'):
     """Plot a trajectory of points (x,y). If x is None it just take range(len(y)).
     Args:
-        y (list or numpy array): Y axis values.
-        x (list or numpy array): X axis values.
+        y (list or np.array): Y axis values.
+        x (list or np.array): X axis values.
         title (str): Plot title.
         xlabel (str): X axis label.
         ylabel (str): Y axis label.

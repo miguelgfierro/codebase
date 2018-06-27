@@ -12,9 +12,9 @@ def softmax(x):
     function that squashes a vector z into another vector of real values in the range (0, 1) that add up to 1.
     Used for multiclass classification.
     Args:
-        x (list or numpy array): Input list or array.
+        x (list or np.array): Input list or array.
     Returns:
-        result (numpy array): The softmax of the array.
+        result (np.array): The softmax of the array.
     Examples:
         >>> scores = [12, 5, 1]
         >>> softmax(scores)
@@ -29,9 +29,9 @@ def softmax(x):
 def tanh(x):
     """Hyperbolic tangent. Output between -1,1
     Args:
-        x (list or numpy array): Input list or array.
+        x (list or np.array): Input list or array.
     Returns:
-        result (numpy array): The tanh of the array.
+        result (np.array): The tanh of the array.
     Examples:
         >>> x = np.array([[1,1,-3],[0.5,-1,1]])
         >>> tanh(x)
@@ -45,9 +45,9 @@ def tanh(x):
 def sigmoid(x):
     """Sigmoid function. Output between 0,1
     Args:
-        x (list or numpy array): Input list or array.
+        x (list or np.array): Input list or array.
     Returns:
-        result (numpy array): The sigmoid of the array.
+        result (np.array): The sigmoid of the array.
     Examples:
         >>> x = np.array([[1,1,-3],[0.5,-1,1]])
         >>> sigmoid(x)
@@ -62,10 +62,10 @@ def RELU(x, inplace=False):
     """Rectified Linear Unit, removing the negative parts of the input: max(x,0)
     Benchmark: https://stackoverflow.com/a/40013151/5620182
     Args:
-        x (list or numpy array): Input list or array.
+        x (list or np.array): Input list or array.
         inplace (bool): Inplace flag.
     Returns:
-        result (numpy array): The RELU of the array (if inplace is True).
+        result (np.array): The RELU of the array (if inplace is True).
     Examples:
         >>> x = np.array([[1,1,-3],[0.5,-1,1]])
         >>> RELU(x)
@@ -87,10 +87,10 @@ def LeakyRELU(x, alpha=0.3):
     """Leaky Rectified Linear Unit. It allows a small gradient when the unit is not active.
     `f(x) = alpha * x for x < 0, f(x) = x for x >= 0`
     Args:
-        x (list or numpy array): Input list or array.
+        x (list or np.array): Input list or array.
         alpha (float): Scale factor.
     Returns:
-        result (numpy array): The LeakyRELU of the array .
+        result (np.array): The LeakyRELU of the array .
     Examples:
         >>> x = np.array([[1,1,-3],[0.5,-1,1]])
         >>> LeakyRELU(x)
@@ -107,10 +107,10 @@ def ELU(x, alpha=1.0):
     `f(x) = x for x >= 0`.
     paper: http://arxiv.org/abs/1511.07289
     Args:
-        x (list or numpy array): Input list or array.
+        x (list or np.array): Input list or array.
         alpha (float): Scale factor.
     Returns:
-        result (numpy array): The ELU of the array .
+        result (np.array): The ELU of the array .
     Examples:
         >>> x = np.array([[1,1,-3],[0.5,-1,1]])
         >>> ELU(x)
@@ -125,10 +125,10 @@ def SELU(x):
     """Scaled Exponential Linear Unit
     paper: https://arxiv.org/abs/1706.02515
     Args:
-        x (list or numpy array): Input list or array.
+        x (list or np.array): Input list or array.
         alpha (float): Scale factor.
     Returns:
-        result (numpy array): The SELU of the array .
+        result (np.array): The SELU of the array .
     Examples:
         >>> x = np.array([[1,1,-3],[0.5,-1,1]])
         >>> SELU(x)

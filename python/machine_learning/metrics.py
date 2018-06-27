@@ -17,8 +17,8 @@ def classification_metrics_binary(y_true, y_pred):
     High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
     Args:
-        y_true (list or array): True labels.
-        y_pred (list or array): Predicted labels (binary).
+        y_true (list or np.array): True labels.
+        y_pred (list or np.array): Predicted labels (binary).
     Returns:
         report (dict): Dictionary with metrics.
     Examples:
@@ -54,8 +54,8 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
     High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
     Args:
-        y_true (list or array): True labels.
-        y_pred (list or array): Predicted labels.
+        y_true (list or np.array): True labels.
+        y_pred (list or np.array): Predicted labels.
         labels (list): Label index or name.
     Returns:
         report (dict): Dictionary with metrics.
@@ -87,8 +87,8 @@ def classification_metrics_binary_prob(y_true, y_prob):
     penalizing false classifications. Minimizing the Log Loss is equivalent to minimizing the squared error but using
     probabilistic predictions. Log loss penalize heavily classifiers that are confident about incorrect classifications.
     Args:
-        y_true (list or array): True labels.
-        y_prob (list or array): Predicted labels (probability).
+        y_true (list or np.array): True labels.
+        y_prob (list or np.array): Predicted labels (probability).
     Returns:
         report (dict): Dictionary with metrics.
     Examples:
@@ -121,8 +121,8 @@ def regression_metrics(y_true, y_pred):
     variables are not linearly correlated.
     - Root Mean Squared Error: RMSE is the square root of MSE. It also gives a relatively high weight to large errors.
     Args:
-        y_true (list or array): True values.
-        y_pred (list or array): Predicted values.
+        y_true (list or np.array): True values.
+        y_pred (list or np.array): Predicted values.
     Returns:
         report (dict): Dictionary with metrics.
     Examples:
@@ -149,8 +149,8 @@ def regression_metrics(y_true, y_pred):
 def precision_at_k(y_true, y_pred, k=None):
     """Precision at K.
     Args:
-        y_true (list or array): True values.
-        y_pred (list or array): Predicted values.
+        y_true (list or np.array): True values.
+        y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
     Returns:
         result (float): precision at k (max=1, min=0)
@@ -173,8 +173,8 @@ def precision_at_k(y_true, y_pred, k=None):
 def recall_at_k(y_true, y_pred, k=None):
     """Recall at K.
     Args:
-        y_true (list or array): True values.
-        y_pred (list or array): Predicted values.
+        y_true (list or np.array): True values.
+        y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
     Returns:
         result (float): recall at k (max=1, min=0)
@@ -198,8 +198,8 @@ def discounted_cumulative_gain(y_true, y_pred, k=None):
     """Discounted Cumulative Gain (DCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
     Args:
-        y_true (list or array): True values.
-        y_pred (list or array): Predicted values.
+        y_true (list or np.array): True values.
+        y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
     Returns:
         result (float): DCG
@@ -223,8 +223,8 @@ def exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
     """Exponential Discounted Cumulative Gain (eDCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
     Args:
-        y_true (list or array): True values.
-        y_pred (list or array): Predicted values.
+        y_true (list or np.array): True values.
+        y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
     Returns:
         result (float): eDCG
@@ -248,8 +248,8 @@ def normalized_discounted_cumulative_gain(y_true, y_pred, k=None):
     """Normalized Discounted Cumulative Gain (nDCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
     Args:
-        y_true (list or array): True values.
-        y_pred (list or array): Predicted values.
+        y_true (list or np.array): True values.
+        y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
     Returns:
         result (float): nDCG (max=1, min=0)
@@ -271,8 +271,8 @@ def normalized_exponential_discounted_cumulative_gain(y, y_pred, k=None):
     """Normalized Exponential Discounted Cumulative Gain (neDCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
     Args:
-        y_true (list or array): True values.
-        y_pred (list or array): Predicted values.
+        y_true (list or np.array): True values.
+        y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
     Returns:
         result (float): neDCG (max=1, min=0)

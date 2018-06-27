@@ -8,7 +8,7 @@ def optimize_function(func, bounds, **kargs):
     Args:
         func (callable): The objective function to be minimized. In the form f(x, *args), where x is the argument in
                          the form of a 1-D array and args is a tuple of any additional parameters.
-        bounds (array): Constraints (min, max) pairs for each element in x.
+        bounds (np.array): Constraints (min, max) pairs for each element in x.
     Returns:
         result (object): Result of the optimization. For parameters see:
         https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html#scipy.optimize.OptimizeResult

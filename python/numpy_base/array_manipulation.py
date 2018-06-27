@@ -4,7 +4,7 @@ import numpy as np
 def split_array_in_subarrays(data, n_subarrays, axis=0):
     """Split an array in subarrays. Don't need to have the same size.
     Args:
-        data (numpy array): An array.
+        data (np.array): An array.
         n_subarrays (int): The number of subarrays.
         axis (int): Axis of the operation.
     Returns:
@@ -29,7 +29,7 @@ def concatenate_arrays(array_list, axis=0):
         array_list (list): A list of arrays.
         axis (int): Axis of the operation.
     Returns:
-        result (numpy array): An array of concatenated values.
+        result (np.array): An array of concatenated values.
     Examples:
         >>> data1 = np.array([(1,2,3),(2,3,4)], dtype='int')
         >>> data2 = np.array([(4,5),(5,6)], dtype='int')
@@ -49,7 +49,7 @@ def one_hot_encoding_integer(y, num_classes=None):
         y (int): An integer class from 0 to num_classes.
         num_classes (int): Total number of classes.
     Returns:
-        result (numpy array): An array of one hot encoded classes.
+        result (np.array): An array of one hot encoded classes.
     Examples:
         >>> one_hot_encoding_integer(2, 3)
         array([0, 0, 1])

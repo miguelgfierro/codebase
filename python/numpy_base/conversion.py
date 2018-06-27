@@ -4,7 +4,7 @@ import pandas as pd
 def convert_to_pandas_dataframe(data):
     """Convert a numpy array to a dataframe. Every column of the array is a column in the dataframe.
     Args:
-        data (numpy array): An array.
+        data (np.array): An array.
     Returns:
         result (pd.DataFrame): An dataframe with the numpy array values.
     Examples:

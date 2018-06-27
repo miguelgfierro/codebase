@@ -4,9 +4,9 @@ import numpy as np
 
 
 def save_file(data, filename):
-    """Save a numpy array. The file is saved as `filename.npy`.
+    """Save a np.array. The file is saved as `filename.npy`.
     Args:
-        data (numpy array): An array.
+        data (np.array): An array.
         filename (str): Name of the file.
     Examples:
         >>> a = np.ones(1000)
@@ -17,11 +17,11 @@ def save_file(data, filename):
 
 
 def read_file(filename):
-    """Read a numpy array.
+    """Read a np.array.
     Args:
         filename (str): Name of the file.
     Returns:
-        data (numpy array): An array.
+        data (np.array): An array.
     Examples:
         >>> b = read_file('file.npy')
         >>> b.shape

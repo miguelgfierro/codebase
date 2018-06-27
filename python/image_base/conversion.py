@@ -9,7 +9,7 @@ def image_pil2scipy_array(img):
     Args:
         img (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
     Returns:
-        img_new (numpy array): A numpy image of uint8 between 0 and 255.
+        img_new (np.array): A numpy image of uint8 between 0 and 255.
     Examples:
         >>> from scipy import misc
         >>> img = Image.open('../../share/Lenna.png')
@@ -27,7 +27,7 @@ def image_pil2scipy_array(img):
 def image_scipy_numpy2pil(img):
     """Convert a numpy image to a PIL image.
     Args:
-        img (numpy array): A numpy image of uint8 between 0 and 255.
+        img (np.array): A numpy image of uint8 between 0 and 255.
     Returns:
         img_new (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
     Examples:
@@ -48,7 +48,7 @@ def image_scipy_numpy2pil(img):
 def image_cv2pil(img):
     """Convert a opencv image to a PIL image.
     Args:
-        img (numpy array): A numpy image loaded with opencv of uint8 between 0 and 255 using BGR channels.
+        img (np.array): A numpy image loaded with opencv of uint8 between 0 and 255 using BGR channels.
     Returns:
         img_new (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
     Examples:
@@ -71,7 +71,7 @@ def image_pil2cv(img):
     Args:
         img (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
     Returns:
-        img_new (numpy array): A numpy image loaded with opencv of uint8 between 0 and 255 using BGR channels.
+        img_new (np.array): A numpy image loaded with opencv of uint8 between 0 and 255 using BGR channels.
     Examples:
         >>> img = Image.open('../../share/Lenna.png')
         >>> img_conv = image_pil2cv(img)
@@ -89,9 +89,9 @@ def image_pil2cv(img):
 def image_cv2plt(img):
     """Convert a opencv image to a matplotlib image.
     Args:
-        img (numpy array): A numpy image loaded with opencv of uint8 between 0 and 255 using BGR channels.
+        img (np.array): A numpy image loaded with opencv of uint8 between 0 and 255 using BGR channels.
     Returns:
-        img_new (numpy array): A matplotlib image of float32 between 0 and 1 using RGB channels.
+        img_new (np.array): A matplotlib image of float32 between 0 and 1 using RGB channels.
     Examples:
         >>> img = cv2.imread('../../share/Lenna.png')
         >>> img_conv = image_cv2plt(img)
@@ -110,9 +110,9 @@ def image_cv2plt(img):
 def image_plt2cv(img):
     """Convert a matplotlib image to an opencv image.
     Args:
-        img (numpy array): A matplotlib image of float32 between 0 and 1 using RGB channels.
+        img (np.array): A matplotlib image of float32 between 0 and 1 using RGB channels.
     Returns:
-        img_new (numpy array): A numpy image of uint8 between 0 and 255 using BGR channels.
+        img_new (np.array): A numpy image of uint8 between 0 and 255 using BGR channels.
     Examples:
         >>> img = plt.imread('../../share/Lenna.png')
         >>> img_conv = image_plt2cv(img)
@@ -133,7 +133,7 @@ def image_pil2plt(img):
     Args:
         img (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
     Returns:
-        img_new (numpy array): A matplotlib image of float32 between 0 and 1 using RGB channels.
+        img_new (np.array): A matplotlib image of float32 between 0 and 1 using RGB channels.
     Examples:
         >>> img = Image.open('../../share/Lenna.png')
         >>> img_conv = image_pil2plt(img)
@@ -151,7 +151,7 @@ def image_pil2plt(img):
 def image_plt2pil(img):
     """Convert a matplotlib image to a PIL image.
     Args:
-        img (numpy array): A matplotlib image of float32 between 0 and 1 using RGB channels.
+        img (np.array): A matplotlib image of float32 between 0 and 1 using RGB channels.
     Returns:
         img_new (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
     Examples:

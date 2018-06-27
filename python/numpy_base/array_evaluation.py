@@ -4,7 +4,7 @@ import numpy as np
 def has_same_sign(data):
     """ Evaluate if the array has all elements with the same sign.
     Args:
-        data (numpy array): An array.
+        data (np.array): An array.
     Returns:
         flag (bool): Boolean with the evaluation.
     Examples:
@@ -31,7 +31,7 @@ def has_same_sign(data):
 def has_same_sign_or_zero(data):
     """ Evaluate if the array has all elements with the same sign or zero.
     Args:
-        data (numpy array): An array.
+        data (np.array): An array.
     Returns:
         flag (bool): Boolean with the evaluation.
     Examples:
@@ -58,7 +58,7 @@ def has_same_sign_or_zero(data):
 def count_items(data, item):
     """Count the appearances of items in data
     Args:
-        data (numpy array): An array.
+        data (np.array): An array.
         item (int, float or str): The item to count.
     Returns:
         result (int): Count of appearances of item in data.

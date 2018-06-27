@@ -12,7 +12,7 @@ def optimize_function(func, initial_guess, **kargs):
     Args:
         func (callable): The objective function to be minimized. In the form f(x, *args), where x is the argument in
                          the form of a 1-D array and args is a tuple of any additional parameters.
-        initial_guess (array): Initial guess.
+        initial_guess (np.array): Initial guess.
     Returns:
         xopt (array): Result of the optimization.
         fopt (float): Value of function at minimum.

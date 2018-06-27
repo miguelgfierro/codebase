@@ -25,9 +25,9 @@ def ackley(x):
 def plot_function2D(x, y, z):
     """Plot 2D function with matplotlib
     Args:
-        x (array): X value.
-        y (array): Y value.
-        z (array): function value.
+        x (np.array): X value.
+        y (np.array): Y value.
+        z (np.array): function value.
     Examples:
         >>> s = 0.05
         >>> X = np.arange(-2, 2.+s, s)

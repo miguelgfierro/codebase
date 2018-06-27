@@ -5,11 +5,11 @@ import numpy as np
 def knn(X, Y, K):
     """Find the K nearest neighbor in X for each point in Y.
     Args:
-        X (numpy array): A matrix, where the columns are the features and the rows are the examples.
-        Y (numpy array): A matrix to query, where the columns are the features and the rows are the examples.
+        X (np.array): A matrix, where the columns are the features and the rows are the examples.
+        Y (np.array): A matrix to query, where the columns are the features and the rows are the examples.
     Returns:
-        distances (numpy array): Distance of the K nearest neighbor in X to Y.
-        indices (numpy array): Indexes of the K nearest neighbor in X to Y.
+        distances (np.array): Distance of the K nearest neighbor in X to Y.
+        indices (np.array): Indexes of the K nearest neighbor in X to Y.
     Examples:
         >>> np.random.seed(0)
         >>> X = np.random.randn(100000,512)

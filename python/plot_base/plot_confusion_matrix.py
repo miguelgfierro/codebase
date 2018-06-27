@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
     """Plots a confusion matrix.
     Args:
-        cm (numpy array): The confusion matrix array.
+        cm (np.array): The confusion matrix array.
         classes (list): List wit the classes names.
         normalize (bool): Flag to normalize data.
         title (str): Title of the plot.

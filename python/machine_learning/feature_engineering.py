@@ -12,7 +12,7 @@ def _importance_dataframe(importances, features):
 def draw_feature_importance(importances, features, output_file='output.png'):
     """Draw the feature importance as a bar chart in an output file
     Args:
-        importances (array): Array with the importances.
+        importances (np.array): Array with the importances.
         features (list): List of the features which corresponds to `importances` array.
         output_file (str): Filename of the output chart
     """
@@ -25,7 +25,7 @@ def draw_feature_importance(importances, features, output_file='output.png'):
 def plot_feature_importance(importances, features):
     """Plot the feature importance as a bar chart
     Args:
-        importances (array): Array with the importances.
+        importances (np.array): Array with the importances.
         features (list): List of the features which corresponds to `importances` array.
     """
     importance_frame = _importance_dataframe(importances, features)
