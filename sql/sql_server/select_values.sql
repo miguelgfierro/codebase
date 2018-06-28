@@ -1,12 +1,14 @@
--- Select the last entry of a column
-SELECT TOP(1) * FROM table_name
-WHERE column_name = ? ORDER BY time_stamp DESC;
+-- Select all entries equal to a value in a column
+SELECT * FROM table_name WHERE column_name = value
 
--- Select top N values of a specific column names
+
+-- Select top N values of specific column names
 SELECT TOP (5) column_name1, column_name2 FROM table_name;
 
--- Select all entries equal to a value in a column
-SELECT * FROM table_name WHERE column_name = ?
+
+-- Select the last entry equal to a value in a column ordered by other column 
+SELECT TOP(1) * FROM table_name
+WHERE column_name = value ORDER BY time_stamp DESC;
 
 
 -- INNER JOIN: Select values as the intersection of the two tables, i.e. rows they have common in table1 and table1
