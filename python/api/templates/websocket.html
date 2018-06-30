@@ -1,21 +1,10 @@
 <!DOCTYPE HTML>
-<html>
-
-<head>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
-            socket.on('my response', function (msg) {
-                $('#log').append('<p>Received: ' + msg.data + '</p>');
-            });
-            $('form#emit').submit(function (event) {
-                socket.emit('my event', { data: $('#emit_data').val() });
-                return false;
-            });
-            $('form#broadcast').submit(function (event) {
-                socket.emit('my broadcast event', { data: $('#broadcast_data').val() });
-                return false;
-            });
-        });
-    </script>
-</head>
+<title>Flaskr</title>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+<!--<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">-->
+<script type="text/javascript" src="{{ url_for('static', filename='js/websocket.js') }}"></script>
+<div class=page>
+    <h1>Hello World!</h1>
+    <button onclick="json_button()">Json Message</button>
+    <button onclick="alert_button()">Alert Message</button>
+</div>
