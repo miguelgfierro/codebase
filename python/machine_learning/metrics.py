@@ -267,7 +267,7 @@ def normalized_discounted_cumulative_gain(y_true, y_pred, k=None):
     return discounted_cumulative_gain(y_true, y_pred, k) / discounted_cumulative_gain(y_true, y_true, k)
 
 
-def normalized_exponential_discounted_cumulative_gain(y, y_pred, k=None):
+def normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
     """Normalized Exponential Discounted Cumulative Gain (neDCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
     Args:
@@ -287,7 +287,7 @@ def normalized_exponential_discounted_cumulative_gain(y, y_pred, k=None):
         0.21950735175253772
 
     """
-    return exponential_discounted_cumulative_gain(y, y_pred, k)/exponential_discounted_cumulative_gain(y, y, k)
+    return exponential_discounted_cumulative_gain(y_true, y_pred, k)/exponential_discounted_cumulative_gain(y_true, y_true, k)
 
 
 
