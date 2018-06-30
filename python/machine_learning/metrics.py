@@ -290,4 +290,42 @@ def normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
     return exponential_discounted_cumulative_gain(y_true, y_pred, k)/exponential_discounted_cumulative_gain(y_true, y_true, k)
 
 
+def gini(y_true, y_pred):
+    """Normalized Gini Coefficient.
+    It is a measure of statistical dispersion intended to represent a measurement of inequality.
+    Args:
+        y (np.array): True values.
+        p (np.array): Predicted values.
+    Returns:
+        e (float): Normalized Gini coefficient.
+    Examples:
+        >>> actual = np.array([0.3, 0.8, 0.1, 0.5])
+        >>> pred1 = np.array([0.3, 0.8, 0.1, 0.5])
+        >>> pred2 = pred1[::-1]
+        >>> gini(actual, pred1)
+        1.0
+        >>> gini(actual, pred2)
+        -1.0000000000000002
+    """
+
+    n_samples = y_true.shape[0]
+
+    # sort rows on prediction column
+    # (from largest to smallest)
+    arr = np.array([y_true, y_pred]).transpose()
+    true_order = arr[arr[:,0].argsort()][::-1,0]
+    pred_order = arr[arr[:,1].argsort()][::-1,0]
+
+    # get Lorenz curves
+    l_true = np.cumsum(true_order) / np.sum(true_order)
+    l_pred = np.cumsum(pred_order) / np.sum(pred_order)
+    l_ones = np.linspace(1/n_samples, 1, n_samples)
+
+    # get Gini coefficients (area between curves)
+    g_true = np.sum(l_ones - l_true)
+    g_pred = np.sum(l_ones - l_pred)
+
+    # normalize to true Gini coefficient
+    return g_pred / g_true
+
 
