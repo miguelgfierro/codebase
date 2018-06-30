@@ -32,5 +32,10 @@
                 "node"
             ],
         },
-    ]
+    ],
+    "cSpell.userWords": [
+        "fierro"
+    ],
+    "files.autoSave": "onWindowChange",
+    "editor.fontSize": 12,
 }
