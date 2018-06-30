@@ -96,6 +96,7 @@ ENV/
 
 # Data files 
 *.h5
+*.hdf5
 
 
 ######
