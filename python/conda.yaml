@@ -1,14 +1,13 @@
-# To create the conda environment:
-# $ conda env create -n py35 -f conda_py35.yaml
+# To create the conda environment (codebase):
+# $ conda env create -n codebase -f conda.yaml
 #
 # To update the conda environment:
-# $ conda env update -n py35 -f conda_py35.yaml
+# $ conda env update -n codebase -f conda.yaml
 #
 # To register the conda environment in Jupyter:
-# $ python -m ipykernel install --user --name py35 --display-name "Python (py35)"
+# $ python -m ipykernel install --user --name codebase --display-name "Python (codebase)"
 #
 
-name: py35
 channels:
 - conda-forge
 - defaults
@@ -42,6 +41,11 @@ dependencies:
   - pyspark>=2.3.0
   - xmlrunner>=1.7.7
   - coverage>=4.5.1
+  # For websockets, add flask-socketio, gevent-websocket, wsaccel and ujson
+  - flask-socketio>=3.0.1
+  - gevent-websocket>=0.10.1
+  - wsaccel>=0.6.2
+  - ujson>=1.35
   
 
 
