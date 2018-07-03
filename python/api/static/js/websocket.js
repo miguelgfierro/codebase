@@ -21,7 +21,7 @@ $(document).ready(function () {
     $("form#emit").submit(function (event) {
         socket.emit("my_event", { data: $("#emit_data").val() });
         return false;
-    })
+    });
 
     // JS to receive the a response message from the server. In python, the
     // message is emitted with the tag "my_response". Their html counterpart
@@ -50,8 +50,9 @@ $(document).ready(function () {
         pingPongTimes.push(latency);
         pingPongTimes = pingPongTimes.slice(-30); // keep last 30 samples
         var sum = 0;
-        for (var i = 0; i < pingPongTimes.length; i++)
+        for (var i = 0; i < pingPongTimes.length; i++) {
             sum += pingPongTimes[i];
+        }
         $("#ping-pong").text(Math.round(10 * sum / pingPongTimes.length) / 10);
     });
 
