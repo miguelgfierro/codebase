@@ -35,14 +35,16 @@ def test_disconnect():
 # If the system is using a namespace, the decorator would be:
 # @socketio.on('my_event', namespace='/test').
 # In the client, the message is sent through a form that in JS is handeled
-# with the tag 'my_event'.
-@socketio.on('my_event')
+# with the tag 'my_event'. When broadcast=True, the message is sent to all
+# connected clients, if False, only to the first one connected.
+@socketio.on('my_event') 
 def test_message(message):
     received_message = message['data']
     print("The server received the message: {}".format(received_message))
     new_response = received_message + ' Oh Yeah!'
     emit('my_response',
-         {'data': new_response, 'note': 'Message improved'})
+         {'data': new_response, 'note': 'Message improved'},
+         broadcast=False)
 
 
 # Receives my_pong from the client and sends my_pong from the server
