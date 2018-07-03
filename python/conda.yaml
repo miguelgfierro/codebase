@@ -42,6 +42,9 @@ dependencies:
   - xmlrunner>=1.7.7
   - coverage>=4.5.1
   - flask-socketio>=3.0.1
+  - gevent-websocket>=0.10.1
+  - wsaccel>=0.6.2
+  - ujson>=1.35
   
 
 
