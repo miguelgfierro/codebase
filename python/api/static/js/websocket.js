@@ -12,33 +12,25 @@ $(document).ready(function () {
     //     http[s]://<domain>:<port>[/<namespace>]
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
 
-    // socket.on('message', function (data) {
-    //     console.log('message form backend ' + data);
-    // });
-
-    // socket.on('alert', function (data) {
-    //     alert('Alert Message!! ' + data);
-    // });
-
-    // function json_button() {
-    //     socket.send('json_button', '{"message": "test"}');
-    // }
-
-    // function alert_button() {
-    //     socket.send('alert_button', 'Message from client!!')
-    // }
 
 
-    // this is a callback that triggers when the "my response" event is emitted by the server.
-    // socket.on('my response', function (msg) {
-    //     $('#log').append('<p>Received: ' + msg.data + '</p>');
-    // });
-    // //example of triggering an event on click of a form submit button
-    // $('form#emit').submit(function (event) {
-    //     socket.emit('my event', { data: $('#emit_data').val() });
-    //     return false;
-    // });
+    // JS to send a message to the server. Their html counterpart is
+    // <form id="emit" method="POST" action='#'>.
+    // This sends to the server the text content of id="emit_data".
+    // In python, the message is handled via the tag 'my_event'.
+    $('form#emit').submit(function (event) {
+        socket.emit('my_event', { data: $('#emit_data').val() })
+        return false
+    })
 
+    // JS to receive the a response message from the server. In python, the
+    // message is emitted with the tag 'my_response'. Their html counterpart
+    // is <div id="response"></div>.
+    socket.on('my_response', function (msg) {
+        $('#response').append('<br>' + $('<div/>')
+            .text('Response from server: ' + msg.data + ' (note: ' + msg.note + ')')
+            .html());
+    });
 
     // Interval function that tests message latency by sending a "ping"
     // message. The server then responds with a "pong" message and the
@@ -62,5 +54,7 @@ $(document).ready(function () {
             sum += ping_pong_times[i];
         $('#ping-pong').text(Math.round(10 * sum / ping_pong_times.length) / 10);
     });
+
+
 
 });

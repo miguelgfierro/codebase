@@ -4,16 +4,9 @@
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
 <!--<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">-->
 <script type="text/javascript" src="{{ url_for('static', filename='js/websocket.js') }}"></script>
+
 <div class=page>
     <h1>Demo of Websockets</h1>
-    <!--<button onclick="json_button()">Json Message</button>
-    <button onclick="alert_button()">Alert Message</button>
-    <form id="emit" action="#">
-        <input type="text" class="form-control" name="emit_data" id="emit_data" placeholder="Message">
-        <button type="submit">Send</button>
-    </form>
-    <h3>Returned message:</h3>
-    <div id="log">-->
 
     <!-- Latency test -->
     <p>Average ping/pong latency:
@@ -24,4 +17,14 @@
         </b>
     </p>
 
+    <!-- Form to send a message to the server -->
+    <h3>Send message to server:</h3>
+    <form id="emit" method="POST" action='#'>
+        <input type="text" name="emit_data" id="emit_data" placeholder="Send a message to the server">
+        <input type="submit" value="Send">
+    </form>
+
+    <!-- Handle for showing the server response -->
+    <h3>Response:</h3>
+    <div id="response"></div>
 </div>
