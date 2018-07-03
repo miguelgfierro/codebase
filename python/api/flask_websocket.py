@@ -9,7 +9,7 @@
 # https://www.shanelynn.ie/asynchronous-updates-to-a-webpage-with-flask-and-socket-io/
 
 from flask import Flask, render_template
-from flask_socketio import SocketIO, emit, send
+from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
