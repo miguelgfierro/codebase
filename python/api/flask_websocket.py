@@ -8,8 +8,12 @@
 # https://github.com/miguelgrinberg/Flask-SocketIO/tree/master/example
 # https://www.shanelynn.ie/asynchronous-updates-to-a-webpage-with-flask-and-socket-io/
 
-from flask import Flask, render_template
+from flask import Flask, render_template, make_response, jsonify
 from flask_socketio import SocketIO, emit
+
+# HTML code
+STATUS_OK = 200
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
@@ -51,6 +55,17 @@ def test_message(message):
 @socketio.on('my_ping')
 def ping_pong():
     emit('my_pong')
+
+
+# When using a standard flask end point, we can't use emit directly,
+# we need to use socketio.emit.
+# More info: https://github.com/miguelgrinberg/Flask-SocketIO/issues/40
+@app.route('/health')
+def health_check():
+    socketio.emit('my_response',
+                 {'data': 'HEALTH CHECK', 'note': 'OK'},
+                 broadcast=True)
+    return make_response(jsonify({'health': 'OK'}), STATUS_OK)
 
 
 if __name__ == '__main__':
