@@ -42,3 +42,9 @@ With ellipsis:
     >>> "Time elapsed {}".format(t) #doctest: +ELLIPSIS
     'Time elapsed 0:00:...'
 
+To handle [exceptions](https://docs.python.org/2.4/lib/doctest-exceptions.html), you can just add the `Traceback` info, then `...` and then the exception:
+
+    >>> raise ValueError("Something bad happened")
+    Traceback (most recent call last):
+        ...
+    ValueError: "Something bad happened"
