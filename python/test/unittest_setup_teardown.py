@@ -48,7 +48,7 @@ class DummyUnitTest(unittest.TestCase):
 
     def test_dictionaries(self):
         self.assertDictEqual(self.dict, {'a': 1, 'b': 2})
-        self.assertDictContainsSubset(self.dict, {'a': 1, 'b': 2, 'c': 3})
+        self.assertDictContainsSubset(self.dict, {'a': 1, 'b': 2, 'c': 3}) # deprecated (no alternative)
         self.assertRaises(KeyError, lambda: self.dict['c'])
         self.assertIn('a', self.dict)
 
