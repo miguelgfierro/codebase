@@ -46,6 +46,7 @@ dependencies:
   - gevent-websocket>=0.10.1
   - wsaccel>=0.6.2
   - ujson>=1.35
+  - pytest>=3.6.3
   
 
 
