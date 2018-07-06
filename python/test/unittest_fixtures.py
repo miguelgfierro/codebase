@@ -42,15 +42,15 @@ class DummyUnitTest(unittest.TestCase):
         self.assertListEqual(self.list, [1, 2, 3])
         self.assertCountEqual(self.list, [2, 1, 3])
         self.assertIn(1, self.list)
+        self.assertNotIn(5, self.list)
         sublist_in_list = all(x in self.list for x in [1, 2])
         self.assertTrue(sublist_in_list)
-        self.assertNotIn(5, self.list)
 
     def test_dictionaries(self):
         self.assertDictEqual(self.dict, {'a': 1, 'b': 2})
-        self.assertDictContainsSubset(self.dict, {'a': 1, 'b': 2, 'c': 3})
-        self.assertRaises(KeyError, lambda: self.dict['c'])
         self.assertIn('a', self.dict)
+        self.assertDictContainsSubset(self.dict, {'a': 1, 'b': 2, 'c': 3}) # deprecated (no alternative)
+        self.assertRaises(KeyError, lambda: self.dict['c'])
 
     def test_pandas(self):
         df_target = pd.DataFrame({'a': 1, 'b': 2}, index=[0])
