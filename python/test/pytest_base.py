@@ -27,4 +27,8 @@ def test_comparing_numbers():
     struct = basic_structures()
     assert struct['pi'] == pytest.approx(3.1415926, 0.0000001)
     assert struct['pi'] != pytest.approx(3.1415926, 0.00000001)
+    assert struct['int'] > 3
+    assert struct['int'] >= 5
+    assert struct['int'] < 10
+    assert struct['int'] <= 5
 
