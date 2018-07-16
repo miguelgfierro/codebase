@@ -4,8 +4,7 @@ For Python Docstring, I'm using the [Google Style](http://sphinxcontrib-napoleon
 
 To install the libraries:
 
-    conda env update -n py35 -f conda_py35.yaml
-
+    conda env create -n codebase -f conda.yaml
 
 ## Configuration
 
