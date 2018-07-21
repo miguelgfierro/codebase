@@ -7,19 +7,28 @@ def fun_base(arg, verbose=True):
     The standard way to do overloading is using multiple dispatch
     with helper functions.
     Examples:
-
+        >>> fun_base("Hi!", verbose=True)
+        Let me just say, Hi!
+        >>> fun_base(5, verbose=True)
+        Strength in numbers, eh? 5
+        >>> fun_base([1,2,3], verbose=True)
+        Enumerate this: [1, 2, 3]
+        >>> fun_base(None)
+        Traceback (most recent call last):
+        ...
+        NotImplementedError: Type not implemented
     """
-    if isinstance(arg, object):
-        return _fun_general(arg, verbose)
+    if isinstance(arg, str):
+        return _fun_str(arg, verbose)
     elif isinstance(arg, int):
         return _fun_int(arg, verbose)
     elif isinstance(arg, list):
         return _fun_list(arg, verbose)
     else:
-        raise NotImplementedError()
+        raise NotImplementedError("Type not implemented")
 
 
-def _fun_general(arg, verbose=False):
+def _fun_str(arg, verbose=False):
     """Overload of fun_base for argument string"""
     if verbose:
         print("Let me just say,", end=" ")
