@@ -1,6 +1,45 @@
 from functools import singledispatch
 
 
+def fun_base(arg, verbose=True):
+    """Generic way of overloading a function.
+    Due to dynamic typing overloading is not common in python.
+    The standard way to do overloading is using multiple dispatch
+    with helper functions.
+    Examples:
+
+    """
+    if isinstance(arg, object):
+        return _fun_general(arg, verbose)
+    elif isinstance(arg, int):
+        return _fun_int(arg, verbose)
+    elif isinstance(arg, list):
+        return _fun_list(arg, verbose)
+    else:
+        raise NotImplementedError()
+
+
+def _fun_general(arg, verbose=False):
+    """Overload of fun_base for argument string"""
+    if verbose:
+        print("Let me just say,", end=" ")
+    print(arg)
+
+
+def _fun_int(arg, verbose=False):
+    """Overload of fun_base for argument int"""
+    if verbose:
+        print("Strength in numbers, eh?", end=" ")
+    print(arg)
+
+
+def _fun_list(arg, verbose=False):
+    """Overload of fun_base for argument list"""
+    if verbose:
+        print("Enumerate this:", end=" ")
+    print(arg)
+
+
 @singledispatch
 def fun(arg, verbose=False):
     """Single Dispatch Generic Functions.
@@ -45,3 +84,6 @@ def nothing(arg, verbose=False):
 
 # To enable registering lambdas and pre-existing functions, the register() attribute can be used in a functional form:
 fun.register(type(None), nothing)
+
+
+
