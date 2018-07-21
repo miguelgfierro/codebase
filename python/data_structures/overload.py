@@ -14,6 +14,10 @@ def fun(arg, verbose=False):
         Strength in numbers, eh? 5
         >>> fun([1,2,3], verbose=True)
         Enumerate this: [1, 2, 3]
+        >>> fun(None)
+        Nothing.
+        >>> fun.registry.keys() #To access all registered implementations
+        dict_keys([<class 'list'>, <class 'NoneType'>, <class 'int'>, <class 'object'>])
 
     """
     if verbose:
@@ -35,4 +39,9 @@ def _(arg, verbose=False):
     print(arg)
 
 
+def nothing(arg, verbose=False):
+    print("Nothing.")
 
+
+# To enable registering lambdas and pre-existing functions, the register() attribute can be used in a functional form:
+fun.register(type(None), nothing)
