@@ -20,6 +20,7 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
 
+# To access the main page, go to http://localhost:5000
 @app.route('/')
 def index():
     return render_template('websocket.html')
@@ -41,7 +42,7 @@ def test_disconnect():
 # In the client, the message is sent through a form that in JS is handeled
 # with the tag 'my_event'. When broadcast=True, the message is sent to all
 # connected clients, if False, only to the first one connected.
-@socketio.on('my_event') 
+@socketio.on('my_event')
 def test_message(message):
     received_message = message['data']
     print("The server received the message: {}".format(received_message))
@@ -57,14 +58,20 @@ def ping_pong():
     emit('my_pong')
 
 
-# When using a standard flask end point, we can't use emit directly,
+# This is a health end point, we can make a GET call to the api and
+# the websocket will emit a response that will be visible in the web page.
+# To do it, first open a browser and type http://localhost:5000, then in
+# a terminal type: curl http://localhost:5000/health. If you go back to
+# the browser, you will see that there is a new message that has been sent
+# from the server, as a response to the client query in /health end point.
+# Note: when using a standard flask end point, we can't use emit directly,
 # we need to use socketio.emit.
 # More info: https://github.com/miguelgrinberg/Flask-SocketIO/issues/40
 @app.route('/health')
 def health_check():
     socketio.emit('my_response',
-                 {'data': 'HEALTH CHECK', 'note': 'OK'},
-                 broadcast=True)
+                  {'data': 'HEALTH CHECK', 'note': 'OK'},
+                  broadcast=True)
     return make_response(jsonify({'health': 'OK'}), STATUS_OK)
 
 

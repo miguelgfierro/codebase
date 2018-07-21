@@ -23,10 +23,11 @@ $(document).ready(function () {
         return false;
     });
 
-    // JS to receive the a response message from the server. In python, the
+    // JS to receive the response message from the server. In python, the
     // message is emitted with the tag "my_response". Their html counterpart
     // is <div id="response"></div>.
     socket.on("my_response", function (msg) {
+        console.log("Response from server: " + msg.data + " (note: " + msg.note + ")");
         $("#response").append("<br>" + $("<div/>")
             .text("Response from server: " + msg.data + " (note: " + msg.note + ")")
             .html());
