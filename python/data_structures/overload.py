@@ -1,6 +1,11 @@
 # Overloading is a software engineering process whereby multiple
 # functions of different types or arguments are defined with the same name.
 # Due to dynamic typing overloading is not common in python.
+# In programming languages that defer data type identification until run-time
+# the selection among alternative functions must occur at run-time, based on
+# the dynamically determined types of function arguments. Functions whose
+# alternative implementations are selected in this manner are referred
+# to most generally as multimethods (also multiple dispatch).
 # Generally there are three ways of doing overloading in python:
 # optional arguments, multiple dispatch and single dispatch.
 #
@@ -34,8 +39,8 @@ def fun_optional_arguments(arg1=None, arg2=None, arg3=None, verbose=True):
 
 
 def fun_multiple_dispatch(arg, verbose=False):
-    """Example of function overloading using multiple dispatch,
-    it requires the use of helper functions.
+    """Example of function overloading using multiple dispatch (also called
+    multimethods), it requires the use of helper functions.
     More info: http://matthewrocklin.com/blog/work/2014/02/25/Multiple-Dispatch
     Examples:
         >>> fun_multiple_dispatch("Hi!", verbose=True)
