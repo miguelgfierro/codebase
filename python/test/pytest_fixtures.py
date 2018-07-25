@@ -1,3 +1,6 @@
+# More information: https://miguelgfierro.com/blog/2018/a-beginners-guide-to-python-testing/
+#
+
 import pytest
 import pandas as pd
 import numpy as np
@@ -85,5 +88,3 @@ def test_numpy():
     assert np.all(np_array == np_target)
     np.testing.assert_array_equal(np_array, np_target)  # same as before
     np.testing.assert_array_almost_equal(np_array, np_target2, decimal=4)
-
-
