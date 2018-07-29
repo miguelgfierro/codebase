@@ -18,7 +18,7 @@ Examples:
     >>> c1.xValue = 50
     >>> c1.x, c1.xValue
     (50, 50)
-    >>> c2.x, c2.xValue
+    >>> c2.x, c2.xValue  # c1 and c2 are two different instances of the same class
     (0, 0)
 """
 
