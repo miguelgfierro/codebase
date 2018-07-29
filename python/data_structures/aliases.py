@@ -1,16 +1,25 @@
-"""Alias examples
->>> function_with_a_long_name()
-1
->>> foo()
-1
->>> c1 = ClassWithALongName()
->>> c1.name
-'long'
->>> c2 = C()
->>> c2.name
-'long'
-
-
+"""Alias examples with class name, class method and functions.
+Examples:
+    >>> function_with_a_long_name()
+    1
+    >>> foo()
+    1
+    >>> FOO()
+    1
+    >>> c1 = ClassWithALongName()
+    >>> c1.x
+    17
+    >>> c2 = C()
+    >>> c2.x, c2.xValue
+    (17, 17)
+    >>> c2.x = 0
+    >>> c2.x, c2.xValue
+    (0, 0)
+    >>> c1.xValue = 50
+    >>> c1.x, c1.xValue
+    (50, 50)
+    >>> c2.x, c2.xValue
+    (0, 0)
 """
 
 
@@ -20,14 +29,22 @@ def function_with_a_long_name():
 
 class ClassWithALongName:
     def __init__(self):
-        self.name = 'long'
+        self._x = 17
 
-    def method_with_a_long_name(self):
-        return 2
+    @property
+    def x(self):
+        return self._x
+
+    @x.setter
+    def x(self, inp):
+        self._x = inp
+
+    # Alias of a method
+    xValue = x
 
 
-# alias of a function
-foo = function_with_a_long_name
+# Alias of a function
+foo = FOO = function_with_a_long_name
 
-# alias of a class
+# Alias of a class
 C = ClassWithALongName
