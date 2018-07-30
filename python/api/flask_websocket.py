@@ -67,6 +67,8 @@ def ping_pong():
 # Note: when using a standard flask end point, we can't use emit directly,
 # we need to use socketio.emit.
 # More info: https://github.com/miguelgrinberg/Flask-SocketIO/issues/40
+# Note 2: if the system is using a namespace, we have to add an extra
+# argument to socketio.emit(..., namespace='/test').
 @app.route('/health')
 def health_check():
     socketio.emit('my_response',
