@@ -71,16 +71,16 @@ def test_dictionaries(complex_structures):
         value = d['c']
 
 
-def test_pandas():
-    _, df, series = numeric_libs()
+def test_pandas(numeric_libs):
+    _, df, series = numeric_libs
     df_target = pd.DataFrame({'a': 1, 'b': 2}, index=[0])
     series_target = pd.Series([1, 2, 3])
     pd.testing.assert_frame_equal(df, df_target)
     pd.testing.assert_series_equal(series, series_target)
 
 
-def test_numpy():
-    np_array, *_ = numeric_libs()
+def test_numpy(numeric_libs):
+    np_array = numeric_libs[0]
     np_target = np.array([1, 2, 3])
     np_target2 = np.array([0.9999, 2, 3])
     assert np.all(np_array == np_target)
