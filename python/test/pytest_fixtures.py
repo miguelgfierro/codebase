@@ -35,28 +35,26 @@ def numeric_libs():
     return np_array, df, series
 
 
-def test_basic_structures():
-    struct = basic_structures()
-    assert struct['int'] == 5
-    assert struct['yes'] is True
-    assert struct['no'] is False
-    assert struct['float'] == 0.5
-    assert struct['string'] == 'Miguel'
-    assert struct['none'] is None
+def test_basic_structures(basic_structures):
+    assert basic_structures['int'] == 5
+    assert basic_structures['yes'] is True
+    assert basic_structures['no'] is False
+    assert basic_structures['float'] == 0.5
+    assert basic_structures['string'] == 'Miguel'
+    assert basic_structures['none'] is None
 
 
-def test_comparing_numbers():
-    struct = basic_structures()
-    assert struct['pi'] == pytest.approx(3.1415926, 0.0000001)
-    assert struct['pi'] != pytest.approx(3.1415926, 0.00000001)
-    assert struct['int'] > 3
-    assert struct['int'] >= 5
-    assert struct['int'] < 10
-    assert struct['int'] <= 5
+def test_comparing_numbers(basic_structures):
+    assert basic_structures['pi'] == pytest.approx(3.1415926, 0.0000001)
+    assert basic_structures['pi'] != pytest.approx(3.1415926, 0.00000001)
+    assert basic_structures['int'] > 3
+    assert basic_structures['int'] >= 5
+    assert basic_structures['int'] < 10
+    assert basic_structures['int'] <= 5
 
 
-def test_lists():
-    l, _ = complex_structures()
+def test_lists(complex_structures):
+    l = complex_structures[0]
     assert l == [1, 2, 3]
     assert Counter(l) == Counter([2, 1, 3])  # list have same elements
     assert 1 in l
@@ -64,8 +62,8 @@ def test_lists():
     assert all(x in l for x in [2, 3])  # sublist in list
 
 
-def test_dictionaries():
-    _, d = complex_structures()
+def test_dictionaries(complex_structures):
+    d = complex_structures[1]
     assert d == {'a': 1, 'b': 2}
     assert 'a' in d
     assert d.items() <= {'a': 1, 'b': 2, 'c': 3}.items()  # subdict in dict
