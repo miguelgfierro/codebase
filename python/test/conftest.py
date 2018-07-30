@@ -15,7 +15,7 @@ class NeuralNetwork:
         return self._compute_acc(self.model, dataset)
 
     def _train_model(self, dataset):
-        # code to train a model given a dataset
+        print("\nTraining neural network")
         sleep(1)
         return 'model trained on ' + dataset
 
@@ -27,3 +27,16 @@ class NeuralNetwork:
 def nn5():
     return NeuralNetwork(n_layers=5)
 
+
+@pytest.fixture(scope='function')
+def train_scope_function():
+    nn = NeuralNetwork(2)
+    nn.train('dataset1')
+    return nn
+
+
+@pytest.fixture(scope='module')
+def train_scope_module():
+    nn = NeuralNetwork(2)
+    nn.train('dataset1')
+    return nn
