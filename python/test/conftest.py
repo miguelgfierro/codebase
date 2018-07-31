@@ -40,3 +40,13 @@ def train_scope_module():
     nn = NeuralNetwork(2)
     nn.train('dataset1')
     return nn
+
+
+@pytest.fixture(scope='module')
+def load_dataset():
+    filename = '../../share/traj.txt'
+    with open(filename, 'r') as f:
+        data = [line.rstrip() for line in f.readlines()]
+    yield data
+    print("Tear down the fixture, with data: {}".format(data))
+
