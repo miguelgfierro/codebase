@@ -127,6 +127,35 @@ def convert_to_grayscale(img):
     return cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 
+def convert_to_binary(img, return_thresh=False):
+    """Converts an image to black and white.
+    It determines the binary threshold automatically from the image using
+    Otsu's method.
+    Args:
+        img (np.array): An image.
+        return_thresh (bool): Flag to return Otsu's threshold.
+    Returns:
+        img_new (np.array): A black and white image.
+        thresh (float): Otsu's threshold.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img_bw, t = convert_to_binary(img, True)
+        >>> t
+        117.0
+
+    """
+    if len(img.shape) != 2:
+        img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    else:
+        img_gray = img
+    thresh, img_new = cv2.threshold(
+        img_gray, 127, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+    if return_thresh:
+        return img_new, thresh
+    else:
+        return img_new
+
+
 def apply_mask_to_image(img, mask):
     """Apply a binary mask to an image"""
     return cv2.bitwise_and(img, img, mask=mask)
