@@ -20,7 +20,8 @@ def normalize_image(img, min_val=0, max_val=1):
         0
 
     """
-    img_new = cv2.normalize(img, None, alpha=min_val, beta=max_val, norm_type=cv2.NORM_MINMAX)
+    img_new = cv2.normalize(img, None, alpha=min_val,
+                            beta=max_val, norm_type=cv2.NORM_MINMAX)
     return img_new
 
 
@@ -124,3 +125,8 @@ def convert_to_grayscale(img):
 
     """
     return cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+
+def apply_mask_to_image(img, mask):
+    """Apply a binary mask to an image"""
+    return cv2.bitwise_and(img, img, mask=mask)
