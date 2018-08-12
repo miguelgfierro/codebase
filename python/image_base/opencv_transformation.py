@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 
 
 def normalize_image(img, min_val=0, max_val=1):
@@ -154,6 +155,43 @@ def convert_to_binary(img, return_thresh=False):
         return img_new, thresh
     else:
         return img_new
+
+
+def convert_to_colorspace(img, color_space='hsv'):
+    """Convert an opencv image in BGR to another color space.
+    More info: https://docs.opencv.org/3.3.1/de/d25/imgproc_color_conversions.html
+    HSV range: hue [0,179], saturation [0,255] and value [0,255].
+    HLS range: hue [0,179], lightness [0,255] and saturation [0,255].
+    YCrCb range: all [0-255].
+    Luv ranges: all [0-255].
+    Lab ranges: all [0-255].
+    XYZ ranges: all [0-255].
+    Args:
+        img (np.array): An image.
+        color_space (str): Color space.
+    Returns:
+        img_new (np.array): An image in the color space.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img_new = convert_to_colorspace(img, 'hsv')
+        >>> h, s, v = cv2.split(img_new)
+        >>> print(np.max(h), np.max(s), np.max(v))
+        179 246 255
+        >>> img_new = convert_to_colorspace(img, 'luv')
+        >>> l, a, b = cv2.split(img_new)
+        >>> print(np.max(l), np.max(a), np.max(b))
+        247 181 219
+
+    """
+    spaces = {
+        'hsv': cv2.COLOR_BGR2HSV,
+        'hls': cv2.COLOR_BGR2HLS,
+        'ycrcb': cv2.COLOR_BGR2YCrCb,
+        'luv': cv2.COLOR_BGR2Luv,
+        'lab': cv2.COLOR_BGR2Lab,
+        'xyz': cv2.COLOR_BGR2XYZ
+    }
+    return cv2.cvtColor(img, spaces[color_space])
 
 
 def apply_mask_to_image(img, mask):
