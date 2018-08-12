@@ -141,6 +141,8 @@ def convert_to_binary(img, return_thresh=False):
     Examples:
         >>> img = cv2.imread('../../share/Lenna.png')
         >>> img_bw, t = convert_to_binary(img, True)
+        >>> img_bw.shape
+        (512, 512)
         >>> t
         117.0
 
