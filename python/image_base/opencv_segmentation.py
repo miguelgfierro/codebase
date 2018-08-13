@@ -6,7 +6,7 @@ def apply_mask_to_image(img, mask):
     return cv2.bitwise_and(img, img, mask=mask)
 
 
-def external_bounding_box(mask, max_contours=10):
+def bounding_box(mask, max_contours=10):
     """Get the external bounding box of a mask.
     Args:
         mask (np.array): Binary image.
@@ -16,7 +16,7 @@ def external_bounding_box(mask, max_contours=10):
         rect (tuple): A tuple of integers defining x, y, width and height.
     Examples:
         >>> mask = cv2.imread('../../share/Lenna_mask.png', 0)
-        >>> external_bounding_box(mask)
+        >>> bounding_box(mask)
         (60, 32, 380, 480)
     """
     _, cnts, hierarchy = cv2.findContours(
