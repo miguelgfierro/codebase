@@ -194,8 +194,3 @@ def convert_to_colorspace(img, color_space='hsv'):
         'xyz': cv2.COLOR_BGR2XYZ
     }
     return cv2.cvtColor(img, spaces[color_space])
-
-
-def apply_mask_to_image(img, mask):
-    """Apply a binary mask to an image"""
-    return cv2.bitwise_and(img, img, mask=mask)
