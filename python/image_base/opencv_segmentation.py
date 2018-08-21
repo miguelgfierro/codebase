@@ -2,7 +2,13 @@ import cv2
 
 
 def apply_mask_to_image(img, mask):
-    """Apply a binary mask to an image"""
+    """Apply a binary mask to an image
+    Args:
+        img (np.array): An image.
+        mask (np.array): Binary image.
+    Returns:
+        img_result (np.array): A masked image.
+    """
     return cv2.bitwise_and(img, img, mask=mask)
 
 
