@@ -84,3 +84,24 @@ def _ensure_rec_inside_image(img, rect):
         warnings.warn("Rectangle height {} too large".format(h))
         h = y_max - y
     return x, y, w, h
+
+
+def draw_contours(img, contour, color=(255, 0, 0), thickness=3):
+    """Draw a contour on top of a color image.
+    Args:
+        img (np.array): An image.
+        contour (np.array): A contour of points.
+        color (tuple): BGR color values.
+        thickness (int): Thickness of the drawing.
+    Returns:
+        img_result (np.array): Image with the contour drew.
+    Examples:
+        >>> cnts = np.load('../../share/Lenna_contours.npy')
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img_result = draw_contours(img, cnts)
+        >>> plot_image_matplotlib(img_result)
+
+    """
+    img_result = np.copy(img)
+    cv2.drawContours(img_result, contour, -1, color, thickness)
+    return img_result
