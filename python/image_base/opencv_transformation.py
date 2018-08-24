@@ -2,30 +2,6 @@ import cv2
 import numpy as np
 
 
-def normalize_image(img, min_val=0, max_val=1):
-    """Normalize image between `min_val` and `max_val`.
-    Args:
-        img (np.array): An image.
-        min_val (int or float): Minimum value.
-        max_val (int or float): Maximum value.
-    Returns:
-        img_new (np.array): A normalized image.
-    Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
-        >>> max(img.flatten())
-        255
-        >>> img_norm = normalize_image(img)
-        >>> max(img_norm.flatten())
-        1
-        >>> min(img_norm.flatten())
-        0
-
-    """
-    img_new = cv2.normalize(img, None, alpha=min_val,
-                            beta=max_val, norm_type=cv2.NORM_MINMAX)
-    return img_new
-
-
 def resize_image(img, new_width, new_height):
     """Resize image to a `new_width` and `new_height`.
     Args:
@@ -77,20 +53,6 @@ def resize_image_aspect_ratio(img, new_width=None, new_height=None):
     return img_new
 
 
-def equalize_image(img):
-    """Equalize the image histogram.
-    Args:
-        img (np.array): An image.
-    Returns:
-        img_new (np.array): A equalized image.
-    Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
-        >>> img_eq = equalize_image(img)
-
-    """
-    return cv2.equalizeHist(img)
-
-
 def crop_image(img, box):
     """Crop a rectangular region from an image.
     Args:
@@ -110,6 +72,84 @@ def crop_image(img, box):
     return img[box[1]:box[3], box[0]:box[2]]
 
 
+def equalize_image(img):
+    """Equalize the image histogram.
+    Args:
+        img (np.array): An image.
+    Returns:
+        img_new (np.array): A equalized image.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img_eq = equalize_image(img)
+
+    """
+    return cv2.equalizeHist(img)
+
+
+def normalize_image(img, min_val=0, max_val=1):
+    """Normalize image between `min_val` and `max_val`.
+    Args:
+        img (np.array): An image.
+        min_val (int or float): Minimum value.
+        max_val (int or float): Maximum value.
+    Returns:
+        img_new (np.array): A normalized image.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> max(img.flatten())
+        255
+        >>> img_norm = normalize_image(img)
+        >>> max(img_norm.flatten())
+        1
+        >>> min(img_norm.flatten())
+        0
+
+    """
+    img_new = cv2.normalize(img, None, alpha=min_val,
+                            beta=max_val, norm_type=cv2.NORM_MINMAX)
+    return img_new
+
+
+def convert_to_binary(img, threshold=127, max_value=255, adaptative=False, return_thresh=False):
+    """Converts an image to black and white.
+    It determines the binary threshold automatically from the image using
+    Otsu's method.
+    Args:
+        img (np.array): An image.
+        threshold (int or float): Threshold.
+        max_value (int or float): Max value.
+        adaptative (bool): Flag to select whether to use adaptative method or not
+        return_thresh (bool): Flag to return Otsu's threshold.
+    Returns:
+        img_new (np.array): A black and white image.
+        thresh (float): Otsu's threshold.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img_bw, t = convert_to_binary(img, adaptative=True, return_thresh=True)
+        >>> np.min(img_bw), np.max(img_bw)
+        (0, 255)
+        >>> t
+        117.0
+        >>> img_bw = convert_to_binary(img, threshold=100, max_value=1)
+        >>> np.min(img_bw), np.max(img_bw)
+        (0, 1)
+
+    """
+    if len(img.shape) != 2:
+        img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    else:
+        img_gray = img
+    if adaptative:
+        method = cv2.THRESH_BINARY | cv2.THRESH_OTSU
+    else:
+        method = cv2.THRESH_BINARY
+    thresh, img_new = cv2.threshold(img_gray, threshold, max_value, method)
+    if return_thresh:
+        return img_new, thresh
+    else:
+        return img_new
+
+
 def convert_to_grayscale(img):
     """Convert a color image to grayscale.
     Args:
@@ -126,37 +166,6 @@ def convert_to_grayscale(img):
 
     """
     return cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-
-def convert_to_binary(img, return_thresh=False):
-    """Converts an image to black and white.
-    It determines the binary threshold automatically from the image using
-    Otsu's method.
-    Args:
-        img (np.array): An image.
-        return_thresh (bool): Flag to return Otsu's threshold.
-    Returns:
-        img_new (np.array): A black and white image.
-        thresh (float): Otsu's threshold.
-    Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
-        >>> img_bw, t = convert_to_binary(img, True)
-        >>> img_bw.shape
-        (512, 512)
-        >>> t
-        117.0
-
-    """
-    if len(img.shape) != 2:
-        img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    else:
-        img_gray = img
-    thresh, img_new = cv2.threshold(
-        img_gray, 127, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
-    if return_thresh:
-        return img_new, thresh
-    else:
-        return img_new
 
 
 def convert_to_colorspace(img, color_space='hsv'):

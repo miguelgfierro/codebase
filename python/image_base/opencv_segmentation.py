@@ -16,7 +16,7 @@ def bounding_box(mask, max_contours=10):
     """Get the external bounding box of a mask.
     Args:
         mask (np.array): Binary image.
-        max_contours (int): Maximun number of contours to consider
+        max_contours (int): Maximum number of contours to consider
                             for computing the bounding box.
     Returns:
         rect (tuple): A tuple of integers defining x, y, width and height.
