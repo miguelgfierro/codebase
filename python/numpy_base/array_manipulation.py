@@ -69,3 +69,21 @@ def one_hot_encoding_integer(y, num_classes=None):
     categorical = np.reshape(categorical, output_shape)
     return categorical
 
+
+def binarize_array(data, threshold, lower, upper):
+    """Binarize an array based on a threshold into lower and upper values.
+    Args:
+        data (np.array): An array.
+        threshold (int or float): Threshold for binarization.
+        lower (int or float): Lower value.
+        upper (int or float): Upper value.
+    Returns:
+        result (np.array): A binarized array.
+    Examples:
+        >>> data = np.array([(1,3,5),(2,4,6)], dtype='int')
+        >>> binarize_array(data, 3, 1, 6)
+        array([[1, 1, 6],
+               [1, 6, 6]])
+
+    """
+    return np.where(data > threshold, upper, lower)
