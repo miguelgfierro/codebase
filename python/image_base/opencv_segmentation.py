@@ -9,6 +9,12 @@ def apply_mask_to_image(img, mask):
         mask (np.array): Binary image.
     Returns:
         img_result (np.array): A masked image.
+    Examples:
+        >>> from codebase.python.plot_base.opencv_plot import plot_image_matplotlib as pp
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> mask = cv2.imread('../../share/Lenna_mask.png', 0)
+        >>> masked = apply_mask_to_image(img, mask)
+        >>> pp(masked)
     """
     return cv2.bitwise_and(img, img, mask=mask)
 
