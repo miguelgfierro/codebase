@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from sklearn.cluster import KMeans
 
 
 def apply_mask_to_image(img, mask):
@@ -111,3 +112,25 @@ def _grabcut(img, mask=None, rect=None, iterations=3):
     return img_result, mask
 
 
+def color_clustering_kmeans(image, n_clusters=4):
+    """Segmentation using color clustering
+    Based on: https://nrsyed.com/2018/03/29/image-segmentation-via-k-means-clustering-with-opencv-python/
+    https://github.com/nrsyed/computer-vision
+    """
+    # initialization
+    h, w, c = image.shape
+    mask_list = []
+
+    # clustering
+    reshaped = image.reshape(h * w, c)
+    kmeans = KMeans(n_clusters=n_clusters, n_jobs=-1,
+                    n_init=10, max_iter=500).fit(reshaped)
+    clustering = np.reshape(np.array(kmeans.labels_, dtype=np.uint8), (h, w))
+    labels = sorted([n for n in range(n_clusters)],
+                    key=lambda x: -np.sum(clustering == x))
+    for i, label in enumerate(labels):
+        mask = np.zeros((h, w), dtype=np.uint8)
+        mask[clustering == label] = 255
+        mask_list.append(mask)
+
+    return mask_list
