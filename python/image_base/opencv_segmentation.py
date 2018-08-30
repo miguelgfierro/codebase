@@ -112,10 +112,23 @@ def _grabcut(img, mask=None, rect=None, iterations=3):
     return img_result, mask
 
 
-def color_clustering_kmeans(image, n_clusters=4):
-    """Segmentation using color clustering
+def color_clustering_kmeans(image, n_clusters=4, **kwargs):
+    """Segmentation using KMeans color clustering
     Based on: https://nrsyed.com/2018/03/29/image-segmentation-via-k-means-clustering-with-opencv-python/
-    https://github.com/nrsyed/computer-vision
+    Args:
+        img (np.array): An image.
+        n_clusters (int): Number of clusters.
+    Returns:
+        mask_list (list): A list of segmented masks.
+    Examples:
+        >>> from codebase.python.plot_base.opencv_plot import plot_image_matplotlib as pp
+        >>> img = cv2.imread('../../share/home.jpg')
+        >>> mask_list = color_clustering_kmeans(img, n_clusters=4, n_jobs=-1, n_init=10, max_iter=100)
+        >>> pp(mask_list[0])
+        >>> pp(mask_list[1])
+        >>> pp(mask_list[2])
+        >>> pp(mask_list[3])
+
     """
     # initialization
     h, w, c = image.shape
@@ -123,8 +136,7 @@ def color_clustering_kmeans(image, n_clusters=4):
 
     # clustering
     reshaped = image.reshape(h * w, c)
-    kmeans = KMeans(n_clusters=n_clusters, n_jobs=-1,
-                    n_init=10, max_iter=500).fit(reshaped)
+    kmeans = KMeans(n_clusters=n_clusters, **kwargs).fit(reshaped)
     clustering = np.reshape(np.array(kmeans.labels_, dtype=np.uint8), (h, w))
     labels = sorted([n for n in range(n_clusters)],
                     key=lambda x: -np.sum(clustering == x))
