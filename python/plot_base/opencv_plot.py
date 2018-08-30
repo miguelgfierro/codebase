@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 import warnings
 
 
@@ -105,3 +106,41 @@ def draw_contours(img, contour, color=(255, 0, 0), thickness=3):
     img_result = np.copy(img)
     cv2.drawContours(img_result, contour, -1, color, thickness)
     return img_result
+
+
+def animate_images_matplotlib(image_list, title=None, interval=50):
+    """Animate a list of images creating a video
+    More info: http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-notebooks/
+    Args:
+        image_list (list): List of images.
+        title (str): Title of the image.
+        interval (int): Time between frames in miliseconds.
+    Returns:
+        animation (object): Animation.
+    Examples:
+        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img_gray = cv2.imread('../../share/Lenna_gray.png')
+        >>> im_list = [img, img_gray]*5
+        >>> ani = animate_images_matplotlib(im_list, title='Lenna')
+        >>> ani.save('test.mp4')
+
+    """
+    fig = plt.figure()
+    sequence = []
+    plt.axis('off')
+    if title is not None:
+        plt.title(title)
+    for image in image_list:
+        shape_len = len(image.shape)
+        if shape_len == 3:  # color image
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            cmap = None
+        elif shape_len == 2:  # gray image
+            cmap = 'gray'
+        else:
+            raise Exception("Wrong image")
+        canvas = plt.imshow(image, cmap=cmap)
+        sequence.append([canvas])
+
+    ani = animation.ArtistAnimation(fig, sequence, interval=interval, blit=True)
+    return ani
