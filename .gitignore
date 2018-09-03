@@ -112,3 +112,4 @@ share/blob_config.json
 test-reports/
 *.sqlite3
 *.db
+test.mp4
