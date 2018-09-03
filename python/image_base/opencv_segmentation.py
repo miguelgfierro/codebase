@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans, AffinityPropagation
 
 
 def apply_mask_to_image(img, mask):
@@ -136,8 +136,8 @@ def color_clustering_kmeans(image, n_clusters=4, **kwargs):
 
     # clustering
     reshaped = image.reshape(h * w, c)
-    kmeans = KMeans(n_clusters=n_clusters, **kwargs).fit(reshaped)
-    clustering = np.reshape(np.array(kmeans.labels_, dtype=np.uint8), (h, w))
+    model = KMeans(n_clusters=n_clusters, **kwargs).fit(reshaped)
+    clustering = np.reshape(np.array(model.labels_, dtype=np.uint8), (h, w))
     labels = sorted([n for n in range(n_clusters)],
                     key=lambda x: -np.sum(clustering == x))
     for i, label in enumerate(labels):
@@ -146,3 +146,6 @@ def color_clustering_kmeans(image, n_clusters=4, **kwargs):
         mask_list.append(mask)
 
     return mask_list
+
+
+
