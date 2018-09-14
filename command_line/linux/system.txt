@@ -1,0 +1,16 @@
+# System release (LSB=Linux Standard Base)
+lsb_release -a
+
+# Machine name, kernel name, version
+uname -a
+
+# Lists all PCI buses and devices connected to them
+lspci
+
+# Lists all USB buses and any connected USB devices
+lsusb
+
+# Lists detailed information of the hardware, like motherboard,
+# CPU, BIOS, memory, buses and network
+lshw
+
