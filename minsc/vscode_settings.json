@@ -1,18 +1,17 @@
 {
     "window.zoomLevel": 0,
     "editor.formatOnSave": true,
-    "python.linting.pep8Enabled": true,
-    "python.linting.pylintEnabled": false,
+    "python.formatting.provider": "black",
     "files.exclude": {
         "**/.git": true,
         "**/*.pyc": true,
         "**/.DS_Store": true
     },
     "editor.rulers": [
-        79,
+        88,
         120
     ],
-    "python.pythonPath": "/Users/miguel/anaconda3/envs/py35/bin/python",
+    "python.pythonPath": "/Users/miguel/anaconda3/envs/py36/bin/python",
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": true,
     "editor.links": true,
