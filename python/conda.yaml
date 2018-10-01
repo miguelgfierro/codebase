@@ -47,6 +47,7 @@ dependencies:
   - wsaccel>=0.6.2
   - ujson>=1.35
   - pytest>=3.6.3
+  - papermill>=0.15.0
 
 
 
