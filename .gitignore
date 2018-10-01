@@ -113,3 +113,4 @@ test-reports/
 *.sqlite3
 *.db
 test.mp4
+python/test/output.ipynb
