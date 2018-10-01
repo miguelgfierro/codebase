@@ -1,5 +1,29 @@
-language: python
-sudo: false # faster builds
+sudo: false
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+language: python
+python:
+  - "3.5"
+  - "3.6"
+
+dist: trusty
+
+install:
+  - sudo apt-get update
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  
+  # Useful for debugging any issues with conda
+  - conda info -a
+
+  # Replace dep1 dep2 ... with your dependencies
+  - conda create -q -n test-environment -f conda.yaml
+  - source activate test-environment
+
+
+script:
+  pytest --doctest-modules --continue-on-collection-errors
+
