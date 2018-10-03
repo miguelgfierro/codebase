@@ -25,5 +25,5 @@ install:
 
 
 script:
-  pytest --doctest-modules --continue-on-collection-errors
+  pytest python --doctest-modules --continue-on-collection-errors
 
