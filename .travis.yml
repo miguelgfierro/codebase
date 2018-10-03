@@ -20,7 +20,7 @@ install:
   - conda info -a
 
   # Replace dep1 dep2 ... with your dependencies
-  - conda create -q -n test-environment -f conda.yaml
+  - conda create -q -n test-environment -f python/conda.yaml
   - source activate test-environment
 
 
