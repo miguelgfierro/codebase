@@ -48,6 +48,7 @@ dependencies:
   - ujson>=1.35
   - pytest>=3.6.3
   - papermill>=0.15.0
+  - wget>=3.2
 
 
 
