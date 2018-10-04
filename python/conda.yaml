@@ -48,6 +48,7 @@ dependencies:
   - pytest>=3.6.3
   - papermill>=0.15.0
   - wget>=3.2
+  - h5py>=2.8.0
 
 
 
