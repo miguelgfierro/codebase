@@ -100,7 +100,7 @@ def fun_single_dispatch(arg, verbose=False):
         Enumerate this: [1, 2, 3]
         >>> fun_single_dispatch(None)
         Nothing.
-        >>> fun_single_dispatch.registry.keys() #To access all registered implementations
+        >>> fun_single_dispatch.registry.keys()  # To access all registered implementations
         dict_keys([<class 'list'>, <class 'NoneType'>, <class 'int'>, <class 'object'>])
 
     """
@@ -129,6 +129,4 @@ def nothing(arg, verbose=False):
 
 # To enable registering lambdas and pre-existing functions, the register() attribute can be used in a functional form:
 fun_single_dispatch.register(type(None), nothing)
-
-
 

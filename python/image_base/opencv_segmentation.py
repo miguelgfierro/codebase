@@ -12,8 +12,8 @@ def apply_mask_to_image(img, mask):
         img_result (np.array): A masked image.
     Examples:
         >>> from codebase.python.plot_base.opencv_plot import plot_image_matplotlib as pp
-        >>> img = cv2.imread('../../share/Lenna.png')
-        >>> mask = cv2.imread('../../share/Lenna_mask.png', 0)
+        >>> img = cv2.imread('share/Lenna.png')
+        >>> mask = cv2.imread('share/Lenna_mask.png', 0)
         >>> masked = apply_mask_to_image(img, mask)
         >>> pp(masked)
     """
@@ -29,16 +29,18 @@ def bounding_box(mask, max_contours=10):
     Returns:
         rect (tuple): A tuple of integers defining x, y, width and height.
     Examples:
-        >>> mask = cv2.imread('../../share/Lenna_mask.png', 0)
+        >>> mask = cv2.imread('share/Lenna_mask.png', 0)
         >>> bounding_box(mask)
         (60, 32, 380, 480)
     """
     _, cnts, hierarchy = cv2.findContours(
-        mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE
+    )
     x_min, x_max = mask.shape[1], 0
     y_min, y_max = mask.shape[0], 0
     cnts = sorted(cnts, key=cv2.contourArea, reverse=True)[
-        :max_contours]  # get largest contours by area
+        :max_contours
+    ]  # get largest contours by area
     for cont in cnts:
         x, y, w, h = cv2.boundingRect(cont)
         if x < x_min:
@@ -49,7 +51,7 @@ def bounding_box(mask, max_contours=10):
             y_min = y
         if y + h > y_max:
             y_max = y + h
-    return x_min, y_min, x_max-x_min, y_max-y_min
+    return x_min, y_min, x_max - x_min, y_max - y_min
 
 
 def grabcut_rect(img, rect, iterations=3):
@@ -64,7 +66,7 @@ def grabcut_rect(img, rect, iterations=3):
         mask (np.array): Binary image.
     Examples:
         >>> from codebase.python.plot_base.opencv_plot import plot_image_matplotlib as pp
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> rect = (60, 32, 380, 480)
         >>> img_result, mask = grabcut_rect(img, rect, iterations=1)
         >>> pp(img_result)
@@ -86,8 +88,8 @@ def grabcut_mask(img, mask, iterations=3):
         mask (np.array): Binary image.
     Examples:
         >>> from codebase.python.plot_base.opencv_plot import plot_image_matplotlib as pp
-        >>> img = cv2.imread('../../share/Lenna.png')
-        >>> mask = cv2.imread('../../share/Lenna_mask.png', 0)
+        >>> img = cv2.imread('share/Lenna.png')
+        >>> mask = cv2.imread('share/Lenna_mask.png', 0)
         >>> img_result, mask = grabcut_mask(img, mask, iterations=1)
         >>> pp(img_result)
 
@@ -107,7 +109,7 @@ def _grabcut(img, mask=None, rect=None, iterations=3):
     else:
         raise ValueError("Error with the inputs mask or rect")
     mask, _, _ = cv2.grabCut(img, mask, rect, bgd_model, fgd_model, iterations, method)
-    mask = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
+    mask = np.where((mask == 2) | (mask == 0), 0, 1).astype("uint8")
     img_result = img * mask[:, :, np.newaxis]
     return img_result, mask
 
@@ -138,14 +140,13 @@ def color_clustering_kmeans(image, n_clusters=4, **kwargs):
     reshaped = image.reshape(h * w, c)
     model = KMeans(n_clusters=n_clusters, **kwargs).fit(reshaped)
     clustering = np.reshape(np.array(model.labels_, dtype=np.uint8), (h, w))
-    labels = sorted([n for n in range(n_clusters)],
-                    key=lambda x: -np.sum(clustering == x))
+    labels = sorted(
+        [n for n in range(n_clusters)], key=lambda x: -np.sum(clustering == x)
+    )
     for i, label in enumerate(labels):
         mask = np.zeros((h, w), dtype=np.uint8)
         mask[clustering == label] = 255
         mask_list.append(mask)
 
     return mask_list
-
-
 
