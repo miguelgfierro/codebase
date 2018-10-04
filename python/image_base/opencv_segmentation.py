@@ -11,7 +11,7 @@ def apply_mask_to_image(img, mask):
     Returns:
         img_result (np.array): A masked image.
     Examples:
-        >>> from codebase.python.plot_base.opencv_plot import plot_image_matplotlib as pp
+        >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
         >>> img = cv2.imread('share/Lenna.png')
         >>> mask = cv2.imread('share/Lenna_mask.png', 0)
         >>> masked = apply_mask_to_image(img, mask)
@@ -65,7 +65,7 @@ def grabcut_rect(img, rect, iterations=3):
         img_result (np.array): A segmented image.
         mask (np.array): Binary image.
     Examples:
-        >>> from codebase.python.plot_base.opencv_plot import plot_image_matplotlib as pp
+        >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
         >>> img = cv2.imread('share/Lenna.png')
         >>> rect = (60, 32, 380, 480)
         >>> img_result, mask = grabcut_rect(img, rect, iterations=1)
@@ -87,7 +87,7 @@ def grabcut_mask(img, mask, iterations=3):
         img_result (np.array): A segmented image.
         mask (np.array): Binary image.
     Examples:
-        >>> from codebase.python.plot_base.opencv_plot import plot_image_matplotlib as pp
+        >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
         >>> img = cv2.imread('share/Lenna.png')
         >>> mask = cv2.imread('share/Lenna_mask.png', 0)
         >>> img_result, mask = grabcut_mask(img, mask, iterations=1)
@@ -123,8 +123,8 @@ def color_clustering_kmeans(image, n_clusters=4, **kwargs):
     Returns:
         mask_list (list): A list of segmented masks.
     Examples:
-        >>> from codebase.python.plot_base.opencv_plot import plot_image_matplotlib as pp
-        >>> img = cv2.imread('../../share/home.jpg')
+        >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
+        >>> img = cv2.imread('share/home.jpg')
         >>> mask_list = color_clustering_kmeans(img, n_clusters=4, n_jobs=-1, n_init=10, max_iter=100)
         >>> pp(mask_list[0])
         >>> pp(mask_list[1])
