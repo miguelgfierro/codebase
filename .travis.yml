@@ -20,6 +20,7 @@ install:
   # Create environment
   - conda env create -q -n test-environment -f python/conda.yaml
   - source activate test-environment
+  - pip list
 
 
 script:

@@ -19,15 +19,17 @@ class Shape(object):
         >>> s.draw()
         Circle.draw
         >>> Shape.__subclasses__()
-        [<class 'dependency_injection_factory.Circle'>, <class 'dependency_injection_factory.Square'>]
+        [<class 'python.data_structures.factory_dependency_injection.Circle'>, <class 'python.data_structures.factory_dependency_injection.Square'>]
 
     """
+
     def factory(description):
         if description == "Circle":
             return Circle()
         if description == "Square":
             return Square()
         assert 0, "Bad shape creation: " + description
+
     factory = staticmethod(factory)
 
 
@@ -48,11 +50,13 @@ class ShapeDict(object):
         >>> s.draw()
         Square.draw
         >>> Shape.__subclasses__()
-        [<class 'dependency_injection_factory.Circle'>, <class 'dependency_injection_factory.Square'>]
+        [<class 'python.data_structures.factory_dependency_injection.Circle'>, <class 'python.data_structures.factory_dependency_injection.Square'>]
 
     """
+
     def factory(description):
         classDict = {"Circle": Circle(), "Square": Square()}
         return classDict[description]
+
     factory = staticmethod(factory)
 
