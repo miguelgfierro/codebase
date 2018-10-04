@@ -114,3 +114,4 @@ test-reports/
 *.db
 test.mp4
 python/test/output.ipynb
+file.*

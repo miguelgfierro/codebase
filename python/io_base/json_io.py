@@ -9,10 +9,10 @@ def save_file(data, filename):
         filename (str): Name of the file.
     Examples:
         >>> data = {'name': 'Miguel','surname': 'Gonzalez-Fierro', 1:2,'3':'4'}
-        >>> save_file(data, 'data.json')
+        >>> save_file(data, 'file.json')
 
     """
-    with open(filename, 'w') as outfile:
+    with open(filename, "w") as outfile:
         json.dump(data, outfile)
 
 
@@ -23,7 +23,7 @@ def read_file(filename):
     Returns:
         data (dict): A dictionary.
     Examples:
-        >>> data = read_file('data.json')
+        >>> data = read_file('file.json')
         >>> type(data)
         <class 'dict'>
         >>> sorted(data.items(), key=lambda t: t[0])
