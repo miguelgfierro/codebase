@@ -15,8 +15,8 @@ class LoggingDict(dict):
     extends the __setitem__ method to make log entries whenever a key is updated.
     Examples:
         >>> ld = LoggingDict([('red', 1), ('green', 2), ('blue', 3)])
-        >>> ld  # {'blue': 3, 'green': 2, 'red': 1}
-        ld.items() == {'blue': 3, 'green': 2, 'red': 1}.items()
+        >>> ld.items() == {'blue': 3, 'green': 2, 'red': 1}.items()
+        True
         >>> ld['red'] = 10 # logs: INFO:root:Setting 'red' to 10
         >>> LoggingDict.__mro__
         (<class 'python.data_structures.method_resolution_order.LoggingDict'>, <class 'dict'>, <class 'object'>)

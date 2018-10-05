@@ -12,8 +12,8 @@ def apply_mask_to_image(img, mask):
         img_result (np.array): A masked image.
     Examples:
         >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
-        >>> img = cv2.imread('share/Lenna.png')
-        >>> mask = cv2.imread('share/Lenna_mask.png', 0)
+        >>> img = cv2.imread('python/share/Lenna.png')
+        >>> mask = cv2.imread('python/share/Lenna_mask.png', 0)
         >>> masked = apply_mask_to_image(img, mask)
         >>> pp(masked)
     """
@@ -29,7 +29,7 @@ def bounding_box(mask, max_contours=10):
     Returns:
         rect (tuple): A tuple of integers defining x, y, width and height.
     Examples:
-        >>> mask = cv2.imread('share/Lenna_mask.png', 0)
+        >>> mask = cv2.imread('python/share/Lenna_mask.png', 0)
         >>> bounding_box(mask)
         (60, 32, 380, 480)
     """
@@ -66,7 +66,7 @@ def grabcut_rect(img, rect, iterations=3):
         mask (np.array): Binary image.
     Examples:
         >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
-        >>> img = cv2.imread('share/Lenna.png')
+        >>> img = cv2.imread('python/share/Lenna.png')
         >>> rect = (60, 32, 380, 480)
         >>> img_result, mask = grabcut_rect(img, rect, iterations=1)
         >>> pp(img_result)
@@ -88,8 +88,8 @@ def grabcut_mask(img, mask, iterations=3):
         mask (np.array): Binary image.
     Examples:
         >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
-        >>> img = cv2.imread('share/Lenna.png')
-        >>> mask = cv2.imread('share/Lenna_mask.png', 0)
+        >>> img = cv2.imread('python/share/Lenna.png')
+        >>> mask = cv2.imread('python/share/Lenna_mask.png', 0)
         >>> img_result, mask = grabcut_mask(img, mask, iterations=1)
         >>> pp(img_result)
 
@@ -124,7 +124,7 @@ def color_clustering_kmeans(image, n_clusters=4, **kwargs):
         mask_list (list): A list of segmented masks.
     Examples:
         >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
-        >>> img = cv2.imread('share/home.jpg')
+        >>> img = cv2.imread('python/share/home.jpg')
         >>> mask_list = color_clustering_kmeans(img, n_clusters=4, n_jobs=-1, n_init=10, max_iter=100)
         >>> pp(mask_list[0])
         >>> pp(mask_list[1])

@@ -12,11 +12,11 @@ def image_pil2scipy_array(img):
         img_new (np.array): A numpy image of uint8 between 0 and 255.
     Examples:
         >>> from scipy import misc
-        >>> img = Image.open('share/Lenna.png')
+        >>> img = Image.open('python/share/Lenna.png')
         >>> img_conv = image_pil2scipy_array(img)
         >>> img_conv.shape
         (512, 512, 3)
-        >>> img_base = misc.imread('share/Lenna.png')
+        >>> img_base = misc.imread('python/share/Lenna.png')
         >>> np.all(img_base==img_conv)
         True
 
@@ -33,11 +33,11 @@ def image_scipy_numpy2pil(img):
     Examples:
         >>> from scipy import misc
         >>> from PIL import ImageChops
-        >>> img = misc.imread('share/Lenna.png')
+        >>> img = misc.imread('python/share/Lenna.png')
         >>> img_conv = image_scipy_numpy2pil(img)
         >>> img_conv.size
         (512, 512)
-        >>> img_base = Image.open('share/Lenna.png')
+        >>> img_base = Image.open('python/share/Lenna.png')
         >>> ImageChops.difference(img_conv, img_base).getbbox()
 
     """
@@ -53,11 +53,11 @@ def image_cv2pil(img):
         img_new (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
     Examples:
         >>> from PIL import ImageChops
-        >>> img = cv2.imread('share/Lenna.png')
+        >>> img = cv2.imread('python/share/Lenna.png')
         >>> img_conv = image_cv2pil(img)
         >>> img_conv.size
         (512, 512)
-        >>> img_base = Image.open('share/Lenna.png')
+        >>> img_base = Image.open('python/share/Lenna.png')
         >>> ImageChops.difference(img_conv, img_base).getbbox()
 
     """
@@ -73,11 +73,11 @@ def image_pil2cv(img):
     Returns:
         img_new (np.array): A numpy image loaded with opencv of uint8 between 0 and 255 using BGR channels.
     Examples:
-        >>> img = Image.open('share/Lenna.png')
+        >>> img = Image.open('python/share/Lenna.png')
         >>> img_conv = image_pil2cv(img)
         >>> img_conv.shape
         (512, 512, 3)
-        >>> img_base = cv2.imread('share/Lenna.png')
+        >>> img_base = cv2.imread('python/share/Lenna.png')
         >>> np.all(img_base==img_conv)
         True
 
@@ -93,11 +93,11 @@ def image_cv2plt(img):
     Returns:
         img_new (np.array): A matplotlib image of float32 between 0 and 1 using RGB channels.
     Examples:
-        >>> img = cv2.imread('share/Lenna.png')
+        >>> img = cv2.imread('python/share/Lenna.png')
         >>> img_conv = image_cv2plt(img)
         >>> img_conv.shape
         (512, 512, 3)
-        >>> img_base = plt.imread('share/Lenna.png')
+        >>> img_base = plt.imread('python/share/Lenna.png')
         >>> np.all(np.isclose(img_base, img_conv))
         True
 
@@ -114,11 +114,11 @@ def image_plt2cv(img):
     Returns:
         img_new (np.array): A numpy image of uint8 between 0 and 255 using BGR channels.
     Examples:
-        >>> img = plt.imread('share/Lenna.png')
+        >>> img = plt.imread('python/share/Lenna.png')
         >>> img_conv = image_plt2cv(img)
         >>> img_conv.shape
         (512, 512, 3)
-        >>> img_base = cv2.imread('share/Lenna.png')
+        >>> img_base = cv2.imread('python/share/Lenna.png')
         >>> np.all(img_base==img_conv)
         True
 
@@ -135,11 +135,11 @@ def image_pil2plt(img):
     Returns:
         img_new (np.array): A matplotlib image of float32 between 0 and 1 using RGB channels.
     Examples:
-        >>> img = Image.open('share/Lenna.png')
+        >>> img = Image.open('python/share/Lenna.png')
         >>> img_conv = image_pil2plt(img)
         >>> img_conv.shape
         (512, 512, 3)
-        >>> img_base = plt.imread('share/Lenna.png')
+        >>> img_base = plt.imread('python/share/Lenna.png')
         >>> np.all(img_base==img_conv)
         True
 
@@ -156,11 +156,11 @@ def image_plt2pil(img):
         img_new (PIL image): A PIL image of uint8 between 0 and 255 using RGB channels.
     Examples:
         >>> from PIL import ImageChops
-        >>> img = plt.imread('share/Lenna.png')
+        >>> img = plt.imread('python/share/Lenna.png')
         >>> img_conv = image_plt2pil(img)
         >>> img_conv.size
         (512, 512)
-        >>> img_base = Image.open('share/Lenna.png')
+        >>> img_base = Image.open('python/share/Lenna.png')
         >>> ImageChops.difference(img_conv, img_base).getbbox()
 
     """
