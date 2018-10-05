@@ -13,20 +13,26 @@
 from __future__ import division  # 1/2 == 0.5, as in Py3
 from __future__ import absolute_import  # avoid hiding global modules with locals
 from __future__ import print_function  # force use of print("hello")
-from __future__ import unicode_literals  # force unadorned strings "" to be unicode without prepending u""
+from __future__ import (
+    unicode_literals
+)  # force unadorned strings "" to be unicode without prepending u""
 import time
 import memory_profiler
 from IPython import get_ipython
 import psutil
+import warnings
 
 
 # keep a global accounting for the last known memory usage
 # which is the reference point for the memory delta calculation
 previous_call_memory_usage = memory_profiler.memory_usage()[0]
-t1 = time.time() # will be set to current time later
+t1 = time.time()  # will be set to current time later
 keep_watching = True
 watching_memory = True
-input_cells = get_ipython().user_ns['In']
+try:
+    input_cells = get_ipython().user_ns["In"]
+except:
+    warnings.warn("Not running on notebook")
 
 
 def start_watching_memory():
@@ -57,26 +63,29 @@ def stop_watching_memory():
 
 def watch_memory():
     # bring in the global memory usage value from the previous iteration
-    global previous_call_memory_usage, keep_watching, \
-           watching_memory, input_cells
+    global previous_call_memory_usage, keep_watching, watching_memory, input_cells
     new_memory_usage = memory_profiler.memory_usage()[0]
     memory_delta = new_memory_usage - previous_call_memory_usage
     keep_watching = False
-    total_memory = psutil.virtual_memory()[0]/1024/1024 #in Mb
+    total_memory = psutil.virtual_memory()[0] / 1024 / 1024  # in Mb
     # calculate time delta using global t1 (from the pre-run event) and current time
     time_delta_secs = time.time() - t1
     num_commands = len(input_cells) - 1
     cmd = "In [{}]".format(num_commands)
     # convert the results into a pretty string
-    output_template = ("{cmd} used {memory_delta:0.4f} Mb RAM in "
-                       "{time_delta:0.2f}s, total RAM usage "
-                       "{memory_usage:0.2f} Mb, total RAM "
-                       "memory {total_memory:0.2f} Mb")
-    output = output_template.format(time_delta=time_delta_secs,
-                                    cmd=cmd,
-                                    memory_delta=memory_delta,
-                                    memory_usage=new_memory_usage,
-                                    total_memory=total_memory)
+    output_template = (
+        "{cmd} used {memory_delta:0.4f} Mb RAM in "
+        "{time_delta:0.2f}s, total RAM usage "
+        "{memory_usage:0.2f} Mb, total RAM "
+        "memory {total_memory:0.2f} Mb"
+    )
+    output = output_template.format(
+        time_delta=time_delta_secs,
+        cmd=cmd,
+        memory_delta=memory_delta,
+        memory_usage=new_memory_usage,
+        total_memory=total_memory,
+    )
     if watching_memory:
         print(str(output))
     previous_call_memory_usage = new_memory_usage
