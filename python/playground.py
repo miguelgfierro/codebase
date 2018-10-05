@@ -9,7 +9,7 @@ from python.api.flask_html import *
 from python.api.flask_json import *
 
 # data structures
-from python.data_structures.abstract_class import *
+from python.data_structures.abstract import *
 from python.data_structures.binary_heaps import *
 from python.data_structures.binary_search_tree import *
 from python.data_structures.binary_tree import *
@@ -96,7 +96,7 @@ from python.system.paths import *
 from python.system.system_info import *
 
 # test
-from python.test.unittest_setup_teardown import *
+from python.test.unittest_fixtures import *
 
 # url_base
 from python.url_base.download_file import *
