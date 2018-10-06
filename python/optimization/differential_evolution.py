@@ -13,7 +13,7 @@ def optimize_function(func, bounds, **kargs):
         result (object): Result of the optimization. For parameters see:
         https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html#scipy.optimize.OptimizeResult
     Examples:
-        >>> from functions import rosenbrock
+        >>> from python.optimization.functions import rosenbrock
         >>> bounds = [(0,2), (0, 2), (0, 2), (0, 2), (0, 2)]
         >>> result = optimize_function(rosenbrock, bounds)
         >>> result.x # Solution
@@ -22,7 +22,7 @@ def optimize_function(func, bounds, **kargs):
         0.0
         >>> result.success
         True
-        >>> from functions import ackley
+        >>> from python.optimization.functions import ackley
         >>> bounds = [(-5, 5), (-5, 5)]
         >>> result = optimize_function(ackley, bounds, strategy='best2exp')
         >>> result.x # Solution
