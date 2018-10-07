@@ -13,14 +13,15 @@ BAD_PARAM = 450
 app = Flask(__name__)
 
 
-@app.route('/hello')
+@app.route("/hello")
 def hello_world():
     """Basic endpoint with arguments.
     Examples:
         Equivalent to:
         $ curl http://127.0.0.1:5000/hello
         $ curl http://127.0.0.1:5000/hello?name=Miguel
-        >>> import requests
+        >>> import requests, subprocess
+        >>> subprocess.run(["python", "python/api/flask_basic.py"]) 
         >>> res = requests.get('http://127.0.0.1:5000/hello')
         >>> res.ok
         True
@@ -33,20 +34,21 @@ def hello_world():
         'Hello Miguel'
 
     """
-    if 'name' in request.args:
-        return "Hello " + request.args['name']
+    if "name" in request.args:
+        return "Hello " + request.args["name"]
     else:
         return "Hello World!"
 
 
-@app.route('/hello/<user_id>')
+@app.route("/hello/<user_id>")
 def hello_user(user_id):
     """Basic endpoint with url parameters.
     Args:
         user_id (str): String parameter.
     Examples:
         $ curl http://127.0.0.1:5000/hello/5
-        >>> import requests
+        >>> import requests, subprocess
+        >>> proc = subprocess.run(["python", "python/api/flask_basic.py"], timeout=10) 
         >>> res = requests.get('http://127.0.0.1:5000/hello/5')
         >>> res.ok
         True
@@ -71,8 +73,9 @@ def hello_user(user_id):
 @app.errorhandler(ex.BadRequest)
 def user_not_found(e):
     """Custom error handler."""
-    return make_response(jsonify({'status': BAD_PARAM,
-                                  'error': 'User not found'}), BAD_PARAM)
+    return make_response(
+        jsonify({"status": BAD_PARAM, "error": "User not found"}), BAD_PARAM
+    )
 
 
 if __name__ == "__main__":
