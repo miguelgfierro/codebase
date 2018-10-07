@@ -31,7 +31,7 @@ def read_image(filename, is_color=True):
 
     """
     is_gray = not is_color
-    return io.imread(filename, as_grey=is_gray)
+    return io.imread(filename, as_gray=is_gray)
 
 
 def read_image_url(url):
