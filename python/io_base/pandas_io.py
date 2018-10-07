@@ -22,7 +22,7 @@ def read_csv(filename, **kwargs):
     Returns:
         dataframe (pd.DataFrame): An dataframe.
     Examples:
-        >>> df = read_csv(filename='../../share/traj.csv', header=None,
+        >>> df = read_csv(filename='share/traj.csv', header=None,
         ...                names=['time','q1','q2'], sep=',', usecols=[0,1,2])
         >>> df
                time   q1   q2
@@ -55,7 +55,7 @@ def save_to_sqlite(dataframe, database, table_name, **kargs):
         [(0, 1, 0.1), (1, 2, 0.2), (2, 3, 0.3), (None, 1, 0.1), (None, 2, 0.2), (None, 3, 0.3)]
 
     """
-    connection_string = 'sqlite:///' + database
+    connection_string = "sqlite:///" + database
     engine = create_engine(connection_string)
     dataframe.to_sql(table_name, engine, **kargs)
 
@@ -79,7 +79,7 @@ def read_from_sqlite(database, query, **kargs):
         5     3   0.3
 
     """
-    connection_string = 'sqlite:///' + database
+    connection_string = "sqlite:///" + database
     engine = create_engine(connection_string)
     return pd.read_sql(query, engine, **kargs)
 

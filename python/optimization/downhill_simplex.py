@@ -25,7 +25,7 @@ def optimize_function(func, initial_guess, **kargs):
         array([0.9999974 , 0.99999158, 0.99998042, 0.9999658 , 0.99993196])
         >>> round(fopt, ndigits=5)
         0.0
-        >>> from functions import ackley
+        >>> from python.optimization.functions import ackley
         >>> x0 = np.array([1, 1])
         >>> xopt, fopt = optimize_function(ackley, x0)
         >>> xopt # Real solution [0,0]

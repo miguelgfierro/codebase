@@ -9,11 +9,11 @@ def plot_image(img):
         img (np.array): An image.
     Examples:
         >>> import matplotlib.image as mpimg
-        >>> img = mpimg.imread('../../share/Lenna.png')
+        >>> img = mpimg.imread('share/Lenna.png')
         >>> img.shape
         (512, 512, 3)
         >>> plot_image(img)
-        >>> img_gray = mpimg.imread('../../share/Lenna_gray.png')
+        >>> img_gray = mpimg.imread('share/Lenna_gray.png')
         >>> img_gray.shape
         (512, 512)
         >>> plot_image(img_gray)
@@ -21,9 +21,9 @@ def plot_image(img):
     """
     cmap = None
     if img.ndim == 2:
-        cmap = 'gray'
+        cmap = "gray"
     plt.imshow(img, cmap=cmap)
-    plt.axis('off')
+    plt.axis("off")
     plt.show()
 
 
@@ -40,11 +40,11 @@ def plot_histogram(hist, bins):
     """
     width = np.diff(bins)
     center = (bins[:-1] + bins[1:]) / 2
-    plt.bar(center, hist, align='center', width=width)
+    plt.bar(center, hist, align="center", width=width)
     plt.show()
 
 
-def plot_traj(y, x=None, title=None, xlabel=None, ylabel=None, color='b'):
+def plot_traj(y, x=None, title=None, xlabel=None, ylabel=None, color="b"):
     """Plot a trajectory of points (x,y). If x is None it just take 
     range(len(y)).
     Args:
@@ -73,8 +73,7 @@ def plot_traj(y, x=None, title=None, xlabel=None, ylabel=None, color='b'):
     plt.show()
 
 
-def plot_traj_interpolate(y, x=None, title=None, xlabel=None, ylabel=None,
-                          color='b'):
+def plot_traj_interpolate(y, x=None, title=None, xlabel=None, ylabel=None, color="b"):
     """Plot a trajectory of points (x,y). If x is None it just take 
     range(len(y)).
     Args:
@@ -93,9 +92,9 @@ def plot_traj_interpolate(y, x=None, title=None, xlabel=None, ylabel=None,
     plt.figure()
     if x is None:
         x = range(len(y))
-    dx = np.linspace(x[0], x[-1], num=len(y)*4, endpoint=True)
-    fy = interp1d(x, y, kind='cubic')
-    plt.plot(x, y, '.', color=color)
+    dx = np.linspace(x[0], x[-1], num=len(y) * 4, endpoint=True)
+    fy = interp1d(x, y, kind="cubic")
+    plt.plot(x, y, ".", color=color)
     plt.plot(dx, fy(dx), color=color)
     if title is not None:
         plt.title(title)

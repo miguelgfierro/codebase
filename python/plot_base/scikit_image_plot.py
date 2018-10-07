@@ -6,7 +6,7 @@ def plot_image(img):
     Args:
         img (np.array): An image.
     Examples:
-        >>> img = io.imread('../../share/Lenna.png')
+        >>> img = io.imread('share/Lenna.png')
         >>> plot_image(img)
 
     """

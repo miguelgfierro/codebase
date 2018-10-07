@@ -100,8 +100,9 @@ def fun_single_dispatch(arg, verbose=False):
         Enumerate this: [1, 2, 3]
         >>> fun_single_dispatch(None)
         Nothing.
-        >>> fun_single_dispatch.registry.keys()  # To access all registered implementations
-        dict_keys([<class 'list'>, <class 'NoneType'>, <class 'int'>, <class 'object'>])
+        >>> keys = fun_single_dispatch.registry.keys()  # To access all registered implementations
+        >>> [list, object, int, NoneType] == list(keys)
+        True
 
     """
     if verbose:

@@ -5,13 +5,13 @@ import matplotlib.animation as animation
 import warnings
 
 
-def plot_image(img, title='image'):
+def plot_image(img, title="image"):
     """Plot an image.
     Args:
         img (np.array): An image.
         title (str): Title of the image.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> import numpy as np
         >>> print(np.array(img.shape, dtype='int'))
         [512 512   3]
@@ -30,7 +30,7 @@ def plot_image_matplotlib(img, figsize=None, title=None):
         figsize (tuple): Size of the figure in inches (w,h).
         title (str): Title of the image.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> plot_image_matplotlib(img)
 
     """
@@ -41,14 +41,14 @@ def plot_image_matplotlib(img, figsize=None, title=None):
         cmap = None
     elif shape_len == 2:  # gray image
         image = img
-        cmap = 'gray'
+        cmap = "gray"
     else:
         raise Exception("Wrong image")
     plt.figure(figsize=figsize)
     if title is not None:
         plt.title(title)
     plt.imshow(image, cmap=cmap)
-    plt.axis('off')
+    plt.axis("off")
     plt.show()
 
 
@@ -62,14 +62,14 @@ def draw_rectangle(img, rect, color=(0, 0, 255), thickness=2):
     Returns:
         img_result (np.array): An image with a rectangle
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> img_box = draw_rectangle(img, (40, 20, 400, 491))
         >>> plot_image_matplotlib(img_box)
 
     """
     x, y, w, h = _ensure_rec_inside_image(img, rect)
     img_result = np.copy(img)
-    cv2.rectangle(img_result, (x, y), (x+w, y+h), color, thickness)
+    cv2.rectangle(img_result, (x, y), (x + w, y + h), color, thickness)
     return img_result
 
 
@@ -97,8 +97,8 @@ def draw_contours(img, contour, color=(255, 0, 0), thickness=3):
     Returns:
         img_result (np.array): Image with the contour drew.
     Examples:
-        >>> cnts = np.load('../../share/Lenna_contours.npy')
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> cnts = np.load('share/Lenna_contours.npy')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> img_result = draw_contours(img, cnts)
         >>> plot_image_matplotlib(img_result)
 
@@ -118,8 +118,8 @@ def animate_images_matplotlib(image_list, title=None, interval=50):
     Returns:
         animation (object): Animation.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
-        >>> img_gray = cv2.imread('../../share/Lenna_gray.png')
+        >>> img = cv2.imread('share/Lenna.png')
+        >>> img_gray = cv2.imread('share/Lenna_gray.png')
         >>> im_list = [img, img_gray]*5
         >>> ani = animate_images_matplotlib(im_list, title='Lenna')
         >>> ani.save('test.mp4')
@@ -127,7 +127,7 @@ def animate_images_matplotlib(image_list, title=None, interval=50):
     """
     fig = plt.figure()
     sequence = []
-    plt.axis('off')
+    plt.axis("off")
     if title is not None:
         plt.title(title)
     for image in image_list:
@@ -136,7 +136,7 @@ def animate_images_matplotlib(image_list, title=None, interval=50):
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             cmap = None
         elif shape_len == 2:  # gray image
-            cmap = 'gray'
+            cmap = "gray"
         else:
             raise Exception("Wrong image")
         canvas = plt.imshow(image, cmap=cmap)

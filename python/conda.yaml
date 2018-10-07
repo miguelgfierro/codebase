@@ -25,7 +25,7 @@ dependencies:
 - ipykernel>=4.6.1
 - pip:
   - memory_profiler>=0.47
-  - pandas>=0.22.0
+  - pandas>=0.23.1
   - scikit-image>=0.13.1
   - scikit-learn>=0.19.1
   - scipy>=0.19.0
