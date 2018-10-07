@@ -16,7 +16,7 @@ def get_os():
         version (str): OS name.
     Examples:
         >>> get_os() #doctest: +ELLIPSIS
-        ...
+        '...'
 
     """
     return sys.platform
@@ -28,7 +28,7 @@ def get_machine_name():
         name (str): Name of the machine
     Examples:
         >>> get_machine_name() #doctest: +ELLIPSIS
-        ...
+        '...'
 
     """
     return socket.gethostname()
@@ -40,7 +40,7 @@ def get_python_version():
         version (str): Python version.
     Examples:
         >>> get_python_version() #doctest: +ELLIPSIS
-        '... |Anaconda ... (64-bit)| ...'
+        '...'
 
     """
     return sys.version
@@ -95,7 +95,7 @@ def get_java_version():
         "9.0.1"
 
     """
-    os.system("java -XshowSettings:properties -version")
+    os.system("java -version")
 
 
 def get_gpu_name():
