@@ -13,14 +13,12 @@ class Graph(object):
         >>> for i in range(3):
         ...     v = g.add_vertex(i)
         >>> g.add_edge(0,1,5)
-        >>> g.add_edge(0,5,2)
         >>> g.add_edge(1,2)
         >>> g.add_edge(2,3,9)
         >>> for v in g:
         ...    for w in v.get_connections():
         ...        print("({} , {}, weight={})".format(v.get_id(), w.get_id(), v.get_weight(w)))
         (0 , 1, weight=5)
-        (0 , 5, weight=2)
         (1 , 2, weight=0)
         (2 , 3, weight=9)
 
@@ -53,8 +51,7 @@ class Graph(object):
             nv = self.add_vertex(from_vertex)
         if to_vertex not in self.vert_list:
             nv = self.add_vertex(to_vertex)
-        self.vert_list[from_vertex].add_neighbor(
-            self.vert_list[to_vertex], weight)
+        self.vert_list[from_vertex].add_neighbor(self.vert_list[to_vertex], weight)
 
     def __iter__(self):
         return iter(self.vert_list.values())
@@ -72,7 +69,7 @@ class Vertex(object):
 
     def __str__(self):
         ss = str([x.id for x in self.connected_to])
-        return str(self.id) + ' connected_to: ' + ss
+        return str(self.id) + " connected_to: " + ss
 
     def get_connections(self):
         return self.connected_to.keys()

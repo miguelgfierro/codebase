@@ -101,8 +101,8 @@ def fun_single_dispatch(arg, verbose=False):
         >>> fun_single_dispatch(None)
         Nothing.
         >>> keys = fun_single_dispatch.registry.keys()  # To access all registered implementations
-        >>> [list, object, int, NoneType] == list(keys)
-        True
+        >>> print(list(keys))
+        [<class 'list'>, <class 'object'>, <class 'int'>, <class 'NoneType'>]
 
     """
     if verbose:
