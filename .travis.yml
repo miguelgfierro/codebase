@@ -24,6 +24,6 @@ install:
 
 
 script:
-  pytest python --doctest-modules --continue-on-collection-errors
-  pytest python/test/pytest*
-  python python/test/unittest_fixtures.py
+  - pytest python --doctest-modules --continue-on-collection-errors
+  - pytest python/test/pytest*
+  - python python/test/unittest_fixtures.py
