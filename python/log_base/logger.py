@@ -81,7 +81,6 @@ def setup_logger(debug_level="ERROR", config_file=""):
         try:
             with open(config_file, "rt") as f:
                 config = yaml.safe_load(f.read())
-                print(config)
             logging.config.dictConfig(config)
         except:
             raise
