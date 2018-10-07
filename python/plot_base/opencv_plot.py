@@ -117,12 +117,12 @@ def animate_images_matplotlib(image_list, title=None, interval=50):
         interval (int): Time between frames in miliseconds.
     Returns:
         animation (object): Animation.
-    Examples:
-        >>> img = cv2.imread('share/Lenna.png')
-        >>> img_gray = cv2.imread('share/Lenna_gray.png')
-        >>> im_list = [img, img_gray]*5
-        >>> ani = animate_images_matplotlib(im_list, title='Lenna')
-        >>> ani.save('test.mp4')
+    Examples (not executable):
+        $ img = cv2.imread('share/Lenna.png')
+        $ img_gray = cv2.imread('share/Lenna_gray.png')
+        $ im_list = [img, img_gray]*5
+        $ ani = animate_images_matplotlib(im_list, title='Lenna')
+        $ ani.save('test.mp4')
 
     """
     fig = plt.figure()
