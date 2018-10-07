@@ -22,7 +22,7 @@ def insert_row(connector, table_name, table_instruction, values):
         (5, 1.5, 'b', '2000-01-01')
 
     """
-    query = 'INSERT INTO ' + table_name + ' ' + table_instruction
+    query = "INSERT INTO " + table_name + " " + table_instruction
     with _commit_transaction(connector) as cur:
         cur.execute(query, values)
 
@@ -41,24 +41,23 @@ def insert_csv(connector, table_name, table_instruction, filename, header=False)
         >>> import os
         >>> conn = sqlite3.connect('temp.db')
         >>> instruction = '(t ,q0, q1) VALUES (?,?,?)'
-        >>> insert_csv(conn, 'table_csv', instruction, os.path.abspath('../../../share/traj.csv'))
+        >>> insert_csv(conn, 'table_csv', instruction, os.path.abspath('share/traj.csv'))
         >>> cur = conn.cursor()
         >>> result = cur.execute('SELECT * FROM table_csv')
         >>> cur.fetchall()
         [(0.0416667, 443, 205), (0.0833333, 444, 206)]
 
     """
-    #http://adamantine.me/2017/05/22/how-to-write-data-to-a-sqlite-database-in-python/
-    f = open(filename,'r') # open the csv data file
+    # http://adamantine.me/2017/05/22/how-to-write-data-to-a-sqlite-database-in-python/
+    f = open(filename, "r")  # open the csv data file
     if header:
-        next(f, None) # skip the header row
+        next(f, None)  # skip the header row
     reader = csv.reader(f)
 
-    query = 'INSERT INTO ' + table_name + ' ' + table_instruction
+    query = "INSERT INTO " + table_name + " " + table_instruction
     with _commit_transaction(connector) as cur:
         for row in reader:
             cur.execute(query, row)
-
 
 
 @contextmanager
