@@ -96,11 +96,11 @@ def draw_contours(img, contour, color=(255, 0, 0), thickness=3):
         thickness (int): Thickness of the drawing.
     Returns:
         img_result (np.array): Image with the contour drew.
-    Examples:
-        >>> cnts = np.load('share/Lenna_contours.npy')
-        >>> img = cv2.imread('share/Lenna.png')
-        >>> img_result = draw_contours(img, cnts)
-        >>> plot_image_matplotlib(img_result)
+    Examples (not executable):
+        $ cnts = np.load('share/Lenna_contours.npy')
+        $ img = cv2.imread('share/Lenna.png')
+        $ img_result = draw_contours(img, cnts)
+        $ plot_image_matplotlib(img_result)
 
     """
     img_result = np.copy(img)
