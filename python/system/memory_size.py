@@ -14,7 +14,7 @@ def get_object_size(obj, units="Mb"):
         >>> get_object_size(7, 'bytes')
         28
         >>> get_object_size("ABC", 'bytes')
-        36
+        52
 
     """
     s_bytes = sys.getsizeof(obj)
@@ -37,8 +37,9 @@ def get_ram_memory(units="Mb"):
     Returns:
         size (float): Memory size.
     Examples:
-        >>> get_ram_memory('Gb') #doctest: +ELLIPSIS
-        ...
+        >>> num = get_ram_memory('Gb') 
+        >>> num >= 4
+        True
 
     """
     s_bytes = psutil.virtual_memory()[0]

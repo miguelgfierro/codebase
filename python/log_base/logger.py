@@ -53,7 +53,7 @@ def setup_logger(debug_level="ERROR", config_file=""):
         20... DEBUG [<doctest python.log_base.logger.setup_logger[1]>:1]: Debug log_base
         >>> log.info("Debug log_base") #doctest: +ELLIPSIS
         20... INFO [<doctest python.log_base.logger.setup_logger[2]>:1]: Debug log_base
-        >>> log = setup_logger(debug_level='INFO', config_file='logging.yaml')
+        >>> log = setup_logger(debug_level='INFO', config_file='python/log_base/logging.yaml')
         >>> log.error("Error log_base") #doctest: +ELLIPSIS
         20... ERROR [<doctest python.log_base.logger.setup_logger[4]>:1]: Error log_base
         >>> log.debug("Debug log_base") #should return nothing because log level is set to info
