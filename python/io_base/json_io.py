@@ -23,7 +23,7 @@ def read_file(filename):
     Returns:
         data (dict): A dictionary.
     Examples:
-        >>> data = read_file('file.json')
+        >>> data = read_file('share/data.json')
         >>> type(data)
         <class 'dict'>
         >>> sorted(data.items(), key=lambda t: t[0])

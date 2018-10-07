@@ -32,7 +32,7 @@ def resize_image_aspect_ratio(img, new_width=None, new_height=None):
     Returns:
         img_new (np.array): A resized image.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna_face.png')
+        >>> img = cv2.imread('share/Lenna_face.png')
         >>> height, width, channels = img.shape
         >>> img_resized = resize_image_aspect_ratio(img, new_width=300)
         >>> img_resized.shape
@@ -79,7 +79,7 @@ def equalize_image(img):
     Returns:
         img_new (np.array): A equalized image.
     Examples:
-        >>> img = cv2.imread('share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna_gray.png', 0)
         >>> img_eq = equalize_image(img)
 
     """

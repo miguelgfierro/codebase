@@ -23,10 +23,7 @@ def read_file(filename):
     Returns:
         data (pd.DataFrame): An dataframe.
     Examples:
-        >>> import pandas as pd
-        >>> df = pd.DataFrame({'col1':[1,2,3], 'col2':[0.1,0.2,0.3]})
-        >>> write('file.parq', df)
-        >>> df = read_file('file.parq')
+        >>> df = read_file('share/data.parq')
         >>> df
            col1  col2
         0     1   0.1
@@ -37,5 +34,4 @@ def read_file(filename):
     pf = ParquetFile(filename)
     data = pf.to_pandas()
     return data
-
 

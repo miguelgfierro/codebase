@@ -12,7 +12,8 @@ def save_file(data, filename):
         data (numpy array or dict): Data to save.
         filename (str): Name of the file.
     Examples:
-        >>> data = dict({'a':1, 'b':2, 'c':3})
+        >>> import numpy as np
+        >>> data = np.ones(5)
         >>> save_file(data, 'file.pk')
 
     """
@@ -24,11 +25,10 @@ def read_file(filename):
     Args:
         filename (str): Name of the file.
     Returns:
-        data (numpy array or dict): Data to read.
+        data (np.array or dict): Data to read.
     Examples:
-        >>> data_read = read_file('file.pk')
-        >>> print(data_read)
-        {'a': 1, 'c': 3, 'b': 2}
+        >>> read_file('share/data.pk')
+        array([1., 1., 1., 1., 1.])
 
     """
     data = pickle.load(open(filename, "rb"))
