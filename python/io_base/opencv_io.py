@@ -9,7 +9,7 @@ def save_image(img, filename):
         img (numpy array): An image.
         filename (str): Name of the file.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> save_image(img, 'file.jpg')
 
     """
@@ -24,11 +24,11 @@ def read_image(filename, is_color=True):
     Returns:
         img (numpy array): An image.
     Examples:
-        >>> img = read_image('../../share/Lenna.png')
+        >>> img = read_image('share/Lenna.png')
         >>> shape = np.array(img.shape)
         >>> print(shape)
         [512 512   3]
-        >>> img_gray = read_image('../../share/Lenna.png', False)
+        >>> img_gray = read_image('share/Lenna.png', False)
         >>> shape_gray = np.array(img_gray.shape)
         >>> print(shape_gray)
         [512 512]
@@ -53,7 +53,7 @@ def read_image_url(url):
     try:
         resp = urllib.urlopen(url)
     except urllib.HTTPError:
-        raise('Error opening url {0}'.format(url))
+        raise ("Error opening url {0}".format(url))
     image = np.asarray(bytearray(resp.read()), dtype="uint8")
     image = cv2.imdecode(image, cv2.IMREAD_COLOR)
     return image

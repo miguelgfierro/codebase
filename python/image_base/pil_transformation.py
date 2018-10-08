@@ -8,7 +8,7 @@ def normalize_image(img):
     Returns:
         img_new (PIL image): A normalized image.
     Examples:
-        >>> img = Image.open('../../share/Lenna.png')
+        >>> img = Image.open('share/Lenna.png')
         >>> vals = img.getextrema() #gets min and max value in the three channels
         >>> vals
         ((54, 255), (3, 248), (8, 225))
@@ -30,9 +30,8 @@ def resize_image(img, new_width, new_height):
     Returns:
         img_new (PIL image): A resized image.
     Examples:
-        >>> img = Image.open('../../share/Lenna.png')
-        >>> width, height = img.size
-        >>> img_resized = resize_image(img, width/2, height/2)
+        >>> img = Image.open('share/Lenna.png')
+        >>> img_resized = resize_image(img, 256, 256)
         >>> img_resized.size
         (256, 256)
 
@@ -48,7 +47,7 @@ def equalize_image(img):
     Returns:
         img_new (PIL image): A equalized image.
     Examples:
-        >>> img = Image.open('../../share/Lenna.png')
+        >>> img = Image.open('share/Lenna.png')
         >>> img_eq = equalize_image(img)
 
     """
@@ -64,7 +63,7 @@ def crop_image(img, box):
     Returns:
         img_new (PIL image): A cropped image.
     Examples:
-        >>> img = Image.open('../../share/Lenna.png')
+        >>> img = Image.open('share/Lenna.png')
         >>> box = (0, 100, 250, 400)
         >>> img_crop = crop_image(img, box)
         >>> img_crop.size
@@ -81,7 +80,7 @@ def convert_to_grayscale(img):
     Returns:
         img_new (PIL image): A grayscale image.
     Examples:
-        >>> img = Image.open('../../share/Lenna.png')
+        >>> img = Image.open('share/Lenna.png')
         >>> img.mode
         'RGB'
         >>> img_gray = convert_to_grayscale(img)
@@ -89,4 +88,4 @@ def convert_to_grayscale(img):
         'L'
 
     """
-    return img.convert('L')
+    return img.convert("L")

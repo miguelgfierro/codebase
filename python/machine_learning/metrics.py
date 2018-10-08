@@ -1,5 +1,15 @@
-from sklearn.metrics import (confusion_matrix, accuracy_score, roc_auc_score, f1_score, log_loss, precision_score,
-                             recall_score, mean_squared_error, mean_absolute_error, r2_score)
+from sklearn.metrics import (
+    confusion_matrix,
+    accuracy_score,
+    roc_auc_score,
+    f1_score,
+    log_loss,
+    precision_score,
+    recall_score,
+    mean_squared_error,
+    mean_absolute_error,
+    r2_score,
+)
 import numpy as np
 
 
@@ -36,7 +46,13 @@ def classification_metrics_binary(y_true, y_pred):
     m_precision = precision_score(y_true, y_pred)
     m_recall = recall_score(y_true, y_pred)
     m_conf = confusion_matrix(y_true, y_pred)
-    report = {'Accuracy': m_acc, 'Precision': m_precision, 'Recall': m_recall, 'F1': m_f1, 'Confusion Matrix': m_conf}
+    report = {
+        "Accuracy": m_acc,
+        "Precision": m_precision,
+        "Recall": m_recall,
+        "F1": m_f1,
+        "Confusion Matrix": m_conf,
+    }
     return report
 
 
@@ -71,11 +87,17 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
 
     """
     m_acc = accuracy_score(y_true, y_pred)
-    m_f1 = f1_score(y_true, y_pred, labels, average='weighted')
-    m_precision = precision_score(y_true, y_pred, labels, average='weighted')
-    m_recall = recall_score(y_true, y_pred, labels, average='weighted')
+    m_f1 = f1_score(y_true, y_pred, labels, average="weighted")
+    m_precision = precision_score(y_true, y_pred, labels, average="weighted")
+    m_recall = recall_score(y_true, y_pred, labels, average="weighted")
     m_conf = confusion_matrix(y_true, y_pred, labels)
-    report = {'Accuracy': m_acc, 'Precision': m_precision, 'Recall': m_recall, 'F1': m_f1, 'Confusion Matrix': m_conf}
+    report = {
+        "Accuracy": m_acc,
+        "Precision": m_precision,
+        "Recall": m_recall,
+        "F1": m_f1,
+        "Confusion Matrix": m_conf,
+    }
     return report
 
 
@@ -106,7 +128,7 @@ def classification_metrics_binary_prob(y_true, y_prob):
     """
     m_auc = roc_auc_score(y_true, y_prob)
     m_logloss = log_loss(y_true, y_prob)
-    report = {'AUC': m_auc, 'Log loss': m_logloss}
+    report = {"AUC": m_auc, "Log loss": m_logloss}
     return report
 
 
@@ -142,7 +164,7 @@ def regression_metrics(y_true, y_pred):
     mse = mean_squared_error(y_true, y_pred)
     mae = mean_absolute_error(y_true, y_pred)
     r2 = r2_score(y_true, y_pred)
-    report = {'MSE': mse, 'MAE': mae, 'R2': r2, 'RMSE': np.sqrt(mse)}
+    report = {"MSE": mse, "MAE": mae, "R2": r2, "RMSE": np.sqrt(mse)}
     return report
 
 
@@ -236,7 +258,7 @@ def exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
         >>> y_true = np.array([5,1,0,7,2])
         >>> y_pred = np.array([9,0,8,1,7])
         >>> exponential_discounted_cumulative_gain(y_true, y_pred, k=3)
-        32.0
+        32.5
 
     """
     order = np.argsort(y_pred)[::-1]
@@ -264,7 +286,9 @@ def normalized_discounted_cumulative_gain(y_true, y_pred, k=None):
         0.537892328558952
 
     """
-    return discounted_cumulative_gain(y_true, y_pred, k) / discounted_cumulative_gain(y_true, y_true, k)
+    return discounted_cumulative_gain(y_true, y_pred, k) / discounted_cumulative_gain(
+        y_true, y_true, k
+    )
 
 
 def normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
@@ -287,7 +311,9 @@ def normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
         0.21950735175253772
 
     """
-    return exponential_discounted_cumulative_gain(y_true, y_pred, k)/exponential_discounted_cumulative_gain(y_true, y_true, k)
+    return exponential_discounted_cumulative_gain(
+        y_true, y_pred, k
+    ) / exponential_discounted_cumulative_gain(y_true, y_true, k)
 
 
 def gini(y_true, y_pred):
@@ -313,13 +339,13 @@ def gini(y_true, y_pred):
     # sort rows on prediction column
     # (from largest to smallest)
     arr = np.array([y_true, y_pred]).transpose()
-    true_order = arr[arr[:,0].argsort()][::-1,0]
-    pred_order = arr[arr[:,1].argsort()][::-1,0]
+    true_order = arr[arr[:, 0].argsort()][::-1, 0]
+    pred_order = arr[arr[:, 1].argsort()][::-1, 0]
 
     # get Lorenz curves
     l_true = np.cumsum(true_order) / np.sum(true_order)
     l_pred = np.cumsum(pred_order) / np.sum(pred_order)
-    l_ones = np.linspace(1/n_samples, 1, n_samples)
+    l_ones = np.linspace(1 / n_samples, 1, n_samples)
 
     # get Gini coefficients (area between curves)
     g_true = np.sum(l_ones - l_true)
@@ -327,5 +353,4 @@ def gini(y_true, y_pred):
 
     # normalize to true Gini coefficient
     return g_pred / g_true
-
 

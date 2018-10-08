@@ -7,7 +7,7 @@
 import logging
 from collections import Counter, OrderedDict
 
-logging.basicConfig(level='INFO')
+logging.basicConfig(level="INFO")
 
 
 class LoggingDict(dict):
@@ -15,16 +15,16 @@ class LoggingDict(dict):
     extends the __setitem__ method to make log entries whenever a key is updated.
     Examples:
         >>> ld = LoggingDict([('red', 1), ('green', 2), ('blue', 3)])
-        >>> ld
-        {'blue': 3, 'green': 2, 'red': 1}
+        >>> ld.items() == {'blue': 3, 'green': 2, 'red': 1}.items()
+        True
         >>> ld['red'] = 10 # logs: INFO:root:Setting 'red' to 10
         >>> LoggingDict.__mro__
-        (<class 'method_resolution_order.LoggingDict'>, <class 'dict'>, <class 'object'>)
-
+        (<class 'python.data_structures.method_resolution_order.LoggingDict'>, <class 'dict'>, <class 'object'>)
 
     """
+
     def __setitem__(self, key, value):
-        logging.info('Setting %r to %r' % (key, value))
+        logging.info("Setting %r to %r" % (key, value))
         super().__setitem__(key, value)
 
 
@@ -41,9 +41,10 @@ class LoggingOD(LoggingDict, OrderedDict):
         LoggingOD([('red', 1), ('green', 2), ('blue', 3)])
         >>> ld['red'] = 10 # logs: INFO:root:Setting 'red' to 10
         >>> LoggingOD.__mro__
-        (<class 'method_resolution_order.LoggingOD'>, <class 'method_resolution_order.LoggingDict'>, <class 'collections.OrderedDict'>, <class 'dict'>, <class 'object'>)
-
+        (<class 'python.data_structures.method_resolution_order.LoggingOD'>, <class 'python.data_structures.method_resolution_order.LoggingDict'>, <class 'collections.OrderedDict'>, <class 'dict'>, <class 'object'>)
+    
     """
+
     pass
 
 
@@ -52,19 +53,21 @@ class Root:
     isn’t masking some other draw() method later in the chain.  This could happen if a
     subclass erroneously incorporates a class that has a draw() method but doesn’t inherit from Root.
     """
+
     def draw(self):
         # the delegation chain stops here
-        assert not hasattr(super(), 'draw')
+        assert not hasattr(super(), "draw")
 
 
 class Shape(Root):
     """Getting the argument signatures to match"""
+
     def __init__(self, shapename, **kwds):
         self.shapename = shapename
         super().__init__(**kwds)
 
     def draw(self):
-        print('Drawing.  Setting shape to:', self.shapename)
+        print("Drawing.  Setting shape to:", self.shapename)
         super().draw()
 
 
@@ -76,12 +79,13 @@ class ColoredShape(Shape):
         Drawing.  Setting shape to: square
 
     """
+
     def __init__(self, color, **kwds):
         self.color = color
         super().__init__(**kwds)
 
     def draw(self):
-        print('Drawing.  Setting color to:', self.color)
+        print("Drawing.  Setting color to:", self.color)
         super().draw()
 
 
@@ -93,21 +97,24 @@ class Moveable:
     by creating an adapter class that plays by the rules.
 
     """
+
     # non-cooperative class that doesn't use super()
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
     def draw(self):
-        print('Drawing at position:', self.x, self.y)
+        print("Drawing at position:", self.x, self.y)
 
 
 class MoveableAdapter(Root):
     """Show how to incorporate a non-cooperative class"""
+
     # make a cooperative adapter class for Moveable
     def __init__(self, *, x, y, **kwds):
         self.moveable = Moveable(x, y)
         super().__init__(**kwds)
+
     def draw(self):
         self.moveable.draw()
         super().draw()
@@ -121,6 +128,7 @@ class MovableColoredShape(ColoredShape, MoveableAdapter):
         Drawing.  Setting shape to: triangle
         Drawing at position: 10 20
     """
+
     pass
 
 
@@ -131,8 +139,9 @@ class OrderedCounter(Counter, OrderedDict):
         OrderedCounter(OrderedDict([('a', 5), ('b', 2), ('r', 2), ('c', 1), ('d', 1)]))
 
     """
+
     def __repr__(self):
-        return '%s(%r)' % (self.__class__.__name__, OrderedDict(self))
+        return "%s(%r)" % (self.__class__.__name__, OrderedDict(self))
 
     def __reduce__(self):
         return self.__class__, (OrderedDict(self),)

@@ -21,8 +21,9 @@ class BlobIO(object):
             account_name (str): Account name
             account_key (str): Account key
         """
-        self.service = BlockBlobService(account_name=account_name,
-                                        account_key=account_key)
+        self.service = BlockBlobService(
+            account_name=account_name, account_key=account_key
+        )
         self.account_name = account_name
         self.account_key = account_key
 
@@ -32,19 +33,17 @@ class BlobIO(object):
             container (str): Container name
             blob_path (str): Blob path
             local_path (str): Local path to the file
-        Examples:
-            >>> from json_io import read_file
-            >>> cred = read_file('../../share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> blob.upload_file('codebase', 'upload/traj.csv', '../../share/traj.csv')
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ blob.upload_file('codebase', 'upload/traj.csv', 'share/traj.csv')
 
         """
         # FIXME: add a condition to make sure I am modifying the blob
         if not self.service.exists(container_name=container):
             self.service.create_container(container)
-        self.service.create_blob_from_path(container,
-                                           blob_path,
-                                           local_path)
+        self.service.create_blob_from_path(container, blob_path, local_path)
 
     def upload_folder(self, container, blob_path, local_path):
         pass
@@ -57,17 +56,15 @@ class BlobIO(object):
             local_path (str): Local path to the file
         Returns:
             etag (str): Value to check if the blob has been modified
-        Examples:
-            >>> from json_io import read_file
-            >>> cred = read_file('../../share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> blob.download_file('codebase', 'upload/traj.csv', '../../share/traj_blob.csv')
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ blob.download_file('codebase', 'upload/traj.csv', 'share/traj_blob.csv')
             True
 
         """
-        self.service.get_blob_to_path(container,
-                                      blob_path,
-                                      local_path)
+        self.service.get_blob_to_path(container, blob_path, local_path)
         if os.path.isfile(local_path):
             return True
         else:
@@ -83,17 +80,15 @@ class BlobIO(object):
             blob_path (str): Blob path
         Returns:
             blobs (list): List of blobs
-        Examples:
-            >>> from json_io import read_file
-            >>> cred = read_file('../../share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> files = blob.list_blobs('codebase', 'upload')
-            >>> files
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ blob.list_blobs('codebase', 'upload')
             ['upload/traj.csv', 'upload/traj.txt']
 
         """
-        blobs = [b.name for b in self.service.list_blobs(
-            container, prefix=blob_path)]
+        blobs = [b.name for b in self.service.list_blobs(container, prefix=blob_path)]
         return blobs
 
     def list_containers(self):
@@ -102,12 +97,11 @@ class BlobIO(object):
             container (str): Container name
         Returns:
             blobs (list): List of blobs
-        Examples:
-            >>> from json_io import read_file
-            >>> cred = read_file('../../share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> files = blob.list_containers()
-            >>> files
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ blob.list_containers()
             ['codebase', 'datasets', 'deep-learning', 'installer', 'projects', 'vhds']
 
         """
@@ -122,19 +116,19 @@ class BlobIO(object):
             sep (str): Separator
         Returns:
             df (pd.DataFrame): Dataframe
-        Examples:
-            >>> from json_io import read_file
-            >>> cred = read_file('../../share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> df = blob.read_pandas_dataframe('codebase', 'upload/traj.csv',
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ df = blob.read_pandas_dataframe('codebase', 'upload/traj.csv',
             ...                                 sep=',', header=None, names=['time','q1','q2'])
-            >>> df
+            $ df
                    time   q1   q2
             0  0.041667  443  205
             1  0.083333  444  206
-            >>> df = blob.read_pandas_dataframe('codebase', 'upload/traj.txt',
+            $ df = blob.read_pandas_dataframe('codebase', 'upload/traj.txt',
             ...                                 sep=' ', header=None)
-            >>> df
+            $ df
                       0   1   2
             0  0.041667 443 205
             1  0.083333 444 206
@@ -154,34 +148,39 @@ class BlobIO(object):
             spark (object): Spark context
         Returns:
             df (pyspark.sql.dataframe.DataFrame): Pyspark dataframe
-        Examples:
-            >>> from json_io import read_file
-            >>> cred = read_file('../../share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> df = blob.read_spark_dataframe('codebase', 'upload/traj_header.csv',
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ df = blob.read_spark_dataframe('codebase', 'upload/traj_header.csv',
             ...                                header=True, inferSchema=True)
-            >>> df.head(2)
+            $ df.head(2)
             [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
 
         """
         spark = self._manage_spark_blob_config(spark)
-        wasb_template = "wasb://{container}@{store_name}.blob.core.windows.net/{blob_name}"
-        wasb = wasb_template.format(container=container,
-                                    store_name=self.account_name,
-                                    blob_name=blob_path)
+        wasb_template = (
+            "wasb://{container}@{store_name}.blob.core.windows.net/{blob_name}"
+        )
+        wasb = wasb_template.format(
+            container=container, store_name=self.account_name, blob_name=blob_path
+        )
         df = spark.read.csv(wasb, **kargs)
         return df
 
     def _manage_spark_blob_config(self, spark):
         if spark is None:
             spark = pyspark.sql.SparkSession.builder.config(
-                conf=SparkConf()).getOrCreate()
+                conf=SparkConf()
+            ).getOrCreate()
         sc = spark.sparkContext
-        spark_config_template = "fs.azure.account.key.{store_name}.blob.core.windows.net"
-        spark_config = spark_config_template.format(
-            store_name=self.account_name)
+        spark_config_template = (
+            "fs.azure.account.key.{store_name}.blob.core.windows.net"
+        )
+        spark_config = spark_config_template.format(store_name=self.account_name)
         sc._jsc.hadoopConfiguration().set(spark_config, self.account_key)
         sc._jsc.hadoopConfiguration().set(
-            "fs.wasb.impl", "org.apache.hadoop.fs.azure.NativeAzureFileSystem")
+            "fs.wasb.impl", "org.apache.hadoop.fs.azure.NativeAzureFileSystem"
+        )
         spark.conf.set(spark_config, self.account_key)
         return spark

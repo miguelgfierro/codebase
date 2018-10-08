@@ -13,7 +13,7 @@ def _get_nominal_integer_dict(nominal_vals):
     for val in nominal_vals:
         if val not in d:
             current_max = max(d.values()) if len(d) > 0 else -1
-            d[val] = current_max+1
+            d[val] = current_max + 1
     return d
 
 
@@ -59,11 +59,12 @@ def convert_cols_categorical_to_numeric(df, col_list=None):
         2        2        3
 
     """
-    if col_list is None: col_list = []
+    if col_list is None:
+        col_list = []
     ret = pd.DataFrame()
     for column_name in df.columns:
         column = df[column_name]
-        if column.dtype == 'object' or column_name in col_list:
+        if column.dtype == "object" or column_name in col_list:
             col_dict = _get_nominal_integer_dict(column)
             ret[column_name] = _convert_to_integer(column, col_dict)
         else:
@@ -91,9 +92,9 @@ def convert_related_cols_categorical_to_numeric(df, col_list):
 
     """
     ret = pd.DataFrame()
-    values=None
+    values = None
     for c in col_list:
-        values = pd.concat([values,df[c]], axis=0)
+        values = pd.concat([values, df[c]], axis=0)
         values = pd.Series(values.unique())
     col_dict = _get_nominal_integer_dict(values)
     for column_name in df.columns:
@@ -128,11 +129,12 @@ def convert_cols_numeric_to_categorical(df, col_list=None):
         int64
 
     """
-    if col_list is None: col_list = df.columns
+    if col_list is None:
+        col_list = df.columns
     ret = pd.DataFrame()
     for column_name in df.columns:
         column = df[column_name]
-        if column_name in col_list and column.dtype != 'object':
+        if column_name in col_list and column.dtype != "object":
             ret[column_name] = _convert_to_string(column)
         else:
             ret[column_name] = column
@@ -213,7 +215,7 @@ def split_text_in_column(df, component, col_name, new_col_list):
 
     """
     df_exp = df[col_name].str.split(component, expand=True)
-    df_exp = df_exp.loc[:, (df_exp != '').any(axis=0)]#remove columns with no text
+    df_exp = df_exp.loc[:, (df_exp != "").any(axis=0)]  # remove columns with no text
     df_exp.columns = new_col_list
     df = pd.concat([df, df_exp], axis=1)
     df.drop(columns=col_name, inplace=True)

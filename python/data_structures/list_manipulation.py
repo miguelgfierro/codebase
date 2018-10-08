@@ -65,8 +65,10 @@ def generate_random_integers(number_values, min_val, max_val):
         result_list (list): A list with random values.
     Examples:
         >>> result_list = generate_random_integers(number_values=5, min_val=0, max_val=10)
-        >>> result_list
-        [7, 9, 5, 1, 4]
+        >>> len(result_list)
+        5
+        >>> min(result_list)>=0 and max(result_list)<=10
+        True
 
     """
     l = random.sample(range(min_val, max_val), number_values)
@@ -84,11 +86,9 @@ def shuffle_list(py_list, inplace=False):
         result_list (list): A list with the values shuffled.
     Examples:
         >>> py_list = [1,2,3,4,5]
-        >>> shuffle_list(py_list, True)
-        >>> py_list
-        [5, 1, 4, 2, 3]
-        >>> shuffle_list(py_list, False)
-        [5, 3, 2, 1, 4]
+        >>> l = shuffle_list(py_list, False)
+        >>> all(elem in l  for elem in py_list)
+        True
 
     """
     if inplace:
@@ -143,17 +143,17 @@ def create_consecutive_numbers(initial_num, final_num):
     """
     # Method 1: append
     # Do not use, slowest of all methods
-    #l = []
+    # l = []
     # for i in range(initial_num, final_num+1):
     #    l.append(i)
 
     # Method 2: list comprehension
     # Twice as fast as append
-    #l = [i for i in range(initial_num, final_num+1)]
+    # l = [i for i in range(initial_num, final_num+1)]
 
     # Method 3: list constructor
     # Twice as fast as list comprehension
-    l = list(range(initial_num, final_num+1))
+    l = list(range(initial_num, final_num + 1))
     return l
 
 
@@ -184,8 +184,6 @@ def split_list(py_list, perc_size=[0.8, 0.2], shuffle=False):
     Examples:
         >>> split_list(list(range(7)),[0.47,0.33,0.2])
         [[0, 1, 2], [3, 4, 5], [6]]
-        >>> split_list(list(range(10)),[0.6,0.4], True)
-        [[1, 2, 3, 6, 9, 5], [4, 8, 0, 7]]
 
     """
     assert sum(perc_size) == 1, "Percentage sizes do not sum to 1"

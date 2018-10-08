@@ -94,15 +94,10 @@ ENV/
 # Rope project settings
 .ropeproject
 
-# Data files 
-*.h5
-*.hdf5
-
 
 ######
 .DS_Store
 *~
-python/io_base/file.*
 */url_base/license.txt
 Untitled.ipynb
 .pytest_cache/
@@ -114,3 +109,7 @@ test-reports/
 *.db
 test.mp4
 python/test/output.ipynb
+file.*
+output.ipynb
+
+

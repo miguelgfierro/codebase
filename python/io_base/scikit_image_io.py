@@ -7,7 +7,7 @@ def save_image(img, filename):
         img (numpy array): An image.
         filename (str): Name of the file.
     Examples:
-        >>> img = io.imread('../../share/Lenna.png')
+        >>> img = io.imread('share/Lenna.png')
         >>> save_image(img, 'file.jpg')
 
     """
@@ -22,16 +22,16 @@ def read_image(filename, is_color=True):
     Returns:
         img (numpy array): An image.
     Examples:
-        >>> img = read_image('../../share/Lenna.png')
+        >>> img = read_image('share/Lenna.png')
         >>> img.shape
         (512, 512, 3)
-        >>> img_gray = read_image('../../share/Lenna.png', False)
+        >>> img_gray = read_image('share/Lenna.png', False)
         >>> img_gray.shape
         (512, 512)
 
     """
     is_gray = not is_color
-    return io.imread(filename, as_grey=is_gray)
+    return io.imread(filename, as_gray=is_gray)
 
 
 def read_image_url(url):

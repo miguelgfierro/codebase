@@ -11,7 +11,7 @@ def resize_image(img, new_width, new_height):
     Returns:
         img_new (np.array): A resized image.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> height, width, channels = img.shape
         >>> img_resized = resize_image(img, width/2, height/2)
         >>> img_resized.shape
@@ -32,7 +32,7 @@ def resize_image_aspect_ratio(img, new_width=None, new_height=None):
     Returns:
         img_new (np.array): A resized image.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna_face.png')
+        >>> img = cv2.imread('share/Lenna_face.png')
         >>> height, width, channels = img.shape
         >>> img_resized = resize_image_aspect_ratio(img, new_width=300)
         >>> img_resized.shape
@@ -44,11 +44,11 @@ def resize_image_aspect_ratio(img, new_width=None, new_height=None):
     """
     height, width = img.shape[:2]
     if new_width is not None and new_height is None:
-        r = new_width/width
-        new_height = int(height*r)
+        r = new_width / width
+        new_height = int(height * r)
     elif new_width is None and new_height is not None:
-        r = new_height/height
-        new_width = int(width*r)
+        r = new_height / height
+        new_width = int(width * r)
     img_new = cv2.resize(img, (new_width, new_height))
     return img_new
 
@@ -62,14 +62,14 @@ def crop_image(img, box):
     Returns:
         img_new (np.array): A cropped image.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> box = (0, 100, 250, 400)
         >>> img_crop = crop_image(img, box)
         >>> img_crop.shape
         (300, 250, 3)
 
     """
-    return img[box[1]:box[3], box[0]:box[2]]
+    return img[box[1] : box[3], box[0] : box[2]]
 
 
 def equalize_image(img):
@@ -79,7 +79,7 @@ def equalize_image(img):
     Returns:
         img_new (np.array): A equalized image.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna_gray.png', 0)
         >>> img_eq = equalize_image(img)
 
     """
@@ -95,7 +95,7 @@ def normalize_image(img, min_val=0, max_val=1):
     Returns:
         img_new (np.array): A normalized image.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> max(img.flatten())
         255
         >>> img_norm = normalize_image(img)
@@ -105,12 +105,15 @@ def normalize_image(img, min_val=0, max_val=1):
         0
 
     """
-    img_new = cv2.normalize(img, None, alpha=min_val,
-                            beta=max_val, norm_type=cv2.NORM_MINMAX)
+    img_new = cv2.normalize(
+        img, None, alpha=min_val, beta=max_val, norm_type=cv2.NORM_MINMAX
+    )
     return img_new
 
 
-def convert_to_binary(img, threshold=127, max_value=255, adaptative=False, return_thresh=False):
+def convert_to_binary(
+    img, threshold=127, max_value=255, adaptative=False, return_thresh=False
+):
     """Converts an image to black and white.
     It determines the binary threshold automatically from the image using
     Otsu's method.
@@ -124,7 +127,7 @@ def convert_to_binary(img, threshold=127, max_value=255, adaptative=False, retur
         img_new (np.array): A black and white image.
         thresh (float): Otsu's threshold.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> img_bw, t = convert_to_binary(img, adaptative=True, return_thresh=True)
         >>> np.min(img_bw), np.max(img_bw)
         (0, 255)
@@ -157,7 +160,7 @@ def convert_to_grayscale(img):
     Returns:
         img_new (np.array): A grayscale image.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> img.shape
         (512, 512, 3)
         >>> img_gray = convert_to_grayscale(img)
@@ -168,7 +171,7 @@ def convert_to_grayscale(img):
     return cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 
-def convert_to_colorspace(img, color_space='hsv'):
+def convert_to_colorspace(img, color_space="hsv"):
     """Convert an opencv image in BGR to another color space.
     More info: https://docs.opencv.org/3.3.1/de/d25/imgproc_color_conversions.html
     HSV range: hue [0,179], saturation [0,255] and value [0,255].
@@ -183,7 +186,7 @@ def convert_to_colorspace(img, color_space='hsv'):
     Returns:
         img_new (np.array): An image in the color space.
     Examples:
-        >>> img = cv2.imread('../../share/Lenna.png')
+        >>> img = cv2.imread('share/Lenna.png')
         >>> img_new = convert_to_colorspace(img, 'hsv')
         >>> h, s, v = cv2.split(img_new)
         >>> print(np.max(h), np.max(s), np.max(v))
@@ -195,11 +198,11 @@ def convert_to_colorspace(img, color_space='hsv'):
 
     """
     spaces = {
-        'hsv': cv2.COLOR_BGR2HSV,
-        'hls': cv2.COLOR_BGR2HLS,
-        'ycrcb': cv2.COLOR_BGR2YCrCb,
-        'luv': cv2.COLOR_BGR2Luv,
-        'lab': cv2.COLOR_BGR2Lab,
-        'xyz': cv2.COLOR_BGR2XYZ
+        "hsv": cv2.COLOR_BGR2HSV,
+        "hls": cv2.COLOR_BGR2HLS,
+        "ycrcb": cv2.COLOR_BGR2YCrCb,
+        "luv": cv2.COLOR_BGR2Luv,
+        "lab": cv2.COLOR_BGR2Lab,
+        "xyz": cv2.COLOR_BGR2XYZ,
     }
     return cv2.cvtColor(img, spaces[color_space])

@@ -2,7 +2,7 @@ import dask.dataframe as dd
 import pandas as pd
 
 
-def save_csv(data, filename='file.*.csv', npartitions=1, **kwargs):
+def save_csv(data, filename="file.*.csv", npartitions=1, **kwargs):
     """Save a dataframe into one of multiple `csv` files.
     Dask is designed to be used for big datasets.
     Args:
@@ -32,14 +32,14 @@ def read_csv(filename, **kwargs):
     Returns:
         data (pd.DataFrame): An dataframe.
     Examples:
-        >>> df = read_csv('../../share/traj-*.csv', header=None, names=['time','q1','q2'])
+        >>> df = read_csv('share/traj-*.csv', header=None, names=['time','q1','q2'])
         >>> df
                time   q1   q2
         0  0.041667  443  205
         1  0.083333  444  206
         2  0.125000  445  205
         3  0.166667  444  204
-        >>> df = read_csv('../../share/traj.csv', header=None)
+        >>> df = read_csv('share/traj.csv', header=None)
         >>> df
                   0    1    2
         0  0.041667  443  205

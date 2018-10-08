@@ -8,7 +8,7 @@ def largest_contour(mask):
     Returns:
         largest_contour (np.array): Array of points.
     Examples:
-        >>> mask = cv2.imread('../../share/Lenna_mask.png', 0)
+        >>> mask = cv2.imread('share/Lenna_mask.png', 0)
         >>> cnts = largest_contour(mask)
         >>> len(cnts)
         544
@@ -18,6 +18,4 @@ def largest_contour(mask):
     contours = sorted(contours, key=cv2.contourArea, reverse=True)
     largest_contour = contours[0]
     return largest_contour
-
-
 

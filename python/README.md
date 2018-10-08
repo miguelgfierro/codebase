@@ -38,8 +38,10 @@ Original:
 
 With ellipsis:
 
-    >>> "Time elapsed {}".format(t) #doctest: +ELLIPSIS
+    >>> "Time elapsed {}".format(t) # doctest: +ELLIPSIS
     'Time elapsed 0:00:...'
+
+To skip a test, one can also add: `# doctest: +SKIP`.
 
 To handle [exceptions](https://docs.python.org/2.4/lib/doctest-exceptions.html), you can just add the `Traceback` info, then `...` and then the exception:
 

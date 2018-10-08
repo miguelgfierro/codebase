@@ -9,7 +9,7 @@ def save_image(img, filename):
         img (numpy array): An image.
         filename (str): Name of the file.
     Examples:
-        >>> img = Image.open('../../share/Lenna.png')
+        >>> img = Image.open('share/Lenna.png')
         >>> save_image(img, 'file.jpg')
 
     """
@@ -23,12 +23,12 @@ def read_image(filename):
     Returns:
         img (PIL image): An image in PIL format.
     Examples:
-        >>> img = read_image('../../share/Lenna.png')
+        >>> img = read_image('share/Lenna.png')
         >>> print(img.size)
         (512, 512)
         >>> print(img.mode)
         RGB
-        >>> img_gray = read_image('../../share/Lenna_gray.png')
+        >>> img_gray = read_image('share/Lenna_gray.png')
         >>> print(img_gray.size)
         (512, 512)
         >>> print(img_gray.mode)

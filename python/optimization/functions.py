@@ -28,20 +28,21 @@ def plot_function2D(x, y, z):
         x (np.array): X value.
         y (np.array): Y value.
         z (np.array): function value.
-    Examples:
-        >>> s = 0.05
-        >>> X = np.arange(-2, 2.+s, s)
-        >>> Y = np.arange(-2, 6.+s, s)
-        >>> X, Y = np.meshgrid(X, Y)
-        >>> f = rosenbrock([X, Y])
-        >>> plot_function2D(X, Y, f)
+    Examples (not executable):
+        $ s = 0.05
+        $ X = np.arange(-2, 2.+s, s)
+        $ Y = np.arange(-2, 6.+s, s)
+        $ X, Y = np.meshgrid(X, Y)
+        $ f = rosenbrock([X, Y])
+        $ plot_function2D(X, Y, f)
 
     """
     fig = plot.figure()
-    ax = fig.gca(projection='3d')
-    surf = ax.plot_surface(x, y, z, rstride=1, cstride=1, cmap=cm.coolwarm,
-             linewidth=0, antialiased=False)
+    ax = fig.gca(projection="3d")
+    surf = ax.plot_surface(
+        x, y, z, rstride=1, cstride=1, cmap=cm.coolwarm, linewidth=0, antialiased=False
+    )
     ax.zaxis.set_major_locator(LinearLocator(10))
-    ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
+    ax.zaxis.set_major_formatter(FormatStrFormatter("%.02f"))
     fig.colorbar(surf, shrink=0.5, aspect=5)
     plot.show()
