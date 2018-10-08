@@ -10,12 +10,12 @@ def plot_image(img, title="image"):
     Args:
         img (np.array): An image.
         title (str): Title of the image.
-    Examples:
-        >>> img = cv2.imread('share/Lenna.png')
-        >>> import numpy as np
-        >>> print(np.array(img.shape, dtype='int'))
+    Examples (not executable):
+        $ img = cv2.imread('share/Lenna.png')
+        $ import numpy as np
+        $ print(np.array(img.shape, dtype='int'))
         [512 512   3]
-        >>> plot_image(img)
+        $ plot_image(img)
 
     """
     cv2.imshow(title, img)
