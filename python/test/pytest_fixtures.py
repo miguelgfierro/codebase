@@ -9,20 +9,22 @@ from collections import Counter
 
 @pytest.fixture()
 def basic_structures():
-    data = {'int': 5,
-            'yes': True,
-            'no': False,
-            'float': 0.5,
-            'pi': 3.141592653589793238462643383279,
-            'string': 'Miguel',
-            'none': None}
+    data = {
+        "int": 5,
+        "yes": True,
+        "no": False,
+        "float": 0.5,
+        "pi": 3.141592653589793238462643383279,
+        "string": "Miguel",
+        "none": None,
+    }
     return data
 
 
 @pytest.fixture()
 def complex_structures():
     my_list = [1, 2, 3]
-    my_dict = {'a': 1, 'b': 2}
+    my_dict = {"a": 1, "b": 2}
     return my_list, my_dict
 
 
@@ -36,21 +38,21 @@ def numeric_libs():
 
 
 def test_basic_structures(basic_structures):
-    assert basic_structures['int'] == 5
-    assert basic_structures['yes'] is True
-    assert basic_structures['no'] is False
-    assert basic_structures['float'] == 0.5
-    assert basic_structures['string'] == 'Miguel'
-    assert basic_structures['none'] is None
+    assert basic_structures["int"] == 5
+    assert basic_structures["yes"] is True
+    assert basic_structures["no"] is False
+    assert basic_structures["float"] == 0.5
+    assert basic_structures["string"] == "Miguel"
+    assert basic_structures["none"] is None
 
 
 def test_comparing_numbers(basic_structures):
-    assert basic_structures['pi'] == pytest.approx(3.1415926, 0.0000001)
-    assert basic_structures['pi'] != pytest.approx(3.1415926, 0.00000001)
-    assert basic_structures['int'] > 3
-    assert basic_structures['int'] >= 5
-    assert basic_structures['int'] < 10
-    assert basic_structures['int'] <= 5
+    assert basic_structures["pi"] == pytest.approx(3.1415926, 0.0000001)
+    assert basic_structures["pi"] != pytest.approx(3.1415926, 0.00000001)
+    assert basic_structures["int"] > 3
+    assert basic_structures["int"] >= 5
+    assert basic_structures["int"] < 10
+    assert basic_structures["int"] <= 5
 
 
 def test_lists(complex_structures):
@@ -64,16 +66,16 @@ def test_lists(complex_structures):
 
 def test_dictionaries(complex_structures):
     d = complex_structures[1]
-    assert d == {'a': 1, 'b': 2}
-    assert 'a' in d
-    assert d.items() <= {'a': 1, 'b': 2, 'c': 3}.items()  # subdict in dict
+    assert d == {"a": 1, "b": 2}
+    assert "a" in d
+    assert d.items() <= {"a": 1, "b": 2, "c": 3}.items()  # subdict in dict
     with pytest.raises(KeyError):
-        value = d['c']
+        value = d["c"]
 
 
 def test_pandas(numeric_libs):
     _, df, series = numeric_libs
-    df_target = pd.DataFrame({'a': 1, 'b': 2}, index=[0])
+    df_target = pd.DataFrame({"a": 1, "b": 2}, index=[0])
     series_target = pd.Series([1, 2, 3])
     pd.testing.assert_frame_equal(df, df_target)
     pd.testing.assert_series_equal(series, series_target)

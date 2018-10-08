@@ -33,7 +33,7 @@ def count_files_in_folder(folderpath):
     Returns:
         number (int): number of files in a folder
     Examples:
-        >>> count_files_in_folder("python/system")
+        >>> count_files_in_folder("cpp")
         5
 
     """
@@ -65,9 +65,10 @@ def get_filenames_in_folder(folderpath):
     Returns:
         filelist (list): list of files
     Examples:
-        >>> get_filenames_in_folder("python/system")
-        ['memory_size.py', 'notebook_memory_management.py', 'paths.py', 'system_info.py', '__init__.py']
-
+        >>> from collections import Counter
+        >>> l = get_filenames_in_folder("cpp")   
+        >>> Counter(l) == Counter(['io', 'log', 'numeric', 'CMakeLists.txt', 'playground.cpp'])
+        True
     """
     names = [os.path.basename(x) for x in glob.glob(os.path.join(folderpath, "*"))]
     return sorted(names)
@@ -80,9 +81,11 @@ def get_files_in_folder_recursively(folderpath):
     Returns:
         filelist (list): list of files
     Examples:
-        >>> get_files_in_folder_recursively("cpp")
-        ['CMakeLists.txt', 'playground.cpp', 'io/read_file.cpp', 'io/read_file.hpp', 'log/timer.hpp', 'numeric/math_constants.hpp', 'numeric/math_utils.hpp']
-
+        >>> from collections import Counter
+        >>> l = get_files_in_folder_recursively("cpp")
+        >>> Counter(l) == Counter(['CMakeLists.txt', 'playground.cpp', 'io/read_file.cpp', 'io/read_file.hpp', 'log/timer.hpp', 'numeric/math_constants.hpp', 'numeric/math_utils.hpp'])
+        True
+        
     """
     if folderpath[-1] != os.path.sep:  # Add final '/' if it doesn't exist
         folderpath += os.path.sep
