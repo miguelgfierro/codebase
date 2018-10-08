@@ -12,12 +12,12 @@ class Timer(object):
         >>> r = 0
         >>> a = [r+i for i in range(big_num)]
         >>> t.stop()
-        >>> t.interval < 2
+        >>> t.interval < 5
         True
         >>> r = 0
         >>> with Timer() as t:
         ...   a = [r+i for i in range(big_num)]
-        >>> t.interval < 2
+        >>> t.interval < 5
         True
         >>> "Time elapsed {}".format(t) #doctest: +ELLIPSIS
         'Time elapsed 0:00:...'
