@@ -100,8 +100,9 @@ def fun_single_dispatch(arg, verbose=False):
         Enumerate this: [1, 2, 3]
         >>> fun_single_dispatch(None)
         Nothing.
-        >>> keys = fun_single_dispatch.registry.keys()  # To access all registered implementations
-        >>> print(list(keys))
+    Examples (not executable):
+        $ keys = fun_single_dispatch.registry.keys()  # To access all registered implementations
+        $ print(list(keys))
         [<class 'list'>, <class 'object'>, <class 'int'>, <class 'NoneType'>]
 
     """

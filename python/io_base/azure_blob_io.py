@@ -33,11 +33,11 @@ class BlobIO(object):
             container (str): Container name
             blob_path (str): Blob path
             local_path (str): Local path to the file
-        Examples:
-            >>> from python.io_base.json_io import read_file
-            >>> cred = read_file('share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> blob.upload_file('codebase', 'upload/traj.csv', 'share/traj.csv')
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ blob.upload_file('codebase', 'upload/traj.csv', 'share/traj.csv')
 
         """
         # FIXME: add a condition to make sure I am modifying the blob
@@ -56,11 +56,11 @@ class BlobIO(object):
             local_path (str): Local path to the file
         Returns:
             etag (str): Value to check if the blob has been modified
-        Examples:
-            >>> from python.io_base.json_io import read_file
-            >>> cred = read_file('share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> blob.download_file('codebase', 'upload/traj.csv', 'share/traj_blob.csv')
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ blob.download_file('codebase', 'upload/traj.csv', 'share/traj_blob.csv')
             True
 
         """
@@ -80,12 +80,11 @@ class BlobIO(object):
             blob_path (str): Blob path
         Returns:
             blobs (list): List of blobs
-        Examples:
-            >>> from python.io_base.json_io import read_file
-            >>> cred = read_file('share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> files = blob.list_blobs('codebase', 'upload')
-            >>> files
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ blob.list_blobs('codebase', 'upload')
             ['upload/traj.csv', 'upload/traj.txt']
 
         """
@@ -98,12 +97,11 @@ class BlobIO(object):
             container (str): Container name
         Returns:
             blobs (list): List of blobs
-        Examples:
-            >>> from python.io_base.json_io import read_file
-            >>> cred = read_file('share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> files = blob.list_containers()
-            >>> files
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ blob.list_containers()
             ['codebase', 'datasets', 'deep-learning', 'installer', 'projects', 'vhds']
 
         """
@@ -118,19 +116,19 @@ class BlobIO(object):
             sep (str): Separator
         Returns:
             df (pd.DataFrame): Dataframe
-        Examples:
-            >>> from python.io_base.json_io import read_file
-            >>> cred = read_file('share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> df = blob.read_pandas_dataframe('codebase', 'upload/traj.csv',
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ df = blob.read_pandas_dataframe('codebase', 'upload/traj.csv',
             ...                                 sep=',', header=None, names=['time','q1','q2'])
-            >>> df
+            $ df
                    time   q1   q2
             0  0.041667  443  205
             1  0.083333  444  206
-            >>> df = blob.read_pandas_dataframe('codebase', 'upload/traj.txt',
+            $ df = blob.read_pandas_dataframe('codebase', 'upload/traj.txt',
             ...                                 sep=' ', header=None)
-            >>> df
+            $ df
                       0   1   2
             0  0.041667 443 205
             1  0.083333 444 206
@@ -150,13 +148,13 @@ class BlobIO(object):
             spark (object): Spark context
         Returns:
             df (pyspark.sql.dataframe.DataFrame): Pyspark dataframe
-        Examples:
-            >>> from python.io_base.json_io import read_file
-            >>> cred = read_file('share/blob_config.json')
-            >>> blob = BlobIO(cred['account_name'], cred['account_key'])
-            >>> df = blob.read_spark_dataframe('codebase', 'upload/traj_header.csv',
+        Examples (not executable):
+            $ from python.io_base.json_io import read_file
+            $ cred = read_file('share/blob_config.json')
+            $ blob = BlobIO(cred['account_name'], cred['account_key'])
+            $ df = blob.read_spark_dataframe('codebase', 'upload/traj_header.csv',
             ...                                header=True, inferSchema=True)
-            >>> df.head(2)
+            $ df.head(2)
             [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
 
         """
