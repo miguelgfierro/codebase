@@ -31,8 +31,7 @@ def resize_image(img, new_width, new_height):
         img_new (PIL image): A resized image.
     Examples:
         >>> img = Image.open('share/Lenna.png')
-        >>> width, height = img.size
-        >>> img_resized = resize_image(img, width/2, height/2)
+        >>> img_resized = resize_image(img, 256, 256)
         >>> img_resized.size
         (256, 256)
 

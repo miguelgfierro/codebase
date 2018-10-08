@@ -96,11 +96,11 @@ def draw_contours(img, contour, color=(255, 0, 0), thickness=3):
         thickness (int): Thickness of the drawing.
     Returns:
         img_result (np.array): Image with the contour drew.
-    Examples (not executable):
-        $ cnts = np.load('share/Lenna_contours.npy')
-        $ img = cv2.imread('share/Lenna.png')
-        $ img_result = draw_contours(img, cnts)
-        $ plot_image_matplotlib(img_result)
+    Examples:
+        >>> cnts = np.load('share/Lenna_contours.npy')
+        >>> img = cv2.imread('share/Lenna.png')
+        >>> img_result = draw_contours(img, cnts)
+        >>> plot_image_matplotlib(img_result)
 
     """
     img_result = np.copy(img)
@@ -117,12 +117,12 @@ def animate_images_matplotlib(image_list, title=None, interval=50):
         interval (int): Time between frames in miliseconds.
     Returns:
         animation (object): Animation.
-    Examples (not executable):
-        $ img = cv2.imread('share/Lenna.png')
-        $ img_gray = cv2.imread('share/Lenna_gray.png')
-        $ im_list = [img, img_gray]*5
-        $ ani = animate_images_matplotlib(im_list, title='Lenna')
-        $ ani.save('test.mp4')
+    Examples:
+        >>> img = cv2.imread('share/Lenna.png')
+        >>> img_gray = cv2.imread('share/Lenna_gray.png')
+        >>> im_list = [img, img_gray]*5
+        >>> ani = animate_images_matplotlib(im_list, title='Lenna')
+        >>> ani.save('test.mp4')
 
     """
     fig = plt.figure()

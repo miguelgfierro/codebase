@@ -53,8 +53,8 @@ def get_library_version(library_name):
     Returns:
         version (str): Version of the library.
     Examples:
-        >>> get_library_version("pandas")
-        '0.23.1'
+        >>> get_library_version("pandas") #doctest: +ELLIPSIS
+        '0.23...'
 
     """
     try:

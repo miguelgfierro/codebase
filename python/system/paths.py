@@ -7,8 +7,8 @@ def get_current_folder_path():
     Returns:
         path (str): parent path
     Examples:
-        >>> print(get_current_folder_path()) #doctest: +ELLIPSIS
-        .../codebase/python/system
+        >>> get_current_folder_path() #doctest: +ELLIPSIS
+        '.../codebase/python/system'
 
     """
     return os.path.abspath(os.path.dirname(__file__))
@@ -19,8 +19,8 @@ def get_parent_folder_path():
     Returns:
         path (str): parent path
     Examples:
-        >>> print(get_parent_folder_path()) #doctest: +ELLIPSIS
-        .../codebase/python
+        >>> get_parent_folder_path() #doctest: +ELLIPSIS
+        '.../codebase/python'
 
     """
     return os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
