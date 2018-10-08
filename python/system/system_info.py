@@ -91,8 +91,10 @@ def get_number_processors():
 def get_java_version():
     """Get java version, vendor, installation files and more information
     Examples:
-        >>> get_java_version()
-        "9.0.1"
+        >>> get_java_version() # doctest: +SKIP
+        java version "1.8.0_151"
+        Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
+        Java HotSpot(TM) 64-Bit Server VM (build 25.151-b12, mixed mode)
 
     """
     os.system("java -version")

@@ -159,7 +159,7 @@ def convert_to_numpy_array(df, columns=None):
         (3, 2)
 
     """
-    return df.values(columns)
+    return df.as_matrix(columns)
 
 
 def replace_column_values(df, val_dict, col_name, new_col_name=None):
