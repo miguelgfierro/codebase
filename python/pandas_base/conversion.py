@@ -115,7 +115,6 @@ def convert_cols_numeric_to_categorical(df, col_list=None):
     Returns:
         ret (pd.DataFrame): An dataframe with categorical values.
     Examples:
-        >>> import numpy as np
         >>> df = pd.DataFrame({'letters':['a','b','c'],'numbers1':[-1,0.5,10],'numbers2':[1,2,3]})
         >>> df_cat = convert_cols_numeric_to_categorical(df, col_list=['numbers1'])
         >>> print(df_cat)

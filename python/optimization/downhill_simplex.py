@@ -18,7 +18,6 @@ def optimize_function(func, initial_guess, **kargs):
         fopt (float): Value of function at minimum.
     Examples:
         >>> from python.optimization.functions import rosenbrock
-        >>> import numpy as np
         >>> x0 = np.array([0, 0, 0, 0, 0])
         >>> xopt, fopt = optimize_function(rosenbrock, x0)
         >>> xopt # Real solution [1,1,1,1,1]

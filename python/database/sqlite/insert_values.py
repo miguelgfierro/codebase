@@ -38,7 +38,6 @@ def insert_csv(connector, table_name, table_instruction, filename, header=False)
         table_name (str): Table name.
         filename (str): Path to csv file.
     Example:
-        >>> import os
         >>> conn = sqlite3.connect('temp.db')
         >>> instruction = '(t ,q0, q1) VALUES (?,?,?)'
         >>> insert_csv(conn, 'table_csv', instruction, os.path.abspath('share/traj.csv'))

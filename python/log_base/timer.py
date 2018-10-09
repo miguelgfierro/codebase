@@ -5,7 +5,6 @@ from datetime import timedelta
 class Timer(object):
     """Timer class.
     Examples:
-        >>> import numpy as np
         >>> big_num = 1000
         >>> t = Timer()
         >>> t.start()
