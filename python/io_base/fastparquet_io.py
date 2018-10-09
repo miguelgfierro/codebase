@@ -8,7 +8,6 @@ def save_file(data, filename):
         data (pd.DataFrame): A dataframe
         filename (str): Name of the file.
     Examples:
-        >>> import pandas as pd
         >>> df = pd.DataFrame({'col1':[1,2,3], 'col2':[0.1,0.2,0.3]})
         >>> save_file(df, 'file.parq')
 

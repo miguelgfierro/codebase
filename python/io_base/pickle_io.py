@@ -12,7 +12,6 @@ def save_file(data, filename):
         data (numpy array or dict): Data to save.
         filename (str): Name of the file.
     Examples:
-        >>> import numpy as np
         >>> data = np.ones(5)
         >>> save_file(data, 'file.pk')
 

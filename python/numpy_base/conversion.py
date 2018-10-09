@@ -8,7 +8,6 @@ def convert_to_pandas_dataframe(data):
     Returns:
         result (pd.DataFrame): An dataframe with the numpy array values.
     Examples:
-        >>> import numpy as np
         >>> data = np.array([(1,10),(2,20),(3,30)], dtype='int')
         >>> df = convert_to_pandas_dataframe(data)
         >>> print(df)
