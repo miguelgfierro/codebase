@@ -16,22 +16,32 @@ app = Flask(__name__)
 @app.route("/hello")
 def hello_world():
     """Basic endpoint with arguments.
-    Examples (not executable):
-        Equivalent to:
-        $ curl http://127.0.0.1:5000/hello
-        $ curl http://127.0.0.1:5000/hello?name=Miguel
-        $ import requests
-        $ res = requests.get('http://127.0.0.1:5000/hello')
-        $ res.ok
-        True
-        $ res.content
-        'Hello World!'
-        $ res = requests.get('http://127.0.0.1:5000/hello?name=Miguel')
-        $ res.ok
-        True
-        $ res.content
-        'Hello Miguel'
-
+    Examplesss (not executable):
+    In bash, equivalent to:
+    $ curl http://127.0.0.1:5000/hello
+    $ curl http://127.0.0.1:5000/hello?name=Miguel
+    In Python, equivalent to:
+    $ import requests
+    $ res = requests.get('http://127.0.0.1:5000/hello')
+    $ res = requests.get('http://127.0.0.1:5000/hello?name=Miguel')
+    Examples:
+        >>> with app.test_client() as c:
+        ...     rv = c.get('/hello')
+        ...     status = rv.status
+        ...     content = rv.get_data()
+        >>> status
+        '200 OK'
+        >>> content
+        b'Hello World!'
+        >>> with app.test_client() as c:
+        ...     rv = c.get('/hello?name=Miguel')
+        ...     status = rv.status
+        ...     content = rv.get_data()
+        >>> status
+        '200 OK'
+        >>> content
+        b'Hello Miguel'
+             
     """
     if "name" in request.args:
         return "Hello " + request.args["name"]
