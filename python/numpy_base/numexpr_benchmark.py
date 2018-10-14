@@ -44,3 +44,23 @@ b = np.random.randn(100000, 10000)
 c = a * b  # 1min 35s ± 3.11 s per loop (1 loop each)
 c = ne.evaluate("a*b")  # 1min 4s ± 6.01 s per loop (1 loop each)
 
+# Benchmark exponential
+a = np.random.randn(100, 100)
+b = np.random.randn(100, 100)
+c = a * np.exp(b)  # 76.2 µs ± 1.72 µs per loop (10000 loops each)
+c = ne.evaluate("a*exp(b)")  # 158 µs ± 2.49 µs per loop (10000 loops each)
+
+a = np.random.randn(1000, 1000)
+b = np.random.randn(1000, 1000)
+c = a * np.exp(b)  # 7.43 ms ± 242 µs per loop (1000 loops each)
+c = ne.evaluate("a*exp(b)")  # 2.07 ms ± 63.2 µs per loop (1000 loops each)
+
+a = np.random.randn(10000, 10000)
+b = np.random.randn(10000, 10000)
+c = a * np.exp(b)  # 1.25 s ± 22.1 ms per loop (1 loop each)
+c = ne.evaluate("a*exp(b)")  # 324 ms ± 20.6 ms per loop (1 loop each)
+
+a = np.random.randn(100000, 10000)
+b = np.random.randn(100000, 10000)
+c = a * np.exp(b)
+c = ne.evaluate("a*exp(b)")
