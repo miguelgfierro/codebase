@@ -64,3 +64,25 @@ a = np.random.randn(100000, 10000)  # note the size is (1e5, 1e4)
 b = np.random.randn(100000, 10000)
 c = a * np.exp(b)  # 2min 27s ± 5.13 s per loop (1 loop each)
 c = ne.evaluate("a*exp(b)")  # 1min 6s ± 6.1 s per loop (1 loop each)
+
+# Benchmark sine
+a = np.random.randn(100, 100)
+b = np.random.randn(100, 100)
+c = a * np.sin(b)  # 138 µs ± 7.53 µs per loop (10000 loops each)
+c = ne.evaluate("a*sin(b)")  # 158 µs ± 1.51 µs per loop (10000 loops each)
+
+a = np.random.randn(1000, 1000)
+b = np.random.randn(1000, 1000)
+c = a * np.sin(b)  # 13.7 ms ± 430 µs per loop
+c = ne.evaluate("a*sin(b)")  # 2.8 ms ± 32.2 µs per loop
+
+a = np.random.randn(10000, 10000)
+b = np.random.randn(10000, 10000)
+c = a * np.sin(b)  # 1.9 s ± 17.5 ms per loop (1 loop each)
+c = ne.evaluate("a*sin(b)")  # 379 ms ± 10.9 ms per loop (1 loop each)
+
+a = np.random.randn(100000, 10000)  # note the size is (1e5, 1e4)
+b = np.random.randn(100000, 10000)
+c = a * np.sin(b)
+c = ne.evaluate("a*sin(b)")
+
