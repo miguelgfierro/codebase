@@ -83,6 +83,6 @@ c = ne.evaluate("a*sin(b)")  # 379 ms ± 10.9 ms per loop (1 loop each)
 
 a = np.random.randn(100000, 10000)  # note the size is (1e5, 1e4)
 b = np.random.randn(100000, 10000)
-c = a * np.sin(b)
-c = ne.evaluate("a*sin(b)")
+c = a * np.sin(b)  # 2min 34s ± 16.5 s per loop (1 loop each)
+c = ne.evaluate("a*sin(b)")  # 1min 1s ± 1.48 s per loop (1 loop each)
 
