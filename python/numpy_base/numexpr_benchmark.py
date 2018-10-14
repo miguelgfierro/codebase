@@ -42,5 +42,5 @@ c = ne.evaluate("a*b")  # 321 ms ± 19.4 ms per loop (1 loop each)
 a = np.random.randn(100000, 10000)  # note the size is (1e5, 1e4)
 b = np.random.randn(100000, 10000)
 c = a * b  # 1min 35s ± 3.11 s per loop (1 loop each)
-c = ne.evaluate("a*b")  #
+c = ne.evaluate("a*b")  # 1min 4s ± 6.01 s per loop (1 loop each)
 
