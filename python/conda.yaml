@@ -49,6 +49,7 @@ dependencies:
   - papermill>=0.15.0
   - wget>=3.2
   - h5py>=2.8.0
+  - numexpr>=2.6.8
 
 
 
