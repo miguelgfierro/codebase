@@ -12,7 +12,6 @@ def save_csv(data, filename="file.*.csv", npartitions=1, **kwargs):
         npartitions (int): Number of partitions of the data. It will generate a file per partition
         **kwargs (object): Same arguments as in pd.DataFrame.to_csv
     Examples:
-        >>> import glob
         >>> df = pd.DataFrame({'col1':[1]*100, 'col2':[0.1]*100})
         >>> save_csv(df, filename='file.*.csv', npartitions=2, index=False, header=False)
         >>> len(glob.glob('file.*.csv'))

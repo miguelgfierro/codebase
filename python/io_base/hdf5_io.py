@@ -7,7 +7,6 @@ def save_file(data, filename, dataset_name="data"):
         data (np.array): An array.
         filename (str): Name of the file.
     Examples:
-        >>> import numpy as np
         >>> a = np.array([[1,2,3],[4,5,6]])
         >>> save_file(a, 'file.hdf5')
 

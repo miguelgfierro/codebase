@@ -10,7 +10,6 @@ def apply_function_on_axis_dataframe(df, func, axis=0):
     Returns:
         df_return (pd.DataFrame): Dataframe with the applied function.
     Examples:
-        >>> import numpy as np
         >>> df = pd.DataFrame(np.array(range(12)).reshape(4, 3), columns=list('abc'))
         >>> f = lambda x: x.max() - x.min()
         >>> apply_function_on_axis_dataframe(df, f, 1)
@@ -37,7 +36,6 @@ def apply_function_elementwise_dataframe(df, func):
     Returns:
         df_return (pd.DataFrame): Dataframe with the applied function.
     Examples:
-        >>> import numpy as np
         >>> df = pd.DataFrame(np.array(range(12)).reshape(4, 3), columns=list('abc'))
         >>> f = lambda x: '%.1f' % x
         >>> apply_function_elementwise_dataframe(df, f)
@@ -59,7 +57,6 @@ def apply_function_elementwise_series(ser, func):
     Returns:
         ser_return (pd.Series): Series with the applied function.
     Examples:
-        >>> import numpy as np
         >>> df = pd.DataFrame(np.array(range(12)).reshape(4, 3), columns=list('abc'))
         >>> ser = df['b']
         >>> f = lambda x: '%.1f' % x
