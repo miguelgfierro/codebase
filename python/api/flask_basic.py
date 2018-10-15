@@ -28,19 +28,19 @@ def hello_world():
         >>> with app.test_client() as c:
         ...     rv = c.get('/hello')
         ...     status = rv.status
-        ...     content = rv.get_data()
+        ...     content = rv.data.decode('utf8')
         >>> status
         '200 OK'
         >>> content
-        b'Hello World!'
+        'Hello World!'
         >>> with app.test_client() as c:
         ...     rv = c.get('/hello?name=Miguel')
         ...     status = rv.status
-        ...     content = rv.get_data()
+        ...     content = rv.data.decode('utf8')
         >>> status
         '200 OK'
         >>> content
-        b'Hello Miguel'
+        'Hello Miguel'
              
     """
     if "name" in request.args:
@@ -64,20 +64,21 @@ def hello_user(user_id):
         >>> with app.test_client() as c:
         ...     rv = c.get('/hello/5')    
         ...     status = rv.status
-        ...     content = rv.get_data()
+        ...     content = rv.data.decode('utf8')
         >>> status
         '200 OK'
         >>> content
-        b'Hello user 5'
+        'Hello user 5'
         >>> with app.test_client() as c:
         ...     rv = c.get('/hello/10')    
         ...     status = rv.status
-        ...     content = rv.get_data()
+        ...     content = rv.json
         >>> status
         '450 UNKNOWN'
         >>> content
-        b'{"message":"User not found"}\\n'
+        {'message': 'User not found'}
 
+        
     """
     if int(user_id) >= 10:
         raise InvalidUsage("User not found")
