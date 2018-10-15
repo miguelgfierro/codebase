@@ -30,10 +30,11 @@ def post_status():
         "message": "Param = 1"
     }
     Examples:
+        >>> import json
         >>> with app.test_client() as c:
         ...     headers = {"Content-type":"application/json"}
         ...     data = {"param":"1"}
-        ...     rv = c.post("/api/v1/post_json", data=data, headers=headers)
+        ...     rv = c.post("/api/v1/post_json", data=json.dumps(data), headers=headers)
         ...     status = rv.status
         ...     content = rv.get_data()
         >>> status
