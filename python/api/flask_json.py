@@ -30,7 +30,6 @@ def post_status():
         "message": "Param = 1"
     }
     Examples:
-        >>> import json
         >>> with app.test_client() as c:
         ...     headers = {"Content-type":"application/json"}
         ...     data = {"param":"1"}
