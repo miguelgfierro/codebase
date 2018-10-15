@@ -5,6 +5,7 @@ import numpy
 import pandas
 import subprocess
 import glob
+import json
 
 
 @pytest.fixture(autouse=True)
@@ -18,4 +19,5 @@ def add_libraries(doctest_namespace):
     doctest_namespace["pd"] = pandas
     doctest_namespace["subprocess"] = subprocess
     doctest_namespace["glob"] = glob
+    doctest_namespace["json"] = json
 
