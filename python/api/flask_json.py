@@ -35,9 +35,11 @@ def post_status():
         ...     data = {"param":"1"}
         ...     rv = c.post("/api/v1/post_json", data=json.dumps(data), headers=headers)
         ...     status = rv.status
-        ...     content = rv.get_data()
+        ...     content = rv.data.decode('utf8')
         >>> status
         '200 OK'
+        >>> json.loads(content)
+        {'message':Param = 1'}
 
     """
     if not request.json or "param" not in request.json:
