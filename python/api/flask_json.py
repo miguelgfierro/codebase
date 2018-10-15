@@ -39,11 +39,13 @@ def post_status():
         >>> status
         '200 OK'
         >>> json.loads(content)
-        {'message':Param = 1'}
+        {'message': 'Param = 1'}
 
     """
-    if not request.json or "param" not in request.json:
+    if not request.json:
         abort(BAD_REQUEST)
+    if "param" not in request.json:
+        abort(NOT_FOUND)
     param = request.json["param"]
     resp = "Param = %s" % param
     return make_response(jsonify({"message": resp}), STATUS_OK)
@@ -53,12 +55,22 @@ def post_status():
 def bad_request(error):
     """Custom bad request response
     Examples (not executable):
-        $ import requests
-        $ res = requests.post("http://127.0.0.1:5000/api/v1/post_json", data={"param":"2"})
-        $ res.ok
-        False
-        $ res.json()
-        {u"error": u"Bad request"}
+    $ res = requests.post("http://127.0.0.1:5000/api/v1/post_json", data={"param":"2"})
+    $ res.ok
+    False
+    $ res.json()
+    {u"error": u"Bad request"}
+    Examples:
+        >>> with app.test_client() as c:
+        ...     data = {"param":"2"}
+        ...     rv = c.post("/api/v1/post_json", data=json.dumps(data))
+        ...     status = rv.status
+        ...     content = rv.data.decode('utf8')
+        >>> status
+        '400 BAD REQUEST'
+        >>> json.loads(content)
+        {'error': 'Bad request'}
+
 
     """
     return make_response(jsonify({"error": "Bad request"}), BAD_REQUEST)
@@ -68,12 +80,22 @@ def bad_request(error):
 def not_found(error):
     """Custom not found response
     Examples (not executable):
-        $ import requests
-        $ res = requests.post("http://127.0.0.1:5000/api/v1/other", data={"other_param":"2"})
-        $ res.ok
-        False
-        $ res.json()
-        {u"error": u"Not found"}
+    $ res = requests.post("http://127.0.0.1:5000/api/v1/other", data={"other_param":"2"})
+    $ res.ok
+    False
+    $ res.json()
+    {u"error": u"Not found"}
+    Examples:
+        >>> with app.test_client() as c:
+        ...     headers = {"Content-type":"application/json"}
+        ...     data = {"other_param":"2"}
+        ...     rv = c.post("/api/v1/post_json", data=json.dumps(data), headers=headers)
+        ...     status = rv.status
+        ...     content = rv.data.decode('utf8')
+        >>> status
+        '404 NOT FOUND'
+        >>> json.loads(content)
+        {'error': 'Not found'}
 
     """
     return make_response(jsonify({"error": "Not found"}), NOT_FOUND)
