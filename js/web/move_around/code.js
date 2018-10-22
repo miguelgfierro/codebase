@@ -1,3 +1,5 @@
+// Attribution: https://codepen.io/vajkri/pen/grgQmb
+
 var lFollowX = 0,
     lFollowY = 0,
     x = 0,

@@ -1,3 +1,5 @@
+// Attribution: https://codepen.io/JonasBadalic/pen/cwEtH
+
 var canvas = document.getElementById('container');
 var clone = document.getElementById('blurCanvasBottom');
 

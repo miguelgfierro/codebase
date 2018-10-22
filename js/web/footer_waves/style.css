@@ -1,3 +1,5 @@
+/* Attribution: https://codepen.io/Cancepto/pen/OMQdJx */
+
 @keyframes move_wave {
     0% {
         transform: translateX(0) translateZ(0) scaleY(1)
