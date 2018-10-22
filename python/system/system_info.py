@@ -220,3 +220,15 @@ def get_cudnn_version():
         raise ValueError("Not in Windows, Linux or Mac")
     return find_cudnn_in_headers(candidates)
 
+
+def get_conda_environment():
+    """Get the conda environment from which the script is being executed
+    Returns:
+        name (str): Environment name
+    Examples:
+        >>> get_conda_environment()
+        'codebase'
+        
+    """
+    return os.environ["CONDA_DEFAULT_ENV"]
+

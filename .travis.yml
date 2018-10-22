@@ -18,8 +18,8 @@ install:
 #  - conda update -q conda # takes 12s
 
   # Create environment
-  - conda env create -q -n test-environment -f python/conda.yaml
-  - source activate test-environment
+  - conda env create -q -n codebase -f python/conda.yaml
+  - source activate codebase
   - pip list
 
 
