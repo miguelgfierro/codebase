@@ -74,3 +74,4 @@ def get_gpu_memory():
         return out_list
     except Exception as e:
         print(e)
+
