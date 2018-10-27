@@ -1,6 +1,6 @@
-from __future__ import division
 import sys
 import psutil
+import subprocess
 
 
 def get_object_size(obj, units="Mb"):
@@ -53,3 +53,24 @@ def get_ram_memory(units="Mb"):
         return s_bytes / 1024 / 1024 / 1024
     else:
         raise AttributeError("Units not correct")
+
+
+def get_gpu_memory():
+    """Get the memory of the GPUs in the system
+    Returns:
+        result (list): List of strings with the GPU memory in Mb
+    Examples (non executable):
+        $ get_gpu_memory()
+        ['8123 MiB', '8123 MiB', '8123 MiB', '8123 MiB']
+
+    """
+    try:
+        out_str = subprocess.run(
+            ["nvidia-smi", "--query-gpu=memory.total", "--format=csv"],
+            stdout=subprocess.PIPE,
+        ).stdout
+        out_list = out_str.decode("utf-8").replace("\r", "").split("\n")
+        out_list = out_list[1:-1]
+        return out_list
+    except Exception as e:
+        print(e)

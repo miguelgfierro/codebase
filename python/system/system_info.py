@@ -138,27 +138,6 @@ def get_number_gpus():
         print(e)
 
 
-def get_gpu_memory():
-    """Get the memory of the GPUs in the system
-    Returns:
-        result (list): List of strings with the GPU memory in Mb
-    Examples (non executable):
-        $ get_gpu_memory()
-        ['8123 MiB', '8123 MiB', '8123 MiB', '8123 MiB']
-
-    """
-    try:
-        out_str = subprocess.run(
-            ["nvidia-smi", "--query-gpu=memory.total", "--format=csv"],
-            stdout=subprocess.PIPE,
-        ).stdout
-        out_list = out_str.decode("utf-8").replace("\r", "").split("\n")
-        out_list = out_list[1:-1]
-        return out_list
-    except Exception as e:
-        print(e)
-
-
 def get_cuda_version():
     """Get CUDA version
     Returns:
