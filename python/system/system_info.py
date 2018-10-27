@@ -103,7 +103,7 @@ def get_java_version():
 
 
 def get_gpu_name():
-    """Get the GPUs in the system.
+    """Get the GPU names in the system.
     Returns:
         result (list): List of strings with the GPU name.
     Examples:
