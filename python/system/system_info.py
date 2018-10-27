@@ -5,6 +5,7 @@ import os
 import subprocess
 import socket
 import glob
+from numba import cuda
 
 
 def get_os():
@@ -158,7 +159,7 @@ def get_cuda_version():
 
 
 def get_cudnn_version():
-    """Get the CUDNN version
+    """Get the CuDNN version
     Returns:
         version (str): Version of the library.
     """
@@ -198,6 +199,18 @@ def get_cudnn_version():
     else:
         raise ValueError("Not in Windows, Linux or Mac")
     return find_cudnn_in_headers(candidates)
+
+
+def is_cuda_available():
+    """Check if the system has cuda
+    Returns:
+        bool: True if cuda is installed, False otherwise.
+    Examples:
+        >>> is_cuda_available()
+        False
+
+    """
+    return cuda.is_available()
 
 
 def get_conda_environment():
