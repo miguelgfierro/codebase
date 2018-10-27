@@ -6,6 +6,7 @@ import subprocess
 import socket
 import glob
 from numba import cuda
+from numba.cuda.cudadrv.error import CudaSupportError
 
 
 def get_os():
@@ -133,7 +134,7 @@ def get_number_gpus():
     """
     try:
         return len(cuda.gpus)
-    except cuda.cudadrv.error.CudaSupportError:
+    except CudaSupportError:
         return 0
 
 
