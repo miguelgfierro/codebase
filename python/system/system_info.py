@@ -106,21 +106,15 @@ def get_gpu_name():
     """Get the GPUs in the system.
     Returns:
         result (list): List of strings with the GPU name.
-    Examples (non executable):
-        $ get_gpu_name()
-        ['Tesla M60', 'Tesla M60', 'Tesla M60', 'Tesla M60']
+    Examples:
+        >>> get_gpu_name()
+        []
         
     """
     try:
-        out_str = subprocess.run(
-            ["nvidia-smi", "--query-gpu=gpu_name", "--format=csv"],
-            stdout=subprocess.PIPE,
-        ).stdout
-        out_list = out_str.decode("utf-8").split("\n")
-        out_list = out_list[1:-1]
-        return out_list
-    except Exception as e:
-        print(e)
+        return [gpu.name.decode("utf-8") for gpu in cuda.gpus]
+    except CudaSupportError:
+        return []
 
 
 def get_number_gpus():
