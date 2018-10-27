@@ -126,17 +126,15 @@ def get_number_gpus():
     """Get the number of GPUs in the system.
     Returns:
         num (int): Number of GPUs.
-    Examples (non executable):
-        $ get_number_gpus()
-        4
+    Examples:
+        >>> get_number_gpus()
+        0
 
     """
     try:
-        out_str = subprocess.run(["nvidia-smi", "-L"], stdout=subprocess.PIPE).stdout
-        out_list = out_str.decode("utf-8").split("\n")
-        return len(out_list) - 1
-    except Exception as e:
-        print(e)
+        return len(cuda.gpus)
+    except cuda.cudadrv.error.CudaSupportError:
+        return 0
 
 
 def get_cuda_version():
