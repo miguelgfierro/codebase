@@ -15,7 +15,7 @@ def get_os():
     linux: Linux.
     Win32: Windows.
     Returns:
-        version (str): OS name.
+        str: OS name.
     Examples:
         >>> get_os() #doctest: +ELLIPSIS
         '...'
@@ -27,7 +27,7 @@ def get_os():
 def get_machine_name():
     """Get the machine's name
     Returns:
-        name (str): Name of the machine
+        str: Name of the machine
     Examples:
         >>> get_machine_name() #doctest: +ELLIPSIS
         '...'
@@ -39,7 +39,7 @@ def get_machine_name():
 def get_python_version():
     """Get the system's python version.
     Returns:
-        version (str): Python version.
+        str: Python version.
     Examples:
         >>> get_python_version() #doctest: +ELLIPSIS
         '...'
@@ -53,7 +53,7 @@ def get_library_version(library_name):
     Args:
         library_name (str): Name of the library.
     Returns:
-        version (str): Version of the library.
+        str: Version of the library.
     Examples:
         >>> get_library_version("pandas") #doctest: +ELLIPSIS
         '0.23...'
@@ -74,7 +74,7 @@ def get_library_version(library_name):
 def get_number_processors():
     """Get the number of processors in a CPU.
     Returns:
-        num (int): Number of processors.
+        int: Number of processors.
     Examples:
         >>> num = get_number_processors()
         >>> num >= 4
@@ -105,7 +105,7 @@ def get_java_version():
 def get_gpu_name():
     """Get the GPU names in the system.
     Returns:
-        result (list): List of strings with the GPU name.
+        list: List of strings with the GPU name.
     Examples:
         >>> get_gpu_name()
         []
@@ -120,7 +120,7 @@ def get_gpu_name():
 def get_number_gpus():
     """Get the number of GPUs in the system.
     Returns:
-        num (int): Number of GPUs.
+        int: Number of GPUs.
     Examples:
         >>> get_number_gpus()
         0
@@ -132,10 +132,25 @@ def get_number_gpus():
         return 0
 
 
+def get_gpu_compute_capability():
+    """Get the GPUs compute capability.
+    Returns:
+        list: List of tuples (major, minor) indicating the supported compute capability.
+    Examples:
+        >>> get_gpu_compute_capability()
+        []
+        
+    """
+    try:
+        return [gpu.compute_capability for gpu in cuda.gpus]
+    except CudaSupportError:
+        return []
+
+
 def get_cuda_version():
     """Get CUDA version
     Returns:
-        version (str): Version of the library.
+        str: Version of the library.
     """
     if sys.platform == "win32":
         raise NotImplementedError("Implement this!")
@@ -154,7 +169,7 @@ def get_cuda_version():
 def get_cudnn_version():
     """Get the CuDNN version
     Returns:
-        version (str): Version of the library.
+        str: Version of the library.
     """
 
     def find_cudnn_in_headers(candiates):
@@ -209,7 +224,7 @@ def is_cuda_available():
 def get_conda_environment():
     """Get the conda environment from which the script is being executed
     Returns:
-        name (str): Environment name
+        str: Environment name
     Examples:
         >>> get_conda_environment()
         'codebase'
