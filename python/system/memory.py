@@ -96,7 +96,7 @@ def clear_memory_all_gpus():
     """Clear memory of all GPUs.
     Examples:
         >>> clear_memory_all_gpus()
-        'No CUDA available'
+        No CUDA available
     """
     try:
         for gpu in cuda.gpus:
@@ -112,7 +112,7 @@ def clear_memory_gpu_id(id):
         id (int): GPU id.
     Examples:
         >>> clear_memory_gpu_id(0)
-        'No CUDA available'
+        No CUDA available
     """
     try:
         cuda.select_device(id)
