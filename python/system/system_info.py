@@ -5,6 +5,8 @@ import os
 import subprocess
 import socket
 import glob
+from numba import cuda
+from numba.cuda.cudadrv.error import CudaSupportError
 
 
 def get_os():
@@ -13,7 +15,7 @@ def get_os():
     linux: Linux.
     Win32: Windows.
     Returns:
-        version (str): OS name.
+        str: OS name.
     Examples:
         >>> get_os() #doctest: +ELLIPSIS
         '...'
@@ -25,7 +27,7 @@ def get_os():
 def get_machine_name():
     """Get the machine's name
     Returns:
-        name (str): Name of the machine
+        str: Name of the machine
     Examples:
         >>> get_machine_name() #doctest: +ELLIPSIS
         '...'
@@ -37,7 +39,7 @@ def get_machine_name():
 def get_python_version():
     """Get the system's python version.
     Returns:
-        version (str): Python version.
+        str: Python version.
     Examples:
         >>> get_python_version() #doctest: +ELLIPSIS
         '...'
@@ -51,7 +53,7 @@ def get_library_version(library_name):
     Args:
         library_name (str): Name of the library.
     Returns:
-        version (str): Version of the library.
+        str: Version of the library.
     Examples:
         >>> get_library_version("pandas") #doctest: +ELLIPSIS
         '0.23...'
@@ -72,7 +74,7 @@ def get_library_version(library_name):
 def get_number_processors():
     """Get the number of processors in a CPU.
     Returns:
-        num (int): Number of processors.
+        int: Number of processors.
     Examples:
         >>> num = get_number_processors()
         >>> num >= 4
@@ -101,68 +103,54 @@ def get_java_version():
 
 
 def get_gpu_name():
-    """Get the GPUs in the system.
+    """Get the GPU names in the system.
     Returns:
-        result (list): List of strings with the GPU name.
-    Examples (non executable):
-        $ get_gpu_name()
-        ['Tesla M60', 'Tesla M60', 'Tesla M60', 'Tesla M60']
+        list: List of strings with the GPU name.
+    Examples:
+        >>> get_gpu_name()
+        []
         
     """
     try:
-        out_str = subprocess.run(
-            ["nvidia-smi", "--query-gpu=gpu_name", "--format=csv"],
-            stdout=subprocess.PIPE,
-        ).stdout
-        out_list = out_str.decode("utf-8").split("\n")
-        out_list = out_list[1:-1]
-        return out_list
-    except Exception as e:
-        print(e)
+        return [gpu.name.decode("utf-8") for gpu in cuda.gpus]
+    except CudaSupportError:
+        return []
 
 
 def get_number_gpus():
     """Get the number of GPUs in the system.
     Returns:
-        num (int): Number of GPUs.
-    Examples (non executable):
-        $ get_number_gpus()
-        4
+        int: Number of GPUs.
+    Examples:
+        >>> get_number_gpus()
+        0
 
     """
     try:
-        out_str = subprocess.run(["nvidia-smi", "-L"], stdout=subprocess.PIPE).stdout
-        out_list = out_str.decode("utf-8").split("\n")
-        return len(out_list) - 1
-    except Exception as e:
-        print(e)
+        return len(cuda.gpus)
+    except CudaSupportError:
+        return 0
 
 
-def get_gpu_memory():
-    """Get the memory of the GPUs in the system
+def get_gpu_compute_capability():
+    """Get the GPUs compute capability.
     Returns:
-        result (list): List of strings with the GPU memory in Mb
-    Examples (non executable):
-        $ get_gpu_memory()
-        ['8123 MiB', '8123 MiB', '8123 MiB', '8123 MiB']
-
+        list: List of tuples (major, minor) indicating the supported compute capability.
+    Examples:
+        >>> get_gpu_compute_capability()
+        []
+        
     """
     try:
-        out_str = subprocess.run(
-            ["nvidia-smi", "--query-gpu=memory.total", "--format=csv"],
-            stdout=subprocess.PIPE,
-        ).stdout
-        out_list = out_str.decode("utf-8").replace("\r", "").split("\n")
-        out_list = out_list[1:-1]
-        return out_list
-    except Exception as e:
-        print(e)
+        return [gpu.compute_capability for gpu in cuda.gpus]
+    except CudaSupportError:
+        return []
 
 
 def get_cuda_version():
     """Get CUDA version
     Returns:
-        version (str): Version of the library.
+        str: Version of the library.
     """
     if sys.platform == "win32":
         raise NotImplementedError("Implement this!")
@@ -179,9 +167,9 @@ def get_cuda_version():
 
 
 def get_cudnn_version():
-    """Get the CUDNN version
+    """Get the CuDNN version
     Returns:
-        version (str): Version of the library.
+        str: Version of the library.
     """
 
     def find_cudnn_in_headers(candiates):
@@ -221,10 +209,22 @@ def get_cudnn_version():
     return find_cudnn_in_headers(candidates)
 
 
+def is_cuda_available():
+    """Check if the system has cuda
+    Returns:
+        bool: True if cuda is installed, False otherwise.
+    Examples:
+        >>> is_cuda_available()
+        False
+
+    """
+    return cuda.is_available()
+
+
 def get_conda_environment():
     """Get the conda environment from which the script is being executed
     Returns:
-        name (str): Environment name
+        str: Environment name
     Examples:
         >>> get_conda_environment()
         'codebase'

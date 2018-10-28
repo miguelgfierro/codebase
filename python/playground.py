@@ -89,11 +89,11 @@ from python.plot_base.plot_confusion_matrix import *
 from python.plot_base.scikit_image_plot import *
 
 # system
-from python.system.memory_size import *
-
 # from python.system.notebook_memory_management import *
 from python.system.paths import *
 from python.system.system_info import *
+from python.system.memory import *
+
 
 # test
 from python.test.unittest_fixtures import *
