@@ -115,8 +115,9 @@ def clear_memory_gpu_id(id):
         No CUDA available
     """
     try:
-        cuda.select_device(id)
-        cuda.close()
+        for gpu in cuda.gpus:
+            cuda.select_device(gpu.id)
+            cuda.close()
     except CudaSupportError:
         print("No CUDA available")
     except IndexError:
