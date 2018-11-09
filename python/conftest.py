@@ -6,6 +6,7 @@ import pandas
 import subprocess
 import glob
 import json
+from pyspark.sql import SparkSession
 
 
 @pytest.fixture(autouse=True)
@@ -20,4 +21,10 @@ def add_libraries(doctest_namespace):
     doctest_namespace["subprocess"] = subprocess
     doctest_namespace["glob"] = glob
     doctest_namespace["json"] = json
-
+    spark = (
+        SparkSession.builder.appName("test codebase")
+        .master("local[*]")
+        .config("spark.driver.memory", "4g")
+        .getOrCreate()
+    )
+    doctest_namespace["spark"] = spark
