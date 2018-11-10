@@ -47,15 +47,15 @@ def save_csv_file(dataframe, filename, **kwargs):
         dataframe (spark.DataFrame): A dataframe.
         filename (str): Name of the file.
     Examples:
-        >>> shutil.rmtree("test_spark_one", ignore_errors=True)
+        >>> if os.path.isfile("df_spark.csv"):
+        ...     os.remove("df_spark.csv")
         >>> columns = ['id', 'dogs', 'cats']
         >>> vals = [(1, 2, 0), (2, 0, 1)]
         >>> df = spark.createDataFrame(vals, columns)
-        >>> save_csv_folder(df, "test_spark_one", header=True, mode="overwrite")
-        >>> os.path.isdir("test_spark_one")
+        >>> save_csv_file(df, "df_spark.csv", header=True, index=False)
+        >>> os.path.isfile("df_spark.csv")
         True
-        >>> len(glob.glob1("test_spark_one","*.csv"))
-        1
+
 
     """
     dataframe.toPandas().to_csv(filename, **kwargs)
