@@ -7,6 +7,7 @@ import subprocess
 import glob
 import json
 import shutil
+from collections import Counter
 from pyspark.sql import SparkSession
 
 
@@ -23,6 +24,7 @@ def add_libraries(doctest_namespace):
     doctest_namespace["glob"] = glob
     doctest_namespace["json"] = json
     doctest_namespace["shutil"] = shutil
+    doctest_namespace["Counter"] = Counter
     spark = (
         SparkSession.builder.appName("test codebase")
         .master("local[*]")

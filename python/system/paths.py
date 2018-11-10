@@ -1,5 +1,6 @@
 import os
 import glob
+import errno
 
 
 def get_current_folder_path():
@@ -65,7 +66,6 @@ def get_filenames_in_folder(folderpath):
     Returns:
         filelist (list): list of files
     Examples:
-        >>> from collections import Counter
         >>> l = get_filenames_in_folder("cpp")   
         >>> Counter(l) == Counter(['io', 'log', 'numeric', 'CMakeLists.txt', 'playground.cpp'])
         True
@@ -81,7 +81,6 @@ def get_files_in_folder_recursively(folderpath):
     Returns:
         filelist (list): list of files
     Examples:
-        >>> from collections import Counter
         >>> l = get_files_in_folder_recursively("cpp")
         >>> Counter(l) == Counter(['CMakeLists.txt', 'playground.cpp', 'io/read_file.cpp', 'io/read_file.hpp', 'log/timer.hpp', 'numeric/math_constants.hpp', 'numeric/math_utils.hpp'])
         True
@@ -96,3 +95,21 @@ def get_files_in_folder_recursively(folderpath):
     ]
     return sorted(names)
 
+
+def remove_file(filename):
+    """Remove file if it exists.
+    Original code: https://stackoverflow.com/a/10840586/5620182
+    Examples:
+        >>> copyfile(os.path.join("share", "traj.csv"), "copy.csv")
+        >>> os.path.isfile("copy.csv")
+        True
+        >>> remove_file("copy.csv")
+        >>> os.path.isfile("copy.csv")
+        False
+
+    """
+    try:
+        os.remove(filename)
+    except OSError as e:  # this would be "except OSError, e:" before Python 2.6
+        if e.errno != errno.ENOENT:  # errno.ENOENT = no such file or directory
+            raise  # re-raise exception if a different error occurred
