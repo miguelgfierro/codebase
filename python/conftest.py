@@ -6,6 +6,7 @@ import pandas
 import subprocess
 import glob
 import json
+import shutil
 from pyspark.sql import SparkSession
 
 
@@ -21,6 +22,7 @@ def add_libraries(doctest_namespace):
     doctest_namespace["subprocess"] = subprocess
     doctest_namespace["glob"] = glob
     doctest_namespace["json"] = json
+    octest_namespace["shutil"] = shutil
     spark = (
         SparkSession.builder.appName("test codebase")
         .master("local[*]")

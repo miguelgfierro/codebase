@@ -7,10 +7,13 @@ def save_csv_folder(dataframe, folder, **kwargs):
         dataframe (spark.DataFrame): A dataframe.
         folder (str): Folder path.
     Examples:
+        >>> shutil.rmtree("test_spark", ignore_errors=True)
         >>> columns = ['id', 'dogs', 'cats']
         >>> vals = [(1, 2, 0), (2, 0, 1)]
         >>> df = spark.createDataFrame(vals, columns)
         >>> save_csv_folder(df, "test_spark", header=True, mode="overwrite")
+        >>> os.path.isdir("test_spark")
+        True
 
     """
     dataframe.write.csv(folder, **kwargs)
