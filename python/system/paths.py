@@ -100,7 +100,7 @@ def remove_file(filename):
     """Remove file if it exists.
     Original code: https://stackoverflow.com/a/10840586/5620182
     Examples:
-        >>> copyfile(os.path.join("share", "traj.csv"), "copy.csv")
+        >>> shutil.copyfile(os.path.join("share", "traj.csv"), "copy.csv")
         >>> os.path.isfile("copy.csv")
         True
         >>> remove_file("copy.csv")
