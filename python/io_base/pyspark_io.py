@@ -14,8 +14,8 @@ def save_csv_folder(dataframe, folder, **kwargs):
         >>> save_csv_folder(df, "test_spark", header=True, mode="overwrite")
         >>> os.path.isdir("test_spark")
         True
-        >>> len(glob.glob1("test_spark","*.csv"))
-        3
+        >>> len(glob.glob1("test_spark","*.csv")) > 1
+        True
 
     """
     dataframe.write.csv(folder, **kwargs)
