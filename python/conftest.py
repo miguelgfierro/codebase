@@ -9,6 +9,7 @@ import json
 import shutil
 from collections import Counter
 from pyspark.sql import SparkSession
+import pyspark.sql.types as sptypes
 
 
 @pytest.fixture(autouse=True)
@@ -32,3 +33,4 @@ def add_libraries(doctest_namespace):
         .getOrCreate()
     )
     doctest_namespace["spark"] = spark
+    doctest_namespace["sptypes"] = sptypes

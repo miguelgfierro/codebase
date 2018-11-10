@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 
 
 def save_csv(dataframe, filename, **kwargs):
-    """Save a dataframe as `csv`.
+    """Save a dataframe as csv.
     Args:
         dataframe (pd.DataFrame): A dataframe
         filename (str): Name of the file.
@@ -16,7 +16,7 @@ def save_csv(dataframe, filename, **kwargs):
 
 
 def read_csv(filename, **kwargs):
-    """Read a `csv` file.
+    """Read a csv file.
     Args:
         filename (str): Name of the file.
     Returns:
