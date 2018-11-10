@@ -60,7 +60,7 @@ def save_csv_file(dataframe, filename, **kwargs):
     dataframe.toPandas().to_csv(filename, **kwargs)
 
 
-def read_csv_file(filename, **kwargs):
+def read_csv_file(spark, filename, **kwargs):
     """Read a csv file.
     Args:
         filename (str): Name of the file.
@@ -68,13 +68,13 @@ def read_csv_file(filename, **kwargs):
         dataframe (spark.DataFrame): An dataframe.
     Examples:
         >>> filename = os.path.join("share", "traj_header.csv")
-        >>> df = read_csv_file(filename, header=True, inferSchema=True)
+        >>> df = read_csv_file(spark, filename, header=True, inferSchema=True)
         >>> df.head(2)
         [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=205)]
         >>> df.schema
         StructType(List(StructField(t,DoubleType,true),StructField(q0,LongType,true),StructField(q1,LongType,true)))
         >>> schema = sptypes.StructType([sptypes.StructField("t", sptypes.FloatType()), sptypes.StructField("q0", sptypes.IntegerType()), sptypes.StructField("q1", sptypes.StringType())])
-        >>> df2 = read_csv_file(filename, header=True, schema=schema)
+        >>> df2 = read_csv_file(spark, filename, header=True, schema=schema)
         >>> df2.head(2)
         [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=205)]
         >>> df2.schema  
@@ -85,7 +85,7 @@ def read_csv_file(filename, **kwargs):
     return spark.read.csv(filename, **kwargs)
 
 
-def read_csv_folder(folder, **kwargs):
+def read_csv_folder(spark, folder, **kwargs):
     """Read a csv folder of Spark format.
     Args:
         folder (str): Folder path.
@@ -93,7 +93,7 @@ def read_csv_folder(folder, **kwargs):
         dataframe (spark.DataFrame): An dataframe.
     Examples:
         >>> path = os.path.join("share", "traj_spark")
-        >>> df = read_csv_folder(path, header=True, inferSchema=True)
+        >>> df = read_csv_folder(spark, path, header=True, inferSchema=True)
         [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=205)]
         >>> df.schema
         StructType(List(StructField(t,DoubleType,true),StructField(q0,IntegerType,true),StructField(q1,IntegerType,true)))
