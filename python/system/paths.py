@@ -27,15 +27,18 @@ def get_parent_folder_path():
     return os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 
 
-def count_files_in_folder(folderpath):
+def count_files_in_folder(folderpath, pattern="*"):
     """ Return the number of files in a folder.
     Args:
-        folderpath (str): folder path
+        folderpath (str): folder path.
+        pattern (str): Pattern to filter.
     Returns:
         number (int): number of files in a folder
     Examples:
         >>> count_files_in_folder("cpp")
         5
+        >>> count_files_in_folder("cpp", pattern="*.txt")
+        1
 
     """
     return len(glob.glob(os.path.join(folderpath, "*")))
