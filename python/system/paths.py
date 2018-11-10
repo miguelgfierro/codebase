@@ -41,7 +41,7 @@ def count_files_in_folder(folderpath, pattern="*"):
         1
 
     """
-    return len(glob.glob(os.path.join(folderpath, "*")))
+    return len(glob.glob(os.path.join(folderpath, pattern)))
 
 
 def count_files_in_folder_recursively(folderpath):
