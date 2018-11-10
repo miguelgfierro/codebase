@@ -72,7 +72,7 @@ def read_csv_file(spark, filename, **kwargs):
         >>> df.head(2)
         [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
         >>> df.schema
-        StructType(List(StructField(t,DoubleType,true),StructField(q0,LongType,true),StructField(q1,LongType,true)))
+        StructType(List(StructField(t,DoubleType,true),StructField(q0,IntegerType,true),StructField(q1,IntegerType,true)))
         >>> schema = sptypes.StructType([sptypes.StructField("t", sptypes.FloatType()), sptypes.StructField("q0", sptypes.IntegerType()), sptypes.StructField("q1", sptypes.StringType())])
         >>> df2 = read_csv_file(spark, filename, header=True, schema=schema)
         >>> df2.head(2)
@@ -95,7 +95,7 @@ def read_csv_folder(spark, folder, **kwargs):
         >>> path = os.path.join("share", "traj_spark")
         >>> df = read_csv_folder(spark, path, header=True, inferSchema=True)
         >>> df.head(2)
-        [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
+        [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=205)]
         >>> df.schema
         StructType(List(StructField(t,DoubleType,true),StructField(q0,IntegerType,true),StructField(q1,IntegerType,true)))
 
