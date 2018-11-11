@@ -77,7 +77,7 @@ def get_number_processors():
         int: Number of processors.
     Examples:
         >>> num = get_number_processors()
-        >>> num >= 4
+        >>> num >= 2
         True
 
     """
