@@ -4,11 +4,10 @@ language: python
 
 dist: trusty
 
+python:
+  - 3.5.6
+  - 3.6.7
 
-env:
-  matrix:
-  - PYTHON_VERSION=3.5.6
-  - PYTHON_VERSION=3.6.7
 
 install:
   # Install anaconda
@@ -21,10 +20,11 @@ install:
 #  - conda update -q conda # takes 12s
 
   # Create environment
-  - conda env create -q -n codebase python=$PYTHON_VERSION
+  - conda env create -q -n codebase python=$TRAVIS_PYTHON_VERSION
   - conda env update -q -n codebase -f python/conda.yaml
   - source activate codebase
   - pip list
+  - python --version
 
 script:
   - pytest python/test/pytest*
