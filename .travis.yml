@@ -39,7 +39,8 @@ install:
   - source activate codebase
   - pip list
   - python --version
-  - which python
+  - export PYSPARK_PYTHON=`which python`
+  - export PYSPARK_DRIVER_PYTHON=`which python`
 
 
 script:
