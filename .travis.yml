@@ -1,11 +1,18 @@
 sudo: false
 
 language: python
+
 python:
   - "3.5"
   - "3.6"
 
 dist: trusty
+
+
+env:
+  matrix:
+  - PYTHON_VERSION=3.5.6
+  - PYTHON_VERSION=3.6.7
 
 install:
   # Install anaconda
@@ -18,10 +25,10 @@ install:
 #  - conda update -q conda # takes 12s
 
   # Create environment
-  - conda env create -q -n codebase -f python/conda.yaml
+  - conda env create -q -n codebase python=$PYTHON_VERSION
+  - conda env update -q -n codebase -f python/conda.yaml
   - source activate codebase
   - pip list
-
 
 script:
   - pytest python/test/pytest*
