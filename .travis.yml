@@ -20,7 +20,7 @@ install:
 #  - conda update -q conda # takes 12s
 
   # Create environment
-  - conda env create -q -n codebase python=$TRAVIS_PYTHON_VERSION
+  - conda create -q -n codebase python=$TRAVIS_PYTHON_VERSION
   - conda env update -q -n codebase -f python/conda.yaml
   - source activate codebase
   - pip list
