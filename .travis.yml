@@ -10,6 +10,8 @@ python:
   - 3.7.1
 
 before_install:
+  - echo $JAVA_HOME
+  - java -version
   - curl -L -o spark.tgz https://www.apache.org/dist/spark/spark-2.3.2/spark-2.3.2-bin-hadoop2.7.tgz
   - export SPARK_HOME=./local/spark
   - mkdir -p "$SPARK_HOME"
@@ -37,6 +39,8 @@ install:
   - source activate codebase
   - pip list
   - python --version
+  - which python
+
 
 script:
   - pytest python/test/pytest*
