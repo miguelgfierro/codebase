@@ -14,7 +14,7 @@ def spark(app_name="Sample", url="local[*]", memory="10G", cores="16"):
         >>> spark is not None
         True
     """
-    return (
+    spark = (
         SparkSession.builder.appName(app_name)
         .master(url)
         .config("spark.driver.memory", memory)
@@ -28,3 +28,4 @@ def spark(app_name="Sample", url="local[*]", memory="10G", cores="16"):
         .config("spark.driver.maxResultSize", "50g")
         .getOrCreate()
     )
+    return spark
