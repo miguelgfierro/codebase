@@ -99,6 +99,23 @@ class Github:
         """
         return self.general_stats["created_at"]
 
+    @property
+    @lru_cache()
+    def languages(self):
+        """Get the languages in the repo and the lines of code of each.
+        Returns:
+            dict: Dictionary of languages and lines of code.
+        """
+        return requests.get(self.url + "/languages").json()
+
+    @property
+    def number_languages(self):
+        """Number of different languages
+        Returns:
+            int: Number
+        """
+        return len(self.languages)
+
 
 def clone_repo(url):
     """Clone a git repo.
