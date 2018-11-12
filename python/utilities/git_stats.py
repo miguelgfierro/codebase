@@ -75,15 +75,36 @@ class Github:
     @property
     @lru_cache()
     def branches(self):
+        """List of dictionaries with branch information, each dictionary contains
+        commit hash, url and name.
+        Returns:
+            list: List of dictionaries
+        """
         return requests.get(self.url + "/branches").json()
 
     @property
-    def branches(self):
+    def number_branches(self):
+        """Number of current branches.
+        Returns:
+            int: Number.
+        """
         return len(self.branches)
 
     @property
+    @lru_cache()
+    def tags(self):
+        """Tag information.
+        Returns:
+            list: List of dicts with tag information.
+        """
+        return requests.get(self.url + "/tags").json()
+
+    @property
     def number_tags(self):
-        pass
+        """Number of tags.
+        Returns:
+            int: Number.
+        return len(self.tags)
 
     @property
     def number_contributors(self):
