@@ -69,11 +69,17 @@ class Github:
 
     @property
     def commits(self):
+        # https://blog.notfoss.com/posts/get-total-number-of-commits-for-a-repository-using-the-github-api/
         pass
 
     @property
+    @lru_cache()
     def branches(self):
-        pass
+        return requests.get(self.url + "/branches").json()
+
+    @property
+    def branches(self):
+        return len(self.branches)
 
     @property
     def number_tags(self):
