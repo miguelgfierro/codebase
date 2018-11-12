@@ -52,8 +52,20 @@ class Github:
         return self.general_stats["subscribers_count"]
 
     @property
+    @lru_cache()
     def last_year_commit_frequency(self):
-        pass
+        """Get the commit frequency in every week of the last year.
+        Returns:
+            dict: Dictionary of 52 elements (1 per week) with the commits every day 
+                (starting on Sunday), total commit sum and first day of the week.
+        """
+        resp = requests.get(self.url + "/stats/commit_activity").json()
+        for id, item in enumerate(resp):
+            week_str = datetime.datetime.fromtimestamp(item["week"]).strftime(
+                "%Y-%m-%d"
+            )
+            resp[id]["week"] = week_str
+        return resp
 
     @property
     def commits(self):
@@ -81,40 +93,11 @@ class Github:
 
     @property
     def creation_date(self):
+        """Date of repository creation
+        Returns:
+            str: Date.
+        """
         return self.general_stats["created_at"]
-
-
-def get_current_watchers(git_url, base_url="https://github.com/"):
-    """Get current number of watchers.
-    Args:
-        git_url (str): Github repo url.
-        base_url (str): Base url of git repo.
-    Returns:
-        resp (int): Number of watchers.
-
-    """
-    url = END_POINT + git_url.split(base_url)[1]
-    resp = requests.get(url).json()
-    return resp["subscribers_count"]
-
-
-def last_year_commit_frequency(git_url, base_url="https://github.com/"):
-    """Get the commit frequency in every week of the last year.
-    Args:
-        git_url (str): Git repo url.
-        base_url (str): Base url of git repo.
-    Returns:
-        resp (dict): Dictionary of 52 elements (1 per week) with the commits
-                    every day (starting on Sunday), total commit sum and first
-                    day of the week.
-
-    """
-    url = END_POINT + git_url.split("https://github.com/")[1]
-    resp = requests.get(url + "/stats/commit_activity").json()
-    for id, item in enumerate(resp):
-        week_str = datetime.datetime.fromtimestamp(item["week"]).strftime("%Y-%m-%d")
-        resp[id]["week"] = week_str
-    return resp
 
 
 def clone_repo(url):
