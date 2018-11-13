@@ -13,11 +13,48 @@ BASE_URL = "https://github.com/"
 class Github:
     """Github stats class
     Examples:
-        >>> g = Github(os.environ["GITHUB_TOKEN"], "https://github.com/miguelgfierro/codebase/")
+        >>> g = Github(os.environ["GITHUB_TOKEN"], "https://github.com/miguelgfierro/codebase")
+        >>> print("os.environ["GITHUB_TOKEN"])
         >>> g.forks >= 3
         True
         >>> isinstance(g.open_issues, int)
         True
+        >>> g.stars >= 8
+        True
+        >>> g.watchers >= 2
+        True
+        >>> len(g.last_year_commit_frequency)
+        52
+        >>> g.top_ten_referrers is not None
+        True
+        >>> g.number_total_referrers >= 1
+        True
+        >>> g.number_unique_referrers >= 1
+        True
+        >>> g.top_ten_content is not None
+        True
+        >>> g.views is not None
+        True
+        >>> g.number_total_views >= 10
+        True
+        >>> g.number_unique_views >= 10
+        True
+        >>> g.clones is not None
+        True
+        >>> g.number_total_clones >= 1
+        True
+        >>> g.number_unique_clonse >= 1
+        True
+        >>> g.repo_size >= 2
+        True
+        >>> g.creation_date
+        2016-12-27T13:23:55Z
+        >>> list(g.languages.keys())
+        ['Dockerfile', 'JavaScript', 'SQL', 'HTML', 'CMake', 'Matlab', 'C++', 'Python', 'CSS', 'Jupyter Notebook']
+        >>> g.number_languages >= 10
+        True
+
+
 
     """
 
