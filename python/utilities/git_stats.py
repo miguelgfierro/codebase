@@ -11,7 +11,22 @@ BASE_URL = "https://github.com/"
 
 
 class Github:
+    """Github stats class
+    Examples:
+        >>> g = Github(os.environ["GITHUB_TOKEN"], "https://github.com/miguelgfierro/codebase/")
+        >>> g.forks >= 3
+        True
+        >>> isinstance(g.open_issues, int)
+        True
+
+    """
+
     def __init__(self, token, git_url):
+        """Initializer
+        Args:
+            token (str): Github token.
+            git_url (str): URL of github repository.
+        """
         self.token = token
         self.git_url = git_url
         self.api_url = END_POINT + self.git_url.split(BASE_URL)[1]
@@ -20,6 +35,10 @@ class Github:
     @property
     @lru_cache()
     def general_stats(self):
+        """General attributes and statistics of the repo
+        Returns:
+            json: JSON with general stats.
+        """
         r = requests.get(self.api_url, headers=self.headers)
         if r.ok:
             return r.json()
