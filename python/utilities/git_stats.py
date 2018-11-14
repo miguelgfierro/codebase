@@ -42,7 +42,7 @@ class Github:
         True
         >>> g.number_total_clones >= 1
         True
-        >>> g.number_unique_clonse >= 1
+        >>> g.number_unique_clones >= 1
         True
         >>> g.repo_size >= 2
         True
