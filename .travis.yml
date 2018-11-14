@@ -23,7 +23,6 @@ install:
   - pip list
 
 script:
-  - export GITHUB_TOKEN=$GITHUB_TOKEN
   - pytest python/test/pytest*
   - python python/test/unittest_fixtures.py
-  - pytest python --doctest-modules --continue-on-collection-errors -s
+  - pytest python/utilities/git_stats.py --doctest-modules --continue-on-collection-errors

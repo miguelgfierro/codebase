@@ -14,7 +14,6 @@ class Github:
     """Github stats class
     Examples:
         >>> g = Github(os.environ["GITHUB_TOKEN"], "https://github.com/miguelgfierro/codebase")
-        >>> print(os.environ["GITHUB_TOKEN"])
         >>> g.forks >= 3
         True
         >>> isinstance(g.open_issues, int)
