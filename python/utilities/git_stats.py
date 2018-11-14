@@ -48,8 +48,8 @@ class Github:
         True
         >>> g.creation_date
         '2016-12-27T13:23:55Z'
-        >>> list(g.languages.keys())
-        ['Dockerfile', 'JavaScript', 'SQL', 'HTML', 'CMake', 'Matlab', 'C++', 'Python', 'CSS', 'Jupyter Notebook']
+        >>> sorted(g.languages.keys())
+        ['C++', 'CMake', 'CSS', 'Dockerfile', 'HTML', 'JavaScript', 'Jupyter Notebook', 'Matlab', 'Python', 'SQL']
         >>> g.number_languages >= 10
         True
 
