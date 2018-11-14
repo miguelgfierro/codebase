@@ -25,4 +25,4 @@ install:
 script:
   - pytest python/test/pytest*
   - python python/test/unittest_fixtures.py
-  - pytest python/utilities/git_stats.py --doctest-modules --continue-on-collection-errors
+  - pytest python --doctest-modules --continue-on-collection-errors
