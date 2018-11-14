@@ -22,7 +22,6 @@ install:
   - source activate codebase
   - pip list
 
-
 script:
   - pytest python/test/pytest*
   - python python/test/unittest_fixtures.py
