@@ -29,8 +29,8 @@ def complex_structures():
 
 
 @pytest.fixture()
-def numeric_libs():
-    l, d = complex_structures()
+def numeric_libs(complex_structures):
+    l, d = complex_structures
     np_array = np.array(l)
     df = pd.DataFrame(d, index=[0])
     series = pd.Series(l)
