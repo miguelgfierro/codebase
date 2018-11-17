@@ -1,0 +1,5 @@
+# Tools for pip packages
+
+# List all installed packages ordered by size
+# Source: https://stackoverflow.com/a/51571259/5620182
+pip list --format freeze|awk -F = {'print $1'}| xargs pip show | grep -E 'Location:|Name:' | cut -d ' ' -f 2 | paste -d ' ' - - | awk '{print $2 "/" tolower($1)}' | xargs du -sh 2> /dev/null|sort -h
