@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #list processes
 $ ps -ef | grep 'python myscript.py'
 hoaphum+  62074  1  0 11:37 pts/0    00:00:00 grep python myscript.py

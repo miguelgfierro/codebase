@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #7z create an archive
 7z a folder.7z folder
 

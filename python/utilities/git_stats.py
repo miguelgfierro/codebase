@@ -23,7 +23,7 @@ class Github:
         True
         >>> g.watchers >= 2
         True
-        >>> len(g.last_year_commit_frequency)
+        >>> len(g.last_year_commit_frequency) # doctest: +SKIP
         52
         >>> g.top_ten_referrers is not None
         True
