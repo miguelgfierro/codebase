@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Check if a conda environment exists
 TARGET_ENV="py36"
 ENVS=$(conda env list | awk '{print $1}' )

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Find a text inside files in a directory.
 #-r or -R is recursive,
 #-n is line number, and

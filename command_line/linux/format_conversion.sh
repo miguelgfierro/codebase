@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Convert from SVG to PDF
 inkscape --without-gui --file=foo.svg --export-pdf=foo.pdf
 

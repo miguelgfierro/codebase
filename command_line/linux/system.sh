@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # System release (LSB=Linux Standard Base)
 lsb_release -a
 
