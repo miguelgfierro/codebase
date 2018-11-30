@@ -1,1 +1,24 @@
-<h1>Hakuna Matata!</h1>
+<!-- Source: https://www.quora.com/Is-there-any-way-to-include-an-HTML-page-in-an-HTML-page -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+        $(function () {
+            $("#includedContent").load("html_base.html");
+        });
+    </script>
+    <meta charset="utf-8">
+    <title>HTML code</title>
+    <meta name="description" content="Exmaple html">
+    <meta name="author" content="Miguel González-Fierro">
+    <link rel="canonical" href="https://miguelgfierro.com">
+
+</head>
+
+<body>
+    <div id="includedContent"></div>
+</body>
+
+</html>
