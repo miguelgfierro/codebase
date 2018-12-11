@@ -1,4 +1,9 @@
 <?php
+/*
+Basic website form using only HTML (for the form) and PHP for the form processing
+
+source: https://www.freecontactform.com/email_form.php
+*/
 if(isset($_POST['email'])) {
  
     // EDIT THE 2 LINES BELOW AS REQUIRED
