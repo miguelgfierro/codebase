@@ -50,7 +50,7 @@ class Github:
         >>> g.creation_date
         '2016-12-27T13:23:55Z'
         >>> sorted(g.languages.keys())
-        ['C++', 'CMake', 'CSS', 'Dockerfile', 'HTML', 'JavaScript', 'Jupyter Notebook', 'Matlab', 'PLpgSQL', 'Python', 'SQL', 'Shell']
+        ['C++', 'CMake', 'CSS', 'Dockerfile', 'HTML', 'JavaScript', 'Jupyter Notebook', 'Matlab', 'PHP', 'PLpgSQL', 'Python', 'SQL', 'Shell']
         >>> g.number_languages >= 12
         True
         >>> g.number_commits > 600
