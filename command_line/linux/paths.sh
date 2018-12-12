@@ -19,6 +19,10 @@ find DIR_NAME -type f | wc -l
 ls -1tr | head -n -100 | xargs -d '\n' rm -f --
 
 
+#Remove recursively all files with a name
+find . -type f -name '.DS_Store' -delete
+
+
 #Remove recursively all files with a pattern
 find . -type f -name '*.db' -delete
 
