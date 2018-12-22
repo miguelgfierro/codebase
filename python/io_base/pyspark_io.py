@@ -52,13 +52,12 @@ def save_csv_file(dataframe, filename, **kwargs):
         >>> columns = ['id', 'dogs', 'cats']
         >>> vals = [(1, 2, 0), (2, 0, 1)]
         >>> df = spark.createDataFrame(vals, columns)
-        >>> save_csv_file(df, "df_spark.csv", header=True, index=False)
+        >>> save_csv_file(df, "df_spark.csv", header=True, index=False) # doctest: +SKIP
         >>> os.path.isfile("df_spark.csv")
         True
 
     """
-    df = dataframe.toPandas()
-    df.to_csv(filename, **kwargs)
+    dataframe.toPandas().to_csv(filename, **kwargs)
 
 
 def read_csv_file(spark, filename, **kwargs):
