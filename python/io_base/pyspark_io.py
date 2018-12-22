@@ -57,7 +57,8 @@ def save_csv_file(dataframe, filename, **kwargs):
         True
 
     """
-    dataframe.toPandas().to_csv(filename, **kwargs)
+    df = dataframe.toPandas()
+    df.to_csv(filename, **kwargs)
 
 
 def read_csv_file(spark, filename, **kwargs):
