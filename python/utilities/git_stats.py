@@ -1,203 +1,448 @@
-from git import Repo
+import git
 import os
 import requests
 import datetime
+from functools import lru_cache
+import shutil
 
 
-END_POINT = 'https://api.github.com/repos/'
+END_POINT = "https://api.github.com/repos/"
+BASE_URL = "https://github.com/"
 
 
-def get_current_forks(git_url, base_url='https://github.com/'):
-    """Get current number of forks
-    Args:
-        git_url (str): Github repo url.
-        base_url (str): Base url of git repo.
-    Returns:
-        resp (int): Number of forks.
-
-    """
-    url = END_POINT + git_url.split(base_url)[1]
-    resp = requests.get(url).json()
-    return resp['forks_count']
-
-
-def get_open_issues(git_url, base_url='https://github.com/'):
-    """Get current number of open issues
-    Args:
-        git_url (str): Github repo url.
-        base_url (str): Base url of git repo.
-    Returns:
-        resp (int): Number of issues.
-
-    """
-    url = END_POINT + git_url.split(base_url)[1]
-    resp = requests.get(url).json()
-    return resp['open_issues']
-
-
-def get_current_stars(git_url, base_url='https://github.com/'):
-    """Get current number of stars.
-    Args:
-        git_url (str): Github repo url.
-        base_url (str): Base url of git repo.
-    Returns:
-        resp (int): Number of stars.
-
-    """
-    url = END_POINT + git_url.split(base_url)[1]
-    resp = requests.get(url).json()
-    return resp['stargazers_count']
-
-
-def get_current_watchers(git_url, base_url='https://github.com/'):
-    """Get current number of watchers.
-    Args:
-        git_url (str): Github repo url.
-        base_url (str): Base url of git repo.
-    Returns:
-        resp (int): Number of watchers.
-
-    """
-    url = END_POINT + git_url.split(base_url)[1]
-    resp = requests.get(url).json()
-    return resp['subscribers_count']
-
-
-def last_year_commit_frequency(git_url, base_url='https://github.com/'):
-    """Get the commit frequency in every week of the last year.
-    Args:
-        git_url (str): Git repo url.
-        base_url (str): Base url of git repo.
-    Returns:
-        resp (dict): Dictionary of 52 elements (1 per week) with the commits
-                    every day (starting on Sunday), total commit sum and first
-                    day of the week.
+class Github:
+    """Github stats class
+    Examples:
+        >>> g = Github(os.environ["GITHUB_TOKEN"], "https://github.com/miguelgfierro/codebase")
+        >>> g.clean()
+        >>> g.forks >= 3
+        True
+        >>> isinstance(g.open_issues, int)
+        True
+        >>> g.stars >= 8
+        True
+        >>> g.watchers >= 2
+        True
+        >>> len(g.last_year_commit_frequency) # doctest: +SKIP
+        52
+        >>> g.top_ten_referrers is not None
+        True
+        >>> g.number_total_referrers >= 1
+        True
+        >>> g.number_unique_referrers >= 1
+        True
+        >>> g.top_ten_content is not None
+        True
+        >>> g.views is not None
+        True
+        >>> g.number_total_views >= 10
+        True
+        >>> g.number_unique_views >= 10
+        True
+        >>> g.clones is not None
+        True
+        >>> g.number_total_clones >= 1
+        True
+        >>> g.number_unique_clones >= 1
+        True
+        >>> g.repo_size >= 2
+        True
+        >>> g.creation_date
+        '2016-12-27T13:23:55Z'
+        >>> sorted(g.languages.keys())
+        ['C++', 'CMake', 'CSS', 'Dockerfile', 'HTML', 'JavaScript', 'Jupyter Notebook', 'MATLAB', 'PHP', 'PLpgSQL', 'Python', 'SQL', 'Shell']
+        >>> g.number_languages >= 12
+        True
+        >>> g.number_commits > 600
+        True
+        >>> g.number_contributors >= 1
+        True
+        >>> g.number_branches >=1
+        True
+        >>> g.number_tags >= 0
+        True
+        >>> g.number_total_lines > 300000
+        True
+        >>> g.number_added_lines > 15000
+        True
+        >>> g.number_deleted_lines > 3000
+        True
 
     """
-    url = END_POINT + git_url.split('https://github.com/')[1]
-    resp = requests.get(url + '/stats/commit_activity').json()
-    for id, item in enumerate(resp):
-        week_str = datetime.datetime.fromtimestamp(item['week']).strftime('%Y-%m-%d')
-        resp[id]['week'] = week_str
-    return resp
 
+    def __init__(self, token, git_url):
+        """Initializer
+        Args:
+            token (str): Github token.
+            git_url (str): URL of github repository.
+        """
+        self.token = token
+        self.git_url = git_url
+        self.api_url = END_POINT + self.git_url.split(BASE_URL)[1]
+        self.headers = {"Authorization": "token " + self.token}
 
-def clone_repo(url):
-    """Clone a git repo.
-    Args:
-        url (str): Git repo url.
-    Returns:
-        repo_dir (str): Name of the folder name of the repo.
+    @property
+    @lru_cache()
+    def general_stats(self):
+        """General attributes and statistics of the repo
+        Returns:
+            json: JSON with general stats.
+        """
+        r = requests.get(self.api_url, headers=self.headers)
+        if r.ok:
+            return r.json()
+        else:
+            return None
 
-    """
-    repo_dir = url.split('/')[-1]
-    if os.path.isdir(repo_dir):
-        print('Repo {} already downloaded'.format(repo_dir))
-        return repo_dir
-    Repo.clone_from(url, repo_dir)
-    if os.path.isdir(repo_dir):
-        return repo_dir
-    else:
-        raise Exception('Repo not downloaded correctly')
+    @property
+    def forks(self):
+        """Get current number of forks
+        Returns:
+            int: Number of forks.
+        """
+        return (
+            self.general_stats["forks_count"]
+            if self.general_stats is not None
+            else None
+        )
 
+    @property
+    def open_issues(self):
+        """Get current number of open issues
+        Returns:
+            int: Number of issues.
+        """
+        return (
+            self.general_stats["open_issues_count"]
+            if self.general_stats is not None
+            else None
+        )
 
-def get_number_commits(repo_dir):
-    """Get total number of commits.
-    Args:
-        repo_dir (str): Repo directory.
-    Returns:
-        resp (int): Number of commits.
+    @property
+    def stars(self):
+        """Get current number of stars.
+        Returns:
+            int: Number of stars.
+        """
+        return (
+            self.general_stats["stargazers_count"]
+            if self.general_stats is not None
+            else None
+        )
 
-    """
-    os.chdir(repo_dir)
-    resp = os.popen('git rev-list HEAD --count').read()
-    resp = int(resp.split('\n')[0])
-    os.chdir('..')
-    return resp
+    @property
+    def watchers(self):
+        """Get current number of watchers.
+        Returns:
+            int: Number of watchers.
+        """
+        return (
+            self.general_stats["stargazers_count"]
+            if self.general_stats is not None
+            else None
+        )
 
+    @property
+    @lru_cache()
+    def last_year_commit_frequency(self):
+        """Get the commit frequency in every week of the last year.
+        Returns:
+            dict: Dictionary of 52 elements (1 per week) with the commits every day 
+                (starting on Sunday), total commit sum and first day of the week.
+        """
+        r = requests.get(self.api_url + "/stats/commit_activity", headers=self.headers)
+        if r.ok:
+            resp = r.json()
+        else:
+            return None
+        for id, item in enumerate(resp):
+            week_str = datetime.datetime.fromtimestamp(item["week"]).strftime(
+                "%Y-%m-%d"
+            )
+            resp[id]["week"] = week_str
+        return resp
 
-def get_number_branches(repo_dir):
-    """Get total number of branches.
-    Args:
-        repo_dir (str): Repo directory.
-    Returns:
-        resp (int): Number of branches.
+    @property
+    @lru_cache()
+    def top_ten_referrers(self):
+        """Get the top 10 referrers over the last 14 days.
+        Source: https://developer.github.com/v3/repos/traffic/#list-referrers
+        Returns:
+            json: JSON with referrer name, total number of references
+                and unique number of references.
+        """
+        r = requests.get(
+            self.api_url + "/traffic/popular/referrers", headers=self.headers
+        )
+        if r.ok:
+            return r.json()
+        else:
+            return None
 
-    """
-    os.chdir(repo_dir)
-    resp = os.popen('git branch -a | wc -l').read()
-    os.chdir('..')
-    resp = int(resp.split('\n')[0])
-    resp = resp - 1 #there is always one repeated origin/HEAD
-    return resp
+    @property
+    def number_total_referrers(self):
+        """Count the total number of references to the repo.
+        Returns:
+            int: Number.
+        """
+        return (
+            sum(item["count"] for item in self.top_ten_referrers)
+            if self.top_ten_referrers is not None
+            else None
+        )
 
+    @property
+    def number_unique_referrers(self):
+        """Count the unique number of references to the repo.
+        Returns:
+            int: Number.
+        """
+        return (
+            sum(item["uniques"] for item in self.top_ten_referrers)
+            if self.top_ten_referrers is not None
+            else None
+        )
 
-def get_number_tags(repo_dir):
-    """Get total number of tags.
-    Args:
-        repo_dir (str): Repo directory.
-    Returns:
-        resp (int): Number of tags.
+    @property
+    @lru_cache()
+    def top_ten_content(self):
+        """Get the top 10 popular contents within the repo over the last 14 days.
+        Source: https://developer.github.com/v3/repos/traffic/#list-paths
+        Returns:
+            json: JSON with the content link, total and unique views.
+        """
+        r = requests.get(self.api_url + "/traffic/popular/paths", headers=self.headers)
+        if r.ok:
+            return r.json()
+        else:
+            return None
 
-    """
-    os.chdir(repo_dir)
-    resp = os.popen('git tag | wc -l').read()
-    resp = int(resp.split('\n')[0])
-    return resp
+    @property
+    @lru_cache()
+    def views(self):
+        """Get the total number of views and breakdown per day or week for the 
+        last 14 days. Timestamps are aligned to UTC midnight of the beginning of 
+        the day or week. Week begins on Monday.
+        Source: https://developer.github.com/v3/repos/traffic/#views
+        Returns:
+            json: JSON with daily views.
+        """
+        r = requests.get(self.api_url + "/traffic/views", headers=self.headers)
+        if r.ok:
+            return r.json()
+        else:
+            return None
 
+    @property
+    def number_total_views(self):
+        """Total number of views over the last 14 days
+        Returns:
+            int: Views.
+        """
+        return self.views["count"] if self.views is not None else None
 
-def get_number_contributors(repo_dir):
-    """Get total number of contributors.
-    Args:
-        repo_dir (str): Repo directory.
-    Returns:
-        resp (int): Number of contributors.
+    @property
+    def number_unique_views(self):
+        """Unique number of views over the last 14 days
+        Returns:
+            int: Views.
+        """
+        return self.views["uniques"] if self.views is not None else None
 
-    """
-    os.chdir(repo_dir)
-    resp = os.popen('git log --format="%aN" | sort -u | wc -l').read()
-    resp = int(resp.split('\n')[0])
-    return resp
+    @property
+    @lru_cache()
+    def clones(self):
+        """Get the total number of clones and breakdown per day or week for the last
+        14 days. Timestamps are aligned to UTC midnight of the beginning of the day 
+        or week. Week begins on Monday.
+        Source: https://developer.github.com/v3/repos/traffic/#clones
+        Returns:
+            json: JSON with daily clones. 
+        """
+        r = requests.get(self.api_url + "/traffic/clones", headers=self.headers)
+        if r.ok:
+            return r.json()
+        else:
+            return None
 
+    @property
+    def number_total_clones(self):
+        """Total number of clones over the last 14 days
+        Returns:
+            int: Clones.
+        """
+        return self.clones["count"] if self.clones is not None else None
 
-def count_total_lines(repo_dir):
-    """Get total number of lines.
-    Args:
-        repo_dir (str): Repo directory.
-    Returns:
-        resp (int): Number of lines.
+    @property
+    def number_unique_clones(self):
+        """Unique number of clones over the last 14 days
+        Returns:
+            int: Clones.
+        """
+        return self.clones["uniques"] if self.clones is not None else None
 
-    """
-    os.chdir(repo_dir)
-    resp = os.popen('git ls-files | xargs wc -l | grep total').read()
-    resp = int(resp.split(' total')[0])
-    return resp
+    @property
+    def repo_size(self):
+        """Repo size in Mb
+        Returns:
+            int: Size.
+        """
+        return self.general_stats["size"] if self.general_stats is not None else None
 
+    @property
+    def creation_date(self):
+        """Date of repository creation
+        Returns:
+            str: Date.
+        """
+        return (
+            self.general_stats["created_at"] if self.general_stats is not None else None
+        )
 
-def count_added_lines(repo_dir):
-    """Get the number of added lines.
-    Args:
-        repo_dir (str): Repo directory.
-    Returns:
-        resp (int): Number of added lines.
+    @property
+    @lru_cache()
+    def languages(self):
+        """Get the languages in the repo and the lines of code of each.
+        Source: https://developer.github.com/v3/repos/#list-languages
+        Returns:
+            dict: Dictionary of languages and lines of code.
+        """
+        r = requests.get(self.api_url + "/languages", headers=self.headers)
+        if r.ok:
+            return r.json()
+        else:
+            return None
 
-    """
-    os.chdir(repo_dir)
-    resp = os.popen('git log  --pretty=tformat: --numstat | awk \'{ add += $1 } END { printf "%s",add }\'').read()
-    resp = int(resp)
-    return resp
+    @property
+    def number_languages(self):
+        """Number of different languages
+        Returns:
+            int: Number
+        """
+        return len(self.languages) if self.languages is not None else None
 
+    @property
+    def number_commits(self):
+        """Get total number of commits.
+        NOTE: There is no straightforward way of getting the commits with GitHub API
+        https://blog.notfoss.com/posts/get-total-number-of-commits-for-a-repository-using-the-github-api/
+        Returns:
+            int: Number of commits.
+        """
+        if self._cloned_repo_dir() is None:
+            return None
+        os.chdir(self._cloned_repo_dir())
+        resp = os.popen("git rev-list HEAD --count").read()
+        resp = int(resp.split("\n")[0])
+        os.chdir("..")
+        return resp
 
-def count_deleted_lines(repo_dir):
-    """Get the number of deleted lines.
-    Args:
-        repo_dir (str): Repo directory.
-    Returns:
-        resp (int): Number of deleted lines.
+    @property
+    def number_contributors(self):
+        """Count the total number of contributors, based on unique email addresses.
+        Returns:
+            int: Number of contributors.
+        """
+        if self._cloned_repo_dir() is None:
+            return None
+        os.chdir(self._cloned_repo_dir())
+        resp = os.popen('git log --format="%aN" | sort -u | wc -l').read()
+        os.chdir("..")
+        resp = int(resp.split("\n")[0])
+        return resp
 
-    """
-    os.chdir(repo_dir)
-    resp = os.popen('git log  --pretty=tformat: --numstat | awk \'{ add += $1 ; subs += $2 } END { printf "%s",subs }\'').read()
-    resp = int(resp)
-    return resp
+    @property
+    def number_branches(self):
+        """Number of current remote branches.
+        Returns:
+            int: Number.
+        """
+        if self._cloned_repo_dir() is None:
+            return None
+        os.chdir(self._cloned_repo_dir())
+        resp = os.popen("git ls-remote --heads origin | wc -l").read()
+        os.chdir("..")
+        resp = int(resp.split("\n")[0])
+        return resp
 
+    @property
+    def number_tags(self):
+        """Number of tags.
+        Returns:
+            int: Number.
+        """
+        if self._cloned_repo_dir() is None:
+            return None
+        os.chdir(self._cloned_repo_dir())
+        resp = os.popen("git tag | wc -l").read()
+        os.chdir("..")
+        resp = int(resp.split("\n")[0])
+        return resp
+
+    @property
+    def number_total_lines(self):
+        """Count total number of lines.
+        Returns:
+            int: Number of lines.
+        """
+        return sum(self.languages.values()) if self.languages is not None else None
+
+    @property
+    def number_added_lines(self):
+        """Count the number of added lines.
+        Returns:
+            int: Number of added lines.
+        """
+        if self._cloned_repo_dir() is None:
+            return None
+        os.chdir(self._cloned_repo_dir())
+        resp = os.popen(
+            "git log  --pretty=tformat: --numstat | awk '{ add += $1 } END { printf \"%s\",add }'"
+        ).read()
+        os.chdir("..")
+        resp = int(resp)
+        return resp
+
+    @property
+    def number_deleted_lines(self):
+        """Get the number of deleted lines.
+        Returns:
+            int: Number of deleted lines.
+        """
+        if self._cloned_repo_dir() is None:
+            return None
+        os.chdir(self._cloned_repo_dir())
+        resp = os.popen(
+            "git log  --pretty=tformat: --numstat | awk '{ add += $1 ; subs += $2 } END { printf \"%s\",subs }'"
+        ).read()
+        os.chdir("..")
+        resp = int(resp)
+        return resp
+
+    def clean(self):
+        if self._cloned_repo_dir() is not None:
+            shutil.rmtree(self._cloned_repo_dir(), ignore_errors=True)
+
+    def _cloned_repo_dir(self):
+        """Clone a git repo and returns the location.
+        Returns:
+            str: Name of the folder name of the repo.
+        """
+        repo_dir = self.git_url.split("/")[-1]
+        if os.path.isdir(repo_dir):
+            return repo_dir
+        try:
+            git.Repo.clone_from(self.git_url, repo_dir)
+        except git.GitCommandError:
+            # try with token in case it is a private repo
+            private_url = (
+                "https://"
+                + self.token
+                + ":x-oauth-basic@github.com/"
+                + self.git_url.split(BASE_URL)[1]
+            )
+            git.Repo.clone_from(private_url, repo_dir)
+        if os.path.isdir(repo_dir):
+            return repo_dir
+        else:
+            return None

@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 
 language: python
 
@@ -41,7 +41,6 @@ install:
   - python --version
   - export PYSPARK_PYTHON=`which python`
   - export PYSPARK_DRIVER_PYTHON=`which python`
-
 
 script:
   - pytest python/test/pytest*

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Find a text inside files in a directory.
 #-r or -R is recursive,
 #-n is line number, and
@@ -15,6 +17,10 @@ find DIR_NAME -type f | wc -l
 
 #Remove files from a directory leaving a certain number, ex:100
 ls -1tr | head -n -100 | xargs -d '\n' rm -f --
+
+
+#Remove recursively all files with a name
+find . -type f -name '.DS_Store' -delete
 
 
 #Remove recursively all files with a pattern

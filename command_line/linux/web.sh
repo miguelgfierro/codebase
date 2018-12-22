@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Find DNS of a web
 dig NS +short miguelgfierro.com
 
