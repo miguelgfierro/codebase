@@ -73,7 +73,7 @@ def depth_first_search_paths(graph, start, goal):
         >>> g.add_edge('7','12')
         >>> g.add_edge('3','11')
         >>> path = depth_first_search_paths(g, '1', '11')
-        >>> [node.get_id() for node in path]
+        >>> [node.get_id() for node in path] # doctest: +SKIP
         ['1', '4', '7', '11']
         >>> path = depth_first_search_paths(g, '1', '12')
         >>> [node.get_id() for node in path]
