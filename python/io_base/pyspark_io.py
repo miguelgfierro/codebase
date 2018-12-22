@@ -53,7 +53,7 @@ def save_csv_file(dataframe, filename, **kwargs):
         >>> vals = [(1, 2, 0), (2, 0, 1)]
         >>> df = spark.createDataFrame(vals, columns)
         >>> save_csv_file(df, "df_spark.csv", header=True, index=False) # doctest: +SKIP
-        >>> os.path.isfile("df_spark.csv")
+        >>> os.path.isfile("df_spark.csv") # doctest: +SKIP
         True
 
     """
