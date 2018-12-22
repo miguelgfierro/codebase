@@ -1,8 +1,7 @@
 import os
 import pandas as pd
 from io import StringIO
-import pyspark
-from pyspark import SparkConf
+from pyspark.sql import SparkSession
 from azure.storage.blob import BlockBlobService
 
 
@@ -170,9 +169,11 @@ class BlobIO(object):
 
     def _manage_spark_blob_config(self, spark):
         if spark is None:
-            spark = pyspark.sql.SparkSession.builder.config(
-                conf=SparkConf()
-            ).getOrCreate()
+            spark = (
+                SparkSession.builder.appName("Blob")
+                .config("spark.driver.memory", "4g")
+                .getOrCreate()
+            )
         sc = spark.sparkContext
         spark_config_template = (
             "fs.azure.account.key.{store_name}.blob.core.windows.net"

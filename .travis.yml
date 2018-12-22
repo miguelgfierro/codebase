@@ -1,11 +1,27 @@
 sudo: required
 
 language: python
-python:
-  - "3.5"
-  - "3.6"
 
-dist: trusty
+dist: xenial
+
+python:
+  - 3.5.6
+  - 3.6.7
+  - 3.7.1
+
+before_install:
+  - echo $JAVA_HOME
+  - java -version
+  - curl -L -o spark.tgz https://www.apache.org/dist/spark/spark-2.3.1/spark-2.3.1-bin-hadoop2.7.tgz
+  - export SPARK_HOME=./local/spark
+  - mkdir -p "$SPARK_HOME"
+  - tar -xf spark.tgz -C "$SPARK_HOME" --strip-components=1
+  - export PATH="$SPARK_HOME/bin:$PATH"
+  - export SPARK_LOCAL_IP="127.0.0.1"
+  # These lines here just suppress a lot of noisy log messages from Spark.
+  - echo "log4j.logger.org.apache.spark=WARN" > "$SPARK_HOME"/conf/log4j.properties
+  - echo "log4j.logger.org.apache.hadoop.util.NativeCodeLoader=ERROR" >> "$SPARK_HOME"/conf/log4j.properties
+  - echo "log4j.logger.org.apache.parquet=ERROR" >> "$SPARK_HOME"/conf/log4j.properties
 
 install:
   # Install anaconda
@@ -18,9 +34,13 @@ install:
 #  - conda update -q conda # takes 12s
 
   # Create environment
-  - conda env create -q -n codebase -f python/conda.yaml
+  - conda create -q -n codebase python=$TRAVIS_PYTHON_VERSION
+  - conda env update -q -n codebase -f python/conda.yaml
   - source activate codebase
   - pip list
+  - python --version
+  - export PYSPARK_PYTHON=`which python`
+  - export PYSPARK_DRIVER_PYTHON=`which python`
 
 script:
   - pytest python/test/pytest*
