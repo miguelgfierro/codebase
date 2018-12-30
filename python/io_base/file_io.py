@@ -26,8 +26,28 @@ def read_line(filename):
 
 
 def save_list(alist, filename):
-    pass
+    """Save a list to file.
+    Args:
+        alist (list): Data.
+        filename (str): Name of the file.
+    Examples:
+        >>> save_list(["a","b","bazinga"], "file.txt")
+    """
+    with open(filename, "w") as f:
+        f.write("\n".join(alist))
 
 
-def load_list(filename):
-    pass
+def read_list(filename):
+    """Read a file and returns a list where each element corresponds to a line
+    in the file.
+    Args:
+        filename (str): Name of the file.
+    Returns:
+        list: A list of elements.
+    Examples:
+        >>> read_list("share/data.txt")
+        ['I like to move it, move it', 'I like to move it, move it', 'I like to move it, move it', 'Ya like to move it']
+    """
+    with open(filename, "r") as f:
+        lines = [line.strip() for line in f]
+    return lines
