@@ -7,10 +7,12 @@ def save_file(data, filename):
         data (list of lists): Data to save.
         filename (str): Name of the file.
     Examples:
-        >>> data = np.ones(5)
+        >>> data = [['0.0416667', '443', '205'], ['0.0833333', '444', '206']]
         >>> save_file(data, 'file.csv')
     """
-    pass
+    with open(filename, "w") as f:
+        writer = csv.writer(f)
+        writer.writerows(data)
 
 
 def read_file(filename):
