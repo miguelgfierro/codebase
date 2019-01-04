@@ -1,4 +1,5 @@
 import argparse
+from datetime import datetime
 
 
 def parse_args(arguments=[]):
@@ -10,12 +11,13 @@ def parse_args(arguments=[]):
                           we don't need this variable.
     Examples:
         >>> cmd = 'AAA -ms BBB -si -l 1 2 3'
-        >>> args = parse_args(['AAA', '-ms', 'BBB', '-si', '-l', '1', '2', '3'])
+        >>> args = parse_args(['AAA', '-ms', 'BBB', '-si', '-l', '1', '2', '3', '-d', '2020-01-06'])
         Mandatory string: AAA
         Mandatory string -ms: BBB
         Store true -si: True
         Input list ['1', '2', '3'], type: <class 'list'>
         Default list [7, 77, 777], type: <class 'list'>
+        Date: 06/01/2020, 00:00:00
 
     """
     parser = argparse.ArgumentParser(
@@ -51,6 +53,13 @@ def parse_args(arguments=[]):
         nargs="+",
         help="List of arguments, ex: python argument_io.py -l 1 2 3",
     )
+    parser.add_argument(
+        "-d",
+        "--date",
+        type=_valid_date,
+        default="now",
+        help="Help date (format: YYYY-MM-DD or now)",
+    )
     parser.set_defaults(my_list=[7, 77, 777], my_string="bazinga")
     if arguments:  # when calling from notebook
         args = parser.parse_args(arguments)
@@ -61,7 +70,20 @@ def parse_args(arguments=[]):
     print("Store true -si:", args.me_gusta)
     print("Input list {}, type: {}".format(args.list, type(args.list)))
     print("Default list {}, type: {}".format(args.my_list, type(args.my_list)))
+    print("Date: {}".format(args.date.strftime("%d/%m/%Y, %H:%M:%S")))
     return args
+
+
+def _valid_date(s):
+    """ Source: https://stackoverflow.com/a/25470943/5620182 """
+    try:
+        if s == "now":
+            return datetime.now()
+        else:
+            return datetime.strptime(s, "%Y-%m-%d")
+    except ValueError:
+        msg = "Not a valid date: {}".format(s)
+        raise argparse.ArgumentTypeError(msg)
 
 
 if __name__ == "__main__":
