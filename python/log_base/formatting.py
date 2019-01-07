@@ -31,13 +31,16 @@ def format_float_as_string():
 
 
 def format_date():
-    """Example of formatting a datetime
+    """Example of formatting a datetime.
+    More info: https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior
     Examples:
         >>> format_date()
         2002-12-04
         2002-12-04T00:00:00
-        4/12/2002 00:00:00
+        Dec 04 2002 00:00:00
+        04/12/02
     """
     print(date(2002, 12, 4).isoformat())
     print(datetime(2002, 12, 4).isoformat())
-    print(datetime(2002, 12, 4).strftime("%b/%d/%Y %H:%M:%S"))
+    print(datetime(2002, 12, 4).strftime("%b %d %Y %H:%M:%S"))
+    print(datetime(2002, 12, 4).strftime("%d/%m/%y"))
