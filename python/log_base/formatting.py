@@ -36,6 +36,8 @@ def format_date():
         >>> format_date()
         2002-12-04
         2002-12-04T00:00:00
+        4/12/2002 00:00:00
     """
     print(date(2002, 12, 4).isoformat())
     print(datetime(2002, 12, 4).isoformat())
+    print(datetime(2002, 12, 4).strftime("%b/%d/%Y %H:%M:%S"))
