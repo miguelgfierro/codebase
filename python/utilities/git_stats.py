@@ -110,7 +110,7 @@ class Github:
             else None
         )
 
-@property
+    @property
     @lru_cache()
     def open_issues(self):
         """Get current number of open issues.
