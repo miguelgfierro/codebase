@@ -1,5 +1,6 @@
 import argparse
 from datetime import datetime
+from dateutil.parser import isoparse
 
 
 def parse_args(arguments=[]):
@@ -56,9 +57,9 @@ def parse_args(arguments=[]):
     parser.add_argument(
         "-d",
         "--date",
-        type=_valid_date,
-        default="now",
-        help="Help date (format: YYYY-MM-DD or now)",
+        default=datetime.now().isoformat(),
+        type=isoparse,
+        help="Date for an event (format: YYYY-MM-DD)",
     )
     parser.set_defaults(my_list=[7, 77, 777], my_string="bazinga")
     if arguments:  # when calling from notebook
@@ -72,18 +73,6 @@ def parse_args(arguments=[]):
     print("Default list {}, type: {}".format(args.my_list, type(args.my_list)))
     print("Date: {}".format(args.date.strftime("%d/%m/%Y, %H:%M:%S")))
     return args
-
-
-def _valid_date(s):
-    """ Source: https://stackoverflow.com/a/25470943/5620182 """
-    try:
-        if s == "now":
-            return datetime.now()
-        else:
-            return datetime.strptime(s, "%Y-%m-%d")
-    except ValueError:
-        msg = "Not a valid date: {}".format(s)
-        raise argparse.ArgumentTypeError(msg)
 
 
 if __name__ == "__main__":

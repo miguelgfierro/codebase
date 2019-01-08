@@ -51,6 +51,7 @@ dependencies:
   - wget>=3.2
   - h5py>=2.8.0
   - numexpr>=2.6.8
+  - python-dateutil>=2.7.5
 
 
 
