@@ -213,7 +213,7 @@ def benchmark_sin():
     S2 = 100000
     r = a * np.sin(b)  # 1min 47s ± 230 ms per loop (1 loop each)
     r = ne.evaluate("a*sin(b)") # 4.34 s ± 21.2 ms per loop (1 loop each)
-    r = sincpu(a, b)  # 
-    r = sincuda(a, b)  #
+    r = sincpu(a, b)  # 1min 47s ± 239 ms per loop (1 loop each)
+    r = sincuda(a, b)  # CUDA OOM on NVIDIA P100
     
  
