@@ -197,17 +197,17 @@ def benchmark_sin():
     
     S1 = 10000
     S2 = 10000
-    r = a * np.sin(b)  # 1.07 s ± 2.39 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-    r = ne.evaluate("a*sin(b)") # 44.2 ms ± 258 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
-    r = sincpu(a, b)  # 1.08 s ± 6.04 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-    r = sincuda(a, b)  # 268 ms ± 30.8 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+    r = a * np.sin(b)  # 1.07 s ± 2.39 ms per loop (1 loop each)
+    r = ne.evaluate("a*sin(b)") # 44.2 ms ± 258 µs per loop (10 loops each)
+    r = sincpu(a, b)  # 1.08 s ± 6.04 ms per loop (1 loop each)
+    r = sincuda(a, b)  # 268 ms ± 30.8 ms per loop (1 loop each)
     
     S1 = 100000
     S2 = 10000
-    r = a * np.sin(b)  # 
-    r = ne.evaluate("a*sin(b)") # 
-    r = sincpu(a, b)  # 
-    r = sincuda(a, b)  #
+    r = a * np.sin(b)  # 10.7 s ± 15.5 ms per loop (1 loop each)
+    r = ne.evaluate("a*sin(b)") # 426 ms ± 3.83 ms per loop (1 loop each)
+    r = sincpu(a, b)  # 10.9 s ± 18.3 ms per loop (1 loop each)
+    r = sincuda(a, b)  # 2.67 s ± 19 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
     
     S1 = 100000
     S2 = 100000
