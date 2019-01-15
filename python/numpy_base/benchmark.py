@@ -132,17 +132,17 @@ def benchmark_exponential():
     S2 = 100
     a = np.random.randn(S1, S2).astype(np.float32)
     b = np.random.randn(S1, S2).astype(np.float32)
-    r = a * np.exp(b)  # 
-    r = ne.evaluate("a*exp(b)") # 
-    r = expcpu(a, b)  # 
-    r = expcuda(a, b) #
+    r = a * np.exp(b)  # 91.5 µs ± 266 ns per loop (10000 loops each)
+    r = ne.evaluate("a*exp(b)") # 161 µs ± 5.88 µs per loop (10000 loops each)
+    r = expcpu(a, b)  # 107 µs ± 418 ns per loop (10000 loops each)
+    r = expcuda(a, b) # 780 µs ± 63.5 µs per loop (1 loop each)
 
     S1 = 1000
     S2 = 1000
-    r = a * np.exp(b)  # 
-    r = ne.evaluate("a*exp(b)") # 
-    r = expcpu(a, b)  # 
-    r = expcuda(a, b) #
+    r = a * np.exp(b)  # 9.36 ms ± 23.4 µs per loop (100 loops each)
+    r = ne.evaluate("a*exp(b)") # 414 µs ± 10.7 µs per loop (1000 loops each)
+    r = expcpu(a, b)  # 10.6 ms ± 17.5 µs per loop (100 loops each)
+    r = expcuda(a, b) # 3.5 ms ± 1.01 ms per loop (1 loop each)
     
     S1 = 10000
     S2 = 10000
@@ -168,13 +168,13 @@ def benchmark_exponential():
     
 @vectorize(["float32(float32, float32)"], target="cpu")
 def sincpu(a, b):
-    return a*math.exp(b)
+    return a*math.sin(b)
     # return a*np.sin(b)
 
 
 @vectorize(["float32(float32, float32)"], target="cuda")
 def sincuda(a, b):
-    return a*math.exp(b)
+    return a*math.sin(b)
     
     
 def benchmark_sin():
@@ -197,10 +197,10 @@ def benchmark_sin():
     
     S1 = 10000
     S2 = 10000
-    r = a * np.sin(b)  # 
-    r = ne.evaluate("a*sin(b)") # 
-    r = sincpu(a, b)  # 
-    r = sincuda(a, b)  #
+    r = a * np.sin(b)  # 1.07 s ± 2.39 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+    r = ne.evaluate("a*sin(b)") # 44.2 ms ± 258 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+    r = sincpu(a, b)  # 1.08 s ± 6.04 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+    r = sincuda(a, b)  # 268 ms ± 30.8 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
     
     S1 = 100000
     S2 = 10000
