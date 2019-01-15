@@ -12,7 +12,7 @@ python:
 before_install:
   - echo $JAVA_HOME
   - java -version
-  - curl -L -o spark.tgz https://www.apache.org/dist/spark/spark-2.3.1/spark-2.3.1-bin-hadoop2.7.tgz
+  - curl -L -o spark.tgz https://archive.apache.org/dist/spark/spark-2.3.1/spark-2.3.1-bin-hadoop2.7.tgz
   - export SPARK_HOME=./local/spark
   - mkdir -p "$SPARK_HOME"
   - tar -xf spark.tgz -C "$SPARK_HOME" --strip-components=1
