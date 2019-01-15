@@ -146,23 +146,23 @@ def benchmark_exponential():
     
     S1 = 10000
     S2 = 10000
-    r = a * np.exp(b)  # 
-    r = ne.evaluate("a*exp(b)") # 
-    r = expcpu(a, b)  # 
-    r = expcuda(a, b) #
+    r = a * np.exp(b)  # 1.07 s ± 1.33 ms per loop (1 loop each)
+    r = ne.evaluate("a*exp(b)") # 43.8 ms ± 237 µs per loop (10 loops each)
+    r = expcpu(a, b)  # 1.16 s ± 1.97 ms per loop (1 loop each)
+    r = expcuda(a, b) # 283 ms ± 31 ms per loop (1 loop each)
 
     S1 = 100000
     S2 = 10000
-    r = a * np.exp(b)  # 10.6 s ± 7.08 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-    r = ne.evaluate("a*exp(b)") # 361 ms ± 5.96 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-    r = expcpu(a, b)  # 11.5 s ± 23.3 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+    r = a * np.exp(b)  # 10.6 s ± 7.08 ms per loop (1 loop each)
+    r = ne.evaluate("a*exp(b)") # 361 ms ± 5.96 ms per loop (1 loop each)
+    r = expcpu(a, b)  # 11.5 s ± 23.3 ms per loop (1 loop each)
     r = expcuda(a, b) # CUDA OOM on NVIDIA P100
     
     S1 = 100000
     S2 = 100000
-    r = a * np.exp(b)  # 1min 46s ± 59 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-    r = ne.evaluate("a*exp(b)") # 3.49 s ± 72.6 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-    r = expcpu(a, b)  # 1min 55s ± 154 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+    r = a * np.exp(b)  # 1min 46s ± 59 ms per loop (1 loop each)
+    r = ne.evaluate("a*exp(b)") # 3.49 s ± 72.6 ms per loop (1 loop each)
+    r = expcpu(a, b)  # 1min 55s ± 154 ms per loop (1 loop each)
     r = expcuda(a, b) # CUDA OOM on NVIDIA P100
     
     
