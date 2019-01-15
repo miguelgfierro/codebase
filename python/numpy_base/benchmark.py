@@ -80,24 +80,24 @@ def benchmark_multiplication_float():
     S2 = 100
     a = np.random.randn(S1, S2).astype(np.float32)
     b = np.random.randn(S1, S2).astype(np.float32)
-    r = a * b  # 
-    r = ne.evaluate("a*b")  # 
-    r = multfcpu(a, b)  # 
-    r = multfcuda(a, b) #
+    r = a * b  # 2.7 µs ± 35.1 ns per loop (100000 loops each)
+    r = ne.evaluate("a*b")  # 147 µs ± 10.4 µs per loop (10000 loops each)
+    r = multfcpu(a, b)  # 3.18 µs ± 7.9 ns per loop (100000 loops each)
+    r = multfcuda(a, b) # 778 µs ± 91.4 µs per loop (1 loop each)
 
     S1 = 1000
     S2 = 1000
-    r = a * b  # 400 µs ± 1.25 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-    r = ne.evaluate("a*b")  # 247 µs ± 8.39 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-    r = multfcpu(a, b)  # 420 µs ± 3.43 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-    r = multfcuda(a, b) # 3.68 ms ± 1.02 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+    r = a * b  # 400 µs ± 1.25 µs per loop (1000 loops each)
+    r = ne.evaluate("a*b")  # 247 µs ± 8.39 µs per loop (1000 loops each)
+    r = multfcpu(a, b)  # 420 µs ± 3.43 µs per loop (1000 loops each)
+    r = multfcuda(a, b) # 3.68 ms ± 1.02 ms per loop (1 loop each)
     
     S1 = 10000
     S2 = 10000
-    r = a * b  # 176 ms ± 543 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
-    r = ne.evaluate("a*b")  # 34 ms ± 308 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
-    r = multfcpu(a, b)  # 174 ms ± 1.01 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
-    r = multfcuda(a, b) # 282 ms ± 35.9 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+    r = a * b  # 176 ms ± 543 µs per loop (10 loops each)
+    r = ne.evaluate("a*b")  # 34 ms ± 308 µs per loop (10 loops each)
+    r = multfcpu(a, b)  # 174 ms ± 1.01 ms per loop (10 loops each)
+    r = multfcuda(a, b) # 282 ms ± 35.9 ms per loop (1 loop each)
 
     S1 = 100000
     S2 = 10000       
