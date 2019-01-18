@@ -5,6 +5,7 @@ import os
 import subprocess
 import socket
 import glob
+from psutil import virtual_memory
 from numba import cuda
 from numba.cuda.cudadrv.error import CudaSupportError
 
@@ -46,6 +47,19 @@ def get_python_version():
 
     """
     return sys.version
+
+
+def get_ram():
+    """Get RAM memory in Gb.
+    Returns:
+        float: RAM memory in Gb.
+    Examples:
+        >>> num = get_ram()
+        >>> num >= 2
+        True
+    """
+    mem = virtual_memory()
+    return mem.total/1024/1024/1024
 
 
 def get_library_version(library_name):
