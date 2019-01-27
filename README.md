@@ -4,5 +4,5 @@
 [![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/codebase.svg)](https://github.com/miguelgfierro/codebase/commits/master)
 [![Python Build Status](https://travis-ci.com/miguelgfierro/codebase.svg?branch=master)](https://travis-ci.com/miguelgfierro/codebase)
 
-Code base for programming projects.
+Codebase for programming projects.
 
