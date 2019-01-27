@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def create_page_driver(url):
+def create_page_driver(url, browser="safari", driver_path=None):
     """Generates the selenium driver to parse a web
     Args:
         url (str): URL to parse
@@ -20,10 +20,20 @@ def create_page_driver(url):
         'Sciblog - A blog designed like a scientific paper'
 
     """
-    # TODO: check other drivers
-    driver = webdriver.Safari()
+    driver = _driver_map(browser)(executable_path=driver_path)
     driver.get(url)
     return driver
+
+
+def _driver_map(browser="safari"):
+    browser_map = {
+        "safari": webdriver.Safari,
+        "firefox": webdriver.Firefox,
+        "ie": webdriver.Ie,
+        "edge": webdriver.Edge,
+        "chrome": webdriver.Chrome
+    }
+    return browser_map[browser]
 
 
 def search_form(driver, html_class_form, search_term):
