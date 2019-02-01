@@ -14,7 +14,6 @@ def test_notebook_runs():
     results = pm.read_notebook(OUTPUT_NOTEBOOK).dataframe.set_index("name")["value"]
     assert results["result"] == 15
     assert results["checked_version"] is True
-    assert results["integer"] == 10
 
 
 def test_notebook_fails():
