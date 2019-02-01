@@ -11,13 +11,9 @@ def test_notebook_runs():
         OUTPUT_NOTEBOOK,
         parameters=dict(version=pm.__version__, integer=10),
     )
-    nb = pm.read_notebook(OUTPUT_NOTEBOOK)
-    df = nb.dataframe
-    assert df.shape[0] == 4
-    result = df.loc[df["name"] == "result", "value"].values[0]
-    assert result == 15
-    check_version = df.loc[df["name"] == "checked_version", "value"].values[0]
-    assert check_version is True
+    results = pm.read_notebook(OUTPUT_NOTEBOOK).dataframe.set_index("name")["value"]
+    assert results["result"] == 15
+    assert results["checked_version"] is True
 
 
 def test_notebook_fails():
