@@ -124,9 +124,33 @@ def get_blas_version():
     Returns:
         str: BLAS info.
     Examples:
-        >>> get_blas_version() #doctest: +ELLIPSIS
-        ...:
-        ...
+        $ get_blas_version() 
+        openblas_info:
+            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+            language = c
+            define_macros = [('HAVE_CBLAS', None)]
+            libraries = ['openblas', 'openblas']
+        openblas_lapack_info:
+            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+            language = c
+            define_macros = [('HAVE_CBLAS', None)]
+            libraries = ['openblas', 'openblas']
+        blis_info:
+        NOT AVAILABLE
+        lapack_mkl_info:
+        NOT AVAILABLE
+        lapack_opt_info:
+            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+            language = c
+            define_macros = [('HAVE_CBLAS', None)]
+            libraries = ['openblas', 'openblas']
+        blas_opt_info:
+            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+            language = c
+            define_macros = [('HAVE_CBLAS', None)]
+            libraries = ['openblas', 'openblas']
+        blas_mkl_info:
+        NOT AVAILABLE
     """
     return np.__config__.show()
 
