@@ -125,7 +125,6 @@ def get_blas_version():
         str: BLAS info.
     Examples:
         >>> get_blas_version() #doctest: +ELLIPSIS
-        blas_...:
         ...
     """
     return np.__config__.show()
