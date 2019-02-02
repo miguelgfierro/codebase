@@ -5,6 +5,7 @@ import os
 import subprocess
 import socket
 import glob
+import numpy as np
 from psutil import virtual_memory
 from numba import cuda
 from numba.cuda.cudadrv.error import CudaSupportError
@@ -116,6 +117,42 @@ def get_gpu_name():
         return [gpu.name.decode("utf-8") for gpu in cuda.gpus]
     except CudaSupportError:
         return []
+
+
+def get_blas_version():
+    """Shows BLAS version of MKL, OpenBLAS, ATLAS and LAPACK libraries.
+    Returns:
+        str: BLAS info.
+    Examples:
+        $ get_blas_version() 
+        openblas_info:
+            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+            language = c
+            define_macros = [('HAVE_CBLAS', None)]
+            libraries = ['openblas', 'openblas']
+        openblas_lapack_info:
+            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+            language = c
+            define_macros = [('HAVE_CBLAS', None)]
+            libraries = ['openblas', 'openblas']
+        blis_info:
+        NOT AVAILABLE
+        lapack_mkl_info:
+        NOT AVAILABLE
+        lapack_opt_info:
+            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+            language = c
+            define_macros = [('HAVE_CBLAS', None)]
+            libraries = ['openblas', 'openblas']
+        blas_opt_info:
+            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+            language = c
+            define_macros = [('HAVE_CBLAS', None)]
+            libraries = ['openblas', 'openblas']
+        blas_mkl_info:
+        NOT AVAILABLE
+    """
+    return np.__config__.show()
 
 
 def get_number_gpus():
