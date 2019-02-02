@@ -100,6 +100,7 @@ ENV/
 *~
 */url_base/license.txt
 Untitled.ipynb
+*-Copy*.ipynb
 .pytest_cache/
 mig.png
 .vscode/
