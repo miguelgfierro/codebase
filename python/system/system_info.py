@@ -5,6 +5,7 @@ import os
 import subprocess
 import socket
 import glob
+import numpy as np
 from psutil import virtual_memory
 from numba import cuda
 from numba.cuda.cudadrv.error import CudaSupportError
@@ -116,6 +117,18 @@ def get_gpu_name():
         return [gpu.name.decode("utf-8") for gpu in cuda.gpus]
     except CudaSupportError:
         return []
+
+
+def get_blas_version():
+    """Shows BLAS version of MKL, OpenBLAS, ATLAS and LAPACK libraries.
+    Returns:
+        str: BLAS info.
+    Examples:
+        >>> get_blas_version() #doctest: +ELLIPSIS
+        blas_mkl_info:
+        ...
+    """
+    return np.__config__.show()
 
 
 def get_number_gpus():
