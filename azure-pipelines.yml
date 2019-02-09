@@ -23,11 +23,9 @@ jobs:
       versionSpec: '$(python.version)'
       architecture: 'x64'
 
-  - script: python -m pip install --upgrade pip 
-    displayName: 'Install dependencies'
-
   - script: |
-      pip install pytest numpy pandas pyspark
+      conda create -q -n codebase python=(python.version) -y
+      conda env update -q -n codebase -f python/conda.yaml
       pytest python/test/pytest_fixtures.py --junitxml=junit/test-results.xml
     displayName: 'pytest'
 
