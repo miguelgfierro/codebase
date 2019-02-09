@@ -38,11 +38,16 @@ jobs:
 
   - bash: |
       source activate codebase
-      pytest python/test/pytest_fixtures.py --junitxml=junit/test-results.xml
-    displayName: 'pytest'
+      python python/test/unittest_fixtures.py --junitxml=junit/test-unitttest.xml
+      pytest python/test/pytest* --junitxml=junit/test-pytest.xml
+    displayName: 'tests'
+
+  - bash: |
+      pytest python --doctest-modules --continue-on-collection-errors --junitxml=junit/test-doctest.xml
+    displayName: 'doctests'
 
   - task: PublishTestResults@2
     inputs:
-      testResultsFiles: '**/test-results.xml'
+      testResultsFiles: '**/test-*.xml'
       testRunTitle: 'Python $(python.version)'
     condition: succeededOrFailed()
