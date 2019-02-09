@@ -27,7 +27,7 @@ jobs:
     displayName: 'Install dependencies'
 
   - script: |
-      pip install pytest numpy pandas
+      pip install pytest numpy pandas pyspark
       pytest python/test/pytest_fixtures.py --junitxml=junit/test-results.xml
     displayName: 'pytest'
 
