@@ -25,7 +25,7 @@ jobs:
 
   - script: |
       conda create -q python=$(python.version) -y
-      conda env update -q -f python/conda.yaml
+      conda env update -q -n base -f python/conda.yaml
       pytest python/test/pytest_fixtures.py --junitxml=junit/test-results.xml
     displayName: 'pytest'
 
