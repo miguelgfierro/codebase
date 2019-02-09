@@ -24,8 +24,8 @@ jobs:
       architecture: 'x64'
 
   - script: |
-      conda create -q -n codebase python=$(python.version) -y
-      conda env update -q -n codebase -f python/conda.yaml
+      conda create -q python=$(python.version) -y
+      conda env update -q -f python/conda.yaml
       pytest python/test/pytest_fixtures.py --junitxml=junit/test-results.xml
     displayName: 'pytest'
 
