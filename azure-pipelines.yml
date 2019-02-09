@@ -23,10 +23,14 @@ jobs:
       versionSpec: '$(python.version)'
       architecture: 'x64'
 
+  - bash: echo "##vso[task.prependpath]/usr/share/miniconda/bin"
+    condition: eq(variables['Agent.OS'], 'Linux')
+    displayName: Add conda to PATH (Linux)
+
   - bash: |
-      conda create -q -n $CONDA_ENV python=$(python.version) -y
-      conda env update -q -n $CONDA_ENV -f python/conda.yaml
-      source activate $(CONDA_ENV)
+      conda create -q -n codebase python=$(python.version) -y
+      conda env update -q -n codebase -f python/conda.yaml
+      source activate codebase
       pytest python/test/pytest_fixtures.py --junitxml=junit/test-results.xml
     displayName: 'pytest'
 
