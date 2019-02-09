@@ -43,6 +43,7 @@ jobs:
     displayName: 'tests'
 
   - bash: |
+      source activate codebase
       pytest python --doctest-modules --continue-on-collection-errors --junitxml=junit/test-doctest.xml
     displayName: 'doctests'
 
