@@ -8,8 +8,7 @@ import glob
 import json
 import shutil
 from collections import Counter
-from pyspark.sql import SparkSession
-import pyspark.sql.types as sptypes
+
 
 
 @pytest.fixture(autouse=True)
@@ -17,6 +16,9 @@ def add_libraries(doctest_namespace):
     """Definition of doctest namespace
     More info: https://docs.pytest.org/en/latest/doctest.html#the-doctest-namespace-fixture
     """
+    from pyspark.sql import SparkSession
+    import pyspark.sql.types as sptypes
+    
     doctest_namespace["os"] = os
     doctest_namespace["sys"] = sys
     doctest_namespace["np"] = numpy
