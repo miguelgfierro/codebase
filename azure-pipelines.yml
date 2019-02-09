@@ -23,11 +23,10 @@ jobs:
       versionSpec: '$(python.version)'
       architecture: 'x64'
 
-  - script: |
-      conda config --set always_yes yes --set changeps1 no
+  - bash: |
       conda create -q -n $CONDA_ENV python=$(python.version) -y
       conda env update -q -n $CONDA_ENV -f python/conda.yaml
-      source activate $CONDA_ENV
+      source activate $(CONDA_ENV)
       pytest python/test/pytest_fixtures.py --junitxml=junit/test-results.xml
     displayName: 'pytest'
 
