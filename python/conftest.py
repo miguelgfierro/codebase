@@ -8,6 +8,7 @@ import glob
 import json
 import shutil
 from collections import Counter
+from collections import OrderedDict
 from pyspark.sql import SparkSession
 import pyspark.sql.types as sptypes
 
@@ -16,7 +17,7 @@ import pyspark.sql.types as sptypes
 def add_libraries(doctest_namespace):
     """Definition of doctest namespace
     More info: https://docs.pytest.org/en/latest/doctest.html#the-doctest-namespace-fixture
-    """    
+    """
     doctest_namespace["os"] = os
     doctest_namespace["sys"] = sys
     doctest_namespace["np"] = numpy
@@ -26,6 +27,7 @@ def add_libraries(doctest_namespace):
     doctest_namespace["json"] = json
     doctest_namespace["shutil"] = shutil
     doctest_namespace["Counter"] = Counter
+    doctest_namespace["OrderedDict"] = OrderedDict
     spark = (
         SparkSession.builder.appName("test codebase")
         .master("local[*]")
