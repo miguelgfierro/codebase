@@ -6,14 +6,13 @@ def invert_dictionary(dictionary):
     Returns:
         dict: inverted dictionary
     Examples:
-        >>> d = {1: 0, "a": 2, "b": "c"}
+        >>> d = {"a": 1, "b": 2}
         >>> d_inv = invert_dictionary(d)
-        >>> OrderedDict(sorted(d_inv.items()))
-        OrderedDict([(0, 1), (2, 'a'), ('c', 'b')])
-        >>> d = {1: 0, "a": 2, "b": "c", 5: 0}
+        >>> json.dumps(d_inv, sort_keys=True)
+        '{"1": "a", "2": "b"}'
+        >>> d = {"a": 1, "b": 2, "c": 1}
         >>> d_inv = invert_dictionary(d)
-        >>> OrderedDict(sorted(d_inv.items()))
-        OrderedDict([(0, 5), (2, 'a'), ('c', 'b')])
-
+        >>> json.dumps(d_inv, sort_keys=True)
+        '{"1": "c", "2": "b"}'
     """
     return {v: k for k, v in dictionary.items()}
