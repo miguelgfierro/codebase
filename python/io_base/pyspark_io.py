@@ -69,18 +69,19 @@ def read_csv_file(spark, filename, **kwargs):
     Examples:
         >>> filename = os.path.join("share", "traj_header.csv")
         >>> df = read_csv_file(spark, filename, header=True, inferSchema=True)
-        >>> df.collect()
-        [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
+        >>> l = [0.0416667, 443.0, 205.0, 0.0833333, 444.0, 205.0]
+        >>> dfl = df.toPandas().values.ravel().tolist()
+        >>> Counter(l) == Counter(dfl)
+        True
         >>> df.schema
         StructType(List(StructField(t,DoubleType,true),StructField(q0,IntegerType,true),StructField(q1,IntegerType,true)))
         >>> schema = sptypes.StructType([sptypes.StructField("t", sptypes.FloatType()), sptypes.StructField("q0", sptypes.IntegerType()), sptypes.StructField("q1", sptypes.StringType())])
         >>> df2 = read_csv_file(spark, filename, header=True, schema=schema)
-        >>> df2.collect()
-        [Row(t=0.041666701436042786, q0=443, q1='205'), Row(t=0.08333329856395721, q0=444, q1='206')]
+        >>> dfl2 = df2.toPandas().values.ravel().tolist()
+        >>> Counter(l) == Counter(dfl2)
+        True
         >>> df2.schema  
         StructType(List(StructField(t,FloatType,true),StructField(q0,IntegerType,true),StructField(q1,StringType,true)))
-
-
     """
     return spark.read.csv(filename, **kwargs)
 
@@ -94,8 +95,10 @@ def read_csv_folder(spark, folder, **kwargs):
     Examples:
         >>> path = os.path.join("share", "traj_spark")
         >>> df = read_csv_folder(spark, path, header=True, inferSchema=True)
-        >>> df.head(2)
-        [Row(t=0.0833333, q0=444, q1=205), Row(t=0.0416667, q0=443, q1=205)]
+        >>> l = [0.0416667, 443.0, 205.0, 0.0833333, 444.0, 205.0]
+        >>> dfl = df.toPandas().values.ravel().tolist()
+        >>> Counter(l) == Counter(dfl)
+        True
         >>> df.schema
         StructType(List(StructField(t,DoubleType,true),StructField(q0,IntegerType,true),StructField(q1,IntegerType,true)))
 
