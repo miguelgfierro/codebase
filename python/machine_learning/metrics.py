@@ -32,7 +32,6 @@ def classification_metrics_binary(y_true, y_pred):
     Returns:
         report (dict): Dictionary with metrics.
     Examples:
-        >>> from collections import OrderedDict
         >>> y_true = [0,1,0,0,1]
         >>> y_pred = [0,1,0,1,1]
         >>> result = classification_metrics_binary(y_true, y_pred)
@@ -76,7 +75,6 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
     Returns:
         report (dict): Dictionary with metrics.
     Examples:
-        >>> from collections import OrderedDict
         >>> y_true = [0,1,2,0,1]
         >>> y_pred = [0,1,0,1,1]
         >>> result = classification_metrics_multilabel(y_true, y_pred, [0,1,2])
@@ -114,7 +112,6 @@ def classification_metrics_binary_prob(y_true, y_prob):
     Returns:
         report (dict): Dictionary with metrics.
     Examples:
-        >>> from collections import OrderedDict
         >>> y_true = [0,1,0,0,1]
         >>> y_prob = [0.2,0.7,0.4,0.3,0.2]
         >>> result = classification_metrics_binary_prob(y_true, y_prob)
@@ -148,7 +145,6 @@ def regression_metrics(y_true, y_pred):
     Returns:
         report (dict): Dictionary with metrics.
     Examples:
-        >>> from collections import OrderedDict
         >>> y_true = [5,1,0,7,1]
         >>> y_pred = [6,0.7,0.4,10,20]
         >>> result = regression_metrics(y_true, y_pred)
