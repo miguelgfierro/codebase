@@ -1,9 +1,11 @@
 import os
+import sys
 import pytest
 from python.utilities.git_stats import Github
 
 
 @pytest.mark.system
+@pytest.mark.skipif("sys.version_info >= (3,7)")
 def test_github_metrics():
     g = Github(os.environ["GITHUB_TOKEN"], "https://github.com/miguelgfierro/codebase")
     g.clean()
