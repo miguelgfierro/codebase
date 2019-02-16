@@ -12,67 +12,7 @@ BASE_URL = "https://github.com/"
 
 
 class Github:
-    """Github stats class
-    Examples:
-        >>> g = Github(os.environ["GITHUB_TOKEN"], "https://github.com/miguelgfierro/codebase")
-        >>> g.clean()
-        >>> g.forks >= 3
-        True
-        >>> isinstance(g.open_issues, int)
-        True
-        >>> isinstance(g.open_pull_requests, int)
-        True
-        >>> g.stars >= 8
-        True
-        >>> g.watchers >= 2
-        True
-        >>> len(g.last_year_commit_frequency) # doctest: +SKIP
-        52
-        >>> g.top_ten_referrers is not None
-        True
-        >>> g.number_total_referrers >= 1
-        True
-        >>> g.number_unique_referrers >= 1
-        True
-        >>> g.top_ten_content is not None
-        True
-        >>> g.views is not None
-        True
-        >>> g.number_total_views >= 10
-        True
-        >>> g.number_unique_views >= 10
-        True
-        >>> g.clones is not None
-        True
-        >>> g.number_total_clones >= 1
-        True
-        >>> g.number_unique_clones >= 1
-        True
-        >>> g.repo_size >= 2
-        True
-        >>> g.creation_date
-        '2016-12-27T13:23:55Z'
-        >>> sorted(g.languages.keys())
-        ['C++', 'CMake', 'CSS', 'Dockerfile', 'HTML', 'JavaScript', 'Jupyter Notebook', 'MATLAB', 'PHP', 'PLpgSQL', 'Python', 'SQL', 'Shell']
-        >>> g.number_languages >= 12
-        True
-        >>> g.number_commits > 600
-        True
-        >>> g.number_contributors >= 1
-        True
-        >>> g.number_branches >=1
-        True
-        >>> g.number_tags >= 0
-        True
-        >>> g.number_total_lines > 300000
-        True
-        >>> g.number_added_lines > 15000
-        True
-        >>> g.number_deleted_lines > 3000
-        True
-
-    """
-
+    """Github stats class"""
     def __init__(self, token, git_url):
         """Initializer
         Args:
