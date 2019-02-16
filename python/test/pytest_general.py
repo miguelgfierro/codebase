@@ -1,3 +1,4 @@
+import os
 import pytest
 from python.utilities.git_stats import Github
 
