@@ -39,7 +39,7 @@ jobs:
   - bash: |
       source activate codebase
       python python/test/unittest_fixtures.py --junitxml=junit/test-unitttest.xml
-      pytest python/test/pytest* --junitxml=junit/test-pytest.xml
+      pytest python/test/pytest* -m "not system" --junitxml=junit/test-pytest.xml
     displayName: 'tests'
 
   - bash: |
