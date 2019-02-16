@@ -70,13 +70,13 @@ def read_csv_file(spark, filename, **kwargs):
         >>> filename = os.path.join("share", "traj_header.csv")
         >>> df = read_csv_file(spark, filename, header=True, inferSchema=True)
         >>> df.orderBy("t").head(2)
-        [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=205)]
+        [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
         >>> df.schema
         StructType(List(StructField(t,DoubleType,true),StructField(q0,IntegerType,true),StructField(q1,IntegerType,true)))
         >>> schema = sptypes.StructType([sptypes.StructField("t", sptypes.FloatType()), sptypes.StructField("q0", sptypes.IntegerType()), sptypes.StructField("q1", sptypes.StringType())])
         >>> df2 = read_csv_file(spark, filename, header=True, schema=schema)
         >>> df2.orderBy("t").head(2)
-        [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=205)]
+        [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
         >>> df2.schema  
         StructType(List(StructField(t,FloatType,true),StructField(q0,IntegerType,true),StructField(q1,StringType,true)))
     """
@@ -93,7 +93,7 @@ def read_csv_folder(spark, folder, **kwargs):
         >>> path = os.path.join("share", "traj_spark")
         >>> df = read_csv_folder(spark, path, header=True, inferSchema=True)
         >>> df.orderBy("t").head(2)
-        [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=205)]
+        [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
         >>> df.schema
         StructType(List(StructField(t,DoubleType,true),StructField(q0,IntegerType,true),StructField(q1,IntegerType,true)))
 
