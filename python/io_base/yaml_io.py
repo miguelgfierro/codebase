@@ -27,6 +27,12 @@ def read_file(filename):
     Returns:
         data (dict): A dictionary.
 
+    Examples:
+        >>> data = read_file('share/traj.yaml')
+        >>> type(data)
+        <class 'dict'>
+        >>> json.dumps(data, sort_keys=True)
+        '{"trajectory": {"q0": [443, 444], "q1": [205, 206], "t": [0.0416667, 0.0833333]}}'
     """
     with open(filename, "r") as f:
         data = yaml.load(f, yaml.SafeLoader)
