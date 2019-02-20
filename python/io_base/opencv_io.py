@@ -5,9 +5,11 @@ import urllib.request as urllib
 
 def save_image(img, filename):
     """Save an image.
+    
     Args:
         img (numpy array): An image.
         filename (str): Name of the file.
+    
     Examples:
         >>> img = cv2.imread('share/Lenna.png')
         >>> save_image(img, 'file.jpg')
@@ -18,11 +20,14 @@ def save_image(img, filename):
 
 def read_image(filename, is_color=True):
     """Read an image.
+    
     Args:
         filename (str): Name of the file.
         is_color (bool): Read the image in color.
+    
     Returns:
-        img (numpy array): An image.
+        np.array: An image.
+    
     Examples:
         >>> img = read_image('share/Lenna.png')
         >>> shape = np.array(img.shape)

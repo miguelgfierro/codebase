@@ -1,8 +1,10 @@
 def save_line(line, filename):
     """Save a line of text.
+    
     Args:
         line (str): Text.
         filename (str): Name of the file.
+    
     Examples:
         >>> save_line("hello world!", "file.txt")
     """
@@ -12,10 +14,13 @@ def save_line(line, filename):
 
 def read_line(filename):
     """Read a line of text.
+    
     Args:
         filename (str): Name of the file.
+    
     Returns:
         str: Text.
+    
     Examples:
         >>> read_line("share/data1.txt")
         'I like to move it, move it'
@@ -27,9 +32,11 @@ def read_line(filename):
 
 def save_list(alist, filename):
     """Save a list to file.
+    
     Args:
         alist (list): Data.
         filename (str): Name of the file.
+    
     Examples:
         >>> save_list(["a","b","bazinga"], "file.txt")
     """
@@ -40,10 +47,13 @@ def save_list(alist, filename):
 def read_list(filename):
     """Read a file and returns a list where each element corresponds to a line
     in the file.
+    
     Args:
         filename (str): Name of the file.
+    
     Returns:
         list: A list of elements.
+    
     Examples:
         >>> read_list("share/data.txt")
         ['I like to move it, move it', 'I like to move it, move it', 'I like to move it, move it', 'Ya like to move it']

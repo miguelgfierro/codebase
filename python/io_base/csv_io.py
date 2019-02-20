@@ -3,9 +3,11 @@ import csv
 
 def save_file(data, filename):
     """Save data as csv. 
+    
     Args:
         data (list of lists): Data to save.
         filename (str): Name of the file.
+    
     Examples:
         >>> data = [['0.0416667', '443', '205'], ['0.0833333', '444', '206']]
         >>> save_file(data, 'file.csv')
@@ -17,10 +19,13 @@ def save_file(data, filename):
 
 def read_file(filename):
     """Read a csv file into a list of lists.
+    
     Args:
         filename (str): Name of the file.
+    
     Returns:
         data (list of lists): Data to read.
+    
     Examples:
         >>> read_file('share/traj.csv')
         [['0.0416667', '443', '205'], ['0.0833333', '444', '206']]

@@ -3,9 +3,11 @@ import pandas as pd
 
 def save_csv_folder(dataframe, folder, **kwargs):
     """Save a dataframe as several csv spark partitions in a folder.
+    
     Args:
         dataframe (spark.DataFrame): A dataframe.
         folder (str): Folder path.
+    
     Examples:
         >>> shutil.rmtree("test_spark", ignore_errors=True)
         >>> columns = ['id', 'dogs', 'cats']
@@ -16,16 +18,17 @@ def save_csv_folder(dataframe, folder, **kwargs):
         True
         >>> len(glob.glob1("test_spark","*.csv")) > 1
         True
-
     """
     dataframe.write.csv(folder, **kwargs)
 
 
 def save_csv_folder_1file(dataframe, folder, **kwargs):
     """Save a dataframe as one csv spark partitions in a folder.
+    
     Args:
         dataframe (spark.DataFrame): A dataframe.
         folder (str): Folder path.
+    
     Examples:
         >>> shutil.rmtree("test_spark_one", ignore_errors=True)
         >>> columns = ['id', 'dogs', 'cats']
@@ -43,9 +46,11 @@ def save_csv_folder_1file(dataframe, folder, **kwargs):
 
 def save_csv_file(dataframe, filename, **kwargs):
     """Save a dataframe as one csv using pandas.
+    
     Args:
         dataframe (spark.DataFrame): A dataframe.
         filename (str): Name of the file.
+    
     Examples:
         >>> if os.path.isfile("df_spark.csv"):
         ...     os.remove("df_spark.csv")
@@ -62,10 +67,13 @@ def save_csv_file(dataframe, filename, **kwargs):
 
 def read_csv_file(spark, filename, **kwargs):
     """Read a csv file.
+    
     Args:
         filename (str): Name of the file.
+    
     Returns:
-        dataframe (spark.DataFrame): An dataframe.
+        spark.DataFrame: An dataframe.
+    
     Examples:
         >>> filename = os.path.join("share", "traj_header.csv")
         >>> df = read_csv_file(spark, filename, header=True, inferSchema=True)
@@ -85,10 +93,13 @@ def read_csv_file(spark, filename, **kwargs):
 
 def read_csv_folder(spark, folder, **kwargs):
     """Read a csv folder of Spark format.
+    
     Args:
         folder (str): Folder path.
+    
     Returns:
-        dataframe (spark.DataFrame): An dataframe.
+        spark.DataFrame: An dataframe.
+    
     Examples:
         >>> path = os.path.join("share", "traj_spark")
         >>> df = read_csv_folder(spark, path, header=True, inferSchema=True)
@@ -96,7 +107,6 @@ def read_csv_folder(spark, folder, **kwargs):
         [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
         >>> df.schema
         StructType(List(StructField(t,DoubleType,true),StructField(q0,IntegerType,true),StructField(q1,IntegerType,true)))
-
     """
     return spark.read.csv(folder, **kwargs)
 
