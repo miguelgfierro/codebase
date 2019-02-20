@@ -5,13 +5,16 @@ def optimize_function(func, bounds, **kargs):
     """Function optimization using Differential Evolution algorithm.
     https://en.wikipedia.org/wiki/Differential_evolution
     Info: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.differential_evolution.html
+    
     Args:
         func (callable): The objective function to be minimized. In the form f(x, *args), where x is the argument in
-                         the form of a 1-D array and args is a tuple of any additional parameters.
+            the form of a 1-D array and args is a tuple of any additional parameters.
         bounds (np.array): Constraints (min, max) pairs for each element in x.
+    
     Returns:
-        result (object): Result of the optimization. For parameters see:
-        https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html#scipy.optimize.OptimizeResult
+        obj: Result of the optimization. For parameters see:
+            https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html#scipy.optimize.OptimizeResult
+    
     Examples:
         >>> from python.optimization.functions import rosenbrock
         >>> bounds = [(0,2), (0, 2), (0, 2), (0, 2), (0, 2)]
@@ -31,8 +34,6 @@ def optimize_function(func, bounds, **kargs):
         0.0
         >>> result.success
         True
-
     """
-    result = differential_evolution(func, bounds, **kargs)
-    return result
+    return differential_evolution(func, bounds, **kargs)
 
