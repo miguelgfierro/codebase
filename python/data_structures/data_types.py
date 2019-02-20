@@ -3,10 +3,13 @@ from ast import literal_eval
 
 def decode_string(s):
     """Convert a string literal to a number or a bool.
+    
     Args:
         s (str): String
+    
     Returns:
-        val (str,float,int or bool): Value decoded
+        str,float,int or bool: Value decoded
+    
     Examples:
         >>> decode_string('a')
         'a'
@@ -30,7 +33,6 @@ def decode_string(s):
         <class 'bool'>
         >>> val
         True
-
     """
     if isinstance(s, str):
         # Does it represent a literal?

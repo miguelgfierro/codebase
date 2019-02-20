@@ -240,16 +240,18 @@ def unique(list1, list2):
     """Get the unique items that are in the first list but not in the second 
     list.
     NOTE: unique(l1,l2) is not always equal to unique(l2,l1)
+    
     Args:
         list1 (list): A list of elements.
         list2 (list): A list of elements.
+    
     Returns:
-        result_list (list): A list with the unique elements.
+        list: A list with the unique elements.
+    
     Examples:
         >>> unique([1,2,3], [2,3,4])
         [1]
         >>> unique([2,3,4], [1,2,3])
         [4]
-
     """
     return list(set(list1) - set(list2))

@@ -8,6 +8,7 @@ class Graph(object):
     distinction between the two vertices associated with each edge, or its
     edges may be directed from one vertex to another. Edges may be weighted to
     show that there is a cost to go from one vertex to another.
+    
     Examples:
         >>> g = Graph()
         >>> for i in range(3):
@@ -21,7 +22,6 @@ class Graph(object):
         (0 , 1, weight=5)
         (1 , 2, weight=0)
         (2 , 3, weight=9)
-
     """
 
     def __init__(self):

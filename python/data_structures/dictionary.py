@@ -1,10 +1,13 @@
 def invert_dictionary(dictionary):
     """Invert a dictionary.
     NOTE: if the values of the dictionary are not unique, the function returns the one of the mappings
+    
     Args: 
         dictionary (dict): A dictionary
+    
     Returns:
         dict: inverted dictionary
+    
     Examples:
         >>> d = {"a": 1, "b": 2}
         >>> d_inv = invert_dictionary(d)

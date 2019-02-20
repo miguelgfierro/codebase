@@ -1,9 +1,8 @@
-
-
 class BinaryTree(object):
     """A Binary Tree is a tree data structure in which each node has at most
     two children. It can be used to implement binary search trees and binary
     heaps, and are used for efficient searching and sorting.
+    
     Examples:
         >>> r = BinaryTree('a')
         >>> r.get_root_val()
@@ -23,7 +22,6 @@ class BinaryTree(object):
         >>> r.get_right_child().set_root_val('hello')
         >>> r.get_right_child().get_root_val()
         'hello'
-
     """
 
     def __init__(self, root_obj):

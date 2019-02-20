@@ -10,6 +10,7 @@ class BinarySearchTree(object):
     is not balanced (the height of one side is much higher than the other). To
     solve this issue there are the Balanced Binary Search Trees or AVL trees.
     Space complexity: O(n)
+    
     Examples:
         >>> mytree = BinarySearchTree()
         >>> mytree[3] = "red"
@@ -21,7 +22,6 @@ class BinarySearchTree(object):
 
         >>> mytree.length()
         3
-
     """
 
     def __init__(self):
