@@ -29,6 +29,7 @@ def post_status():
     {
         "message": "Param = 1"
     }
+    
     Examples:
         >>> with app.test_client() as c:
         ...     headers = {"Content-type":"application/json"}
@@ -40,7 +41,6 @@ def post_status():
         '200 OK'
         >>> json.loads(content)
         {'message': 'Param = 1'}
-
     """
     if not request.json:
         abort(BAD_REQUEST)
@@ -60,6 +60,7 @@ def bad_request(error):
     False
     $ res.json()
     {u"error": u"Bad request"}
+    
     Examples:
         >>> with app.test_client() as c:
         ...     data = {"param":"2"}
@@ -70,8 +71,6 @@ def bad_request(error):
         '400 BAD REQUEST'
         >>> json.loads(content)
         {'error': 'Bad request'}
-
-
     """
     return make_response(jsonify({"error": "Bad request"}), BAD_REQUEST)
 
@@ -85,6 +84,7 @@ def not_found(error):
     False
     $ res.json()
     {u"error": u"Not found"}
+    
     Examples:
         >>> with app.test_client() as c:
         ...     headers = {"Content-type":"application/json"}
@@ -96,7 +96,6 @@ def not_found(error):
         '404 NOT FOUND'
         >>> json.loads(content)
         {'error': 'Not found'}
-
     """
     return make_response(jsonify({"error": "Not found"}), NOT_FOUND)
 
