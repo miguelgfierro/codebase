@@ -3,12 +3,15 @@ import pandas as pd
 
 def apply_function_on_axis_dataframe(df, func, axis=0):
     """Apply a function on a row/column basis of a DataFrame.
+    
     Args:
         df (pd.DataFrame): Dataframe.
         func (function): The function to apply.
         axis (int): The axis of application (0=columns, 1=rows).
+    
     Returns:
-        df_return (pd.DataFrame): Dataframe with the applied function.
+        pd.DataFrame: Dataframe with the applied function.
+    
     Examples:
         >>> df = pd.DataFrame(np.array(range(12)).reshape(4, 3), columns=list('abc'))
         >>> f = lambda x: x.max() - x.min()
@@ -23,18 +26,20 @@ def apply_function_on_axis_dataframe(df, func, axis=0):
         b    9
         c    9
         dtype: int64
-
     """
     return df.apply(func, axis)
 
 
 def apply_function_elementwise_dataframe(df, func):
     """Apply a function on a row/column basis of a DataFrame.
+    
     Args:
         df (pd.DataFrame): Dataframe.
         func (function): The function to apply.
+    
     Returns:
-        df_return (pd.DataFrame): Dataframe with the applied function.
+        pd.DataFrame: Dataframe with the applied function.
+    
     Examples:
         >>> df = pd.DataFrame(np.array(range(12)).reshape(4, 3), columns=list('abc'))
         >>> f = lambda x: '%.1f' % x
@@ -51,11 +56,14 @@ def apply_function_elementwise_dataframe(df, func):
 
 def apply_function_elementwise_series(ser, func):
     """Apply a function on a row/column basis of a DataFrame.
+    
     Args:
         ser (pd.Series): Series.
         func (function): The function to apply.
+    
     Returns:
-        ser_return (pd.Series): Series with the applied function.
+        pd.Series: Series with the applied function.
+    
     Examples:
         >>> df = pd.DataFrame(np.array(range(12)).reshape(4, 3), columns=list('abc'))
         >>> ser = df['b']
@@ -66,6 +74,5 @@ def apply_function_elementwise_series(ser, func):
         2     7.0
         3    10.0
         Name: b, dtype: object
-
     """
     return ser.map(func)
