@@ -3,10 +3,12 @@ import sqlite3
 
 def create_table(cursor, table_name, table_instruction):
     """Create a table and drop it if it exists.
+    
     Args:
         cursor (object): sqlite cursor.
         table_name (str): Table name.
         table_instruction (str): Table variable definition.
+    
     Example:
         >>> conn = sqlite3.connect('temp.db')
         >>> cur = conn.cursor()
@@ -20,8 +22,6 @@ def create_table(cursor, table_name, table_instruction):
         >>> c = cur.execute('PRAGMA table_info([table_csv]);')
         >>> cur.fetchall()
         [(0, 't', 'FLOAT(8, 6)', 0, None, 0), (1, 'q0', 'INT(5)', 0, None, 0), (2, 'q1', 'INT(5)', 0, None, 0)]
-
-
     """
     query = "DROP TABLE IF EXISTS " + table_name + ";"
     cursor.execute(query)
