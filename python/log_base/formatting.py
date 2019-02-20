@@ -4,11 +4,14 @@ from datetime import datetime, date
 
 def format_dictionary(dct, indent=4):
     """Formats a dictionary to be printed
+    
     Args:
         dct (dict): Dictionary.
         indent (int): Indentation value.
+    
     Returns:
-        result (str): Formatted dictionary ready to be printed
+        str: Formatted dictionary ready to be printed
+    
     Examples:
         >>> dct = {'bkey':1, 'akey':2}
         >>> print(format_dictionary(dct))
@@ -16,13 +19,13 @@ def format_dictionary(dct, indent=4):
             "akey": 2,
             "bkey": 1
         }
-
     """
     return json.dumps(dct, indent=indent, sort_keys=True)
 
 
 def format_float_as_string():
     """Example of formatting a float as a string
+    
     Examples:
         >>> format_float_as_string()
         'num=0.12'
@@ -33,6 +36,7 @@ def format_float_as_string():
 def format_date():
     """Example of formatting a datetime.
     More info: https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior
+    
     Examples:
         >>> format_date()
         2002-12-04

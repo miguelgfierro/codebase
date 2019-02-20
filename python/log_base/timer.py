@@ -4,6 +4,7 @@ from datetime import timedelta
 
 class Timer(object):
     """Timer class.
+    
     Examples:
         >>> big_num = 1000
         >>> t = Timer()
@@ -20,7 +21,6 @@ class Timer(object):
         True
         >>> "Time elapsed {}".format(t) #doctest: +ELLIPSIS
         'Time elapsed 0:00:...'
-
     """
 
     def __init__(self):
