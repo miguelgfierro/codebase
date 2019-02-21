@@ -14,7 +14,7 @@ class DummyUnitTest(unittest.TestCase):
         self.string = "Miguel"
         self.none = None
         self.list = [1, 2, 3]
-        self.dict = {'a': 1, 'b': 2}
+        self.dict = {"a": 1, "b": 2}
         self.np_array = np.array(self.list)
         self.df = pd.DataFrame(self.dict, index=[0])
 
@@ -47,13 +47,15 @@ class DummyUnitTest(unittest.TestCase):
         self.assertTrue(sublist_in_list)
 
     def test_dictionaries(self):
-        self.assertDictEqual(self.dict, {'a': 1, 'b': 2})
-        self.assertIn('a', self.dict)
-        self.assertDictContainsSubset(self.dict, {'a': 1, 'b': 2, 'c': 3}) # deprecated (no alternative)
-        self.assertRaises(KeyError, lambda: self.dict['c'])
+        self.assertDictEqual(self.dict, {"a": 1, "b": 2})
+        self.assertIn("a", self.dict)
+        self.assertDictContainsSubset(
+            self.dict, {"a": 1, "b": 2, "c": 3}
+        )  # deprecated (no alternative)
+        self.assertRaises(KeyError, lambda: self.dict["c"])
 
     def test_pandas(self):
-        df_target = pd.DataFrame({'a': 1, 'b': 2}, index=[0])
+        df_target = pd.DataFrame({"a": 1, "b": 2}, index=[0])
         self.assertTrue((self.df.equals(df_target)))
         pd.testing.assert_frame_equal(self.df, df_target)  # same as before
 
@@ -62,9 +64,8 @@ class DummyUnitTest(unittest.TestCase):
         np_target2 = np.array([0.9999, 2, 3])
         self.assertTrue((self.np_array == np_target).all())
         np.testing.assert_array_equal(self.np_array, np_target)
-        np.testing.assert_array_almost_equal(
-            self.np_array, np_target2, decimal=4)
+        np.testing.assert_array_almost_equal(self.np_array, np_target2, decimal=4)
 
 
-if __name__ == '__main__':
-    unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports'))
+if __name__ == "__main__":
+    unittest.main(testRunner=xmlrunner.XMLTestRunner(output="test-reports"))
