@@ -3,13 +3,16 @@ from pyspark.sql import SparkSession
 
 def spark(app_name="App", url="local[*]", memory="10G", cores="16"):
     """Start Spark if not started
+    
     Args:
         app_name (str): Set name of the application
         url (str): URL for spark master.
         memory (str): Size of memory for spark driver and executor.  
         cores (str): Number of executor cores
+    
     Returns:
         obj: Spark context.
+    
     Examples: 
         >>> spark = spark() # doctest: +SKIP
         >>> spark is not None
