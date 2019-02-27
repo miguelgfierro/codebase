@@ -60,6 +60,7 @@ def count_files_in_folder_recursively(folderpath):
     Examples:
         >>> count_files_in_folder_recursively("cpp")
         7
+        
     """
     if folderpath[-1] != os.path.sep:  # Add final '/' if it doesn't exist
         folderpath += os.path.sep
@@ -81,6 +82,7 @@ def get_filenames_in_folder(folderpath):
         >>> l = get_filenames_in_folder("cpp")   
         >>> Counter(l) == Counter(['io', 'log', 'numeric', 'CMakeLists.txt', 'playground.cpp'])
         True
+
     """
     names = [os.path.basename(x) for x in glob.glob(os.path.join(folderpath, "*"))]
     return sorted(names)
@@ -99,6 +101,7 @@ def get_files_in_folder_recursively(folderpath):
         >>> l = get_files_in_folder_recursively("cpp")
         >>> Counter(l) == Counter(['CMakeLists.txt', 'playground.cpp', 'io/read_file.cpp', 'io/read_file.hpp', 'log/timer.hpp', 'numeric/math_constants.hpp', 'numeric/math_utils.hpp'])
         True 
+
     """
     if folderpath[-1] != os.path.sep:  # Add final '/' if it doesn't exist
         folderpath += os.path.sep

@@ -23,6 +23,7 @@ def get_os():
     Examples:
         >>> get_os() #doctest: +ELLIPSIS
         '...'
+
     """
     return sys.platform
 
@@ -36,6 +37,7 @@ def get_machine_name():
     Examples:
         >>> get_machine_name() #doctest: +ELLIPSIS
         '...'
+    
     """
     return socket.gethostname()
 
@@ -49,6 +51,7 @@ def get_python_version():
     Examples:
         >>> get_python_version() #doctest: +ELLIPSIS
         '...'
+    
     """
     return sys.version
 
@@ -65,6 +68,7 @@ def get_library_version(library_name):
     Examples:
         >>> get_library_version("pandas") #doctest: +ELLIPSIS
         '0.2...'
+    
     """
     try:
         version = pkg_resources.get_distribution(library_name).version
@@ -88,6 +92,7 @@ def get_number_processors():
         >>> num = get_number_processors()
         >>> num >= 2
         True
+    
     """
     try:
         num = os.cpu_count()
@@ -106,6 +111,7 @@ def get_java_version():
         java version "1.8.0_151"
         Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
         Java HotSpot(TM) 64-Bit Server VM (build 25.151-b12, mixed mode)
+    
     """
     os.system("java -version")
 
@@ -119,6 +125,7 @@ def get_gpu_name():
     Examples:
         >>> get_gpu_name()
         []  
+    
     """
     try:
         return [gpu.name.decode("utf-8") for gpu in cuda.gpus]
@@ -160,6 +167,7 @@ def get_blas_version():
             libraries = ['openblas', 'openblas']
         blas_mkl_info:
         NOT AVAILABLE
+    
     """
     return np.__config__.show()
 
@@ -173,6 +181,7 @@ def get_number_gpus():
     Examples:
         >>> get_number_gpus()
         0
+   
     """
     try:
         return len(cuda.gpus)
@@ -189,6 +198,7 @@ def get_gpu_compute_capability():
     Examples:
         >>> get_gpu_compute_capability()
         []    
+    
     """
     try:
         return [gpu.compute_capability for gpu in cuda.gpus]
@@ -201,6 +211,7 @@ def get_cuda_version():
     
     Returns:
         str: Version of the library.
+    
     """
     if sys.platform == "win32":
         raise NotImplementedError("Implement this!")
@@ -221,6 +232,7 @@ def get_cudnn_version():
     
     Returns:
         str: Version of the library.
+    
     """
 
     def find_cudnn_in_headers(candiates):
@@ -269,6 +281,7 @@ def is_cuda_available():
     Examples:
         >>> is_cuda_available()
         False
+    
     """
     return cuda.is_available()
 
@@ -282,6 +295,7 @@ def get_conda_environment():
     Examples:
         >>> get_conda_environment()
         'codebase'    
+    
     """
     return os.environ["CONDA_DEFAULT_ENV"]
 
