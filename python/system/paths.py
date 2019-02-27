@@ -100,7 +100,7 @@ def get_files_in_folder_recursively(folderpath):
     Examples:
         >>> l = get_files_in_folder_recursively("cpp")
         >>> Counter(l) == Counter(['CMakeLists.txt', 'playground.cpp', 'io/read_file.cpp', 'io/read_file.hpp', 'log/timer.hpp', 'numeric/math_constants.hpp', 'numeric/math_utils.hpp'])
-        True 
+        True
 
     """
     if folderpath[-1] != os.path.sep:  # Add final '/' if it doesn't exist

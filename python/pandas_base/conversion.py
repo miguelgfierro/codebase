@@ -9,6 +9,7 @@ def _get_nominal_integer_dict(nominal_vals):
     
     Returns:
         dict: An dictionary with numeric values.
+    
     """
     d = {}
     for val in nominal_vals:
@@ -27,6 +28,7 @@ def _convert_to_integer(srs, d):
     
     Returns:
         pd.Series: An series with numeric values.
+    
     """
     return srs.map(lambda x: d[x])
 
@@ -39,6 +41,7 @@ def _convert_to_string(srs):
     
     Returns:
         pd.Series: An series with string values.
+    
     """
     return srs.map(lambda x: str(x))
 
@@ -63,6 +66,7 @@ def convert_cols_categorical_to_numeric(df, col_list=None):
         0        0        1
         1        1        2
         2        2        3
+    
     """
     if col_list is None:
         col_list = []
@@ -97,6 +101,7 @@ def convert_related_cols_categorical_to_numeric(df, col_list):
         0        0         2        1
         1        1         3        2
         2        2         0        3
+    
     """
     ret = pd.DataFrame()
     values = None
@@ -136,6 +141,7 @@ def convert_cols_numeric_to_categorical(df, col_list=None):
         object
         >>> print(df_cat['numbers2'].dtype)
         int64
+    
     """
     if col_list is None:
         col_list = df.columns
@@ -199,6 +205,7 @@ def replace_column_values(df, val_dict, col_name, new_col_name=None):
         0       a        1          1
         1       a        2          1
         2       c        3          c
+    
     """
     df_return = df.copy()
     if new_col_name is None:
@@ -206,6 +213,31 @@ def replace_column_values(df, val_dict, col_name, new_col_name=None):
     else:
         df_return[new_col_name] = df_return[col_name].replace(val_dict, inplace=False)
     return df_return
+
+
+def add_row(df, row):
+    """Add a row to a dataframe.
+    NOTE: according to https://stackoverflow.com/questions/41888080/python-efficient-way-to-add-rows-to-dataframe/41888241#41888241
+    using loc is 14x faster
+
+    Args:
+        df (pd.DataFrame): Dataframe.
+        row (dict): A dictionary.
+
+    Examples:
+        >>> df = pd.DataFrame(columns=["letters", "numbers"])
+        >>> row = {"letters": "a", "numbers": 1}
+        >>> add_row(df, row)
+          letters  numbers
+        0       a        1
+        >>> row = {"letters": "b", "numbers": 2}
+        >>> add_row(df, row)
+          letters  numbers
+        0       a        1
+        1       b        2
+
+    """
+    df.loc[df.shape[0] + 1] = row
 
 
 def split_text_in_column(df, component, col_name, new_col_list):
@@ -228,6 +260,7 @@ def split_text_in_column(df, component, col_name, new_col_list):
         0        1  user  local    bin
         1        2  user  local  share
         2        3  user  local    doc
+    
     """
     df_exp = df[col_name].str.split(component, expand=True)
     df_exp = df_exp.loc[:, (df_exp != "").any(axis=0)]  # remove columns with no text

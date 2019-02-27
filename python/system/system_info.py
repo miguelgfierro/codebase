@@ -124,7 +124,7 @@ def get_gpu_name():
     
     Examples:
         >>> get_gpu_name()
-        []  
+        []
     
     """
     try:
@@ -197,7 +197,7 @@ def get_gpu_compute_capability():
     
     Examples:
         >>> get_gpu_compute_capability()
-        []    
+        []
     
     """
     try:
@@ -294,7 +294,7 @@ def get_conda_environment():
     
     Examples:
         >>> get_conda_environment()
-        'codebase'    
+        'codebase'
     
     """
     return os.environ["CONDA_DEFAULT_ENV"]
