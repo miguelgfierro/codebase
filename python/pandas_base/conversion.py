@@ -228,10 +228,12 @@ def add_row(df, row):
         >>> df = pd.DataFrame(columns=["letters", "numbers"])
         >>> row = {"letters": "a", "numbers": 1}
         >>> add_row(df, row)
+        >>> df
           letters  numbers
         0       a        1
         >>> row = {"letters": "b", "numbers": 2}
         >>> add_row(df, row)
+        >>> df
           letters  numbers
         0       a        1
         1       b        2
