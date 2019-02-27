@@ -239,7 +239,7 @@ def add_row(df, row):
         1       b        2
 
     """
-    df.loc[df.shape[0] + 1] = row
+    df.loc[df.shape[0]] = row
 
 
 def split_text_in_column(df, component, col_name, new_col_list):
