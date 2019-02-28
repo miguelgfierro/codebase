@@ -26,11 +26,14 @@ def classification_metrics_binary(y_true, y_pred):
     High Precision and low Recall will return few positive results but most of them will be correct. 
     High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
+    
     Args:
         y_true (list or np.array): True labels.
         y_pred (list or np.array): Predicted labels (binary).
+    
     Returns:
-        report (dict): Dictionary with metrics.
+        dict: Dictionary with metrics.
+    
     Examples:
         >>> y_true = [0,1,0,0,1]
         >>> y_pred = [0,1,0,1,1]
@@ -38,7 +41,6 @@ def classification_metrics_binary(y_true, y_pred):
         >>> OrderedDict(sorted(result.items()))
         OrderedDict([('Accuracy', 0.8), ('Confusion Matrix', array([[2, 1],
                [0, 2]])), ('F1', 0.8), ('Precision', 0.6666666666666666), ('Recall', 1.0)])
-
     """
     m_acc = accuracy_score(y_true, y_pred)
     m_f1 = f1_score(y_true, y_pred)
@@ -68,12 +70,15 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
     High Precision and low Recall will return few positive results but most of them will be correct. 
     High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
+    
     Args:
         y_true (list or np.array): True labels.
         y_pred (list or np.array): Predicted labels.
         labels (list): Label index or name.
+    
     Returns:
-        report (dict): Dictionary with metrics.
+        dict: Dictionary with metrics.
+    
     Examples:
         >>> y_true = [0,1,2,0,1]
         >>> y_pred = [0,1,0,1,1]
@@ -82,7 +87,6 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
         OrderedDict([('Accuracy', 0.6), ('Confusion Matrix', array([[1, 1, 0],
                [0, 2, 0],
                [1, 0, 0]])), ('F1', 0.52), ('Precision', 0.4666666666666666), ('Recall', 0.6)])
-
     """
     m_acc = accuracy_score(y_true, y_pred)
     m_f1 = f1_score(y_true, y_pred, labels, average="weighted")
@@ -106,11 +110,14 @@ def classification_metrics_binary_prob(y_true, y_prob):
     - Log loss: Also called logistic regression loss or cross-entropy loss. It quantifies the performance by
     penalizing false classifications. Minimizing the Log Loss is equivalent to minimizing the squared error but using
     probabilistic predictions. Log loss penalize heavily classifiers that are confident about incorrect classifications.
+    
     Args:
         y_true (list or np.array): True labels.
         y_prob (list or np.array): Predicted labels (probability).
+    
     Returns:
-        report (dict): Dictionary with metrics.
+        dict: Dictionary with metrics.
+    
     Examples:
         >>> y_true = [0,1,0,0,1]
         >>> y_prob = [0.2,0.7,0.4,0.3,0.2]
@@ -139,11 +146,14 @@ def regression_metrics(y_true, y_pred):
     score is 1.0 and it can be negative (because the model can be arbitrarily worse). A score of 0 means that the
     variables are not linearly correlated.
     - Root Mean Squared Error: RMSE is the square root of MSE. It also gives a relatively high weight to large errors.
+    
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
+    
     Returns:
-        report (dict): Dictionary with metrics.
+        dict: Dictionary with metrics.
+    
     Examples:
         >>> y_true = [5,1,0,7,1]
         >>> y_pred = [6,0.7,0.4,10,20]
@@ -155,7 +165,6 @@ def regression_metrics(y_true, y_pred):
         >>> result = regression_metrics(y_true, y_pred)
         >>> OrderedDict(sorted(result.items()))
         OrderedDict([('MAE', 1.1400000000000001), ('MSE', 2.25), ('R2', 0.6942934782608696), ('RMSE', 1.5)])
-
     """
     mse = mean_squared_error(y_true, y_pred)
     mae = mean_absolute_error(y_true, y_pred)
@@ -166,12 +175,15 @@ def regression_metrics(y_true, y_pred):
 
 def precision_at_k(y_true, y_pred, k=None):
     """Precision at K.
+    
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
+    
     Returns:
-        result (float): precision at k (max=1, min=0)
+        float: precision at k (max=1, min=0)
+    
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -181,7 +193,6 @@ def precision_at_k(y_true, y_pred, k=None):
         >>> y_pred = np.array([9,0,8,1,7])
         >>> precision_at_k(y_true, y_pred, k=3)
         0.3333333333333333
-
     """
     predictions = y_pred[:k]
     num_hit = len(set(predictions).intersection(set(y_true)))
@@ -190,12 +201,15 @@ def precision_at_k(y_true, y_pred, k=None):
 
 def recall_at_k(y_true, y_pred, k=None):
     """Recall at K.
+    
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
+    
     Returns:
-        result (float): recall at k (max=1, min=0)
+        float: recall at k (max=1, min=0)
+    
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -215,12 +229,15 @@ def recall_at_k(y_true, y_pred, k=None):
 def discounted_cumulative_gain(y_true, y_pred, k=None):
     """Discounted Cumulative Gain (DCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
+    
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
+    
     Returns:
-        result (float): DCG
+        float: DCG
+    
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -230,7 +247,6 @@ def discounted_cumulative_gain(y_true, y_pred, k=None):
         >>> y_pred = np.array([9,0,8,1,7])
         >>> discounted_cumulative_gain(y_true, y_pred, k=3)
         6.0
-
     """
     order = np.argsort(y_pred)[::-1]
     y_true = np.take(y_true, order[:k])
@@ -240,12 +256,15 @@ def discounted_cumulative_gain(y_true, y_pred, k=None):
 def exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
     """Exponential Discounted Cumulative Gain (eDCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
+    
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
+    
     Returns:
-        result (float): eDCG
+        float: eDCG
+    
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -255,7 +274,6 @@ def exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
         >>> y_pred = np.array([9,0,8,1,7])
         >>> exponential_discounted_cumulative_gain(y_true, y_pred, k=3)
         32.5
-
     """
     order = np.argsort(y_pred)[::-1]
     y_true = np.take(y_true, order[:k])
@@ -265,12 +283,15 @@ def exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
 def normalized_discounted_cumulative_gain(y_true, y_pred, k=None):
     """Normalized Discounted Cumulative Gain (nDCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
+    
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
+    
     Returns:
-        result (float): nDCG (max=1, min=0)
+        float: nDCG (max=1, min=0)
+    
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -280,7 +301,6 @@ def normalized_discounted_cumulative_gain(y_true, y_pred, k=None):
         >>> y_pred = np.array([9,0,8,1,7])
         >>> normalized_discounted_cumulative_gain(y_true, y_pred, k=3)
         0.537892328558952
-
     """
     return discounted_cumulative_gain(y_true, y_pred, k) / discounted_cumulative_gain(
         y_true, y_true, k
@@ -290,12 +310,15 @@ def normalized_discounted_cumulative_gain(y_true, y_pred, k=None):
 def normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
     """Normalized Exponential Discounted Cumulative Gain (neDCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
+    
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
+    
     Returns:
-        result (float): neDCG (max=1, min=0)
+        float: neDCG (max=1, min=0)
+    
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -305,7 +328,6 @@ def normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
         >>> y_pred = np.array([9,0,8,1,7])
         >>> normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=3)
         0.21950735175253772
-
     """
     return exponential_discounted_cumulative_gain(
         y_true, y_pred, k
@@ -315,11 +337,14 @@ def normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
 def gini(y_true, y_pred):
     """Normalized Gini Coefficient.
     It is a measure of statistical dispersion intended to represent a measurement of inequality.
+    
     Args:
         y (np.array): True values.
         p (np.array): Predicted values.
+    
     Returns:
-        e (float): Normalized Gini coefficient.
+        float: Normalized Gini coefficient.
+    
     Examples:
         >>> actual = np.array([0.3, 0.8, 0.1, 0.5])
         >>> pred1 = np.array([0.3, 0.8, 0.1, 0.5])

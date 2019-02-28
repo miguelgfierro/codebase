@@ -1,9 +1,5 @@
-# source: http://interactivepython.org/runestone/static/pythonds/SortSearch/Hashing.html#implementing-the-map-abstract-data-type
-
-
 class HashTable(object):
-    """
-    A hash table is a data structure that can map keys to values. The mapping
+    """A hash table is a data structure that can map keys to values. The mapping
     between an item and the slot where that item belongs is called the hash
     function. In practice there can be hash collisions when the hash function
     generates the same index for more than one key. This has to be managed.
@@ -11,8 +7,11 @@ class HashTable(object):
     use __eq__.
     Time complexity: search, insert, delete: O(1)
     Space complexity: O(n)
+    source: http://interactivepython.org/runestone/static/pythonds/SortSearch/Hashing.html#implementing-the-map-abstract-data-type
+    
     Args:
         size (int): Size of the hash table.
+    
     Examples:
         >>> H=HashTable(5)
         >>> H[54]="cat"
@@ -25,7 +24,6 @@ class HashTable(object):
         >>> H[26] = 'duck'
         >>> H.data
         [None, 'duck', None, 'lion', 'cat']
-
     """
 
     def __init__(self, size):
@@ -60,7 +58,7 @@ class HashTable(object):
         """The collision resolution technique is linear probing with a "plus 1"
         rehash function. Linear probing is looking sequentially for the next
         open slot"""
-        return (oldhash+1) % size
+        return (oldhash + 1) % size
 
     def get(self, key):
         """Return the value of a key."""

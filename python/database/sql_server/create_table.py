@@ -3,9 +3,11 @@ import pyodbc
 
 def create_table(table_name, cursor):
     """Create a table and drop it if it exists.
+    
     Args:
         table_name (str): Table name.
         cursor (object): pyobdc cursor.
+    
     Example (non executable):
         $ conn = pyodbc.connect(connection_string)
         $ cur = conn.cursor()

@@ -5,11 +5,13 @@ from dateutil.parser import isoparse
 
 def parse_args(arguments=[]):
     """Example of argparse with different inputs.
+    
     Args:
         arguments (list): Arguments passed as a list of strings. This argument
                           can be used when calling the function from a
                           notebook. Alternatively when using the command line,
                           we don't need this variable.
+    
     Examples:
         >>> cmd = 'AAA -ms BBB -si -l 1 2 3'
         >>> args = parse_args(['AAA', '-ms', 'BBB', '-si', '-l', '1', '2', '3', '-d', '2020-01-06'])
@@ -19,7 +21,6 @@ def parse_args(arguments=[]):
         Input list ['1', '2', '3'], type: <class 'list'>
         Default list [7, 77, 777], type: <class 'list'>
         Date: 06/01/2020, 00:00:00
-
     """
     parser = argparse.ArgumentParser(
         description="Parser", formatter_class=argparse.ArgumentDefaultsHelpFormatter

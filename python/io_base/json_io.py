@@ -4,9 +4,11 @@ import json
 def save_file(data, filename):
     """Save a dictionary as JSON format.
     Note: When saving in JSON format, the key has to be a string, it can't be a number
+    
     Args:
         data (dict): A dictionary.
         filename (str): Name of the file.
+    
     Examples:
         >>> data = {'name': 'Miguel','surname': 'Gonzalez-Fierro', 1:2,'3':'4'}
         >>> save_file(data, 'file.json')
@@ -18,10 +20,13 @@ def save_file(data, filename):
 
 def read_file(filename):
     """Read a JSON file.
+    
     Args:
         filename (str): Name of the file.
+    
     Returns:
-        data (dict): A dictionary.
+        dict: A dictionary.
+    
     Examples:
         >>> data = read_file('share/data.json')
         >>> type(data)

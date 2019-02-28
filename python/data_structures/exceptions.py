@@ -13,6 +13,7 @@ def divide(x, y):
     The else clause is executed if no exception is raise.
     The finally clause is executed always.
     source: https://docs.python.org/3.6/tutorial/errors.html#defining-clean-up-actions
+    
     Examples:
         >>> divide(1,2)
         result is 0.5
@@ -37,9 +38,11 @@ def divide(x, y):
 
 def catch_exception_message_and_trace():
     """Example on how to catch the message and trace of an exception
+    
     Returns:
         trace (str): The traceback.
         error_msg (str): The error message
+    
     Examples:
         >>> tr, e = catch_exception_message_and_trace()
         >>> print(tr) #doctest: +ELLIPSIS

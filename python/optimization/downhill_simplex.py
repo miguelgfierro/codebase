@@ -9,13 +9,16 @@ def optimize_function(func, initial_guess, **kargs):
     complicated functions. It might not successfully converge to the minimum.
     https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
     Info: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin.html#scipy-optimize-fmin
+    
     Args:
         func (callable): The objective function to be minimized. In the form f(x, *args), where x is the argument in
                          the form of a 1-D array and args is a tuple of any additional parameters.
         initial_guess (np.array): Initial guess.
+    
     Returns:
-        xopt (array): Result of the optimization.
-        fopt (float): Value of function at minimum.
+        np.array: Result of the optimization.
+        float: Value of function at minimum.
+    
     Examples:
         >>> from python.optimization.functions import rosenbrock
         >>> x0 = np.array([0, 0, 0, 0, 0])
@@ -31,8 +34,6 @@ def optimize_function(func, initial_guess, **kargs):
         array([0.96852082, 0.96848094])
         >>> fopt
         3.574451924990758
-
-
     """
     [xopt, fopt, iter, funcalls, warnflag, allvecs] = fmin(
         func, x0=initial_guess, full_output=True, retall=True, disp=False, **kargs

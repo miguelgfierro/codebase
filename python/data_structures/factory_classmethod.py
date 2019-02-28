@@ -3,6 +3,7 @@
 
 class Pizza:
     """Factory using classmethod decorator
+    
     Examples:
         >>> pizza = Pizza.margherita()
         >>> type(pizza)
@@ -12,7 +13,6 @@ class Pizza:
         >>> pizza2 = Pizza.prosciutto()
         >>> print(pizza2)
         Pizza(['mozzarella', 'tomatoes', 'ham'])
-
     """
 
     def __init__(self, ingredients):

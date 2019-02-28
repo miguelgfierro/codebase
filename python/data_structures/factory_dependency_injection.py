@@ -14,13 +14,13 @@
 
 class Shape(object):
     """Factory class.
+    
     Examples:
         >>> s = Shape.factory("Circle")
         >>> s.draw()
         Circle.draw
         >>> Shape.__subclasses__()
         [<class 'python.data_structures.factory_dependency_injection.Circle'>, <class 'python.data_structures.factory_dependency_injection.Square'>]
-
     """
 
     def factory(description):
@@ -45,13 +45,13 @@ class Square(Shape):
 
 class ShapeDict(object):
     """Factory class based on dictionaries.
+    
     Examples:
         >>> s = ShapeDict.factory("Square")
         >>> s.draw()
         Square.draw
         >>> Shape.__subclasses__()
         [<class 'python.data_structures.factory_dependency_injection.Circle'>, <class 'python.data_structures.factory_dependency_injection.Square'>]
-
     """
 
     def factory(description):

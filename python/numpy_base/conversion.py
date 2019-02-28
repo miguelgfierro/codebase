@@ -3,10 +3,13 @@ import pandas as pd
 
 def convert_to_pandas_dataframe(data):
     """Convert a numpy array to a dataframe. Every column of the array is a column in the dataframe.
+    
     Args:
         data (np.array): An array.
+    
     Returns:
-        result (pd.DataFrame): An dataframe with the numpy array values.
+        pd.DataFrame: An dataframe with the numpy array values.
+    
     Examples:
         >>> data = np.array([(1,10),(2,20),(3,30)], dtype='int')
         >>> df = convert_to_pandas_dataframe(data)
@@ -17,7 +20,5 @@ def convert_to_pandas_dataframe(data):
         2  3  30
         >>> df.shape
         (3, 2)
-
-
     """
     return pd.DataFrame(data)

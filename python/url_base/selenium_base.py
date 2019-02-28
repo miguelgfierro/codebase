@@ -9,16 +9,18 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def create_page_driver(url, browser="safari", driver_path=None):
     """Generates the selenium driver to parse a web
+    
     Args:
         url (str): URL to parse
+    
     Returns:
-        driver (obj): Driver of the web
+        obj: Driver of the web
+    
     Example (not executable):
         $ url = 'http://miguelgfierro.com/'
         $ driver = create_page_driver(url)
         $ driver.title
         'Sciblog - A blog designed like a scientific paper'
-
     """
     driver = _driver_map(browser)(executable_path=driver_path)
     driver.get(url)
@@ -31,25 +33,27 @@ def _driver_map(browser="safari"):
         "firefox": webdriver.Firefox,
         "ie": webdriver.Ie,
         "edge": webdriver.Edge,
-        "chrome": webdriver.Chrome
+        "chrome": webdriver.Chrome,
     }
     return browser_map[browser]
 
 
 def search_form(driver, html_class_form, search_term):
     """Generates the selenium broswer to parse a web
+    
     Args:
         driver (obj): Driver of the web
         html_class_form (str): HTML class in form
         search_term (str): Term to search
+    
     Returns:
-        driver (obj): driver of the web
+        obj: driver of the web
+    
     Example (not executable):
         $ driver = create_page_driver('http://miguelgfierro.com/')
         $ search_form(driver, 'navigation-bar-search-input', 'deep learning')
         $ driver.current_url
         'https://miguelgfierro.com/search?q=deep+learning'
-
     """
     element = driver.find_element_by_class_name(html_class_form)
     element.clear()
@@ -59,10 +63,12 @@ def search_form(driver, html_class_form, search_term):
 
 def screenshot(driver, path="", filename="page.png"):
     """Save a screenshot of the current page.
+    
     Args:
         driver (obj): Driver of the web
         path (str): Path to file
         filename (str): Filename
+    
     Example (not executable):
         $ driver = create_page_driver('http://miguelgfierro.com/')
         $ screenshot(driver, filename='mig.png')
@@ -74,14 +80,17 @@ def screenshot(driver, path="", filename="page.png"):
 def find_element(driver, value, selector_type="class", multiple=False):
     """Find an element using a selector.
     More info: https://gist.github.com/casschin/1990245
+    
     Args:
         driver (obj): Driver of the web.
         value (str): Value to find.
         selector_type (str): Selector type. Valid arguments are 'class', 'id', 'tag',
                             'name', 'link_text', 'partial_link_text', 'css' or 'xpath'.
         multiple (bool): Whether find one element or multiple ones.
+    
     Returns:
-        driver (obj): driver of the web
+        obj: driver of the web
+    
     Example (not executable):
         $ driver = create_page_driver('https://miguelgfierro.com/blog/2017/a-gentle-introduction-to-transfer-learning-for-image-classification/')
         $ element = find_element(driver, 'title', 'class')

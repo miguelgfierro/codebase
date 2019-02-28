@@ -34,6 +34,7 @@ class SinglyLinkedListNode(object):
 
 class LinkedList(object):
     """Linked list
+    
     Examples:
         >>> a1 = SinglyLinkedListNode("1")
         >>> a2 = SinglyLinkedListNode("1")
@@ -69,7 +70,6 @@ class LinkedList(object):
         >>> ll2 = LinkedList(cyc1)
         >>> ll2.has_cycle()
         True
-
     """
 
     def __init__(self, head=None):

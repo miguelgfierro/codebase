@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 
 class AbstractClassExample(ABC):
     """Abstract class example.
+    
     Examples:
         >>> c1 = DontDoAnything(1)
         Traceback (most recent call last):
@@ -16,8 +17,8 @@ class AbstractClassExample(ABC):
         42
         >>> c3.do_something()
         42
-
     """
+
     def __init__(self, value):
         self.value = value
         super().__init__()

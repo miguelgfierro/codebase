@@ -13,8 +13,10 @@ BASE_URL = "https://github.com/"
 
 class Github:
     """Github stats class"""
+
     def __init__(self, token, git_url):
         """Initializer
+        
         Args:
             token (str): Github token.
             git_url (str): URL of github repository.
@@ -29,6 +31,7 @@ class Github:
     @lru_cache()
     def general_stats(self):
         """General attributes and statistics of the repo
+        
         Returns:
             json: JSON with general stats.
         """
@@ -41,6 +44,7 @@ class Github:
     @property
     def forks(self):
         """Get current number of forks
+        
         Returns:
             int: Number of forks.
         """
@@ -54,6 +58,7 @@ class Github:
     @lru_cache()
     def open_issues(self):
         """Get current number of open issues.
+        
         Returns:
             int: Number of issues.
         """
@@ -73,6 +78,7 @@ class Github:
     @lru_cache()
     def open_pull_requests(self):
         """Get current number of open PRs.
+        
         Returns:
             int: Number of PRs.
         """
@@ -91,6 +97,7 @@ class Github:
     @property
     def stars(self):
         """Get current number of stars.
+        
         Returns:
             int: Number of stars.
         """
@@ -103,6 +110,7 @@ class Github:
     @property
     def watchers(self):
         """Get current number of watchers.
+        
         Returns:
             int: Number of watchers.
         """
@@ -116,6 +124,7 @@ class Github:
     @lru_cache()
     def last_year_commit_frequency(self):
         """Get the commit frequency in every week of the last year.
+        
         Returns:
             dict: Dictionary of 52 elements (1 per week) with the commits every day 
                 (starting on Sunday), total commit sum and first day of the week.
@@ -137,6 +146,7 @@ class Github:
     def top_ten_referrers(self):
         """Get the top 10 referrers over the last 14 days.
         Source: https://developer.github.com/v3/repos/traffic/#list-referrers
+        
         Returns:
             json: JSON with referrer name, total number of references
                 and unique number of references.
@@ -152,6 +162,7 @@ class Github:
     @property
     def number_total_referrers(self):
         """Count the total number of references to the repo.
+        
         Returns:
             int: Number.
         """
@@ -164,6 +175,7 @@ class Github:
     @property
     def number_unique_referrers(self):
         """Count the unique number of references to the repo.
+        
         Returns:
             int: Number.
         """
@@ -178,6 +190,7 @@ class Github:
     def top_ten_content(self):
         """Get the top 10 popular contents within the repo over the last 14 days.
         Source: https://developer.github.com/v3/repos/traffic/#list-paths
+        
         Returns:
             json: JSON with the content link, total and unique views.
         """
@@ -194,6 +207,7 @@ class Github:
         last 14 days. Timestamps are aligned to UTC midnight of the beginning of 
         the day or week. Week begins on Monday.
         Source: https://developer.github.com/v3/repos/traffic/#views
+        
         Returns:
             json: JSON with daily views.
         """
@@ -206,6 +220,7 @@ class Github:
     @property
     def number_total_views(self):
         """Total number of views over the last 14 days
+        
         Returns:
             int: Views.
         """
@@ -214,6 +229,7 @@ class Github:
     @property
     def number_unique_views(self):
         """Unique number of views over the last 14 days
+        
         Returns:
             int: Views.
         """
@@ -226,6 +242,7 @@ class Github:
         14 days. Timestamps are aligned to UTC midnight of the beginning of the day 
         or week. Week begins on Monday.
         Source: https://developer.github.com/v3/repos/traffic/#clones
+        
         Returns:
             json: JSON with daily clones. 
         """
@@ -238,6 +255,7 @@ class Github:
     @property
     def number_total_clones(self):
         """Total number of clones over the last 14 days
+        
         Returns:
             int: Clones.
         """
@@ -246,6 +264,7 @@ class Github:
     @property
     def number_unique_clones(self):
         """Unique number of clones over the last 14 days
+        
         Returns:
             int: Clones.
         """
@@ -254,6 +273,7 @@ class Github:
     @property
     def repo_size(self):
         """Repo size in Mb
+        
         Returns:
             int: Size.
         """
@@ -262,6 +282,7 @@ class Github:
     @property
     def creation_date(self):
         """Date of repository creation
+        
         Returns:
             str: Date.
         """
@@ -274,6 +295,7 @@ class Github:
     def languages(self):
         """Get the languages in the repo and the lines of code of each.
         Source: https://developer.github.com/v3/repos/#list-languages
+        
         Returns:
             dict: Dictionary of languages and lines of code.
         """
@@ -286,6 +308,7 @@ class Github:
     @property
     def number_languages(self):
         """Number of different languages
+        
         Returns:
             int: Number
         """
@@ -296,6 +319,7 @@ class Github:
         """Get total number of commits.
         NOTE: There is no straightforward way of getting the commits with GitHub API
         https://blog.notfoss.com/posts/get-total-number-of-commits-for-a-repository-using-the-github-api/
+        
         Returns:
             int: Number of commits.
         """
@@ -310,6 +334,7 @@ class Github:
     @property
     def number_contributors(self):
         """Count the total number of contributors, based on unique email addresses.
+        
         Returns:
             int: Number of contributors.
         """
@@ -324,6 +349,7 @@ class Github:
     @property
     def number_branches(self):
         """Number of current remote branches.
+        
         Returns:
             int: Number.
         """
@@ -360,6 +386,7 @@ class Github:
     @property
     def number_added_lines(self):
         """Count the number of added lines.
+        
         Returns:
             int: Number of added lines.
         """
@@ -376,6 +403,7 @@ class Github:
     @property
     def number_deleted_lines(self):
         """Get the number of deleted lines.
+        
         Returns:
             int: Number of deleted lines.
         """
@@ -395,6 +423,7 @@ class Github:
 
     def _cloned_repo_dir(self):
         """Clone a git repo and returns the location.
+        
         Returns:
             str: Name of the folder name of the repo.
         """

@@ -13,6 +13,7 @@ logging.basicConfig(level="INFO")
 class LoggingDict(dict):
     """This class has all the same capabilities as its parent, dict, but it
     extends the __setitem__ method to make log entries whenever a key is updated.
+    
     Examples:
         >>> ld = LoggingDict([('red', 1), ('green', 2), ('blue', 3)])
         >>> ld.items() == {'blue': 3, 'green': 2, 'red': 1}.items()
@@ -20,7 +21,6 @@ class LoggingDict(dict):
         >>> ld['red'] = 10 # logs: INFO:root:Setting 'red' to 10
         >>> LoggingDict.__mro__
         (<class 'python.data_structures.method_resolution_order.LoggingDict'>, <class 'dict'>, <class 'object'>)
-
     """
 
     def __setitem__(self, key, value):
@@ -35,6 +35,7 @@ class LoggingOD(LoggingDict, OrderedDict):
     in LoggingDict.__setitem__ now dispatches the key/value update to OrderedDict instead of dict.
     We did not alter the source code for LoggingDict. Instead we built a subclass whose only logic is to compose
     two existing classes and control their search order.
+    
     Examples:
         >>> ld = LoggingOD([('red', 1), ('green', 2), ('blue', 3)])
         >>> ld
@@ -42,7 +43,6 @@ class LoggingOD(LoggingDict, OrderedDict):
         >>> ld['red'] = 10 # logs: INFO:root:Setting 'red' to 10
         >>> LoggingOD.__mro__
         (<class 'python.data_structures.method_resolution_order.LoggingOD'>, <class 'python.data_structures.method_resolution_order.LoggingDict'>, <class 'collections.OrderedDict'>, <class 'dict'>, <class 'object'>)
-    
     """
 
     pass
@@ -73,6 +73,7 @@ class Shape(Root):
 
 class ColoredShape(Shape):
     """Getting the argument signatures to match
+    
     Examples:
         >>> ColoredShape(color='blue', shapename='square').draw()
         Drawing.  Setting color to: blue
@@ -95,11 +96,10 @@ class Moveable:
     it (perhaps its method of interest doesn’t use super() or perhaps the class
     doesn’t inherit from the root class). This situation is easily remedied
     by creating an adapter class that plays by the rules.
-
     """
 
-    # non-cooperative class that doesn't use super()
     def __init__(self, x, y):
+        """non-cooperative class that doesn't use super()"""
         self.x = x
         self.y = y
 
@@ -110,8 +110,8 @@ class Moveable:
 class MoveableAdapter(Root):
     """Show how to incorporate a non-cooperative class"""
 
-    # make a cooperative adapter class for Moveable
     def __init__(self, *, x, y, **kwds):
+        """make a cooperative adapter class for Moveable"""
         self.moveable = Moveable(x, y)
         super().__init__(**kwds)
 
@@ -122,6 +122,7 @@ class MoveableAdapter(Root):
 
 class MovableColoredShape(ColoredShape, MoveableAdapter):
     """Mixing all together
+    
     Examples:
         >>> MovableColoredShape(color='red', shapename='triangle', x=10, y=20).draw()
         Drawing.  Setting color to: red
@@ -134,10 +135,10 @@ class MovableColoredShape(ColoredShape, MoveableAdapter):
 
 class OrderedCounter(Counter, OrderedDict):
     """Counter that remembers the order elements are first encountered
+    
     Examples:
         >>> OrderedCounter('abracadabra')
         OrderedCounter(OrderedDict([('a', 5), ('b', 2), ('r', 2), ('c', 1), ('d', 1)]))
-
     """
 
     def __repr__(self):

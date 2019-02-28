@@ -24,6 +24,7 @@ def hello_world():
     $ import requests
     $ res = requests.get('http://127.0.0.1:5000/hello')
     $ res = requests.get('http://127.0.0.1:5000/hello?name=Miguel')
+    
     Examples:
         >>> with app.test_client() as c:
         ...     rv = c.get('/hello')
@@ -52,6 +53,7 @@ def hello_world():
 @app.route("/hello/<user_id>")
 def hello_user(user_id):
     """Basic endpoint with url parameters.
+    
     Args:
         user_id (str): String parameter.
     Examples (not executable):
@@ -60,6 +62,7 @@ def hello_user(user_id):
     In Python, equivalent to:
     $ import requests
     $ res = requests.get('http://127.0.0.1:5000/hello/5')
+    
     Examples:
         >>> with app.test_client() as c:
         ...     rv = c.get('/hello/5')    
@@ -77,8 +80,6 @@ def hello_user(user_id):
         '450 UNKNOWN'
         >>> content
         {'message': 'User not found'}
-
-        
     """
     if int(user_id) >= 10:
         raise InvalidUsage("User not found")

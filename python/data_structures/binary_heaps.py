@@ -1,4 +1,3 @@
-
 class BinaryHeap(object):
     """A Binary Heap is a data structure in form of a binary tree that holds
     the shape and head property. The shape property implies that it is a
@@ -8,6 +7,7 @@ class BinaryHeap(object):
     A Binary Heap is a common method to implement priority queues.
     Time complexity:
     search: O(n); insert&delete: O(log n); pop: O(1)
+    
     Examples:
         >>> bh = BinaryHeap()
         >>> bh.build([9,5,6,2,3])
@@ -23,7 +23,6 @@ class BinaryHeap(object):
         6
         >>> bh.pop()
         9
-
     """
 
     def __init__(self):
@@ -60,7 +59,7 @@ class BinaryHeap(object):
         if i * 2 + 1 > self.current_size:
             return i * 2
         else:
-            if self.heap_list[i*2] < self.heap_list[i*2+1]:
+            if self.heap_list[i * 2] < self.heap_list[i * 2 + 1]:
                 return i * 2
             else:
                 return i * 2 + 1

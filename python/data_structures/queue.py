@@ -1,8 +1,8 @@
-
 class Queue(object):
     """A queue is a linear structure of ordered items where the addition
     of new items and the removal of existing items always takes place at the
     same end. This principle is called FIFO (First In, First Out)
+    
     Examples:
         >>> q = Queue()
         >>> q.is_empty()
@@ -19,7 +19,6 @@ class Queue(object):
         4
         >>> q.size()
         1
-
     """
 
     def __init__(self):

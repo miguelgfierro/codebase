@@ -7,18 +7,19 @@ def plot_confusion_matrix(
     cm, classes, normalize=False, title="Confusion matrix", cmap=plt.cm.Blues
 ):
     """Plots a confusion matrix.
+    
     Args:
         cm (np.array): The confusion matrix array.
         classes (list): List wit the classes names.
         normalize (bool): Flag to normalize data.
         title (str): Title of the plot.
         cmap (matplotlib.cm): Matplotlib colormap https://matplotlib.org/api/cm_api.html
+    
     Examples:
         >>> a = np.array([[10, 3, 0],[1, 2, 3],[1, 5, 9]])
         >>> classes = ['cl1', 'cl2', 'cl3']
         >>> plot_confusion_matrix(a, classes, normalize=False)
         >>> plot_confusion_matrix(a, classes, normalize=True)
-
     """
     cm_max = cm.max()
     cm_min = cm.min()
@@ -33,7 +34,7 @@ def plot_confusion_matrix(
     tick_marks = np.arange(len(classes))
     plt.xticks(tick_marks, classes, rotation=45)
     plt.yticks(tick_marks, classes)
-    thresh = cm_max / 2.
+    thresh = cm_max / 2.0
     plt.clim(cm_min, cm_max)
 
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):

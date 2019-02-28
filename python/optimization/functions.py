@@ -10,7 +10,6 @@ def rosenbrock(x):
     algorithms. The function is defined by: f(x,y) = (a-x)^2 + b(y-x^2)^2. The global minimum is inside a long, narrow,
     parabolic shaped flat valley. To find the valley is trivial. To converge to the global minimum, is difficult.
     More info: https://en.wikipedia.org/wiki/Rosenbrock_function
-
     """
     return rosen(x)
 
@@ -18,16 +17,18 @@ def rosenbrock(x):
 def ackley(x):
     """Custom function."""
     arg1 = -0.2 * np.sqrt(0.5 * (x[0] ** 2 + x[1] ** 2))
-    arg2 = 0.5 * (np.cos(2. * np.pi * x[0]) + np.cos(2. * np.pi * x[1]))
-    return -20. * np.exp(arg1) - np.exp(arg2) + 20. + np.e
+    arg2 = 0.5 * (np.cos(2.0 * np.pi * x[0]) + np.cos(2.0 * np.pi * x[1]))
+    return -20.0 * np.exp(arg1) - np.exp(arg2) + 20.0 + np.e
 
 
 def plot_function2D(x, y, z):
     """Plot 2D function with matplotlib
+    
     Args:
         x (np.array): X value.
         y (np.array): Y value.
         z (np.array): function value.
+    
     Examples (not executable):
         $ s = 0.05
         $ X = np.arange(-2, 2.+s, s)
@@ -35,7 +36,6 @@ def plot_function2D(x, y, z):
         $ X, Y = np.meshgrid(X, Y)
         $ f = rosenbrock([X, Y])
         $ plot_function2D(X, Y, f)
-
     """
     fig = plot.figure()
     ax = fig.gca(projection="3d")

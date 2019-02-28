@@ -15,6 +15,7 @@ from functools import singledispatch
 
 def fun_optional_arguments(arg1=None, arg2=None, arg3=None, verbose=True):
     """Example of function overload with optional arguments.
+    
     Examples:
         >>> fun_optional_arguments(arg1="Hi!", verbose=True)
         Let me just say, Hi!
@@ -22,7 +23,6 @@ def fun_optional_arguments(arg1=None, arg2=None, arg3=None, verbose=True):
         Strength in numbers, eh? 5
         >>> fun_optional_arguments(arg3=[1,2,3], verbose=True)
         Enumerate this: [1, 2, 3]
-
     """
     if arg1 is not None:
         if verbose:
@@ -42,6 +42,7 @@ def fun_multiple_dispatch(arg, verbose=False):
     """Example of function overloading using multiple dispatch (also called
     multimethods), it requires the use of helper functions.
     More info: http://matthewrocklin.com/blog/work/2014/02/25/Multiple-Dispatch
+    
     Examples:
         >>> fun_multiple_dispatch("Hi!", verbose=True)
         Let me just say, Hi!
@@ -91,6 +92,7 @@ def fun_single_dispatch(arg, verbose=False):
     A generic function is composed of multiple functions implementing the same operation for different types.
     When the implementation is chosen based on the type of a single argument, this is known as single dispatch.
     source: https://www.python.org/dev/peps/pep-0443/
+    
     Examples:
         >>> fun_single_dispatch("Hi!", verbose=True)
         Let me just say, Hi!
@@ -103,7 +105,6 @@ def fun_single_dispatch(arg, verbose=False):
         >>> keys = fun_single_dispatch.registry.keys()  # To access all registered implementations
         >>> print(list(keys)) # doctest: +SKIP
         [<class 'list'>, <class 'object'>, <class 'int'>, <class 'NoneType'>]
-
     """
     if verbose:
         print("Let me just say,", end=" ")
