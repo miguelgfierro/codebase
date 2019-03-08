@@ -107,7 +107,7 @@ def get_files_in_folder_recursively(folderpath, pattern=None):
         >>> Counter(l) == Counter(['CMakeLists.txt', 'playground.cpp', 'io/read_file.cpp', 'io/read_file.hpp', 'log/timer.hpp', 'numeric/math_constants.hpp', 'numeric/math_utils.hpp'])
         True
         >>> l = get_files_in_folder_recursively("cpp", "*.cpp")
-        >>> Counter(l) == Counter([playground.cpp', 'io/read_file.cpp'])
+        >>> Counter(l) == Counter(['playground.cpp', 'io/read_file.cpp'])
         True
 
     """
