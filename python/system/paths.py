@@ -73,8 +73,9 @@ def get_filenames_in_folder(folderpath, pattern="*"):
     """ Return the files or folder names inside a folder.
     
     Args:
-        folderpath (str): folder path
-    
+        folderpath (str): Folder path.
+        pattern (str): Pattern to find.
+
     Returns:
         list: list of files
     
