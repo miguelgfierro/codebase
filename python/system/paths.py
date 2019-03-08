@@ -111,8 +111,8 @@ def get_files_in_folder_recursively(folderpath, pattern=None):
         True
 
     """
-    if folderpath[-1] != os.path.sep:  # Add final '/' if it doesn't exist
-        folderpath += os.path.sep
+    if folderpath[-1] == os.path.sep:  # Remove final '/' if it exist
+        folderpath = folderpath[:-1]
     path = os.path.join(folderpath, "**")
     if pattern is not None:
         path = os.path.join(path, pattern)
