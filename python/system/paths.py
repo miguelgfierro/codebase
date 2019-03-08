@@ -69,7 +69,7 @@ def count_files_in_folder_recursively(folderpath):
     )
 
 
-def get_filenames_in_folder(folderpath):
+def get_filenames_in_folder(folderpath, pattern="*"):
     """ Return the files or folder names inside a folder.
     
     Args:
@@ -82,9 +82,12 @@ def get_filenames_in_folder(folderpath):
         >>> l = get_filenames_in_folder("cpp")   
         >>> Counter(l) == Counter(['io', 'log', 'numeric', 'CMakeLists.txt', 'playground.cpp'])
         True
+        >>> get_filenames_in_folder("cpp", "*.cpp")
+        ['playground.cpp']
+        
 
     """
-    names = [os.path.basename(x) for x in glob.glob(os.path.join(folderpath, "*"))]
+    names = [os.path.basename(x) for x in glob.glob(os.path.join(folderpath, pattern))]
     return sorted(names)
 
 
