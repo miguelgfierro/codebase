@@ -69,12 +69,13 @@ def count_files_in_folder_recursively(folderpath):
     )
 
 
-def get_filenames_in_folder(folderpath):
+def get_filenames_in_folder(folderpath, pattern="*"):
     """ Return the files or folder names inside a folder.
     
     Args:
-        folderpath (str): folder path
-    
+        folderpath (str): Folder path.
+        pattern (str): Pattern to find.
+
     Returns:
         list: list of files
     
@@ -82,17 +83,21 @@ def get_filenames_in_folder(folderpath):
         >>> l = get_filenames_in_folder("cpp")   
         >>> Counter(l) == Counter(['io', 'log', 'numeric', 'CMakeLists.txt', 'playground.cpp'])
         True
+        >>> get_filenames_in_folder("cpp", "*.cpp")
+        ['playground.cpp']
+        
 
     """
-    names = [os.path.basename(x) for x in glob.glob(os.path.join(folderpath, "*"))]
+    names = [os.path.basename(x) for x in glob.glob(os.path.join(folderpath, pattern))]
     return sorted(names)
 
 
-def get_files_in_folder_recursively(folderpath):
+def get_files_in_folder_recursively(folderpath, pattern=None):
     """ Return the files inside a folder recursively.
     
     Args:
-        folderpath (str): folder path
+        folderpath (str): Folder path.
+        pattern (str): Pattern to find recursively.
     
     Returns:
         list: list of files
@@ -101,13 +106,19 @@ def get_files_in_folder_recursively(folderpath):
         >>> l = get_files_in_folder_recursively("cpp")
         >>> Counter(l) == Counter(['CMakeLists.txt', 'playground.cpp', 'io/read_file.cpp', 'io/read_file.hpp', 'log/timer.hpp', 'numeric/math_constants.hpp', 'numeric/math_utils.hpp'])
         True
+        >>> l = get_files_in_folder_recursively("cpp", "*.cpp")
+        >>> Counter(l) == Counter(['playground.cpp', 'io/read_file.cpp'])
+        True
 
     """
     if folderpath[-1] != os.path.sep:  # Add final '/' if it doesn't exist
         folderpath += os.path.sep
+    path = os.path.join(folderpath, "**")
+    if pattern is not None:
+        path = os.path.join(path, pattern)
     names = [
         x.replace(folderpath, "")
-        for x in glob.iglob(folderpath + "/**", recursive=True)
+        for x in glob.iglob(path, recursive=True)
         if os.path.isfile(x)
     ]
     return sorted(names)
