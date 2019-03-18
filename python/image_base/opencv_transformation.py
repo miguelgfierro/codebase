@@ -20,8 +20,7 @@ def resize_image(img, new_width, new_height):
         >>> img_resized.shape
         (256, 256, 3)
     """
-    img_new = cv2.resize(img, (int(new_width), int(new_height)))
-    return img_new
+    return cv2.resize(img, (int(new_width), int(new_height)))
 
 
 def resize_image_aspect_ratio(img, new_width=None, new_height=None):
@@ -53,8 +52,7 @@ def resize_image_aspect_ratio(img, new_width=None, new_height=None):
     elif new_width is None and new_height is not None:
         r = new_height / height
         new_width = int(width * r)
-    img_new = cv2.resize(img, (new_width, new_height))
-    return img_new
+    return cv2.resize(img, (new_width, new_height))
 
 
 def crop_image(img, box):
@@ -115,10 +113,9 @@ def normalize_image(img, min_val=0, max_val=1):
         >>> min(img_norm.flatten())
         0
     """
-    img_new = cv2.normalize(
+    return cv2.normalize(
         img, None, alpha=min_val, beta=max_val, norm_type=cv2.NORM_MINMAX
     )
-    return img_new
 
 
 def convert_to_binary(
