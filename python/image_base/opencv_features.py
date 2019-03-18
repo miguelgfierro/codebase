@@ -18,6 +18,5 @@ def largest_contour(mask):
     """
     _, contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     contours = sorted(contours, key=cv2.contourArea, reverse=True)
-    largest_contour = contours[0]
-    return largest_contour
+    return contours[0]
 
