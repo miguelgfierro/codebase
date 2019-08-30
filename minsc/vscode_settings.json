@@ -15,7 +15,8 @@
         "**/.pytest_cache": true,
         "**/.git": true,
         "**/*.pyc": true,
-        "**/.DS_Store": true
+        "**/.DS_Store": true,
+        "**/*.egg-info": true
     },
     // Configure glob patterns of file paths to exclude from file watching. When you experience Code consuming lots of cpu time on startup, you can exclude large folders to reduce the initial load.
     "files.watcherExclude": {
