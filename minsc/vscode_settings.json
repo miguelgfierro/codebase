@@ -2,16 +2,29 @@
     "window.zoomLevel": 0,
     "editor.formatOnSave": true,
     "python.formatting.provider": "black",
+    // Configure glob patterns for excluding files and folders. For example, the files explorer decides which files and folders to show or hide based on this setting.
     "files.exclude": {
+        "**/.ipynb_checkpoints": true,
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
         "**/.git": true,
         "**/*.pyc": true,
         "**/.DS_Store": true
+    },
+    // Configure glob patterns of file paths to exclude from file watching. When you experience Code consuming lots of cpu time on startup, you can exclude large folders to reduce the initial load.
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/bin": true,
+        "**/log": true,
+        "**/output": true,
     },
     "editor.rulers": [
         88,
         120
     ],
-    "python.pythonPath": "/Users/miguel/anaconda3/envs/py36/bin/python",
+    "python.pythonPath": " C:/Anaconda3/envs/py36/python.exe",
+    "python.formatting.blackPath": "C:/Anaconda3/envs/py36/Scripts/black.exe",
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": true,
     "editor.links": true,
