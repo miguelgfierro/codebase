@@ -1,7 +1,13 @@
 {
     "window.zoomLevel": 0,
     "editor.formatOnSave": true,
+    "python.pythonPath": " C:/Anaconda3/envs/py36/python.exe",
+    "python.formatting.blackPath": "C:/Anaconda3/envs/py36/Scripts/black.exe",
     "python.formatting.provider": "black",
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--enable=W0614"
+    ],
     // Configure glob patterns for excluding files and folders. For example, the files explorer decides which files and folders to show or hide based on this setting.
     "files.exclude": {
         "**/.ipynb_checkpoints": true,
@@ -23,8 +29,6 @@
         88,
         120
     ],
-    "python.pythonPath": " C:/Anaconda3/envs/py36/python.exe",
-    "python.formatting.blackPath": "C:/Anaconda3/envs/py36/Scripts/black.exe",
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": true,
     "editor.links": true,
