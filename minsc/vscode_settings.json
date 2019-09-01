@@ -54,5 +54,5 @@
         "fierro"
     ],
     "files.autoSave": "onWindowChange",
-    "editor.fontSize": 12,
+    "editor.fontSize": 14,
 }
