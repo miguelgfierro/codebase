@@ -55,4 +55,7 @@
     ],
     "files.autoSave": "onWindowChange",
     "editor.fontSize": 14,
+    "autoDocstring.guessTypes": true,
+    "autoDocstring.includeName": true,
+    "autoDocstring.docstringFormat": "google",
 }
