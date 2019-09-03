@@ -1,0 +1,166 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,twoside]{book}
+
+\hyphenation{self-lear-ning ro-bo-tics Te-le-co-m-mu-ni-ca-ti-ons en-vi-ron-ment par-ti-ci-pant pa-ra-me-tri-zed
+Na-na-ya-kka-ra}
+
+\usepackage[dvips]{graphicx} % for pdf, bitmapped graphics files
+\usepackage{epsfig} % for postscript graphics files
+%Para que acepte caracteres españoles como acentos son necesarios los tres siguiente paquetes en ese orden
+\usepackage[spanish,english]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
+
+\usepackage{fancyhdr}
+\usepackage{uc3m_thesis_fancy}
+%\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage[Lenny]{fncychap}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath} 
+\usepackage{amssymb}
+%\usepackage{algpseudocode}
+\usepackage{verbatim} % comments
+\usepackage{comment} % for comment blocks
+\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+\usepackage{anyfontsize}
+%\usepackage{watermark}
+\usepackage[twoside]{geometry}
+\geometry{twoside, bindingoffset=1cm, papersize={210mm,297mm}, total ={150mm, 240mm}, includefoot, includehead}
+
+\usepackage{epigraph}
+\usepackage{natbib}
+\def\bibpreamble{\protect\addcontentsline{toc}{chapter}{Bibliography}} %to make the blibliography appear in the TOC
+%\usepackage{apalike}
+
+\usepackage[toc]{appendix}
+
+\setlength{\topmargin}{0cm} 
+\setlength{\headsep}{8mm}
+\setlength{\marginparwidth}{20mm} \setlength{\evensidemargin}{4mm} \setlength{\oddsidemargin}{10mm}
+
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}%
+\cleardoublepage}}
+\newcommand{\titleofthedocument}{Humanoid Robot Control of  Complex Postural Tasks based on Learning from Demonstration} % Title of the document here
+\renewcommand{\algorithmicrequire}{\textbf{Initialize:}}
+
+
+\usepackage[pdftitle={\titleofthedocument}]{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,filecolor=black,citecolor=black,pdfstartview={FitH}}
+
+\setcounter{secnumdepth}{2}%3 levels in the table of contents
+\setcounter{tocdepth}{2} 
+
+%-------------- Añadido-------------------
+\setlength{\headheight}{15pt} %elimina el error de fancyhdr
+\usepackage{amsmath}
+\usepackage{listings}
+%------------------------------------------
+\graphicspath{{Capitulo1/images/}{Capitulo2/images/}{Capitulo3/images/}{Capitulo4/images/}
+{Capitulo5/images/}{Capitulo6/images/}{Capitulo7/images/}{additional/images/}} 
+
+\univ{UNIVERSIDAD CARLOS III DE MADRID}
+\dept{Systems Engineering \\ and Automation}
+\place{Legan\'es}
+
+
+\newcommand{\robotorder}{\textit{``stand up from a chair, walk to the door and open it"}\ }
+%Version control REMOVE THIS!!!!
+\newcommand{\versioncontrol}[1]{\textcolor{black}{#1}}%change to black for final version, red for annotations
+
+% Begin document
+\begin{document}
+
+\title{\titleofthedocument}
+
+\author{Miguel González-Fierro }
+\adviser{Prof. Carlos Balaguer  \\(Universidad Carlos III de Madrid)}
+\coadviser{Dr. Thrishantha Nanayakkara \\(King's College London)}
+\firstreader{Chair}
+\secondreader{Member}
+\thirdreader{Secretary}
+\fourthreader{Substitute}
+
+\datedefense{October 2014}
+
+
+\beforepreface
+
+\cleardoublepage
+\newpage{\pagestyle{empty}\cleardoublepage}
+
+%Preface
+\input{./additional/prefacio.tex}
+\clearemptydoublepage
+
+\prefacesection{Acknowledgements}
+\input{./additional/chapter_acknowledgements}
+\clearemptydoublepage
+
+\prefacesection{Abstract}
+\input{./additional/chapter_abstract}
+\clearemptydoublepage
+
+\prefacesection{Resumen}
+\input{./additional/chapter_resumen}
+\clearemptydoublepage
+
+% Igual necesito una sección de abreviaciones
+%\prefacesection{Abbreviations}
+%\hspace{5 mm} 2D - two-dimensional
+
+
+
+\afterpreface
+\pagenumbering{arabic}
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1] %
+{\markboth{#1}{\thechapter\ #1}}
+\renewcommand{\sectionmark}[1]%
+{\markright{\thesection\ #1}}
+\lhead[\fancyplain{}{\bfseries\thepage}]
+{\fancyplain{}{\bfseries\rightmark}}
+\rhead[\fancyplain{}{\bfseries\leftmark}] {\fancyplain{}{\bfseries\thepage}}
+\cfoot{}
+
+%------------------------------------------	
+\input{./Capitulo1/ch_intro}
+\clearemptydoublepage
+%------------------------------------------	
+\input{./Capitulo2/ch_basics}
+\clearemptydoublepage
+%------------------------------------------	
+\input{./Capitulo3/ch_imitation}
+\clearemptydoublepage
+%------------------------------------------
+\input{./Capitulo4/ch_multiple_behaviors}
+\clearemptydoublepage
+%------------------------------------------
+\input{./Capitulo5/ch_fraccional}
+\clearemptydoublepage
+%------------------------------------------
+\input{./Capitulo6/ch_postural_control}
+\clearemptydoublepage
+%------------------------------------------
+\input{./Capitulo7/ch_conclusions}
+\clearemptydoublepage
+%------------------------------------------
+\appendix
+\input{./additional/hoap_humanoid}
+\clearemptydoublepage
+\input{./additional/appendix_human}
+\clearemptydoublepage
+
+%------------------------------
+% Bibliografía
+%------------------------------------------
+
+%\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{ref}
+%\bibliographystyle{apacite}
+\bibliographystyle{apalike}
+
+\end{document}
