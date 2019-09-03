@@ -1,0 +1,188 @@
+\ProvidesPackage{uc3m_thesis}[2011/06/06]
+%\usepackage{fancyhdr}
+\RequirePackage{fancyhdr}
+
+%\linespread{1.2}
+% Setup margins
+\if@twoside
+    \setlength\oddsidemargin   {36.1\p@}
+    \setlength\evensidemargin  {0\p@}
+    \setlength\marginparwidth {40\p@}
+\else
+    \setlength\oddsidemargin   {36.1\p@}
+    \setlength\evensidemargin  {36.1\p@}
+    \setlength\marginparwidth  {40\p@}
+ \fi
+
+%\marginparsep 10pt
+\topmargin 0pt \headsep .5in
+%\textheight 8.1in \textwidth 6in
+\brokenpenalty=10000
+
+
+% Definitions
+\def\@title{}
+\def\@author{}
+\def\subtype{Ph.D. Thesis }
+\def\dept#1{\gdef\@dept{#1}}
+\def\univ#1{\gdef\@univ{#1}}
+\def\standardsubSPANISH{Departamento de \@dept_spanish}
+\def\standardsub{Departament of \@dept}
+\def\place#1{\gdef\@place{#1}}
+\def\@submitdate{\ifcase\the\month\or
+  January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi
+  \space \number\the\year}
+\def\submitdateSPANISH{\ifcase\the\month\or Enero\or Febrero\or Marzo\or Abril\or Mayo\or Junio\or Julio\or Agosto\or Septiembre\or Octubre\or Noviembre\or Diciembre\fi \space \number\the\year}
+\def\datedefense#1{\gdef\@datedefense{#1}}
+
+\def\adviser#1{\gdef\@adviser{#1}}
+\def\coadviser#1{\gdef\@coadviser{#1}}
+
+\def\thesiscommittee{Review Committee}
+\def\firstreader#1{\gdef\@firstreader{#1}}
+\def\secondreader#1{\gdef\@secondreader{#1}}
+\def\thirdreader#1{\gdef\@thirdreader{#1}}
+\def\fourthreader#1{\gdef\@fourthreader{#1}}
+
+\def\titlep{
+    \thispagestyle{empty}
+    \begin{figure}
+        \centering\includegraphics[width=0.6\textwidth]{EscudoLogoCorporativo}
+
+    \end{figure}    
+    \begin{center}
+%    \textbf{\@univ} \\
+
+%       \Separate
+       \Large \subtype\\
+        \separate
+    
+        \huge {\textsc\@title}\\
+        \separate
+		%\large \textbf{Author: \\ \@author}\\
+		\Large \textbf{ \@author}\\
+        \separate
+        \large \textbf{Advisers: \\ \@adviser \\ \@coadviser}\\
+    \end{center}
+    \vfill
+    \begin{center}
+        \large{ \standardsub\\ \@place, \@datedefense}\\
+    \end{center}
+    \newpage}
+
+\def\signature#1{
+    %\parbox{5in}{#1 \hfill \vrule width 1in height 0.4pt depth 0pt}
+    #1 \hfill \vrule width 1.2in height 0.4pt depth 0pt
+    \\[14pt]
+}
+
+\def\signaturepage{
+    \thispagestyle{empty}
+    \begin{center}
+        \large \subtype \\
+        \separate
+        {\large {\textsc\@title}}\\
+        \separate
+        \large Candidate: \\ \@author \\
+        \separate
+        \large Advisers: \\ \@adviser \\
+        \large \@coadviser \\
+    \end{center}
+    \separate
+    \begin{center}
+        {\large \thesiscommittee}\\[18pt]
+    \end{center}
+    \begin{flushright}
+    Signature \\[24pt]
+    \end{flushright}
+    \signature{\@firstreader : }
+    \\[6pt]
+    \signature{\@secondreader : }
+    \\[6pt]
+    \signature{\@thirdreader : } 
+    %\\[6pt]
+    %\signature{\@fourthreader : }
+    %\\[24pt]
+	\\
+    Degree: Doctorado en Ingenier\'ia El\'ectrica, Electr\'onica y Autom\'atica \\
+    %\separate
+    Grade: \rule[-0.1cm]{4cm}{0.01cm}   \\
+    \begin{center}
+    \@place, \hspace{1cm} de \hspace{3cm} de 
+    \end{center}
+    \newpage}
+
+\def\beforepreface{
+    \pagestyle{empty}
+    \titlep
+    \cleardoublepage
+    \signaturepage
+    \cleardoublepage
+    \pagestyle{plain}
+    \pagenumbering{roman}}
+
+\def\bodypagestyle{
+    \pagestyle{fancy}
+    \fancyhead{} % clear all header fields
+    \fancyfoot{}
+    \fancyhead[RE]{ \nouppercase \leftmark}
+    \fancyhead[LO]{ \nouppercase \rightmark}
+    \fancyhead[RO,LE]{ \thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+    }
+
+\def\prefacesection#1{
+        \chapter*{#1}
+        \phantomsection
+        \addcontentsline{toc}{chapter}{#1}}
+
+\def\afterpreface{
+    \newpage 
+    \cleardoublepage
+    \tableofcontents
+    \newpage{\pagestyle{empty}\cleardoublepage}
+    %\cleardoublepage
+    \listoftables
+    \newpage{\pagestyle{empty}\cleardoublepage}
+    \listoffigures
+    \newpage{\pagestyle{empty}\cleardoublepage}
+    \listofalgorithms
+    %\newpage{\pagestyle{empty}\cleardoublepage}
+    %\lstlistoflistings
+    %\cleardoublepage
+	\newpage{\pagestyle{empty}\cleardoublepage}
+    \pagenumbering{arabic}
+    %\pagestyle{headings}
+    \bodypagestyle}
+
+% Redefine \thebibliography to go to a new page and put an entry in the
+% table of contents
+\let\@ldthebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{
+    \newpage
+    \@ldthebibliography{#1}%
+    \addcontentsline{toc}{chapter}{\bibname}}
+
+% redefine \@endpart so the blank page after part has a page number
+\def\@endpart{
+    \vfil\newpage
+    \if@twoside
+        \if@openright
+                \null
+                \thispagestyle{plain}%
+                \newpage
+        \fi
+    \fi
+    \if@tempswa
+        \twocolumn
+    \fi}
+
+
+% Start out normal
+\pagestyle{headings}
+
+% Useful definitions
+\newcommand{\equationname}{equation}
+\newcommand{\separate}{\null\vspace{8pt}}
+\newcommand{\Separate}{\null\vspace{24pt}}
