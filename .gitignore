@@ -113,4 +113,7 @@ python/test/output.ipynb
 file.*
 output.ipynb
 license.txt
+*.aux
+*.pdf
+*.out
 
