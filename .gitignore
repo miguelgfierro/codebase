@@ -118,6 +118,11 @@ license.txt
 *.out
 *.bbl
 *.blg
+*.lof
+*.loa
+*.loc
+*.toc
+*.lot
 
 
 
