@@ -58,4 +58,6 @@
     "autoDocstring.guessTypes": true,
     "autoDocstring.includeName": true,
     "autoDocstring.docstringFormat": "google",
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "latex-workshop.view.pdf.viewer": "tab",
 }
