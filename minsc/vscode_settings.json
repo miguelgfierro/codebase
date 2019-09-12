@@ -1,6 +1,8 @@
 {
+    // General settings
+    "files.autoSave": "onWindowChange",
     "window.zoomLevel": 0,
-    "editor.formatOnSave": true,
+    // Python
     "python.pythonPath": " C:/Anaconda3/envs/py36/python.exe",
     "python.formatting.blackPath": "C:/Anaconda3/envs/py36/Scripts/black.exe",
     "python.formatting.provider": "black",
@@ -8,7 +10,8 @@
     "python.linting.pylintArgs": [
         "--enable=W0614"
     ],
-    // Configure glob patterns for excluding files and folders. For example, the files explorer decides which files and folders to show or hide based on this setting.
+    // Configure glob patterns for excluding files and folders. For example, the files explorer 
+    // decides which files and folders to show or hide based on this setting.
     "files.exclude": {
         "**/.ipynb_checkpoints": true,
         "**/__pycache__": true,
@@ -18,7 +21,8 @@
         "**/.DS_Store": true,
         "**/*.egg-info": true
     },
-    // Configure glob patterns of file paths to exclude from file watching. When you experience Code consuming lots of cpu time on startup, you can exclude large folders to reduce the initial load.
+    // Configure glob patterns of file paths to exclude from file watching. When you experience 
+    // code consuming lots of cpu time on startup, you can exclude large folders to reduce the initial load.
     "files.watcherExclude": {
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
@@ -26,6 +30,9 @@
         "**/log": true,
         "**/output": true,
     },
+    // Editor
+    "editor.fontSize": 14,
+    "editor.tabSize": 4,
     "editor.rulers": [
         88,
         120
@@ -33,6 +40,9 @@
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": true,
     "editor.links": true,
+    "editor.minimap.enabled": true,
+    "editor.formatOnSave": true,
+    // Language
     "cSpell.languageSettings": [
         {
             "languageId": "*",
@@ -53,11 +63,45 @@
     "cSpell.userWords": [
         "fierro"
     ],
-    "files.autoSave": "onWindowChange",
-    "editor.fontSize": 14,
+    // Docstrings
     "autoDocstring.guessTypes": true,
     "autoDocstring.includeName": true,
     "autoDocstring.docstringFormat": "google",
-    "latex-workshop.latex.recipe.default": "lastUsed",
+    // LaTeX
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "pdflatex - bibtex - pdflatex ×2",
+            "tools": [
+                "latex",
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "--shell-escape", // added arg to default
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        }
+    ],
     "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.option.maxPrintLine.enabled": false,
 }
