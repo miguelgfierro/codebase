@@ -72,7 +72,6 @@
         {
             "name": "pdflatex - bibtex - pdflatex ×2",
             "tools": [
-                "latex",
                 "pdflatex",
                 "bibtex",
                 "pdflatex",
