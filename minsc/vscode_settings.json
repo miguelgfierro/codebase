@@ -103,4 +103,7 @@
     ],
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.option.maxPrintLine.enabled": false,
+    // Telemetry off
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
 }
