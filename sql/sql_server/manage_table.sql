@@ -16,5 +16,13 @@ CREATE TABLE table_name
 ALTER TABLE t ADD column;
 
 -- Drop column c from the table 
-ALTER TABLE t DROP COLUMN c ;
+ALTER TABLE t DROP COLUMN c;
 
+-- Rename a table from t1 to t2
+ALTER TABLE t1 RENAME TO t2;
+
+-- Rename column c1 to c2
+ALTER TABLE t1 RENAME c1 TO c2;
+
+--Remove all data in a table
+TRUNCATE TABLE t;
