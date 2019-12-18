@@ -14,3 +14,6 @@ SELECT TOP (5) column_name1, column_name2 FROM table_name;
 SELECT TOP(1) * FROM table_name
 WHERE column_name = value ORDER BY time_stamp DESC;
 
+-- Skip offset of rows and return the next n rows
+SELECT column_name1, column_name2 FROM table_name 
+ORDER BY column_name1 LIMIT n OFFSET offset;
