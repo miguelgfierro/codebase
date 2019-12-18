@@ -1,3 +1,5 @@
+-- Cheatsheet: https://github.com/FavioVazquez/ds-cheatsheets/blob/master/SQL/SQL-cheat-sheet.pdf
+
 -- Select all entries equal to a value in a column
 SELECT * FROM table_name WHERE column_name = value;
 

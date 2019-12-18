@@ -1,3 +1,5 @@
+-- Cheatsheet: https://github.com/FavioVazquez/ds-cheatsheets/blob/master/SQL/SQL-cheat-sheet.pdf
+
 -- Drop the table if it exists
 IF OBJECT_ID('table_name') IS NOT NULL
 DROP TABLE table_name;
