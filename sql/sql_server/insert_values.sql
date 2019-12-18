@@ -1,6 +1,4 @@
----
---- Example of values insertion in a table
----
+-- Example of values insertion in a table
 INSERT INTO table_name
 (
     patient_id,

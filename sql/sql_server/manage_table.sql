@@ -1,7 +1,3 @@
----
---- Example of table creation
----
-
 -- Drop the table if it exists
 IF OBJECT_ID('table_name') IS NOT NULL
   DROP TABLE table_name
