@@ -42,7 +42,7 @@
     "editor.links": true,
     "editor.minimap.enabled": true,
     "editor.formatOnSave": true,
-    // Language
+    // Code Spell Checker
     "cSpell.languageSettings": [
         {
             "languageId": "*",
