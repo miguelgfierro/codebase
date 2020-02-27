@@ -16,3 +16,5 @@ lsusb
 # CPU, BIOS, memory, buses and network
 lshw
 
+# Returns the current public IP
+curl ifconfig.me
