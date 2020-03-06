@@ -1,5 +1,5 @@
 [![Languages](https://img.shields.io/github/languages/count/miguelgfierro/codebase?style=plastic)](https://github.com/miguelgfierro/codebase)
-[![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/codebase.svg)](https://github.com/miguelgfierro/codebase/commits/master)
+[![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/codebase.svg?style=plastic)](https://github.com/miguelgfierro/codebase/commits/master)
 
 
 # Codebase for programming projects
