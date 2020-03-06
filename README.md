@@ -2,7 +2,7 @@
 [![Commits](https://img.shields.io/github/commit-activity/y/miguelgfierro/codebase.svg?style=plastic)](https://github.com/miguelgfierro/codebase/commits/master)
 [![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/codebase.svg?style=plastic)](https://github.com/miguelgfierro/codebase/commits/master)
 ![Twitter](https://img.shields.io/twitter/follow/miguelgfierro?style=social)
-![Beerpay](https://img.shields.io/beerpay/miguelgfierro/codebase?style=plastic)
+[![Beerpay](https://img.shields.io/beerpay/miguelgfierro/codebase?style=plastic)](https://beerpay.io/miguelgfierro/codebase)
 
 # Codebase for programming projects
 
