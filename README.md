@@ -1,3 +1,5 @@
+![https://img.shields.io/github/languages/count/miguelgfierro/codebase?style=plastic](https://github.com/miguelgfierro/codebase)
+
 # Codebase for programming projects
 
 Codebase for programming code
