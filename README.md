@@ -1,4 +1,5 @@
 [![Languages](https://img.shields.io/github/languages/count/miguelgfierro/codebase?style=plastic)](https://github.com/miguelgfierro/codebase)
+[![Commits](https://img.shields.io/github/commit-activity/y/miguelgfierro/codebase.svg?style=plastic)](https://github.com/miguelgfierro/codebase/commits/master)
 [![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/codebase.svg?style=plastic)](https://github.com/miguelgfierro/codebase/commits/master)
 
 
