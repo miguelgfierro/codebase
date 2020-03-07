@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         #myDIV {
-            display: none;
             width: 100%;
             padding: 50px 0;
             text-align: center;
@@ -22,7 +21,7 @@
 
     <button onclick="myFunction()">Try it</button>
 
-    <div id="myDIV">
+    <div id="myDIV" style="display: none">
         This is my DIV element.
     </div>
 
@@ -31,7 +30,7 @@
     <script>
         function myFunction() {
             var x = document.getElementById("myDIV");
-            if (x.style.display === "none") {
+            if (x.style.display == "none") {
                 x.style.display = "block";
             } else {
                 x.style.display = "none";
