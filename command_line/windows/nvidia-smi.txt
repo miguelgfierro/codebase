@@ -1,0 +1,2 @@
+# Refresh nvidia-smi every 1s
+nvidia-smi -l 1
