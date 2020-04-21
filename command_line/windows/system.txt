@@ -1,2 +1,7 @@
 # Memory (in bytes)
 wmic MEMORYCHIP get BankLabel, DeviceLocator, Capacity, Speed
+
+# Memory (in Mb)
+systeminfo | findstr /C:”Total Physical Memory”
+
+
