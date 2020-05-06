@@ -6,10 +6,7 @@
     "python.pythonPath": "C:/Anaconda3/envs/py36/python.exe",
     "python.formatting.blackPath": "C:/Anaconda3/envs/py36/Scripts/black.exe",
     "python.formatting.provider": "black",
-    "python.linting.pylintEnabled": true,
-    "python.linting.pylintArgs": [
-        "--enable=W0614"
-    ],
+    "python.linting.mypyEnabled": true,
     // Configure glob patterns for excluding files and folders. For example, the files explorer 
     // decides which files and folders to show or hide based on this setting.
     "files.exclude": {
