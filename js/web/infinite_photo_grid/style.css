@@ -1,0 +1,47 @@
+/* Attribution: https://codepen.io/s1mpson/pen/BajjYmp */
+
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .infinite-photo-grid {
+    width: 100%;
+    height: 100%;
+    max-height: 750px;
+    /*background-image: url(https://raw.githubusercontent.com/s1mpson/-/master/codepen/infinite-photo-grid/photo-grid.jpg);*/
+    background-image: url(photo-grid.jpg);
+    background-size: calc(4.84 * min(100vh, 750px)) min(100vh, 750px);
+    background-repeat: repeat-x;
+    animation: scroll 50s linear infinite;
+    will-change: background-position;
+  }
+  
+  @keyframes scroll {
+    from {
+      background-position: left calc(4.84 * min(100vh, 750px)) top 0px;
+    }
+    to {
+      background-position: left 0px top 0px;
+    }
+  }
+  
+  .s1mpson {
+    background: #222;
+    border-radius: 6px;
+    box-shadow: 0px 0px 0px 8px #222,
+      0 10px 30px rgba(65, 72, 86, 1);
+  }
+  
+  .s1mpson-twitter-icon {
+    fill: #FFF;
+  }
+  .s1mpson-github-icon {
+    fill: #FFF;
+  }
