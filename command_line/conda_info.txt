@@ -1,0 +1,2 @@
+# Execute a python file on a conda environment
+conda run -n env_name my_python_file.py
