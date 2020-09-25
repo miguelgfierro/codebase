@@ -7,3 +7,5 @@ pip list --format freeze|awk -F = {'print $1'}| xargs pip show | grep -E 'Locati
 # List the dependencies of a python library
 pipdeptree -p library_name
 
+# Uninstall libraries based on a pattern
+pip uninstall -y $(pip list |grep pattern | awk '{print $1}')
