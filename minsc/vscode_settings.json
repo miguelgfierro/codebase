@@ -104,4 +104,10 @@
     // Telemetry off
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
+    // Git & GitLens
+    "git.ignoreMissingGitWarning": true,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.statusBar.enabled": true,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.annotations.enabled": true,
 }
