@@ -1,0 +1,2 @@
+# Get WIFI password once you are connected to a network
+netsh wlan show profile WIFI_NAME key=clear
