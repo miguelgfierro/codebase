@@ -12,4 +12,4 @@ pip install graphviz
 pipdeptree -p library_name --graph-output svg > dependencies.svg
 
 # Uninstall libraries based on a pattern
-pip uninstall -y $(pip list |grep pattern | awk '{print $1}')
+pip uninstall -y $(pip list | grep pattern | awk '{print $1}')
