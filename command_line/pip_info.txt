@@ -3,8 +3,17 @@
 # Create an environment named py36 inside folder env
 python -m venv env\py36
 
-# Activate environment py36
+# Create an environment named py36 inside folder env with a particular python version (Linux)
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get update
+sudo apt-get install python3.6 python3-virtualenv
+virtualenv env/py36 -p /usr/bin/python3.6
+
+# Activate environment py36 (Windows)
 .\env\py36\Scripts\activate 
+
+# Activate environment py36 (Linux)
+source env/py36/bin/activate
 
 # List all installed packages ordered by size
 # Source: https://stackoverflow.com/a/51571259/5620182
