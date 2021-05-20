@@ -29,6 +29,15 @@ function rutinaMacros() {
         Logger.log("Computando grasas en celda %s", cellGrasas.getA1Notation());
         cellGrasas.setFormula(formulaGrasas);
       } 
+      
+      // Hidratos
+      var cellCH = range.offset(0, 3).getCell(i,1);
+      if (cellCH.isBlank()){
+        var formulaCH = formula.replace(/Meals!B/g, "Meals!E").replace(/Foods!C/g, "Foods!F");
+        //Logger.log(formulaGrasas)
+        Logger.log("Computando hidratos en celda %s", cellCH.getA1Notation());
+        cellCH.setFormula(formulaCH);
+      } 
     }
   }
   Logger.log("Rutina finalizada")
