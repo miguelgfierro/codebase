@@ -1,3 +1,17 @@
+// To enable this function, I need to create a trigger. Go to Triggers, Add Trigger. Then select the following options:
+// Choose which function to run: onSelectionChange 
+// Select event source: From spreadsheet
+// Select event type: On edit
+function onSelectionChange(e) {
+  //Logger.log(JSON.stringify(e));
+  const as = e.source.getActiveSheet();
+  const col = e.range.getColumn();
+  // Automatically execute when there is a change in sheet Miguel and column G
+  if (as.getName() == 'Miguel' && col === 7){
+   rutinaMacros(); 
+  }
+}
+
 function rutinaMacros() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = ss.getSheetByName("Miguel");
