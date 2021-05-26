@@ -18,3 +18,9 @@ lshw
 
 # Returns the current public IP
 curl ifconfig.me
+
+# Print all environment variables
+printenv
+
+# Check whether I'm using bash, sh or other
+echo $SHELL
