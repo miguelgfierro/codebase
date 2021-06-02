@@ -35,3 +35,10 @@ find . -type f -name '*.db' -delete
 
 #Remove files modified between dates
 find . -newermt 'Oct 3 00:00' ! -newermt 'Oct 4 00:00' -delete
+
+
+# Remove all files and folders except those with a pattern
+find my_folder ! -name "*.yaml" 
+find my_folder ! -name "*.yaml" -delete 2>/dev/null  # Ignore warning outputs
+
+
