@@ -7,6 +7,12 @@
 grep -rnw '/path/to/somewhere/' -e 'text'
 
 
+# Extract the version of a python init file
+# E.g.: a __init__.py with __version__ = "0.1.5"
+# The output of the following command is 0.1.5
+awk '/__version__ = / {print $3}' __init__.py | sed 's/"//g'
+
+
 #Find files modified between dates
 find . -newermt 'Oct 3 00:00' ! -newermt 'Oct 4 00:00' -ls
 
