@@ -1,1 +1,0 @@
-source: https://code.visualstudio.com/blogs/2019/05/02/remote-development?WT.mc_id=msbuild2019-twitter-brketels#_introducing-the-vs-code-remote-extensions
