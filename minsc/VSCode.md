@@ -2,7 +2,11 @@
 
 ## Configuration
 
-Use the file [vscode_settings.json](vscode_settings.json) to configure VSCode.
+Use the contents in the file [vscode_settings.json](vscode_settings.json) to configure VSCode.
+
+To open and edit the configuration, there are these options:
+* General settings: These settings apply to all VSCode instances unless overwritten by local settings. The file can be accessed by clicking File, Preferences, Settings. Then press the icon oc Open Settings (JSON).
+* Local settings: In the project root create a the folder and file `.vscode/settings.json`.
 
 ## Remote execution
 
