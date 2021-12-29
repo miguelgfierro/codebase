@@ -3,8 +3,9 @@
 [![Lines of code](https://tokei.rs/b1/github/miguelgfierro/codebase)](https://github.com/miguelgfierro/codebase/graphs/contributors)
 [![Files](https://tokei.rs/b1/github/miguelgfierro/codebase?category=files)](https://github.com/miguelgfierro/codebase/graphs/contributors)
 [![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/codebase.svg?style=flat)](https://github.com/miguelgfierro/codebase/commits/master)
+
 [![Linkedin](https://img.shields.io/badge/Linkedin-Follow%20Miguel-blue?logo=linkedin)](https://www.linkedin.com/in/miguelgfierro/)
-[![Blog](https://img.shields.io/badge/Blog-Visit%20miguelgfierro.com-blue.svg)](https://miguelgfierro.com)
+[![Blog](https://img.shields.io/badge/Blog-Visit%20miguelgfierro.com-blue.svg)](https://miguelgfierro.com?utm_source=github.com&utm_medium=profile&utm_campaign=codebase)
 
 # Codebase for programming projects
 
