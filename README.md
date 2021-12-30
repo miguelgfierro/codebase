@@ -9,7 +9,7 @@
 
 # Codebase for programming projects
 
-Codebase for programming code
+This is a codebase of useful code pieces in multiple programming languages that I have used in my projects.
 
 To clone:
 
