@@ -1,4 +1,10 @@
 {
+    // VSCode settings for projects
+    //
+    // Mode of use:
+    // In the root folder create a new folder called .vscode, then copy these settings as settings.json. 
+    // All the projects in the root folder will use the settings defined in this json.
+    //
     // General settings
     "files.autoSave": "onWindowChange",
     "window.zoomLevel": 0,
@@ -104,10 +110,4 @@
     // Telemetry off
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    // Git & GitLens
-    "git.ignoreMissingGitWarning": true,
-    "gitlens.codeLens.enabled": false,
-    "gitlens.statusBar.enabled": true,
-    "gitlens.currentLine.enabled": false,
-    "gitlens.hovers.annotations.enabled": true,
 }
