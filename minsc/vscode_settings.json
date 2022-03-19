@@ -9,7 +9,7 @@
     "files.autoSave": "onWindowChange",
     "window.zoomLevel": 0,
     // Python
-    "python.pythonPath": "C:/Anaconda3/envs/py36/python.exe",
+    "python.defaultInterpreterPath": "C:/Anaconda3/envs/py36/python.exe",
     "python.formatting.blackPath": "C:/Anaconda3/envs/py36/Scripts/black.exe",
     "python.formatting.provider": "black",
     "python.linting.mypyEnabled": true,
