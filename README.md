@@ -3,7 +3,7 @@
 [![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/codebase.svg?style=flat)](https://github.com/miguelgfierro/codebase/commits/master)
 
 [![Linkedin](https://img.shields.io/badge/Linkedin-Follow%20Miguel-blue?logo=linkedin)](https://www.linkedin.com/in/miguelgfierro/)
-[![Blog](https://img.shields.io/badge/Blog-Visit%20miguelgfierro.com-blue.svg)](https://miguelgfierro.com?utm_source=github.com&utm_medium=profile&utm_campaign=codebase)
+[![Blog](https://img.shields.io/badge/Blog-Visit%20miguelgfierro.com-blue.svg)](https://miguelgfierro.com?utm_source=github&utm_medium=profile&utm_campaign=codebase)
 
 # Codebase for programming projects
 
