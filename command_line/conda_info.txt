@@ -4,3 +4,4 @@ conda run -n env_name my_python_file.py
 # Search a package
 conda search -f cudatoolkit
 conda search -f cudatoolkit -c conda-forge
+conda search -f cudatoolkit -c numba
