@@ -24,8 +24,9 @@ tar -czvf folder.tar.gz folder
 #tar extract an archive
 tar -xvf folder.tar
 
-#tar.gz extract an archive
+#tar.gz/tgz extract an archive
 tar -zxvf folder.tar.gz
+tar -zxvf folder.tgz
 
 #tar extract an archive created from a folder to a folder 
 #NOTE: if you don't add --strip-components=1, then the structure will be folder/folder/file1.txt
