@@ -6,7 +6,7 @@ First, close all open WSL-2 and open CMD, enter the following command:
 
     wsl --shutdown
   
-Put the following settings into C:\Users\<your_user_name>\.wslconfig. Remember DON'T ADD THE EXTENSION AT THE END. The settings in .wslconfig are as follows:
+Put the following settings into `C:\Users\<your_user_name>\.wslconfig`. Remember DON'T ADD THE EXTENSION AT THE END. The settings in `.wslconfig` are as follows:
  
     [wsl2]
     memory=32GB # Limits VM memory
