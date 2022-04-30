@@ -107,7 +107,6 @@
     ],
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.option.maxPrintLine.enabled": false,
-    // Telemetry off
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
+    // Telemetry off https://code.visualstudio.com/Docs/supporting/FAQ#_how-to-disable-telemetry-reporting
+    "telemetry.telemetryLevel": "off",
 }
