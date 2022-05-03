@@ -9,8 +9,8 @@
     "files.autoSave": "onWindowChange",
     "window.zoomLevel": 0,
     // Python
-    "python.defaultInterpreterPath": "C:/Anaconda3/envs/py36/python.exe",
-    "python.formatting.blackPath": "C:/Anaconda3/envs/py36/Scripts/black.exe",
+    "python.defaultInterpreterPath": "/home/miguel/anaconda/bin/python",
+    "python.formatting.blackPath": "/home/miguel/anaconda/bin/black",
     "python.formatting.provider": "black",
     "python.linting.mypyEnabled": true,
     // Configure glob patterns for excluding files and folders. For example, the files explorer 
