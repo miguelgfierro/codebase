@@ -2,7 +2,7 @@
 
 # Reduce pdf size
 # In Linux:
-# $ sudo apt-get install ps2pdf
+# $ sudo apt install ghostscript
 # In Mac:
 # brew install ghostscript
 #
