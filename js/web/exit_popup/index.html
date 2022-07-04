@@ -1,4 +1,4 @@
-<!-- Attribution: -->
+<!-- Attribution: https://codepen.io/ashwin9/pen/eJQOeg -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,9 +9,30 @@
 </head>
 
 <body>
-    <!--
-        Enter your code here
-    -->
+    <div id="content">
+        After 2 seconds, move your mouse cursor above this page.
+    </div>
+    <div id="news-signup">
+        <div class="wrapper">
+            <div id="news-signup_close"></div>
+            <div class="newsletter-content" id="phplistsubscriberesult">
+                <h2>Social media, Hacks & Security news. Delivered weekly.</h2>
+
+                <p>Join thousands of readers who get our content first.</p>
+                <form class="signup-form" id="signup-form"
+                    action="https://ashwinco.hosted.phplist.com/lists/?p=subscribe&id=1">
+                    <p>
+                        <input type="text" name="email" id="news_signup_email" value="" autofocus>
+                    </p>
+                    <p class="button">
+                        <input type="submit" value="Subscribe">
+                    </p>
+                </form>
+                <p class="footnote">Give it a try. It only takes a click to unsubscribe.</p>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="code.js"></script>
 </body>
