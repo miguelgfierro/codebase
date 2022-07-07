@@ -1,0 +1,11 @@
+/* Attribution: */
+
+body {
+    /*Background simulating the sciblog page*/
+    background-color: #dcdbe0;
+    background-image: url("https://raw.githubusercontent.com/miguelgfierro/sciblog/main/img/blog_view2.png");
+    background-size: 1200px;
+    background-position: top;
+    background-repeat: no-repeat;
+    color: #100;
+}
