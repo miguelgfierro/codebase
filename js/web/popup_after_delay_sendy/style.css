@@ -9,3 +9,7 @@ body {
     background-repeat: no-repeat;
     color: #100;
 }
+
+#modal-content {
+    display: none;
+}

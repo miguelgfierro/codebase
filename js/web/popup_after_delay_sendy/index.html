@@ -6,13 +6,48 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <!--<link rel="stylesheet" type="text/css" href="https://miguelgfierro.com/sendy/css/subscription.css?8" />-->
+    <!--<link rel="stylesheet" href="https://cdn.rawgit.com/jackmoore/colorbox/master/example1/colorbox.css" />-->
+
 </head>
 
 <body>
-    <!--
-        Enter your code here
-    -->
+    <div id="modal-content">
+
+        <!-- Sendy form -->
+        <form action="https://miguelgfierro.com/sendy/subscribe" method="POST" accept-charset="utf-8">
+            <label for="FirstName">FirstName</label><br />
+            <input type="text" name="FirstName" id="FirstName" />
+            <br />
+            <label for="LastName">LastName</label><br />
+            <input type="text" name="LastName" id="LastName" />
+            <br />
+            <label for="email">Email</label><br />
+            <input type="email" name="email" id="email" />
+            <br />
+            <label for="Linkedin">Linkedin</label><br />
+            <input type="text" name="Linkedin" id="Linkedin" />
+            <br />
+            <input type="checkbox" name="gdpr" id="gdpr" />
+            <span><strong>Marketing permission</strong>: I give my consent to Miguel González-Fierro to be in touch with
+                me via email using the information I have provided in this form for the purpose of news, updates and
+                marketing.</span>
+            <br /><br />
+            <div style="display:none;">
+                <label for="hp">HP</label><br />
+                <input type="text" name="hp" id="hp" />
+            </div>
+            <input type="hidden" name="list" value="4XSoMExXeByg763RkCORqN7g" />
+            <input type="hidden" name="subform" value="yes" />
+            <input type="submit" name="submit" id="submit" />
+        </form>
+        <!-- Sendy form -->
+
+    </div>
+
+
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://cdn.rawgit.com/jackmoore/colorbox/master/jquery.colorbox-min.js"></script>
     <script src="code.js"></script>
 </body>
 
