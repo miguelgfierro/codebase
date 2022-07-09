@@ -16,8 +16,8 @@ function displayPopup() {
         inline: true,
         href: "#modal-content",
         className: "cta",
-        width: 600,
-        height: 350,
+        width: 450,
+        height: 600,
         onComplete: onPopupOpen,
         onClosed: onPopupClose
     });
@@ -28,6 +28,6 @@ var delay = 3000;
 
 setTimeout(function () {
     lastFocus = document.activeElement;
-    //displayPopup();
-    onPopupOpen();
+    displayPopup();
+    //onPopupOpen();
 }, delay);
