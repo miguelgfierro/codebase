@@ -1,12 +1,11 @@
-// Attribution: 
 
 function onPopupOpen() {
-    $("#modal-content").show();
+    $("#modal-content").css("display", "flex");
     $("#FirstName").focus();
 }
 
 function onPopupClose() {
-    $("#modal-content").hide();
+    $("#modal-content").hide(); //equivalent to CSS display:none
     lastFocus.focus();
 }
 

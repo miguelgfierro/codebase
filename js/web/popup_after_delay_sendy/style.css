@@ -1,5 +1,3 @@
-/* Attribution: */
-
 body {
     /*Background simulating the sciblog page*/
     background-color: #dcdbe0;
@@ -12,6 +10,9 @@ body {
 
 #modal-content {
     display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .close-button {

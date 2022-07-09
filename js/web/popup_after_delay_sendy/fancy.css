@@ -21,6 +21,7 @@
     box-sizing: inherit;
 }
 
+/*
 body {
     background: #f2f2f2;
     color: #5e5e5e;
@@ -30,6 +31,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+*/
 
 .rainbow {
     width: 100%;
