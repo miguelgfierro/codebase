@@ -12,8 +12,8 @@ window.bioEp = {
     css: "",
     fonts: [],
     delay: 2,
-    showOnDelay: false,
-    cookieExp: 30,
+    showOnDelay: false, // true if you want to show the pop up after a delay, false if you you want it to appear when the use leave the window
+    cookieExp: 30, // in days
 
     // Object for handling cookies, taken from QuirksMode
     // https://www.quirksmode.org/js/cookies.html

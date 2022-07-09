@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='https://taniarascia.github.io/primitive/css/main.css'>
+    <link rel="stylesheet" href="fancy.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="modal-content">
+
+        <!-- Sendy form without CSS -->
+        <!--
+        <form action="https://miguelgfierro.com/sendy/subscribe" method="POST" accept-charset="utf-8">
+            <label for="FirstName">FirstName</label><br />
+            <input type="text" name="FirstName" id="FirstName" />
+            <br />
+            <label for="LastName">LastName</label><br />
+            <input type="text" name="LastName" id="LastName" />
+            <br />
+            <label for="email">Email</label><br />
+            <input type="email" name="email" id="email" />
+            <br />
+            <label for="Linkedin">Linkedin</label><br />
+            <input type="text" name="Linkedin" id="Linkedin" />
+            <br />
+            <input type="checkbox" name="gdpr" id="gdpr" />
+            <span><strong>Marketing permission</strong>: I give my consent to Miguel González-Fierro to be in touch with
+                me via email using the information I have provided in this form for the purpose of news, updates and
+                marketing.</span>
+            <br /><br />
+            <div style="display:none;">
+                <label for="hp">HP</label><br />
+                <input type="text" name="hp" id="hp" />
+            </div>
+            <input type="hidden" name="list" value="4XSoMExXeByg763RkCORqN7g" />
+            <input type="hidden" name="subform" value="yes" />
+            <input type="submit" name="submit" id="submit" />
+        </form>
+        -->
+        <!-- Sendy form without CSS -->
+
+        <!-- Sendy form with CSS -->
+        <div class="c-subscribe-box u-align-center">
+            <div class="rainbow"><span></span><span></span></div>
+            <div class="c-subscribe-box__wrapper">
+                <h3 class="c-subscribe-box__title">Join my newsletter</h3>
+                <p class="c-subscribe-box__desc">You like articles of the blog? Sign up for updates via email.</p>
+                <form action="https://miguelgfierro.com/sendy/subscribe" method="POST" accept-charset="utf-8"
+                    class="c-form c-form--accent c-subscribe-box__form">
+                    <input type="text" name="FirstName" id="FirstName" class="u-align-center"
+                        placeholder="First Name" />
+
+                    <input type="text" name="LastName" id="LastName" class="u-align-center" placeholder="Last Name" />
+
+                    <input type="email" name="email" id="email" class="u-align-center" placeholder="Email" />
+
+                    <input type="text" name="Linkedin" id="Linkedin" class="u-align-center" placeholder="LinkedIn" />
+
+                    <input type="checkbox" name="gdpr" id="gdpr" />
+                    <span class="c-subscribe-box__desc"><strong>Marketing permission</strong>:
+                        I give my consent to Miguel González-Fierro to be in touch with me via email using the
+                        information I have provided in this form for the purpose of news, updates and marketing.
+                    </span>
+                    <br /><br />
+                    <div style="display:none;">
+                        <label for="hp">HP</label><br />
+                        <input type="text" name="hp" id="hp" />
+                    </div>
+                    <input type="hidden" name="list" value="4XSoMExXeByg763RkCORqN7g" />
+                    <input type="hidden" name="subform" value="yes" />
+                    <input type="submit" name="submit" id="submit" class="full-button" />
+                </form>
+                <button class="close-button">&#10006;</button>
+            </div>
+        </div>
+        <!-- Sendy form with CSS -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="code.js"></script>
+</body>
+
+</html>
