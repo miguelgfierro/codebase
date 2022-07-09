@@ -4,8 +4,8 @@
     --color-second: #f18867;
     --color-third: #e85f99;
     --color-forth: #50bda1;
-    --block-width: 300px;
-    --block-height: 270px;
+    --block-width: 450px;
+    --block-height: 600px;
     --border-width: 0.625rem;
     --border-radius-outer: 8px;
     --border-radius-inner: calc(var(--border-radius-outer) / 2);

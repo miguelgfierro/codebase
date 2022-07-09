@@ -10,6 +10,7 @@ function onPopupClose() {
     lastFocus.focus();
 }
 
+// No hace falta?
 function displayPopup() {
     $.colorbox({
         inline: true,
@@ -27,5 +28,6 @@ var delay = 3000;
 
 setTimeout(function () {
     lastFocus = document.activeElement;
-    displayPopup();
+    //displayPopup();
+    onPopupOpen();
 }, delay);

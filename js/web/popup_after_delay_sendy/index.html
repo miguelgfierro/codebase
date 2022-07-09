@@ -6,8 +6,8 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <!--<link rel="stylesheet" type="text/css" href="https://miguelgfierro.com/sendy/css/subscription.css?8" />-->
-    <!--<link rel="stylesheet" href="https://cdn.rawgit.com/jackmoore/colorbox/master/example1/colorbox.css" />-->
+    <link rel='stylesheet' href='https://taniarascia.github.io/primitive/css/main.css'>
+    <link rel="stylesheet" href="fancy.css">
 
 </head>
 
@@ -42,9 +42,43 @@
             <input type="hidden" name="subform" value="yes" />
             <input type="submit" name="submit" id="submit" />
         </form>
-    -->
-        <!-- Sendy form -->
+        -->
+        <!-- Sendy form without CSS -->
 
+        <!-- Sendy form with CSS -->
+        <div class="c-subscribe-box u-align-center">
+            <div class="rainbow"><span></span><span></span></div>
+            <div class="c-subscribe-box__wrapper">
+                <h3 class="c-subscribe-box__title">Join my newsletter</h3>
+                <p class="c-subscribe-box__desc">You like articles of the blog? Sign up for updates via email.</p>
+                <form action="https://miguelgfierro.com/sendy/subscribe" method="POST" accept-charset="utf-8"
+                    class="c-form c-form--accent c-subscribe-box__form">
+                    <input type="text" name="FirstName" id="FirstName" class="u-align-center"
+                        placeholder="First Name" />
+
+                    <input type="text" name="LastName" id="LastName" class="u-align-center" placeholder="Last Name" />
+
+                    <input type="email" name="email" id="email" class="u-align-center" placeholder="Email" />
+
+                    <input type="text" name="Linkedin" id="Linkedin" class="u-align-center" placeholder="LinkedIn" />
+
+                    <input type="checkbox" name="gdpr" id="gdpr" />
+                    <span><strong>Marketing permission</strong>: I give my consent to Miguel González-Fierro to be in
+                        touch with
+                        me via email using the information I have provided in this form for the purpose of news, updates
+                        and
+                        marketing.</span>
+                    <br /><br />
+                    <div style="display:none;">
+                        <label for="hp">HP</label><br />
+                        <input type="text" name="hp" id="hp" />
+                    </div>
+                    <input type="hidden" name="list" value="4XSoMExXeByg763RkCORqN7g" />
+                    <input type="hidden" name="subform" value="yes" />
+                    <input type="submit" name="submit" id="submit" class="full-button" />
+                </form>
+            </div>
+        </div>
     </div>
 
 
