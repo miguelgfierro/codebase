@@ -199,7 +199,7 @@ span {
 }
 
 .button {
-    margin 0 auto;
+    margin: 0 auto;
     background-color: #FF8566;
     margin-bottom: 33px;
 }
