@@ -1,0 +1,42 @@
+<!-- 
+    IMPORTANT NOTE: 
+    To visualize this website, you need to start a local server. In a terminal:
+    $ python -m http.server
+    Then open your browser and go to http://localhost:8000/index.html
+
+    It works with jQuery 1 and 2.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="center">
+        <div id="pretty-youtube"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                $('#pretty-youtube').prettyEmbed({
+                    videoID: 'fbu2cYW08HQ',
+                    useFitVids: false,
+                    playerControls: false,
+                    playerInfo: false,
+                    previewSize: 'hd', 
+                    //customPreviewImage: 'https://img.youtube.com/vi/fbu2cYW08HQ/maxresdefault.jpg',
+                });
+            });
+        })(jQuery);
+    </script>
+    <script src="pretty-embed.js"></script>
+</body>
+
+</html>
