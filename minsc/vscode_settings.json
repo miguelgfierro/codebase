@@ -9,10 +9,11 @@
     "files.autoSave": "onWindowChange",
     "window.zoomLevel": 0,
     // Python
-    "python.defaultInterpreterPath": "/home/miguel/anaconda/bin/python",
-    "python.formatting.blackPath": "/home/miguel/anaconda/bin/black",
-    "python.formatting.provider": "black",
-    "python.linting.mypyEnabled": true,
+    "[python]": {
+        "editor.formatOnSave": true,
+        // Install extension: https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter
+        "editor.defaultFormatter": "ms-python.black-formatter",
+    },
     // Configure glob patterns for excluding files and folders. For example, the files explorer 
     // decides which files and folders to show or hide based on this setting.
     "files.exclude": {
