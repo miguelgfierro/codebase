@@ -8,6 +8,17 @@
     // General settings
     "files.autoSave": "onWindowChange",
     "window.zoomLevel": 0,
+    // Editor
+    "editor.fontSize": 14,
+    "editor.tabSize": 4,
+    "editor.rulers": [
+        88,
+        120
+    ],
+    "editor.renderWhitespace": "selection", // Options: "none", "selection", "trailing", "boundary", "all"
+    "editor.renderControlCharacters": true,
+    "editor.links": true,
+    "editor.minimap.enabled": true,
     // Python
     "[python]": {
         "editor.formatOnSave": true,
@@ -34,18 +45,6 @@
         "**/log": true,
         "**/output": true,
     },
-    // Editor
-    "editor.fontSize": 14,
-    "editor.tabSize": 4,
-    "editor.rulers": [
-        88,
-        120
-    ],
-    "editor.renderWhitespace": "none",
-    "editor.renderControlCharacters": true,
-    "editor.links": true,
-    "editor.minimap.enabled": true,
-    "editor.formatOnSave": true,
     // Code Spell Checker
     "cSpell.languageSettings": [
         {
