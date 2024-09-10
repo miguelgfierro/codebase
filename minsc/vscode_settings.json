@@ -66,10 +66,6 @@
     "cSpell.userWords": [
         "fierro"
     ],
-    // Docstrings
-    "autoDocstring.guessTypes": true,
-    "autoDocstring.includeName": true,
-    "autoDocstring.docstringFormat": "google",
     // LaTeX
     "latex-workshop.latex.recipes": [
         {
