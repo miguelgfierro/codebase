@@ -13,7 +13,7 @@
     "editor.tabSize": 4,
     "editor.rulers": [
         120,
-        12¡60
+        160
     ],
     "editor.renderWhitespace": "selection", // Options: "none", "selection", "trailing", "boundary", "all"
     "editor.renderControlCharacters": true,
