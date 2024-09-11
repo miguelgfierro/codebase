@@ -12,8 +12,8 @@
     "editor.fontSize": 14,
     "editor.tabSize": 4,
     "editor.rulers": [
-        88,
-        120
+        120,
+        12¡60
     ],
     "editor.renderWhitespace": "selection", // Options: "none", "selection", "trailing", "boundary", "all"
     "editor.renderControlCharacters": true,
@@ -25,6 +25,7 @@
         // Install extension: https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter
         "editor.defaultFormatter": "ms-python.black-formatter",
     },
+    "black-formatter.args": ["--line-length", "160"],
     // Configure glob patterns for excluding files and folders. For example, the files explorer 
     // decides which files and folders to show or hide based on this setting.
     "files.exclude": {
