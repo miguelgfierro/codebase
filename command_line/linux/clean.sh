@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Check size
+df -h /
 du -sh /home
 du -sh /
 
