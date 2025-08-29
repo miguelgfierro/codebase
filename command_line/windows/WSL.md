@@ -37,4 +37,15 @@ Put the following settings into `C:\Users\<your_user_name>\.wslconfig`. Remember
   
 Save and quit, restart WSL-2, you can use htop command to check, it should reflect the whole memory for you.
 
+## Compact the VHDX file
+
+The VHDX file is the file in Windows that contains Ubuntu. After cleaning files in Ubuntu, the VHDX file can have the same size. To compact it go to Command line:
+
+```cmd
+diskpart
+select vdisk file="C:\Users\hoaph\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\ext4.vhdx"
+compact vdisk
+exit
+```
+
 
