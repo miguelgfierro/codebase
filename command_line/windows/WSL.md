@@ -39,9 +39,10 @@ Save and quit, restart WSL-2, you can use htop command to check, it should refle
 
 ## Compact the VHDX file
 
-The VHDX file is the file in Windows that contains Ubuntu. After cleaning files in Ubuntu, the VHDX file can have the same size. To compact it go to Command line:
+The VHDX file is the file in Windows that contains Ubuntu. After cleaning files in Ubuntu, the VHDX file can have the same size. To compact it go to CMD:
 
 ```cmd
+wsl --shutdown
 diskpart
 select vdisk file="C:\Users\hoaph\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\ext4.vhdx"
 compact vdisk
