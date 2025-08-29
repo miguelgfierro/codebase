@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Check size
 du -sh /home
 du -sh /
