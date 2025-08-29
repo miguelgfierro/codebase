@@ -33,7 +33,6 @@ Put the following settings into `C:\Users\<your_user_name>\.wslconfig`. Remember
  
     [wsl2]
     memory=32GB # Limits Ubuntu memory
-    diskSizeLimit=200GB # Limits how much Ubuntu can grow
   
 Save and quit, restart WSL-2, you can use htop command to check, it should reflect the whole memory for you.
 
