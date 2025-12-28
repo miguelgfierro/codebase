@@ -47,6 +47,8 @@ Windows will block incoming SSH attempts by default. Run this one command in Pow
 New-NetFirewallRule -Name "AllowSSH" -DisplayName "Allow SSH" -Direction Inbound -Protocol TCP -LocalPort 22 -Action Allow
 ```
 
+Make sure you enable password authentication. Go to `/etc/ssh/sshd_config` and if it says `PasswordAuthentication no`, change it to `yes`.
+
 ## Compact the VHDX file
 
 The VHDX file is the file in Windows that contains Ubuntu. After cleaning files in Ubuntu, the VHDX file can have the same size. To compact it go to CMD:
