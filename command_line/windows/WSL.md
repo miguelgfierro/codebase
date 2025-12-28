@@ -1,6 +1,5 @@
 # Windows Subsystem for Linux (WSL)
 
-
 ## Installation 
 
 To run the `wsl` command, use a command promp with admin rights.
@@ -29,12 +28,24 @@ First, close all open WSL-2 and open CMD, enter the following command:
 
     wsl --shutdown
   
-Put the following settings into `C:\Users\<your_user_name>\.wslconfig`. Remember DON'T ADD THE EXTENSION AT THE END. The settings in `.wslconfig` are as follows:
+Put the following settings into `C:\Users\<your_user_name>\.wslconfig`. Remember, DON'T ADD THE EXTENSION AT THE END. The settings in `.wslconfig` are as follows:
  
     [wsl2]
     memory=32GB # Limits Ubuntu memory
   
 Save and quit, restart WSL-2, you can use htop command to check, it should reflect the whole memory for you.
+
+## Mirrored Networking to ssh into WSL
+It gives WSL the same IP address as your Windows host.
+
+    [wsl2]
+    networkingMode=mirrored
+
+Windows will block incoming SSH attempts by default. Run this one command in PowerShell (as Administrator) on the target computer:
+
+```Poweshell
+New-NetFirewallRule -Name "AllowSSH" -DisplayName "Allow SSH" -Direction Inbound -Protocol TCP -LocalPort 22 -Action Allow
+```
 
 ## Compact the VHDX file
 
