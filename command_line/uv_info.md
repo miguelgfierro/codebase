@@ -24,8 +24,7 @@ uv venv ~/.venvs/py312 --python 3.12
 
 # Examples for specific projects
 uv venv ~/.venvs/recommenders --python 3.11
-uv venv ~/.venvs/ml-project --python 3.10
-uv venv ~/.venvs/web-app --python 3.12
+
 ```
 
 ## Activate different environments
