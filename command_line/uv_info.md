@@ -21,8 +21,6 @@ uv venv ~/.venvs/myenv
 # Create with specific Python version
 uv venv ~/.venvs/py311 --python 3.11
 uv venv ~/.venvs/py312 --python 3.12
-
-# Examples for specific projects
 uv venv ~/.venvs/recommenders --python 3.11
 
 ```
@@ -32,15 +30,44 @@ uv venv ~/.venvs/recommenders --python 3.11
 ```bash
 # Linux / macOS / WSL
 source ~/.venvs/recommenders/bin/activate
-source ~/.venvs/ml-project/bin/activate
-source ~/.venvs/web-app/bin/activate
 
 # Windows
 ~\.venvs\recommenders\Scripts\activate
-~\.venvs\ml-project\Scripts\activate
 
 # Deactivate current environment
 deactivate
+```
+
+## Quick activation shortcut (uva)
+
+uv doesn't have a built-in `uv activate` command. Add this to `~/.bashrc` or `~/.zshrc`:
+
+```bash
+# Simple version
+uva() {
+    source ~/.venvs/$1/bin/activate
+}
+```
+
+With tab completion (bash):
+
+```bash
+# Add to ~/.bashrc
+uva() {
+    source ~/.venvs/$1/bin/activate
+}
+_uva_complete() {
+    COMPREPLY=($(ls ~/.venvs/ | grep "^${COMP_WORDS[1]}"))
+}
+complete -F _uva_complete uva
+```
+
+Reload shell and use:
+
+```bash
+source ~/.bashrc
+uva recommenders      # activates ~/.venvs/recommenders
+uva rec<TAB>          # tab completes to recommenders
 ```
 
 ## List all environments
