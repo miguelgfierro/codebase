@@ -56,25 +56,6 @@ uv pip install "git+https://github.com/org/repo@v1.0.0"
 uv pip install "git+https://github.com/org/repo@abc123"
 ```
 
-## Install Recommenders repo
-
-```bash
-# Core package
-uv pip install recommenders
-
-# With examples support
-uv pip install "recommenders[examples]"
-
-# With GPU support
-uv pip install "recommenders[examples,gpu]"
-
-# From GitHub main branch
-uv pip install "git+https://github.com/microsoft/recommenders"
-
-# From specific branch
-uv pip install "git+https://github.com/microsoft/recommenders@staging"
-```
-
 ## List and manage packages
 
 ```bash
