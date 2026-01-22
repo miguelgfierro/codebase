@@ -12,27 +12,46 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-## Create a virtual environment
+## Create a virtual environment (centralized in ~/.venvs/)
 
 ```bash
-# Create .venv in current directory
-uv venv
+# Create environment with default Python
+uv venv ~/.venvs/myenv
 
 # Create with specific Python version
-uv venv --python 3.11
+uv venv ~/.venvs/py311 --python 3.11
+uv venv ~/.venvs/py312 --python 3.12
 
-# Create in a specific folder
-uv venv env/py311
+# Examples for specific projects
+uv venv ~/.venvs/recommenders --python 3.11
+uv venv ~/.venvs/ml-project --python 3.10
+uv venv ~/.venvs/web-app --python 3.12
 ```
 
-## Activate environment
+## Activate different environments
 
 ```bash
-# Linux / macOS
-source .venv/bin/activate
+# Linux / macOS / WSL
+source ~/.venvs/recommenders/bin/activate
+source ~/.venvs/ml-project/bin/activate
+source ~/.venvs/web-app/bin/activate
 
 # Windows
-.venv\Scripts\activate
+~\.venvs\recommenders\Scripts\activate
+~\.venvs\ml-project\Scripts\activate
+
+# Deactivate current environment
+deactivate
+```
+
+## List all environments
+
+```bash
+# List all environments in ~/.venvs/
+ls ~/.venvs/
+
+# Check which environment is active
+which python
 ```
 
 ## Install packages
@@ -54,6 +73,29 @@ uv pip install "git+https://github.com/org/repo"
 uv pip install "git+https://github.com/org/repo@branch"
 uv pip install "git+https://github.com/org/repo@v1.0.0"
 uv pip install "git+https://github.com/org/repo@abc123"
+```
+
+## Install Recommenders repo
+
+```bash
+# Create and activate environment
+uv venv ~/.venvs/recommenders --python 3.11
+source ~/.venvs/recommenders/bin/activate
+
+# Core package
+uv pip install recommenders
+
+# With examples support
+uv pip install "recommenders[examples]"
+
+# With GPU support (requires CUDA installed separately)
+uv pip install "recommenders[examples,gpu]"
+
+# From GitHub main branch
+uv pip install "git+https://github.com/microsoft/recommenders"
+
+# From specific branch
+uv pip install "git+https://github.com/microsoft/recommenders@staging"
 ```
 
 ## List and manage packages
@@ -136,7 +178,7 @@ uv sync
 |---------|-----|-------|
 | Speed | 10-100x faster | Slower |
 | Non-Python deps | No | Yes (CUDA, cuDNN, etc.) |
-| Environment location | Project-local (.venv) | Centralized |
+| Environment location | Flexible (project-local or centralized) | Centralized |
 | Written in | Rust | Python |
 | PyPI packages | Yes | Via conda-forge |
 
