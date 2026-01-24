@@ -64,9 +64,12 @@ In OBS, you'll create a scene for each recording mode:
 
 - Click + under Scenes, name it "Screen Only"
 - Add source → Display Capture (or Game Capture if recording games)
-- The 16:9 Fix: Right-click the source > Transform > Fit to Screen.
-- Crop: Hold Alt and drag the top/bottom handles to remove the extra pixels from your 16:10 screen so it fits the 16:9 4K frame perfectly.
-- Your Rode mic will automatically be included from global settings
+- The 16:9 Alignment (Precision Method):
+    - Press Ctrl + E to open the Edit Transform window.
+    - Set Bounding Box Type to No bounding box.
+    - Set Size to 3840 x 2400.
+    - Set Position Y to -112.0000 px. This hides the top browser tabs and aligns the stripe above your taskbar perfectly with the bottom of the frame.
+- Your Rode mic will automatically be included from global settings.
 
 #### Scene 2: Camera Only
 
