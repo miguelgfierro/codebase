@@ -41,6 +41,8 @@ To record in 4K on a laptop display, use NVIDIA's Deep Learning Super Resolution
 | Downscale Filter | Lanczos |
 | FPS | 60 |
 
+*NOTE: If the resolution 3840x2160 doesn't appear, just add it manually.*
+
 4. Click **Apply** → **OK**
 
 #### Step 3: Recording Settings (Recommended)
