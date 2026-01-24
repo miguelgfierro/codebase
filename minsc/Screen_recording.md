@@ -85,5 +85,6 @@ In OBS, you'll create a scene for each recording mode:
 
 - Create new scene "Screen + Facecam"
 - Add source → Display Capture
-- Add source → Video Capture Device (your webcam)
+- Add source → Video Capture Device → select **NVIDIA Broadcast** (virtual camera with background removal)
+- Right-click webcam → **Filters** → add **NVIDIA Background Removal** if needed
 - Resize the webcam to a small box and drag it to the bottom corner
