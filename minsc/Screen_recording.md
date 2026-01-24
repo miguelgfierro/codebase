@@ -36,7 +36,7 @@ To record in 4K on a laptop display, use NVIDIA's Deep Learning Super Resolution
 
 | Setting | Value |
 |---------|-------|
-| Base (Canvas) Resolution | 3840x2400 |
+| Base (Canvas) Resolution | 3840x2160 (16:9 for YouTube) |
 | Output (Scaled) Resolution | 3840x2160 (16:9 for YouTube) |
 | Downscale Filter | Lanczos |
 | FPS | 60 |
@@ -55,3 +55,28 @@ To record in 4K on a laptop display, use NVIDIA's Deep Learning Super Resolution
    - CQ Level: 18-20 (lower = better quality, larger files)
 
 4. Click **Apply** → **OK**
+
+### Create Three Scenes
+
+In OBS, you'll create a scene for each recording mode:
+
+#### Scene 1: Screen Only
+
+- Click + under Scenes, name it "Screen Only"
+- Add source → Display Capture (or Game Capture if recording games)
+- The 16:9 Fix: Right-click the source > Transform > Fit to Screen.
+- Crop: Hold Alt and drag the top/bottom handles to remove the extra pixels from your 16:10 screen so it fits the 16:9 4K frame perfectly.
+- Your Rode mic will automatically be included from global settings
+
+#### Scene 2: Camera Only
+
+- Create new scene "Camera Only"
+- Add source → Video Capture Device → select your webcam
+- Resize to fill the canvas
+
+#### Scene 3: Screen + Facecam (Picture-in-Picture)
+
+- Create new scene "Screen + Facecam"
+- Add source → Display Capture
+- Add source → Video Capture Device (your webcam)
+- Resize the webcam to a small box and drag it to the bottom corner
