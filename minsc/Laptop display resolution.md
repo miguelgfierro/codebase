@@ -8,7 +8,9 @@
 
 ## GPU Scaling
 
-Enable "Discrete Graphics Mode" (MUX Switch):
+If your laptop doesn't natively show "3840x2160" in the settings, use your GPU to force it.
+
+On an MSI laptop, enable "Discrete Graphics Mode" (MUX Switch):
 
 1. Launch MSI Center: Ensure you have the latest version installed.
 2. Navigate to Features: Go to Features > User Scenario.
@@ -16,8 +18,11 @@ Enable "Discrete Graphics Mode" (MUX Switch):
 4. Choose Discrete Graphics Mode: Select this mode and click OK.
 5. Restart: Your laptop must restart for this change to take effect
 
-If your laptop doesn't natively show "3840x2160" in the settings, use your GPU to force it.
+Now force 4K Resolution:
 
 1. Open NVIDIA Control Panel > Manage 3D Settings. 
-2. Find DSR - Factors and check 4.00x (for 4K) or 2.25x DL (for AI-enhanced 4K). 
+2. Find `DSR - Factors` and check 2.25x DL (for AI-enhanced 4K). 
 3. Apply this, then go back to Windows Display Settings—4K will now appear as an option.
+
+*NOTE: In the laptop MSI Stealth A16 AI+, 4K is 3800x2400 (16:10), instead of the standard 3840x2160 (16:9).*
+
