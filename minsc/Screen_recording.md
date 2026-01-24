@@ -83,8 +83,17 @@ In OBS, you'll create a scene for each recording mode:
 
 #### Scene 3: Screen + Facecam (Picture-in-Picture)
 
+**First, install NVIDIA Broadcast:**
+1. Download from [nvidia.com/broadcast](https://www.nvidia.com/en-us/geforce/broadcasting/broadcast-app/)
+2. Run installer and restart if prompted
+3. Open NVIDIA Broadcast → Video → Virtual Background → Remove.
+
+**Then in OBS:**
 - Create new scene "Screen + Facecam"
 - Add source → Display Capture
 - Add source → Video Capture Device → select **NVIDIA Broadcast** (virtual camera with background removal)
-- Right-click webcam → **Filters** → add **NVIDIA Background Removal** if needed
-- Resize the webcam to a small box and drag it to the bottom corner
+- Resize the webcam to a small box and drag it to the bottom corner.
+
+### Audio
+- Open NVIDIA Broadcast → Audio → Enable Noise Removal and/or Room Echo Removal.
+- In OBS → Settings → Audio → Mic/Auxiliary Audio → Microphone (NVIDIA Broadcast).
