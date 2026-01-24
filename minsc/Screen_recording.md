@@ -71,7 +71,9 @@ In OBS, you'll create a scene for each recording mode:
     - Set Position Y to -112.0000 px. This hides the top browser tabs and aligns the stripe above your taskbar perfectly with the bottom of the frame.
 - Your Rode mic will automatically be included from global settings.
 
-<img src="../img/obs_screen_config.png" alt="OBS Screen Configuration" width="500">
+<p align="center">
+  <img src="../img/obs_screen_config.png" alt="OBS Screen Configuration" width="500">
+</p>
 
 #### Scene 2: Camera Only
 
